@@ -64,7 +64,7 @@ class I18n:
 			_("Answer mode:"),
 			_("A random list"),
 			_("A text entry"), #25
-			_("Random list size:"),
+			_("Random answer list size:"),
 			_("2 choices"),
 			_("3 choices"),
 			_("4 choices"),

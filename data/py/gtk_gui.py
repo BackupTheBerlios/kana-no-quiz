@@ -49,8 +49,10 @@ class Gui:
 			self.i18n.setlang(self.param.val('lang'))
 			global str
 			str = self.i18n.str
-		
-		if oldbox: self.window.resize(1,1) #Properly resize the window.
+
+		if oldbox: 
+			self.window.set_title(str(0))
+			self.window.resize(1,1) #Properly resize the window.
 
 		box = gtk.VBox()
 		image = gtk.Image()
@@ -238,73 +240,80 @@ class Gui:
 			self.main(box) #Go back to the "main".
 
 		self.window.set_title(str(2)) #Change title of window.
-		box = gtk.VBox(spacing=6)
+		box = gtk.VBox(spacing=3)
 
 		label = gtk.Label(str(13))
 		box.pack_start(label,gtk.FALSE)
+		box2 = gtk.HBox()
+		box.pack_start(box2)
+		box3 = gtk.VBox()
+		box2.pack_start(box3)
 
 		frame = gtk.Frame(str(14))
-		box.pack_start(frame)
-		box2 = gtk.HBox(spacing=5)
-		box2.set_border_width(3)
-		frame.add(box2)
+		box3.pack_start(frame)
+		table = gtk.Table(2,3)
+		table.set_row_spacings(1)
+		table.set_border_width(2)
+		frame.add(table)
 
 		#`single_katakana'
 		image = gtk.Image()
 		image.set_from_file("data/img/single_katakana.gif")
-		box2.pack_start(image)
+		table.attach(image,0,1,0,1)
 		option1 = gtk.CheckButton(str(16))
 		option1.set_active(opt_boolean[self.param.val('single_katakana')])
-		box2.pack_start(option1)
+		table.attach(option1,1,2,0,1)
 		
 		#`modified_katakana'
 		image = gtk.Image()
 		image.set_from_file("data/img/modified_katakana.gif")
-		box2.pack_start(image)
+		table.attach(image,0,1,1,2)
 		option2 = gtk.CheckButton(str(17))
 		option2.set_active(opt_boolean[self.param.val('modified_katakana')])
-		box2.pack_start(option2)
+		table.attach(option2,1,2,1,2)
 
 		#`combined_katakana'
 		image = gtk.Image()
 		image.set_from_file("data/img/combined_katakana.gif")
-		box2.pack_start(image)
+		table.attach(image,0,1,2,3)
 		option3 = gtk.CheckButton(str(18))
 		option3.set_active(opt_boolean[self.param.val('combined_katakana')])
-		box2.pack_start(option3)
+		table.attach(option3,1,2,2,3)
 
 		frame = gtk.Frame(str(15))
-		box.pack_start(frame)
-		box2 = gtk.HBox(spacing=5)
-		box2.set_border_width(3)
-		frame.add(box2)
+		box3.pack_start(frame)
+		table = gtk.Table(2,3)
+		table.set_row_spacings(1)
+		table.set_border_width(2)
+		frame.add(table)
 
 		#`single_hiragana'
 		image = gtk.Image()
 		image.set_from_file("data/img/single_hiragana.gif")
-		box2.pack_start(image)
+		table.attach(image,0,1,0,1)
 		option4 = gtk.CheckButton(str(16))
 		option4.set_active(opt_boolean[self.param.val('single_hiragana')])
-		box2.pack_start(option4)
+		table.attach(option4,1,2,0,1)
 		
 		#`modified_hiragana'
 		image = gtk.Image()
 		image.set_from_file("data/img/modified_hiragana.gif")
-		box2.pack_start(image)
+		table.attach(image,0,1,1,2)
 		option5 = gtk.CheckButton(str(17))
 		option5.set_active(opt_boolean[self.param.val('modified_hiragana')])
-		box2.pack_start(option5)
+		table.attach(option5,1,2,1,2)
 
 		#`combined_hiragana'
 		image = gtk.Image()
 		image.set_from_file("data/img/combined_hiragana.gif")
-		box2.pack_start(image)
+		table.attach(image,0,1,2,3)
 		option6 = gtk.CheckButton(str(18))
 		option6.set_active(opt_boolean[self.param.val('combined_hiragana')])
-		box2.pack_start(option6)
+		table.attach(option6,1,2,2,3)
 
-		table = gtk.Table(4,2)
-		table.set_row_spacings(3)
+		table = gtk.Table(1,8)
+		table.set_border_width(6)
+		box2.pack_start(table)
 
 		#`answer_mode'
 		label = gtk.Label(str(23))
@@ -316,11 +325,11 @@ class Gui:
 		option7 = gtk.OptionMenu()
 		option7.set_menu(menu)
 		option7.set_history(opt_answer_mode[self.param.val('answer_mode')])
-		table.attach(option7,1,2,0,1)
+		table.attach(option7,0,1,1,2)
 
 		#`list_size'
 		label = gtk.Label(str(26))
-		table.attach(label,0,1,1,2)
+		table.attach(label,0,1,2,3)
 		menu = gtk.Menu()
 		for val in (str(27),str(28),str(29)):
 			item = gtk.MenuItem(val)
@@ -328,11 +337,11 @@ class Gui:
 		option8 = gtk.OptionMenu()
 		option8.set_menu(menu)
 		option8.set_history(opt_list_size[self.param.val('list_size')])
-		table.attach(option8,1,2,1,2)
+		table.attach(option8,0,1,3,4)
 
 		#`length'
 		label = gtk.Label(str(19))
-		table.attach(label,2,3,0,1)
+		table.attach(label,0,1,4,5)
 		menu = gtk.Menu()
 		for val in (str(20),str(21),str(22)):
 			item = gtk.MenuItem(val)
@@ -340,11 +349,11 @@ class Gui:
 		option9 = gtk.OptionMenu()
 		option9.set_menu(menu)
 		option9.set_history(opt_length[self.param.val('length')])
-		table.attach(option9,3,4,0,1)
+		table.attach(option9,0,1,5,6)
 
 		#`lang'
 		label = gtk.Label(str(30))
-		table.attach(label,2,3,1,2)
+		table.attach(label,0,1,6,7)
 		menu = gtk.Menu()
 		for val in (str(31),str(32),str(33)):
 			item = gtk.MenuItem(val)
@@ -352,9 +361,7 @@ class Gui:
 		option10 = gtk.OptionMenu()
 		option10.set_menu(menu)
 		option10.set_history(opt_lang[self.param.val('lang')])
-		table.attach(option10,3,4,1,2)
-
-		box.pack_start(table)
+		table.attach(option10,0,1,7,8)
 
 		#Buttons at bottom...
 		box2 = gtk.HBox()
