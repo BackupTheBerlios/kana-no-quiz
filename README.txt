@@ -6,10 +6,10 @@
  Introduction
  ============
 
- This is ``Kana no quiz", a little tool, written in Python, to
-memorize Japanese kana (hiragana & katakana). The full list
-of kana is implemented. The romanization system used is the
-Hepburn's.
+ This is ``Kana no quiz", a little educational tool, written
+in Python, to memorize Japanese kana (hiragana & katakana)
+pronouncing. The full list of kana is implemented, and the
+romanization system used is the Hepburn's.
 
  How does it work ?
  ------------------
