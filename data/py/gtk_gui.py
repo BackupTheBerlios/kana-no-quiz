@@ -83,16 +83,35 @@ class Gui:
 
 	def intro(self,oldbox):
 		#Here comes the marvelous introduction...
-		box = gtk.VBox(spacing=3)
-		label = gtk.Label("Two different writing systems are commonly used by Japaneses: Kanji & Kana.")
+		self.window.set_title(str(1)) #Change title of window.
+		box = gtk.VBox(spacing=5)
+	
+		label = gtk.Label("Two different writing systems are commonly used by Japaneses: <b>Kanji</b> &amp; <b>Kana</b>.")
 		label.set_line_wrap(gtk.TRUE)
 		box.pack_start(label)
-		label = gtk.Label("Kanji are complex ideograms which retranscribe words whereas Kana are simple symbols which are used as syllabe to be combined to make words. Kana can be used to write any word in Japanese.")
+		label.set_use_markup(gtk.TRUE)
+
+		label = gtk.Label("Kanji are complex ideograms retranscribing words whereas Kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using Kana.")
 		label.set_line_wrap(gtk.TRUE)
+		label.set_use_markup(gtk.TRUE)
 		box.pack_start(label)
-		label = gtk.Label("There are two kinds of Kana: Hiragana & Katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is mostly used to write word nouns and loanwords of foreign origin.")
+
+		label = gtk.Label("There are two kinds of Kana: <b>Hiragana</b> &amp; <b>Katakana</b>. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary mostly used to write proper nouns and words of foreign origin.")
 		label.set_line_wrap(gtk.TRUE)
+		label.set_use_markup(gtk.TRUE)
 		box.pack_start(label)
+
+		label = gtk.Label("<b>Kana no quiz</b> help you to memorize Kana and their associated roman transcription (<b>Hepburn</b> system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of Kana at a time.")
+		label.set_line_wrap(gtk.TRUE)
+		label.set_use_markup(gtk.TRUE)
+		box.pack_start(label)
+
+		label = gtk.Label("Have a good practice !")
+		box.pack_start(label)
+
+		button = gtk.Button(stock=gtk.STOCK_OK)
+		button.connect_object("clicked",self.main,box)
+		box.pack_end(button)
 
 		#Forget the old box
 		self.window.remove(oldbox)

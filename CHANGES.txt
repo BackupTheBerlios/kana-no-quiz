@@ -2,6 +2,13 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Version 1.1 (2004-08-XX):
+
+- Doing the quiz the same kana now won't appear twice in a row.  
+- A new ``Introduction" window which briefly introduce the Kana
+writing system and what this program is aimed to. 
+
+
 * Version 1.0 (2004-07-29):
 
 - Addition of the ``additional" katakana question set which

@@ -20,9 +20,10 @@ import random
 
 class KanaEngine:
 	def __init__(self):
+		self.previous_kana = None
 		#Kana lists.
 		self.kana_sets = (
-		( #Basic.
+		[ #Basic.
 		"a",	"i",	"u",	"e",	"o",
 		"ka",	"ki",	"ku",	"ke",	"ko",
 		"sa",	"shi",	"su",	"se",	"so",
@@ -33,14 +34,14 @@ class KanaEngine:
 		"ya",		"yu",		"yo",
 		"ra",	"ri",	"ru",	"re",	"ro",
 		"wa",				"o-2",
-		"n"),
-		( #Modified.
+		"n"],
+		[ #Modified.
 		"ga",	"gi",	"gu",	"ge",	"go",
 		"za",	"ji",	"zu",	"ze",	"zo",
 		"da",	"ji-2",	"zu-2",	"de",	"do",
 		"ba",	"bi",	"bu",	"be",	"bo",
-		"pa",	"pi",	"pu",	"pe",	"po"),
-		( #Contracted.
+		"pa",	"pi",	"pu",	"pe",	"po"],
+		[ #Contracted.
 		"kya",		"kyu",		"kyo",
 		"sha",		"shu",		"sho",
 		"cha",		"chu",		"cho",
@@ -49,8 +50,8 @@ class KanaEngine:
 		"gya",		"gyu",		"gyo",
 		"ja",		"ju",		"jo",
 		"bya",		"byu",		"byo",
-		"pya",		"pyu",		"pyo"),
-		( #Additional (katakana only).
+		"pya",		"pyu",		"pyo"],
+		[ #Additional (katakana only).
 					"ye",
 			"wi",		"we",	"wo",
 		"kwa",				"kwo",
@@ -63,36 +64,44 @@ class KanaEngine:
 			"di",	"du",
 			"tyu",	"dyu",
 		"fa",	"fi",		"fe",	"fo",
-		"va",	"vi",	"vu",	"ve",	"vo"))
+		"va",	"vi",	"vu",	"ve",	"vo"])
 
 	def randomKana(self,*args):
 		if "true" in args:
-			#Select syllabary mode.
-			if "true" in args[0:4] and "true" in args[4:7]: self.mode = random.choice((0,1))
-			elif "true" in args[0:4]: self.mode = 0
-			else: self.mode = 1
+			#Selection of syllabary kind.
+			if "true" in args[0:4] and "true" in args[4:7]: self.kind = random.choice((0,1))
+			elif "true" in args[0:4]: self.kind = 0
+			else: self.kind = 1
 
-			#Select possible question sets.
+			#Selecton of possible question sets.
 			possible_sets = []
 
 			i = 0
-			for x in (args[0:4],args[4:7])[self.mode]:
+			for x in (args[0:4],args[4:7])[self.kind]:
 				if x=="true": possible_sets.append(self.kana_sets[i])
 				i+=1
 
-			#Select THE question set.
+			#Selection of THE question set.
 			if len(possible_sets)>1: self.question_set = random.choice(possible_sets)
 			else: self.question_set = possible_sets[0]
 
-			#Select kana. 
-			self.kana = random.choice(self.question_set)
+			#Selection of the kana.
+			#We prevent the previous kana of being selected again.	
+			if self.previous_kana and (self.previous_kana[0],self.previous_kana[1])==(self.kind,self.question_set):
+				self.question_set.remove(self.previous_kana[2]) #We remove the previous kana from the list.
+				self.kana = random.choice(self.question_set) #Kana selection.
+				self.question_set.append(self.previous_kana[2]) #We can now safety re-append it to the list.
+			else: self.kana = random.choice(self.question_set) #Kana selection.
+
+			self.previous_kana = (self.kind,self.question_set,self.kana) #Precisely memorize this kana to prevent it to be selected the next time.
+
 			return self.kana
 
 		else: return 0
 
 	def getKanaKind(self):
 		#Katakana = 0 & hiragana = 1.
-		if self.mode==0: return 0
+		if self.kind==0: return 0
 		else: return 1
 
 	def randomAnswers(self,list_size):
