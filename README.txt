@@ -1,6 +1,6 @@
 
  Kana no quiz - README
- version 1.0 - 2004-07-29
+ version 1.1 - 2004-08-XX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
@@ -25,7 +25,7 @@ second method is more complicated.
 
  Kana no quiz is currently translated into English, French,
 Portuguese of Brazil (by Matheus Villela) and Swedish (by
-Markus Fellnert).
+Markus Fellnert, outdated !).
 
  Cross platform
  --------------
