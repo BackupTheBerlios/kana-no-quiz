@@ -1,6 +1,6 @@
 
  Kana no quiz - README
- version 1.2 - 2004-12-XX
+ version 1.2 - 2005-01-23
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
@@ -58,7 +58,7 @@ Free Art license (see `FAL.txt'), as the Kana no quiz logo.
 your computer:
 
 * Python - http://www.python.org/.
-* For the GTK+ interface (not mandatory to run on Windows):
+* For the GTK+ interface (not mandatory but recommended):
   * The Gimp Tool Kit - http://www.gtk.org/.
   * PyGTK - http://www.pygtk.org/.
 

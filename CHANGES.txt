@@ -2,7 +2,7 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.2 (2004-12-XX):
+* Version 1.2 (2005-01-23):
 
 - The Sweedish translation has been finaly updated.
 - In the GTK version, we can choose the length of the quiz
