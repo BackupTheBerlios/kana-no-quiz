@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-12-20 17:32+0100\n"
-"PO-Revision-Date: 2004-11-27 16:11+0100\n"
+"PO-Revision-Date: 2004-12-21 07:17+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,43 +31,20 @@ msgid "About"
 msgstr "Om"
 
 #: py\i18n.py:46
-msgid ""
-"Two different writing systems are commonly used by Japaneses: kanji & kana."
+msgid "Two different writing systems are commonly used by Japaneses: kanji & kana."
 msgstr "Två olika skriftsystem är vanliga i Japanskan; kanji & kana."
 
 #: py\i18n.py:47
-msgid ""
-"Kanji are complex ideograms retranscribing words whereas kana are simple "
-"symbols used as syllabes which have to be combined to make words. Any word "
-"in Japanese can be written using kana, it is like an alphabet."
-msgstr ""
-"Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla "
-"symboler som används som stavelser, som kombineras för att skapa ord. Alla "
-"japanska ord kan skrivas med kana, ungefär som ett alfabet."
+msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
+msgstr "Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla symboler som används som stavelser, som kombineras för att skapa ord. Alla japanska ord kan skrivas med kana, ungefär som ett alfabet."
 
 #: py\i18n.py:48
-msgid ""
-"There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
-"traditional syllabary used to write Japanese words. Katakana is a larger "
-"syllabary, with more sounds, mostly used to write proper nouns and loanwords "
-"of foreign origin."
-msgstr ""
-"Det finns två typer av kana; hiragana och katakana. Hiragana vanligaste "
-"traditionella kanauppsättningen för att skriva japanska ord. Katakana är en "
-"större täckenuppsättning, med fler ljud, oftast använd för att skriva "
-"låneord och utländska egennamn."
+msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
+msgstr "Det finns två typer av kana; hiragana och katakana. Hiragana vanligaste traditionella kanauppsättningen för att skriva japanska ord. Katakana är en större täckenuppsättning, med fler ljud, oftast använd för att skriva låneord och utländska egennamn."
 
 #: py\i18n.py:49
-msgid ""
-"Kana no quiz help you to memorize kana and their associated sound (using the "
-"Hepburn's roman transcription system). For more simplicity, syllabes have "
-"been splited in multiple sets, and you can even choose to learn only a "
-"portion of kana at a time."
-msgstr ""
-"Kana no quiz hjälper dig att memorera kana och deras associerade ljud/"
-"transkriberingar enligt hepburnsystemet. För ökad enkelhet har stavelserna "
-"blivit uppdelade över flera set, och du kan t.o.m välja att bara öva en "
-"delkana åt gången."
+msgid "Kana no quiz help you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of kana at a time."
+msgstr "Kana no quiz hjälper dig att memorera kana och deras associerade ljud/transkriberingar enligt hepburnsystemet. För ökad enkelhet har stavelserna blivit uppdelade över flera set, och du kan t.o.m välja att bara öva en delkana åt gången."
 
 #: py\i18n.py:50
 msgid "Have a good practice ! ^_^"
@@ -75,7 +52,7 @@ msgstr "Ha en bra övning! ^_^"
 
 #: py\i18n.py:51
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: py\i18n.py:52
 msgid "What is this katakana?"
@@ -180,12 +157,8 @@ msgid "Additional katakana parts"
 msgstr "Övriga katakanadelar"
 
 #: py\i18n.py:76
-msgid ""
-"If you are novice, it may be interesting at the beginning to train yourself "
-"only on some kana instead of the full set."
-msgstr ""
-"Om du är nybörjare kan det vara intressant att börja med att bara öva på en "
-"del kana, i stället för alla samtidigt."
+msgid "If you are novice, it may be interesting at the beginning to train yourself only on some kana instead of the full set."
+msgstr "Om du är nybörjare kan det vara intressant att börja med att bara öva på en del kana, i stället för alla samtidigt."
 
 #: py\i18n.py:77
 msgid "Select the kana portion you want to train yourself upon:"
@@ -232,6 +205,8 @@ msgid ""
 "Don't repeat the same kana\n"
 "(as much as possible)."
 msgstr ""
+"Upprepa inte samma kana\n"
+"(så gott det går)."
 
 #: py\i18n.py:88
 msgid "Language:"
@@ -271,19 +246,14 @@ msgid "Version %s."
 msgstr "Version %s."
 
 #: py\i18n.py:97
-msgid ""
-"Kana no quiz is free software released under the GNU GPL license (see `GPL."
-"txt'). Kana images are released under the Free Art license (see `FAL.txt')."
-msgstr ""
-"Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). "
-"Kanabilder är utgivna under Free Art licens (se `FAL.txt')."
+msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr "Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). Kanabilder är utgivna under Free Art licens (se `FAL.txt')."
 
 #: py\i18n.py:98
 msgid "Credits"
 msgstr "Medverkande"
 
 #: py\i18n.py:99
-#, fuzzy
 msgid ""
 "Coding: Choplair & Pachilor.\n"
 "Kana image: Ms. Marie-Claire.\n"
@@ -292,7 +262,8 @@ msgstr ""
 "Kod: Choplair & Pachilor.\n"
 "Kanabilder: Ms. Marie-Claire.\n"
 "Logga: Choplair.\n"
-"Svensk översättning: Markus Fellnert/Krister Kjellström."
+"Svensk översättning: Markus Fellnert\n"
+"/Krister Kjellström."
 
 #: py\i18n.py:100
 msgid "Close"
@@ -307,11 +278,3 @@ msgstr "Varning"
 msgid "You must select at least one question set."
 msgstr "Du måste välja minst en uppsättning frågor."
 
-#~ msgid "Short (10 questions)"
-#~ msgstr "Kort (10 frågor)"
-
-#~ msgid "Normal (20 questions)"
-#~ msgstr "Normal (20 frågor)"
-
-#~ msgid "Long (30 questions)"
-#~ msgstr "Lång (30 frågor)"
