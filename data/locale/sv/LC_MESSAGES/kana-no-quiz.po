@@ -1,23 +1,13 @@
-# translation of kana-no-quiz.po to French
-# Kana no quiz: a kana reminder tool.
-# Copyleft 2004 Choplair-network
-# This file is distributed under the same license as the Kana no quiz 
-package.
-# Pachilor <pachilor@choplair.org>, 2004.
-# Choplair <choplair@fr.st>, 2004
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-05-25 10:43+0200\n"
-"PO-Revision-Date: 2004-04-03 18:31+0200\n"
-"Last-Translator: Choplair <choplair@fr.st>\n"
+"PO-Revision-Date: 2004-05-30 14:32+0100\n"
+"Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.1\n"
 
 msgid "Kana no quiz!"
 msgstr "Kana no quiz!"
@@ -67,23 +57,20 @@ msgstr "Här kan du modifiera några fråge-alternativ."
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:55
 msgid "Katakana question sets"
-msgstr ""
+msgstr "Katakana frågeinställning"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:56
 msgid "Hiragana question sets"
-msgstr ""
+msgstr "Hiragana frågeinställning"
 
-# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:57
 msgid "Single"
-msgstr ""
+msgstr "Enkel"
 
-# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:58
 msgid "Modified"
-msgstr ""
+msgstr "Modifierad"
 
-# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:59
 msgid "Combined"
-msgstr ""
+msgstr "Combinerad"
 
 msgid "Length:"
 msgstr "Längd:"
@@ -122,7 +109,7 @@ msgid "Swedish"
 msgstr "Svensk"
 
 msgid "Save"
-msgstr "Rädda"
+msgstr "Spara"
 
 msgid "Cancel"
 msgstr "Annullera"
@@ -134,16 +121,8 @@ msgstr "Kana no quiz, ett minnesvertyg för kana."
 msgid "Version %s."
 msgstr "Version %s."
 
-#, fuzzy
-msgid ""
-"Kana no quiz is free software released under the GNU GPL license (see 
-`GPL."
-"txt'). Kana images are released under the Free Art license (see 
-`FAL.txt')."
-msgstr ""
-"Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). 
-"
-"Kana bilder är utgivna under Free Art licens (se `FAL.txt')."
+msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr "Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). Kana bilder är utgivna under Free Art licens (se `FAL.txt')."
 
 msgid "Credits"
 msgstr "Medverkande"
@@ -161,24 +140,6 @@ msgstr ""
 msgid "Close"
 msgstr "Stänga"
 
-#, fuzzy
 msgid "Warning"
 msgstr "Fel!"
-
-# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
-msgid "You must select at least one question set."
-msgstr ""
-
-#~ msgid "Question mode:"
-#~ msgstr "Fråge läge:"
-
-#~ msgid "Hiragana"
-#~ msgstr "Hiragana"
-
-#~ msgid "Katakana"
-#~ msgstr "Katakana"
-
-#~ msgid "Hiragana & Katakana"
-#~ msgstr "Hiragana & Katakana"
-
 
