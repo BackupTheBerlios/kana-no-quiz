@@ -220,8 +220,6 @@ class KanaEngine:
 			#Precisely memorize this kana to prevent it to be selected the next time.
 			self.previous_kana = self.kana
 
-			print self.used_kana_list
-
 			return self.kana
 
 		else: return 0
