@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-25 10:43+0200\n"
+"POT-Creation-Date: 2004-06-27 21:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,176 +16,196 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:41
+#: data/py/i18n.py:41
 msgid "Kana no quiz!"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:42
+#: data/py/i18n.py:42
 msgid "Start"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:43
+#: data/py/i18n.py:43
 msgid "Options"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:44
+#: data/py/i18n.py:44
 msgid "About"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:45
+#: data/py/i18n.py:45
 msgid "What is this katakana?"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:46
+#: data/py/i18n.py:46
 msgid "What is this hiragana?"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:47
+#: data/py/i18n.py:47
 msgid "Right! ^^"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:48
+#: data/py/i18n.py:48
 msgid "Wrong!"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:49
-#, possible-python-format
+#: data/py/i18n.py:49
+#, python-format
 msgid "The answer was %s."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:50
+#: data/py/i18n.py:50
 msgid "Quiz results"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:51
-#, possible-python-format
+#: data/py/i18n.py:51
+#, python-format
 msgid "Question total: %i."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:52
-#, possible-python-format
+#: data/py/i18n.py:52
+#, python-format
 msgid "Good answers: %i."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:53
-#, possible-python-format
+#: data/py/i18n.py:53
+#, python-format
 msgid "Success rate: %i%%."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:54
+#: data/py/i18n.py:54
 msgid "Here you can modify some quiz options."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:55
+#: data/py/i18n.py:55
 msgid "Katakana question sets"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:56
+#: data/py/i18n.py:56
 msgid "Hiragana question sets"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:57
-msgid "Single"
+#: data/py/i18n.py:57
+msgid "Basic"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:58
+#: data/py/i18n.py:58
 msgid "Modified"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:59
-msgid "Combined"
+#: data/py/i18n.py:59
+msgid "Contracted"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:60
+#: data/py/i18n.py:60
+msgid "Additional"
+msgstr ""
+
+#: data/py/i18n.py:61
+msgid "Answer mode:"
+msgstr ""
+
+#: data/py/i18n.py:62
+msgid "A random list"
+msgstr ""
+
+#: data/py/i18n.py:63
+msgid "A text entry"
+msgstr ""
+
+#: data/py/i18n.py:64
+msgid "Random answer list size:"
+msgstr ""
+
+#: data/py/i18n.py:65
+msgid "2 choices"
+msgstr ""
+
+#: data/py/i18n.py:66
+msgid "3 choices"
+msgstr ""
+
+#: data/py/i18n.py:67
+msgid "4 choices"
+msgstr ""
+
+#: data/py/i18n.py:68
 msgid "Length:"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:61
+#: data/py/i18n.py:69
 msgid "Short (10 questions)"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:62
+#: data/py/i18n.py:70
 msgid "Normal (20 questions)"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:63
+#: data/py/i18n.py:71
 msgid "Long (30 questions)"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:64
-msgid "Difficulty:"
-msgstr ""
-
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:65
-msgid "Novice (2 choices)"
-msgstr ""
-
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:66
-msgid "Medium (3 choices)"
-msgstr ""
-
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:67
-msgid "Sensei! (4 choices)"
-msgstr ""
-
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:68
+#: data/py/i18n.py:72
 msgid "Language:"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:69
+#: data/py/i18n.py:73
 msgid "English"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:70
+#: data/py/i18n.py:74
 msgid "French"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:71
+#: data/py/i18n.py:75
+msgid "Spanish"
+msgstr ""
+
+#: data/py/i18n.py:76
 msgid "Swedish"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:72
+#: data/py/i18n.py:77
 msgid "Save"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:73
+#: data/py/i18n.py:78
 msgid "Cancel"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:74
+#: data/py/i18n.py:79
 msgid "Kana no quiz, a kana reminder tool."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:75
-#, possible-python-format
+#: data/py/i18n.py:80
+#, python-format
 msgid "Version %s."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:76
+#: data/py/i18n.py:81
 msgid ""
 "Kana no quiz is free software released under the GNU GPL license (see `GPL."
 "txt'). Kana images are released under the Free Art license (see `FAL.txt')."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:77
+#: data/py/i18n.py:82
 msgid "Credits"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:78
+#: data/py/i18n.py:83
 msgid ""
 "Code: Choplair & Pachilor.\n"
 "Kana image: Ms. Marie-Claire.\n"
 "Logo image: Choplair."
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:79
+#: data/py/i18n.py:84
 msgid "Close"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:80
+#: data/py/i18n.py:85
 msgid "Warning"
 msgstr ""
 
-#: E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
+#: data/py/i18n.py:86
 msgid "You must select at least one question set."
 msgstr ""

@@ -250,6 +250,37 @@ class Gui:
 		box3 = gtk.VBox()
 		box2.pack_start(box3)
 
+		frame = gtk.Frame(str(15))
+		box3.pack_start(frame)
+		table = gtk.Table(2,3)
+		table.set_row_spacings(2)
+		table.set_border_width(2)
+		frame.add(table)
+
+		#`basic_hiragana'
+		image = gtk.Image()
+		image.set_from_file("data/img/basic_hiragana.gif")
+		table.attach(image,0,1,0,1)
+		option5 = gtk.CheckButton(str(16))
+		option5.set_active(opt_boolean[self.param.val('basic_hiragana')])
+		table.attach(option5,1,2,0,1)
+		
+		#`modified_hiragana'
+		image = gtk.Image()
+		image.set_from_file("data/img/modified_hiragana.gif")
+		table.attach(image,0,1,1,2)
+		option6 = gtk.CheckButton(str(17))
+		option6.set_active(opt_boolean[self.param.val('modified_hiragana')])
+		table.attach(option6,1,2,1,2)
+
+		#`contracted_hiragana'
+		image = gtk.Image()
+		image.set_from_file("data/img/contracted_hiragana.gif")
+		table.attach(image,0,1,2,3)
+		option7 = gtk.CheckButton(str(18))
+		option7.set_active(opt_boolean[self.param.val('contracted_hiragana')])
+		table.attach(option7,1,2,2,3)
+
 		frame = gtk.Frame(str(14))
 		box3.pack_start(frame)
 		table = gtk.Table(2,4)
@@ -288,37 +319,6 @@ class Gui:
 		option4 = gtk.CheckButton(str(19))
 		option4.set_active(opt_boolean[self.param.val('additional_katakana')])
 		table.attach(option4,1,2,3,4)
-
-		frame = gtk.Frame(str(15))
-		box3.pack_start(frame)
-		table = gtk.Table(2,3)
-		table.set_row_spacings(2)
-		table.set_border_width(2)
-		frame.add(table)
-
-		#`basic_hiragana'
-		image = gtk.Image()
-		image.set_from_file("data/img/basic_hiragana.gif")
-		table.attach(image,0,1,0,1)
-		option5 = gtk.CheckButton(str(16))
-		option5.set_active(opt_boolean[self.param.val('basic_hiragana')])
-		table.attach(option5,1,2,0,1)
-		
-		#`modified_hiragana'
-		image = gtk.Image()
-		image.set_from_file("data/img/modified_hiragana.gif")
-		table.attach(image,0,1,1,2)
-		option6 = gtk.CheckButton(str(17))
-		option6.set_active(opt_boolean[self.param.val('modified_hiragana')])
-		table.attach(option6,1,2,1,2)
-
-		#`contracted_hiragana'
-		image = gtk.Image()
-		image.set_from_file("data/img/contracted_hiragana.gif")
-		table.attach(image,0,1,2,3)
-		option7 = gtk.CheckButton(str(18))
-		option7.set_active(opt_boolean[self.param.val('contracted_hiragana')])
-		table.attach(option7,1,2,2,3)
 
 		table = gtk.Table(1,8)
 		table.set_border_width(6)

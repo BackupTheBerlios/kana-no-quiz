@@ -92,16 +92,16 @@ class Gui:
 			self.image = tk.PhotoImage(file="data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana))
 			self.kanaImage = tk.Label(frame,image=self.image)
 			self.kanaImage.pack(side="left")
-	
+
 			frame2 = tk.Frame(frame)
 			frame2.pack(padx=6,side="right",fill="both")
-	
+
 			self.quizLabel = tk.Label(frame2,text=(str(4),str(5))[self.kanaEngine.getKanaKind()],wraplength=120,width=18)
 			self.quizLabel.pack(pady=3,fill="both",expand=1)
-	
+
 			#The arrow.
 			self.nextButton = tk.Button(frame2,bitmap="@data/img/rarrow.xbm",pady=4)
-	
+
 			if self.param.val('answer_mode')=="list":
 				#Choice buttons generation.
 				self.answerButt = {}; i=0
@@ -117,7 +117,7 @@ class Gui:
 				self.answerButt.pack()
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
-	
+
 		else:	tkMessageBox.showwarning(str(44),str(45))
 
 	def checkAnswer(self,event=None):
@@ -164,7 +164,7 @@ class Gui:
 
 		self.quizLabel["text"] = (str(4),str(5))[self.kanaEngine.getKanaKind()]
 		self.quizLabel["fg"] = "black"
-	
+
 		if self.param.val('answer_mode')=="list":
 			self.nextButton.pack_forget() #Hide the arrow.
 			#Display the random list.
@@ -240,6 +240,42 @@ class Gui:
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
 		frame2.pack(fill="both",expand=1)
 
+		label = tk.Label(frame2,text=str(15),justify="left",anchor="w")
+		label.pack()
+
+		table = tk.Frame(frame2)
+		table.pack(fill="x")
+
+		#`basic_hiragana'
+		img5 = tk.PhotoImage(file="data/img/basic_hiragana.gif")
+		label = tk.Label(table,image=img5)
+		label.grid(column=0,row=0)
+		option5 = tk.IntVar()
+		option5.set(opt_boolean[self.param.val('basic_hiragana')])
+		c = tk.Checkbutton(table,text=str(16),variable=option5)
+		c.grid(column=1,row=0)
+
+		#`modified_hiragana'
+		img6 = tk.PhotoImage(file="data/img/modified_hiragana.gif")
+		label = tk.Label(table,image=img6)
+		label.grid(column=0,row=1)
+		option6 = tk.IntVar()
+		option6.set(opt_boolean[self.param.val('modified_hiragana')])
+		c = tk.Checkbutton(table,text=str(17),variable=option6)
+		c.grid(column=1,row=1)
+
+		#`contracted_hiragana'
+		img7 = tk.PhotoImage(file="data/img/contracted_hiragana.gif")
+		label = tk.Label(table,image=img7)
+		label.grid(column=0,row=2)
+		option7 = tk.IntVar()
+		option7.set(opt_boolean[self.param.val('contracted_hiragana')])
+		c = tk.Checkbutton(table,text=str(18),variable=option7)
+		c.grid(column=1,row=2)
+
+		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
+		frame2.pack(fill="both",expand=1)
+
 		label = tk.Label(frame2,text=str(14),justify="left",anchor="w")
 		label.pack()
 
@@ -281,42 +317,6 @@ class Gui:
 		option4.set(opt_boolean[self.param.val('additional_katakana')])
 		c = tk.Checkbutton(table,text=str(19),variable=option4)
 		c.grid(column=1,row=3)
-
-		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
-		frame2.pack(fill="both",expand=1)
-
-		label = tk.Label(frame2,text=str(15),justify="left",anchor="w")
-		label.pack()
-
-		table = tk.Frame(frame2)
-		table.pack(fill="x")
-
-		#`basic_hiragana'
-		img5 = tk.PhotoImage(file="data/img/basic_hiragana.gif")
-		label = tk.Label(table,image=img5)
-		label.grid(column=0,row=0)
-		option5 = tk.IntVar()
-		option5.set(opt_boolean[self.param.val('basic_hiragana')])
-		c = tk.Checkbutton(table,text=str(16),variable=option5)
-		c.grid(column=1,row=0)
-
-		#`modified_hiragana'
-		img6 = tk.PhotoImage(file="data/img/modified_hiragana.gif")
-		label = tk.Label(table,image=img6)
-		label.grid(column=0,row=1)
-		option6 = tk.IntVar()
-		option6.set(opt_boolean[self.param.val('modified_hiragana')])
-		c = tk.Checkbutton(table,text=str(17),variable=option6)
-		c.grid(column=1,row=1)
-
-		#`contracted_hiragana'
-		img7 = tk.PhotoImage(file="data/img/contracted_hiragana.gif")
-		label = tk.Label(table,image=img7)
-		label.grid(column=0,row=2)
-		option7 = tk.IntVar()
-		option7.set(opt_boolean[self.param.val('contracted_hiragana')])
-		c = tk.Checkbutton(table,text=str(18),variable=option7)
-		c.grid(column=1,row=2)
 
 		right_frame = tk.Frame(option_frame)
 		right_frame.pack(fill="both",expand=1,pady=6,padx=6)
@@ -391,7 +391,7 @@ class Gui:
 
 			label = tk.Label(frame2,text=str(41),justify="left",anchor="w")
 			label.pack(fill="x")
-	
+
 			img = tk.PhotoImage(file="data/img/chprod.gif")
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")

@@ -6,142 +6,191 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz 0.9\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-25 10:43+0200\n"
-"PO-Revision-Date: 2004-05-30 16:40+0100\n"
+"POT-Creation-Date: 2004-06-27 21:13+0200\n"
+"PO-Revision-Date: 2004-06-27 21:24+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: data/py/i18n.py:41
 msgid "Kana no quiz!"
 msgstr "Kana no quiz !"
 
+#: data/py/i18n.py:42
 msgid "Start"
 msgstr "Commencer"
 
+#: data/py/i18n.py:43
 msgid "Options"
 msgstr "Options"
 
+#: data/py/i18n.py:44
 msgid "About"
 msgstr "À propos"
 
+#: data/py/i18n.py:45
 msgid "What is this katakana?"
 msgstr "Quel est ce katakana ?"
 
+#: data/py/i18n.py:46
 msgid "What is this hiragana?"
 msgstr "Quel est ce hiragana ?"
 
+#: data/py/i18n.py:47
 msgid "Right! ^^"
 msgstr "Juste ! ^^"
 
+#: data/py/i18n.py:48
 msgid "Wrong!"
 msgstr "Faux !"
 
+#: data/py/i18n.py:49
 #, python-format
 msgid "The answer was %s."
-msgstr "La reponse été %s."
+msgstr "La réponse était %s."
 
+#: data/py/i18n.py:50
 msgid "Quiz results"
 msgstr "Résultats du quiz"
 
+#: data/py/i18n.py:51
 #, python-format
 msgid "Question total: %i."
 msgstr "Total des questions : %i."
 
+#: data/py/i18n.py:52
 #, python-format
 msgid "Good answers: %i."
 msgstr "Bonnes réponses : %i."
 
+#: data/py/i18n.py:53
 #, python-format
 msgid "Success rate: %i%%."
 msgstr "Taux de réussite : %i%%."
 
+#: data/py/i18n.py:54
 msgid "Here you can modify some quiz options."
 msgstr "Ici vous pouvez modifier quelques options du quiz."
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:55
+#: data/py/i18n.py:55
 msgid "Katakana question sets"
 msgstr "Jeux de questions katakana"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:56
+#: data/py/i18n.py:56
 msgid "Hiragana question sets"
 msgstr "Jeux de questions hiragana"
 
-# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:57
-msgid "Single"
-msgstr "Simples"
+#: data/py/i18n.py:57
+msgid "Basic"
+msgstr "Basiques"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:58
+#: data/py/i18n.py:58
 msgid "Modified"
 msgstr "Modifiés"
 
-# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:59
-msgid "Combined"
-msgstr "Combinés"
+#: data/py/i18n.py:59
+msgid "Contracted"
+msgstr "Contractés"
 
+#: data/py/i18n.py:60
+msgid "Additional"
+msgstr "Additionnels"
+
+#: data/py/i18n.py:61
+msgid "Answer mode:"
+msgstr "Méthode de réponse :"
+
+#: data/py/i18n.py:62
+msgid "A random list"
+msgstr "Une liste aléatoire"
+
+#: data/py/i18n.py:63
+msgid "A text entry"
+msgstr "Une entrée textuelle"
+
+#: data/py/i18n.py:64
+msgid "Random answer list size:"
+msgstr "Taille de la liste aléatoire de réponses :"
+
+#: data/py/i18n.py:65
+msgid "2 choices"
+msgstr "2 choix"
+
+#: data/py/i18n.py:66
+msgid "3 choices"
+msgstr "3 choix"
+
+#: data/py/i18n.py:67
+msgid "4 choices"
+msgstr "4 choix"
+
+#: data/py/i18n.py:68
 msgid "Length:"
 msgstr "Longueur :"
 
+#: data/py/i18n.py:69
 msgid "Short (10 questions)"
 msgstr "Court (10 questions)"
 
+#: data/py/i18n.py:70
 msgid "Normal (20 questions)"
 msgstr "Normal (20 questions)"
 
+#: data/py/i18n.py:71
 msgid "Long (30 questions)"
 msgstr "Long (30 questions)"
 
-msgid "Difficulty:"
-msgstr "Difficulté :"
-
-msgid "Novice (2 choices)"
-msgstr "Novice (2 choix)"
-
-msgid "Medium (3 choices)"
-msgstr "Moyen (3 choix)"
-
-msgid "Sensei! (4 choices)"
-msgstr "Sensei ! (4 choix)"
-
+#: data/py/i18n.py:72
 msgid "Language:"
 msgstr "Langage :"
 
+#: data/py/i18n.py:73
 msgid "English"
 msgstr "Anglais"
 
+#: data/py/i18n.py:74
 msgid "French"
 msgstr "Français"
 
+#: data/py/i18n.py:75
+msgid "Spanish"
+msgstr "Espagnol"
+
+#: data/py/i18n.py:76
 msgid "Swedish"
 msgstr "Suédois"
 
+#: data/py/i18n.py:77
 msgid "Save"
 msgstr "Sauvegarder"
 
+#: data/py/i18n.py:78
 msgid "Cancel"
 msgstr "Annuler"
 
+#: data/py/i18n.py:79
 msgid "Kana no quiz, a kana reminder tool."
-msgstr "Kana no quiz, un outil de mémorisation des kana."
+msgstr "Kana no quiz, un outil pour mémoriser les kana."
 
+#: data/py/i18n.py:80
 #, python-format
 msgid "Version %s."
 msgstr "Version %s."
 
-#, fuzzy
-msgid ""
-"Kana no quiz is free software released under the GNU GPL license (see `GPL."
-"txt'). Kana images are released under the Free Art license (see `FAL.txt')."
-msgstr ""
-"Kana no quiz est un logiciel libre distribué sous la licence GNU GPL (voir "
-"`GPL.txt'). Les images des kana sont distribuées sous la licence Art Libre "
-"(voir `FAL.txt')."
+#: data/py/i18n.py:81
+msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr "Kana no quiz est un logiciel libre distribué sous la licence GNU GPL (voir `GPL.txt'). Les images de kana sont distribuées sous la licence Art Libre (voir `FAL.txt')."
 
+#: data/py/i18n.py:82
 msgid "Credits"
 msgstr "Crédits"
 
+#: data/py/i18n.py:83
 msgid ""
 "Code: Choplair & Pachilor.\n"
 "Kana image: Ms. Marie-Claire.\n"
@@ -149,18 +198,19 @@ msgid ""
 msgstr ""
 "Code : Choplair et Pachilor.\n"
 "Images des kana : Mlle Marie-Claire.\n"
-"Image du logo : Choplair.\n"
+"Image de logo : Choplair.\n"
 "Traduction française : Choplair."
 
+#: data/py/i18n.py:84
 msgid "Close"
 msgstr "Fermer"
 
+#: data/py/i18n.py:85
 msgid "Warning"
 msgstr "Avertissement"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
+#: data/py/i18n.py:86
 msgid "You must select at least one question set."
 msgstr "Veuillez sélectionner au moins un jeu de questions."
 
-#~ msgid "Spanish"
-#~ msgstr "Espagnol"

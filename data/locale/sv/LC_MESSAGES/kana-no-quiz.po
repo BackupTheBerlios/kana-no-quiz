@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-25 10:43+0200\n"
+"POT-Creation-Date: 2004-06-27 21:13+0200\n"
 "PO-Revision-Date: 2004-05-30 16:40+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -10,118 +10,177 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: data/py/i18n.py:41
 msgid "Kana no quiz!"
 msgstr "Kana no quiz!"
 
+#: data/py/i18n.py:42
 msgid "Start"
 msgstr "Start"
 
+#: data/py/i18n.py:43
 msgid "Options"
 msgstr "Alternativ"
 
+#: data/py/i18n.py:44
 msgid "About"
 msgstr "Om"
 
+#: data/py/i18n.py:45
 msgid "What is this katakana?"
 msgstr "Vad är katakana?"
 
+#: data/py/i18n.py:46
 msgid "What is this hiragana?"
 msgstr "Vad är hiragana?"
 
+#: data/py/i18n.py:47
 msgid "Right! ^^"
 msgstr "Rätt!^^"
 
+#: data/py/i18n.py:48
 msgid "Wrong!"
 msgstr "Fel!"
 
+#: data/py/i18n.py:49
 #, python-format
 msgid "The answer was %s."
 msgstr "Svaret var %s."
 
+#: data/py/i18n.py:50
 msgid "Quiz results"
 msgstr "Fråge resultat"
 
+#: data/py/i18n.py:51
 #, python-format
 msgid "Question total: %i."
 msgstr "Frågor totalt: %i."
 
+#: data/py/i18n.py:52
 #, python-format
 msgid "Good answers: %i."
 msgstr "Rätt svar: %i."
 
+#: data/py/i18n.py:53
 #, python-format
 msgid "Success rate: %i%%."
 msgstr "Slutresultat: %i%%."
 
+#: data/py/i18n.py:54
 msgid "Here you can modify some quiz options."
 msgstr "Här kan du modifiera några fråge-alternativ."
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:55
+#: data/py/i18n.py:55
 msgid "Katakana question sets"
 msgstr "Katakana frågeinställning"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:56
+#: data/py/i18n.py:56
 msgid "Hiragana question sets"
 msgstr "Hiragana frågeinställning"
 
-msgid "Single"
-msgstr "Enkel"
+#: data/py/i18n.py:57
+msgid "Basic"
+msgstr ""
 
+#: data/py/i18n.py:58
 msgid "Modified"
 msgstr "Modifierad"
 
-msgid "Combined"
-msgstr "Combinerad"
+#: data/py/i18n.py:59
+msgid "Contracted"
+msgstr ""
 
+#: data/py/i18n.py:60
+msgid "Additional"
+msgstr ""
+
+#: data/py/i18n.py:61
+msgid "Answer mode:"
+msgstr ""
+
+#: data/py/i18n.py:62
+msgid "A random list"
+msgstr ""
+
+#: data/py/i18n.py:63
+msgid "A text entry"
+msgstr ""
+
+#: data/py/i18n.py:64
+msgid "Random answer list size:"
+msgstr ""
+
+#: data/py/i18n.py:65
+#, fuzzy
+msgid "2 choices"
+msgstr "Novis (2 val)"
+
+#: data/py/i18n.py:66
+#, fuzzy
+msgid "3 choices"
+msgstr "Medel (3 val)"
+
+#: data/py/i18n.py:67
+#, fuzzy
+msgid "4 choices"
+msgstr "Mästare! (4 val)"
+
+#: data/py/i18n.py:68
 msgid "Length:"
 msgstr "Längd:"
 
+#: data/py/i18n.py:69
 msgid "Short (10 questions)"
 msgstr "Kort (10 frågor)"
 
+#: data/py/i18n.py:70
 msgid "Normal (20 questions)"
 msgstr "Normal (20 frågor)"
 
+#: data/py/i18n.py:71
 msgid "Long (30 questions)"
 msgstr "Lång (30 frågor)"
 
-msgid "Difficulty:"
-msgstr "Svårighetsnivå:"
-
-msgid "Novice (2 choices)"
-msgstr "Novis (2 val)"
-
-msgid "Medium (3 choices)"
-msgstr "Medel (3 val)"
-
-msgid "Sensei! (4 choices)"
-msgstr "Mästare! (4 val)"
-
+#: data/py/i18n.py:72
 msgid "Language:"
 msgstr "Språk:"
 
+#: data/py/i18n.py:73
 msgid "English"
 msgstr "Engelsk"
 
+#: data/py/i18n.py:74
 msgid "French"
 msgstr "Fransk"
 
+#: data/py/i18n.py:75
+msgid "Spanish"
+msgstr "Spansk"
+
+#: data/py/i18n.py:76
 msgid "Swedish"
 msgstr "Svensk"
 
+#: data/py/i18n.py:77
 msgid "Save"
 msgstr "Spara"
 
+#: data/py/i18n.py:78
 msgid "Cancel"
 msgstr "Annullera"
 
+#: data/py/i18n.py:79
 msgid "Kana no quiz, a kana reminder tool."
 msgstr "Kana no quiz, ett minnesvertyg för kana."
 
+#: data/py/i18n.py:80
 #, python-format
 msgid "Version %s."
 msgstr "Version %s."
 
+#: data/py/i18n.py:81
 msgid ""
 "Kana no quiz is free software released under the GNU GPL license (see `GPL."
 "txt'). Kana images are released under the Free Art license (see `FAL.txt')."
@@ -129,9 +188,11 @@ msgstr ""
 "Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). "
 "Kana bilder är utgivna under Free Art licens (se `FAL.txt')."
 
+#: data/py/i18n.py:82
 msgid "Credits"
 msgstr "Medverkande"
 
+#: data/py/i18n.py:83
 msgid ""
 "Code: Choplair & Pachilor.\n"
 "Kana image: Ms. Marie-Claire.\n"
@@ -142,15 +203,24 @@ msgstr ""
 "Bild logga: Choplair.\n"
 "Svensk översättning: Markus Fellnert."
 
+#: data/py/i18n.py:84
 msgid "Close"
 msgstr "Stänga"
 
+#: data/py/i18n.py:85
 msgid "Warning"
 msgstr "Fel!"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
+#: data/py/i18n.py:86
 msgid "You must select at least one question set."
 msgstr ""
 
-#~ msgid "Spanish"
-#~ msgstr "Spansk"
+#~ msgid "Single"
+#~ msgstr "Enkel"
+
+#~ msgid "Combined"
+#~ msgstr "Combinerad"
+
+#~ msgid "Difficulty:"
+#~ msgstr "Svårighetsnivå:"
