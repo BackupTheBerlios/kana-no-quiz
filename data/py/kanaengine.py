@@ -179,10 +179,7 @@ class KanaEngine:
 
 	def getASet(self,num):
 		"""Return a set from its number."""
-		if num==0 or num==3: return self.default_kana_list[0]
-		elif num==1 or num==4: return self.default_kana_list[1]
-		elif num==2 or num==5: return self.default_kana_list[2]
-		else: return self.default_kana_list[3]
+		return self.default_kana_list[num]
 
 	def randomAnswers(self,list_size):
 		#Anwsers will be get from this temporary question set, it is the same kana part than the selected kana.
