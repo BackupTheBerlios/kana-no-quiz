@@ -41,7 +41,7 @@ class Options:
 		'additional_katakana_part':0,
 		'length':'normal',
 		'answer_mode':'list',
-		'list_size':'3'}
+		'list_size':3}
 		if locale.getlocale() in ("fr","pt_BR","sv"): self.params['lang'] = locale.getlocale()
 		else: self.params['lang'] = "en"
 

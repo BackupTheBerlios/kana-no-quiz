@@ -43,10 +43,10 @@ class I18n:
 			_("Options"),
 			_("Start the quiz"),
 			_("About"),
-			_("Two different writing systems are commonly used by Japaneses: Kanji & Kana."), #5
-			_("Kanji are complex ideograms retranscribing words whereas Kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using Kana, it is like an alphabet."),
-			_("There are two kinds of Kana: Hiragana & Katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary with more sounds mostly used to write proper nouns and words of foreign origin."),
-			_("Kana no quiz help you to memorize Kana and their associated roman transcription (using the Hepburn system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of Kana at a time."),
+			_("Two different writing systems are commonly used by Japaneses: kanji & kana."), #5
+			_("Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."),
+			_("There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."),
+			_("Kana no quiz help you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of kana at a time."),
 			_("Have a good practice ! ^_^"),
 			_("OK"), #10
 			_("What is this katakana?"),

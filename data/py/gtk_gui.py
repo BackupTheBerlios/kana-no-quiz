@@ -309,13 +309,12 @@ class Gui:
 			self.main(box) #Go back to the ``main".
 
 		def parts_popup(widget,kanaset):
-			self.temp_value = kanaParts[kanaset] #Temporary variable.
-
 			def newValue(widget,value): self.temp_value = value #Update the emporary variable value.
 			def validedChanges(widget,*args): kanaParts[kanaset] = self.temp_value; dialog.destroy()
 
 			if not self.dialogState["kanaPartPopup"]:
 				self.dialogState["kanaPartPopup"] = 1
+				self.temp_value = kanaParts[kanaset] #Temporary variable.
 
 				dialog = gtk.Dialog(str(28+kanaset),self.window)
 				dialog.connect("destroy",self.destroy,"kanaPartPopup")

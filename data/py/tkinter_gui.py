@@ -259,18 +259,80 @@ class Gui:
 		def save():
 			self.param.write({
 			'basic_hiragana':opt_boolean[option1.get()],
+			'basic_hiragana_part':kanaParts[0],
 			'modified_hiragana':opt_boolean[option2.get()],
+			'modified_hiragana_part':kanaParts[1],
 			'contracted_hiragana':opt_boolean[option3.get()],
+			'contracted_hiragana_part':kanaParts[2],
 			'basic_katakana':opt_boolean[option4.get()],
+			'basic_katakana_part':kanaParts[3],
 			'modified_katakana':opt_boolean[option5.get()],
+			'modified_katakana_part':kanaParts[4],
 			'contracted_katakana':opt_boolean[option6.get()],
+			'contracted_katakana_part':kanaParts[5],
 			'additional_katakana':opt_boolean[option7.get()],
+			'additional_katakana_part':kanaParts[6],
 			'answer_mode':opt_answer_mode[option8.get().encode('utf8')],
 			'list_size':opt_list_size[option9.get().encode('utf8')],
 			'length':opt_length[option10.get().encode('utf8')],
 			'lang':opt_lang[option11.get().encode('utf8')]
 			})
 			goBack() #Then, go back!
+
+		def parts_popup(kanaset):
+			def close():
+				self.dialogState["about"] = 0
+				dialog.destroy()
+
+			def validedChanges():
+				kanaParts[kanaset] = self.temp_value.get()
+				close()
+
+			#Check whether this dialog window is not opened yet.
+			if not self.dialogState["about"]:
+				self.dialogState["about"] = 1
+
+				#Temporary variable.
+				self.temp_value = tk.IntVar()
+				self.temp_value.set(kanaParts[kanaset])
+
+				dialog = tk.Toplevel()
+				dialog.resizable(0,0)
+				dialog.title(str(28+kanaset))
+				dialog.protocol("WM_DELETE_WINDOW",close)
+
+				label = tk.Label(dialog,text=str(35),wraplength=350)
+				label.pack()
+
+				label = tk.Label(dialog,text=str(36),wraplength=350)
+				label.pack()
+
+				if kanaset==0 or kanaset==3: set = self.kanaEngine.kana_sets[0]
+				elif kanaset==1 or kanaset==4: set = self.kanaEngine.kana_sets[1]
+				elif kanaset==2 or kanaset==5: set = self.kanaEngine.kana_sets[2]
+				else: set = self.kanaEngine.kana_sets[3]
+
+				table = tk.Frame(dialog)
+				table.pack()
+
+				radio0 = tk.Radiobutton(table,text=str(37),variable=self.temp_value,value=0)
+				radio0.grid(column=0,row=0)
+
+				i,j,k = 1,1,0
+				for part in set:
+					string = ""
+					for kana in part: string += "%s " % kana.upper()
+					radio = tk.Radiobutton(table,text=string[:-1],variable=self.temp_value,value=i)
+					if kanaParts[kanaset]==i: radio.select()
+					if j: radio.grid(column=1,row=k); j=0; k+=1
+					else: radio.grid(column=0,row=k); j=1
+					i+=1
+
+				#Buttons at bottom..
+				button = tk.Button(dialog,text=str(10),command=validedChanges)
+				button.pack(side="right")
+				button = tk.Button(dialog,text=str(55),command=close)
+				button.pack(side="right")
 
 		self.window.slaves()[0].destroy()
 		self.window.title(str(2)) #Change title of window.
@@ -304,6 +366,8 @@ class Gui:
 		option1.set(opt_boolean[self.param.val('basic_hiragana')])
 		c = tk.Checkbutton(table,text=str(23),variable=option1)
 		c.grid(column=1,row=0,sticky='W')
+		button = tk.Button(table,text=str(27),command=lambda: parts_popup(0))
+		button.grid(column=2,row=0)
 
 		#`modified_hiragana'
 		img6 = tk.PhotoImage(file="data/img/modified_hiragana.gif")
@@ -313,6 +377,8 @@ class Gui:
 		option2.set(opt_boolean[self.param.val('modified_hiragana')])
 		c = tk.Checkbutton(table,text=str(24),variable=option2)
 		c.grid(column=1,row=1,sticky='W')
+		button = tk.Button(table,text=str(27),command=lambda: parts_popup(1))
+		button.grid(column=2,row=1)
 
 		#`contracted_hiragana'
 		img7 = tk.PhotoImage(file="data/img/contracted_hiragana.gif")
@@ -322,6 +388,8 @@ class Gui:
 		option3.set(opt_boolean[self.param.val('contracted_hiragana')])
 		c = tk.Checkbutton(table,text=str(25),variable=option3)
 		c.grid(column=1,row=2,sticky='W')
+		button = tk.Button(table,text=str(27),command=lambda: parts_popup(2))
+		button.grid(column=2,row=2)
 
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
 		frame2.pack(fill="both",expand=1)
@@ -340,6 +408,8 @@ class Gui:
 		option4.set(opt_boolean[self.param.val('basic_katakana')])
 		c = tk.Checkbutton(table,text=str(23),variable=option4)
 		c.grid(column=1,row=0,sticky='W')
+		button = tk.Button(table,text=str(27),command=lambda: parts_popup(3))
+		button.grid(column=2,row=0)
 
 		#`modified_katakana'
 		img2 = tk.PhotoImage(file="data/img/modified_katakana.gif")
@@ -349,6 +419,8 @@ class Gui:
 		option5.set(opt_boolean[self.param.val('modified_katakana')])
 		c = tk.Checkbutton(table,text=str(24),variable=option5)
 		c.grid(column=1,row=1,sticky='W')
+		button = tk.Button(table,text=str(27),command=lambda: parts_popup(4))
+		button.grid(column=2,row=1)
 
 		#`contracted_katakana'
 		img3 = tk.PhotoImage(file="data/img/contracted_katakana.gif")
@@ -358,6 +430,8 @@ class Gui:
 		option6.set(opt_boolean[self.param.val('contracted_katakana')])
 		c = tk.Checkbutton(table,text=str(25),variable=option6)
 		c.grid(column=1,row=2,sticky='W')
+		button = tk.Button(table,text=str(27),command=lambda: parts_popup(5))
+		button.grid(column=2,row=2)
 
 		#`additional_katakana'
 		img4 = tk.PhotoImage(file="data/img/additional_katakana.gif")
@@ -367,6 +441,8 @@ class Gui:
 		option7.set(opt_boolean[self.param.val('additional_katakana')])
 		c = tk.Checkbutton(table,text=str(26),variable=option7)
 		c.grid(column=1,row=3,sticky='W')
+		button = tk.Button(table,text=str(27),command=lambda: parts_popup(6))
+		button.grid(column=2,row=3)
 
 		right_frame = tk.Frame(option_frame)
 		right_frame.pack(fill="both",expand=1,pady=6,padx=6)

@@ -67,33 +67,35 @@ class KanaEngine:
 		[			"ye",
 		"fa",	"fi",		"fe",	"fo"],
 		["va",	"vi",	"vu",	"ve",	"vo"]))
-	
+
 	def randomKana(self,*args):
 		if "true" in args[0]:
 			#Selection of syllabary kind.
 			if "true" in args[0][0:3] and "true" in args[0][3:7]: self.kind = random.choice((0,1))
-			elif "true" in args[0][0:3]: self.kind = 0
-			else: self.kind = 1
+			elif "true" in args[0][0:3]: self.kind = 1
+			else: self.kind = 0
 
 			#Selecton of possible question sets.
 			possible_sets = []
 			i = 0
-			for x in (args[0][0:3],args[0][3:7])[self.kind]:
+			for x in (args[0][3:7],args[0][0:3])[self.kind]:
 				if x=="true": possible_sets.append(i)
-				i+=1
+				i += 1
 
 			#Selection of THE question set.
 			if len(possible_sets)>1: self.question_set = random.choice(possible_sets)
 			else: self.question_set = possible_sets[0]
 
 			#Selection of the kana part.
-			if not args[1][self.question_set]:
+			i = (3,0)[self.kind]
+			if not args[1][self.question_set+i]:
 				self.part = []
 				for x in self.kana_sets[self.question_set]: self.part += x
-			else: self.part = self.kana_sets[self.question_set][args[1][self.question_set]-1]
+			else: #Yes, I was crazy when I wrote that! O_O;
+				self.part = self.kana_sets[self.question_set][args[1][self.question_set+i]-1]
 
 			#Selection of the kana.
-			#We prevent the previous kana of being selected again.	
+			#We prevent the previous kana of being selected again.
 			if self.previous_kana and (self.previous_kana[0],self.previous_kana[1],self.previous_kana[2])==(self.kind,self.question_set,self.part):
 				self.part.remove(self.previous_kana[3]) #We remove the previous kana from the list.
 				self.kana = random.choice(self.part) #Kana selection.
@@ -106,10 +108,7 @@ class KanaEngine:
 
 		else: return 0
 
-	def getKanaKind(self):
-		#Katakana = 0 & hiragana = 1.
-		if self.kind==1: return 0
-		else: return 0
+	def getKanaKind(self): return self.kind #Katakana = 0 & hiragana = 1.
 
 	def randomAnswers(self,list_size):
 		templist = list(self.part) #Anwsers will be get from this temporary question set.
