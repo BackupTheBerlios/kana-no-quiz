@@ -1,6 +1,6 @@
 """
 Kana no quiz!
-Copyleft 2003, 2004 Choplair-network.
+Copyleft 2003, 2004, 2005 Choplair-network.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -556,7 +556,7 @@ class Gui:
 			dialog.set_border_width(5)
 			dialog.vbox.set_spacing(5)
 
-			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(54),str(55) % self.version))
+			label = gtk.Label("<span color='#008'><b>%s</b>\n%s (GTK+)\nCopyleft 2003, 2004, 2005 Choplair-network.</span>" % (str(54),str(55) % self.version))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			label.set_use_markup(gtk.TRUE)
 			dialog.vbox.pack_start(label)

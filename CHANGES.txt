@@ -7,6 +7,8 @@
 - Bugfix : prevention, while doing the quiz using the random
 list mode, of getting the rigth answer appearing twice in
 the list.
+- The interface type used by Kana no quiz is now indicated
+in the ``About" window (in case that you don't see ! ^^).
 
 * Version 1.2 (2005-01-23):
 

@@ -1,6 +1,6 @@
 
  Kana no quiz - README
- version 1.2 - 2005-01-23
+ version 1.2a - 2005-02-XX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
@@ -25,15 +25,19 @@ second method is more complicated.
 
  Kana no quiz is currently translated into English, French,
 Portuguese of Brazil (by Matheus Villela) and Swedish (by
-Markus Fellnert, outdated !).
+Markus Fellnert & Krister Kjellstrom).
 
  Cross platform
  --------------
 
- The same package works both on GNU/Linux (using GTK+) and
-Windows (using the Python native GUI: Tkinter). You can force
+ The same package works both on GNU/Linux and Windows
+ using GTK+ or the Python native GUI: Tkinter. You can force
 the use of an interface by passing either`-tk' (for Tkinter) or
-`-gtk' (for GTK+) as an argument.
+`-gtk' (for GTK+) as an argument. Though there is not much
+difference, the GTK+ interface is more evolved (and nicer !),
+but you'll need to install some more software to use it (see
+bellow). The interface type used by Kana no quiz is indicated
+in the ``About" window.
 
  GIF choice
  ----------
