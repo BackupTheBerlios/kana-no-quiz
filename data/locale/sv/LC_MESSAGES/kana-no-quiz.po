@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-17 12:14+0200\n"
+"POT-Creation-Date: 2004-12-20 17:32+0100\n"
 "PO-Revision-Date: 2004-11-27 16:11+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -10,255 +10,279 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/py/i18n.py:41
+#: py\i18n.py:41
 msgid "Kana no quiz!"
 msgstr "Kana no quiz!"
 
-#: data/py/i18n.py:42
+#: py\i18n.py:42
 msgid "Introduction"
 msgstr "Introduktion"
 
-#: data/py/i18n.py:43
+#: py\i18n.py:43
 msgid "Options"
 msgstr "Alternativ"
 
-#: data/py/i18n.py:44
+#: py\i18n.py:44
 msgid "Start the quiz"
 msgstr "Starta"
 
-#: data/py/i18n.py:45
+#: py\i18n.py:45
 msgid "About"
 msgstr "Om"
 
-#: data/py/i18n.py:46
-msgid "Two different writing systems are commonly used by Japaneses: kanji & kana."
+#: py\i18n.py:46
+msgid ""
+"Two different writing systems are commonly used by Japaneses: kanji & kana."
 msgstr "Två olika skriftsystem är vanliga i Japanskan; kanji & kana."
 
-#: data/py/i18n.py:47
-msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
-msgstr "Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla symboler som används som stavelser, som kombineras för att skapa ord. Alla japanska ord kan skrivas med kana, ungefär som ett alfabet."
+#: py\i18n.py:47
+msgid ""
+"Kanji are complex ideograms retranscribing words whereas kana are simple "
+"symbols used as syllabes which have to be combined to make words. Any word "
+"in Japanese can be written using kana, it is like an alphabet."
+msgstr ""
+"Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla "
+"symboler som används som stavelser, som kombineras för att skapa ord. Alla "
+"japanska ord kan skrivas med kana, ungefär som ett alfabet."
 
-#: data/py/i18n.py:48
-msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
-msgstr "Det finns två typer av kana; hiragana och katakana. Hiragana vanligaste traditionella kanauppsättningen för att skriva japanska ord. Katakana är en större täckenuppsättning, med fler ljud, oftast använd för att skriva låneord och utländska egennamn."
+#: py\i18n.py:48
+msgid ""
+"There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
+"traditional syllabary used to write Japanese words. Katakana is a larger "
+"syllabary, with more sounds, mostly used to write proper nouns and loanwords "
+"of foreign origin."
+msgstr ""
+"Det finns två typer av kana; hiragana och katakana. Hiragana vanligaste "
+"traditionella kanauppsättningen för att skriva japanska ord. Katakana är en "
+"större täckenuppsättning, med fler ljud, oftast använd för att skriva "
+"låneord och utländska egennamn."
 
-#: data/py/i18n.py:49
-msgid "Kana no quiz help you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of kana at a time."
-msgstr "Kana no quiz hjälper dig att memorera kana och deras associerade ljud/transkriberingar enligt hepburnsystemet. För ökad enkelhet har stavelserna blivit uppdelade över flera set, och du kan t.o.m välja att bara öva en delkana åt gången."
+#: py\i18n.py:49
+msgid ""
+"Kana no quiz help you to memorize kana and their associated sound (using the "
+"Hepburn's roman transcription system). For more simplicity, syllabes have "
+"been splited in multiple sets, and you can even choose to learn only a "
+"portion of kana at a time."
+msgstr ""
+"Kana no quiz hjälper dig att memorera kana och deras associerade ljud/"
+"transkriberingar enligt hepburnsystemet. För ökad enkelhet har stavelserna "
+"blivit uppdelade över flera set, och du kan t.o.m välja att bara öva en "
+"delkana åt gången."
 
-#: data/py/i18n.py:50
+#: py\i18n.py:50
 msgid "Have a good practice ! ^_^"
 msgstr "Ha en bra övning! ^_^"
 
-#: data/py/i18n.py:51
+#: py\i18n.py:51
 msgid "OK"
 msgstr ""
 
-#: data/py/i18n.py:52
+#: py\i18n.py:52
 msgid "What is this katakana?"
 msgstr "Vilken katakana?"
 
-#: data/py/i18n.py:53
+#: py\i18n.py:53
 msgid "What is this hiragana?"
 msgstr "Vilken hiragana?"
 
-#: data/py/i18n.py:54
+#: py\i18n.py:54
 msgid "Right! ^^"
 msgstr "Rätt!^^"
 
-#: data/py/i18n.py:55
+#: py\i18n.py:55
 msgid "Wrong!"
 msgstr "Fel!"
 
-#: data/py/i18n.py:56
+#: py\i18n.py:56
 #, python-format
 msgid "The answer was %s."
 msgstr "Svaret var %s."
 
-#: data/py/i18n.py:57
+#: py\i18n.py:57
 msgid "Quiz results"
 msgstr "Fråge resultat"
 
-#: data/py/i18n.py:58
+#: py\i18n.py:58
 #, python-format
 msgid "Question total: %i."
 msgstr "Frågor totalt: %i."
 
-#: data/py/i18n.py:59
+#: py\i18n.py:59
 #, python-format
 msgid "Good answers: %i."
 msgstr "Rätt svar: %i."
 
-#: data/py/i18n.py:60
+#: py\i18n.py:60
 #, python-format
 msgid "Success rate: %i%%."
 msgstr "Slutresultat: %i%%."
 
-#: data/py/i18n.py:61
+#: py\i18n.py:61
 msgid "Here you can modify some quiz options."
 msgstr "Här kan du modifiera några fråge-alternativ."
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:56
-#: data/py/i18n.py:62
+#: py\i18n.py:62
 msgid "Hiragana question sets"
 msgstr "Hiragana frågeuppsättningar"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:55
-#: data/py/i18n.py:63
+#: py\i18n.py:63
 msgid "Katakana question sets"
 msgstr "Katakana frågeuppsättningar"
 
-#: data/py/i18n.py:64
+#: py\i18n.py:64
 msgid "Basic"
 msgstr "Grundtecken"
 
-#: data/py/i18n.py:65
+#: py\i18n.py:65
 msgid "Modified"
 msgstr "Modifierade"
 
-#: data/py/i18n.py:66
+#: py\i18n.py:66
 msgid "Contracted"
 msgstr "Sammandragna"
 
-#: data/py/i18n.py:67
+#: py\i18n.py:67
 msgid "Additional"
 msgstr "Övriga"
 
-#: data/py/i18n.py:68
-#, fuzzy..., not, any, more:), How, one, Parts, became, Start, is, beyond, me:), -Krister
+#: py\i18n.py:68
 msgid "Parts"
 msgstr "Delar"
 
-#: data/py/i18n.py:69
+#: py\i18n.py:69
 msgid "Basic hiragana parts"
 msgstr "Grundläggande hiraganadelar"
 
-#: data/py/i18n.py:70
+#: py\i18n.py:70
 msgid "Modified hiragana parts"
 msgstr "Modifierade hiraganadelar"
 
-#: data/py/i18n.py:71
+#: py\i18n.py:71
 msgid "Contracted hiragana parts"
 msgstr "Sammandragana hiraganadelar"
 
-#: data/py/i18n.py:72
+#: py\i18n.py:72
 msgid "Basic katakana parts"
 msgstr "Sammandragna katakanadelar"
 
-#: data/py/i18n.py:73
+#: py\i18n.py:73
 msgid "Modified katakana parts"
 msgstr "Modifierade katakanadelar"
 
-#: data/py/i18n.py:74
+#: py\i18n.py:74
 msgid "Contracted katakana parts"
 msgstr "Sammandragna katakanadelar"
 
-#: data/py/i18n.py:75
+#: py\i18n.py:75
 msgid "Additional katakana parts"
 msgstr "Övriga katakanadelar"
 
-#: data/py/i18n.py:76
-msgid "If you are novice, it may be interesting at the beginning to train yourself only on some kana instead of the full set."
-msgstr "Om du är nybörjare kan det vara intressant att börja med att bara öva på en del kana, i stället för alla samtidigt."
+#: py\i18n.py:76
+msgid ""
+"If you are novice, it may be interesting at the beginning to train yourself "
+"only on some kana instead of the full set."
+msgstr ""
+"Om du är nybörjare kan det vara intressant att börja med att bara öva på en "
+"del kana, i stället för alla samtidigt."
 
-#: data/py/i18n.py:77
+#: py\i18n.py:77
 msgid "Select the kana portion you want to train yourself upon:"
 msgstr "Välj den kana-del du vill öva på:"
 
-#: data/py/i18n.py:78
+#: py\i18n.py:78
 msgid "All"
 msgstr "Alla"
 
-#: data/py/i18n.py:79
+#: py\i18n.py:79
 msgid "Answer mode:"
 msgstr "Svarssätt:"
 
-#: data/py/i18n.py:80
+#: py\i18n.py:80
 msgid "A random list"
 msgstr "En slumpmässig lista"
 
-#: data/py/i18n.py:81
+#: py\i18n.py:81
 msgid "A text entry"
 msgstr "Textinmatning"
 
-#: data/py/i18n.py:82
+#: py\i18n.py:82
 msgid "Random answer list size:"
 msgstr "Antal alternativ på slumplista:"
 
-#: data/py/i18n.py:83
+#: py\i18n.py:83
 msgid "2 choices"
 msgstr "2 val"
 
-#: data/py/i18n.py:84
+#: py\i18n.py:84
 msgid "3 choices"
 msgstr "3 val"
 
-#: data/py/i18n.py:85
+#: py\i18n.py:85
 msgid "4 choices"
 msgstr "4 val"
 
-#: data/py/i18n.py:86
+#: py\i18n.py:86
 msgid "Length:"
 msgstr "Längd:"
 
-#: data/py/i18n.py:87
-msgid "Short (10 questions)"
-msgstr "Kort (10 frågor)"
+#: py\i18n.py:87
+msgid ""
+"Don't repeat the same kana\n"
+"(as much as possible)."
+msgstr ""
 
-#: data/py/i18n.py:88
-msgid "Normal (20 questions)"
-msgstr "Normal (20 frågor)"
-
-#: data/py/i18n.py:89
-msgid "Long (30 questions)"
-msgstr "Lång (30 frågor)"
-
-#: data/py/i18n.py:90
+#: py\i18n.py:88
 msgid "Language:"
 msgstr "Språk:"
 
-#: data/py/i18n.py:91
+#: py\i18n.py:89
 msgid "English"
 msgstr "Engelska"
 
-#: data/py/i18n.py:92
+#: py\i18n.py:90
 msgid "French"
 msgstr "Franska"
 
-#: data/py/i18n.py:93
+#: py\i18n.py:91
 msgid "Portuguese (Brazil)"
 msgstr "Portugisiska (Braziliansk)"
 
-#: data/py/i18n.py:94
+#: py\i18n.py:92
 msgid "Swedish"
 msgstr "Svenska"
 
-#: data/py/i18n.py:95
+#: py\i18n.py:93
 msgid "Save"
 msgstr "Spara"
 
-#: data/py/i18n.py:96
+#: py\i18n.py:94
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: data/py/i18n.py:97
+#: py\i18n.py:95
 msgid "Kana no quiz, a kana reminder tool."
 msgstr "Kana no quiz, ett minnesverktyg för kana."
 
-#: data/py/i18n.py:98
+#: py\i18n.py:96
 #, python-format
 msgid "Version %s."
 msgstr "Version %s."
 
-#: data/py/i18n.py:99
-msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
-msgstr "Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). Kanabilder är utgivna under Free Art licens (se `FAL.txt')."
+#: py\i18n.py:97
+msgid ""
+"Kana no quiz is free software released under the GNU GPL license (see `GPL."
+"txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr ""
+"Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). "
+"Kanabilder är utgivna under Free Art licens (se `FAL.txt')."
 
-#: data/py/i18n.py:100
+#: py\i18n.py:98
 msgid "Credits"
 msgstr "Medverkande"
 
-#: data/py/i18n.py:101
+#: py\i18n.py:99
 #, fuzzy
 msgid ""
 "Coding: Choplair & Pachilor.\n"
@@ -270,16 +294,24 @@ msgstr ""
 "Logga: Choplair.\n"
 "Svensk översättning: Markus Fellnert/Krister Kjellström."
 
-#: data/py/i18n.py:102
+#: py\i18n.py:100
 msgid "Close"
 msgstr "Stäng"
 
-#: data/py/i18n.py:103
+#: py\i18n.py:101
 msgid "Warning"
 msgstr "Varning"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
-#: data/py/i18n.py:104
+#: py\i18n.py:102
 msgid "You must select at least one question set."
 msgstr "Du måste välja minst en uppsättning frågor."
 
+#~ msgid "Short (10 questions)"
+#~ msgstr "Kort (10 frågor)"
+
+#~ msgid "Normal (20 questions)"
+#~ msgstr "Normal (20 frågor)"
+
+#~ msgid "Long (30 questions)"
+#~ msgstr "Lång (30 frågor)"

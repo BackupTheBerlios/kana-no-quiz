@@ -6,263 +6,260 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz 0.9\n"
-"POT-Creation-Date: 2004-08-17 12:14+0200\n"
-"PO-Revision-Date: 2004-08-17 12:38+0100\n"
-"Last-Translator: Choplair <choplair@choplair.org>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-12-20 17:32+0100\n"
+"PO-Revision-Date: 2004-12-20 17:34+0100\n"
+"Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/py/i18n.py:41
+#: py\i18n.py:41
 msgid "Kana no quiz!"
 msgstr "Kana no quiz !"
 
-#: data/py/i18n.py:42
+#: py\i18n.py:42
 msgid "Introduction"
 msgstr "Introduction"
 
-#: data/py/i18n.py:43
+#: py\i18n.py:43
 msgid "Options"
 msgstr "Options"
 
-#: data/py/i18n.py:44
+#: py\i18n.py:44
 msgid "Start the quiz"
 msgstr "Démarrer le quiz"
 
-#: data/py/i18n.py:45
+#: py\i18n.py:45
 msgid "About"
 msgstr "À propos"
 
-#: data/py/i18n.py:46
+#: py\i18n.py:46
 msgid "Two different writing systems are commonly used by Japaneses: kanji & kana."
 msgstr "Deux differents systèmes d'ecriture sont communément employés par les Japonais : les kanji et les kana."
 
-#: data/py/i18n.py:47
+#: py\i18n.py:47
 msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
 msgstr "Les kanji sont des idéogrammes complexes qui retranscrivent des mots tandis que les kana sont de simples symboles utilisés comme syllabes qui doivent être combinées pour former des mots. N'importe quel mot en japonais peut être écrit en utilisant les kana, c'est comme un alphabet."
 
-#: data/py/i18n.py:48
+#: py\i18n.py:48
 msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
 msgstr "Il existe deux types de kana : les hiragana et les katakana. Le hiragana est le syllabaire traditionnel le plus utilisé, on l'emploi pour retranscrire les mots japonais. Le katakana et un syllabaire plus vaste, comportant plus de sons, principalement employé pour écrire les noms propres et les mots d'emprunt, d'origine étrangère."
 
-#: data/py/i18n.py:49
+#: py\i18n.py:49
 msgid "Kana no quiz help you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of kana at a time."
 msgstr "Kana no quiz vous aide à mémoriser les kana et leur son associé (en utilisant le système de transcription romane d'Hepburn). Pour plus de simplicité, les syllabes ont été divisées en plusieurs jeux, et vous pouvez même choisir de n'apprendre qu'une portions de kana à la fois."
 
-#: data/py/i18n.py:50
+#: py\i18n.py:50
 msgid "Have a good practice ! ^_^"
 msgstr "Bon appretissage ! ^_^"
 
-#: data/py/i18n.py:51
+#: py\i18n.py:51
 msgid "OK"
 msgstr "Valider"
 
-#: data/py/i18n.py:52
+#: py\i18n.py:52
 msgid "What is this katakana?"
 msgstr "Quel est ce katakana ?"
 
-#: data/py/i18n.py:53
+#: py\i18n.py:53
 msgid "What is this hiragana?"
 msgstr "Quel est ce hiragana ?"
 
-#: data/py/i18n.py:54
+#: py\i18n.py:54
 msgid "Right! ^^"
 msgstr "Juste ! ^^"
 
-#: data/py/i18n.py:55
+#: py\i18n.py:55
 msgid "Wrong!"
 msgstr "Faux !"
 
-#: data/py/i18n.py:56
+#: py\i18n.py:56
 #, python-format
 msgid "The answer was %s."
 msgstr "La réponse était %s."
 
-#: data/py/i18n.py:57
+#: py\i18n.py:57
 msgid "Quiz results"
 msgstr "Résultats du quiz"
 
-#: data/py/i18n.py:58
+#: py\i18n.py:58
 #, python-format
 msgid "Question total: %i."
 msgstr "Total des questions : %i."
 
-#: data/py/i18n.py:59
+#: py\i18n.py:59
 #, python-format
 msgid "Good answers: %i."
 msgstr "Bonnes réponses : %i."
 
-#: data/py/i18n.py:60
+#: py\i18n.py:60
 #, python-format
 msgid "Success rate: %i%%."
 msgstr "Taux de réussite : %i%%."
 
-#: data/py/i18n.py:61
+#: py\i18n.py:61
 msgid "Here you can modify some quiz options."
 msgstr "Ici vous pouvez modifier quelques options du quiz."
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:56
-#: data/py/i18n.py:62
+#: py\i18n.py:62
 msgid "Hiragana question sets"
 msgstr "Jeux de questions hiragana"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:55
-#: data/py/i18n.py:63
+#: py\i18n.py:63
 msgid "Katakana question sets"
 msgstr "Jeux de questions katakana"
 
-#: data/py/i18n.py:64
+#: py\i18n.py:64
 msgid "Basic"
 msgstr "Basiques"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:58
-#: data/py/i18n.py:65
+#: py\i18n.py:65
 msgid "Modified"
 msgstr "Modifiés"
 
-#: data/py/i18n.py:66
+#: py\i18n.py:66
 msgid "Contracted"
 msgstr "Contractés"
 
-#: data/py/i18n.py:67
+#: py\i18n.py:67
 msgid "Additional"
 msgstr "Additionnels"
 
-#: data/py/i18n.py:68
+#: py\i18n.py:68
 msgid "Parts"
 msgstr "Parts"
 
-#: data/py/i18n.py:69
+#: py\i18n.py:69
 msgid "Basic hiragana parts"
 msgstr "Parts d'hiragana basiques"
 
-#: data/py/i18n.py:70
+#: py\i18n.py:70
 msgid "Modified hiragana parts"
 msgstr "Parts d'hiragana modifiés"
 
-#: data/py/i18n.py:71
+#: py\i18n.py:71
 msgid "Contracted hiragana parts"
 msgstr "Parts d'hiragana contractés"
 
-#: data/py/i18n.py:72
+#: py\i18n.py:72
 msgid "Basic katakana parts"
 msgstr "Parts de katakana basiques"
 
-#: data/py/i18n.py:73
+#: py\i18n.py:73
 msgid "Modified katakana parts"
 msgstr "Parts de katakana modifiés"
 
-#: data/py/i18n.py:74
+#: py\i18n.py:74
 msgid "Contracted katakana parts"
 msgstr "Parts de katakana contractés"
 
-#: data/py/i18n.py:75
+#: py\i18n.py:75
 msgid "Additional katakana parts"
 msgstr "Parts de katakana additionnels"
 
-#: data/py/i18n.py:76
+#: py\i18n.py:76
 msgid "If you are novice, it may be interesting at the beginning to train yourself only on some kana instead of the full set."
 msgstr "Si vous débutez, il peut être utile au début de ne vous entrainer que sur quelques kana au lieu du jeu complet."
 
-#: data/py/i18n.py:77
+#: py\i18n.py:77
 msgid "Select the kana portion you want to train yourself upon:"
 msgstr "Sélectionnez la portion de kana sur laquelle vous souhaitez vous entrainer :"
 
-#: data/py/i18n.py:78
+#: py\i18n.py:78
 msgid "All"
 msgstr "Tous"
 
-#: data/py/i18n.py:79
+#: py\i18n.py:79
 msgid "Answer mode:"
 msgstr "Méthode de réponse :"
 
-#: data/py/i18n.py:80
+#: py\i18n.py:80
 msgid "A random list"
 msgstr "Une liste aléatoire"
 
-#: data/py/i18n.py:81
+#: py\i18n.py:81
 msgid "A text entry"
 msgstr "Une entrée textuelle"
 
-#: data/py/i18n.py:82
+#: py\i18n.py:82
 msgid "Random answer list size:"
 msgstr "Taille de la liste aléatoire de réponses :"
 
-#: data/py/i18n.py:83
+#: py\i18n.py:83
 msgid "2 choices"
 msgstr "2 choix"
 
-#: data/py/i18n.py:84
+#: py\i18n.py:84
 msgid "3 choices"
 msgstr "3 choix"
 
-#: data/py/i18n.py:85
+#: py\i18n.py:85
 msgid "4 choices"
 msgstr "4 choix"
 
-#: data/py/i18n.py:86
+#: py\i18n.py:86
 msgid "Length:"
 msgstr "Longueur :"
 
-#: data/py/i18n.py:87
-msgid "Short (10 questions)"
-msgstr "Court (10 questions)"
+#: py\i18n.py:87
+msgid ""
+"Don't repeat the same kana\n"
+"(as much as possible)."
+msgstr ""
+"Ne pas répéter le même kana\n"
+"(autant que faire se peut)."
 
-#: data/py/i18n.py:88
-msgid "Normal (20 questions)"
-msgstr "Normal (20 questions)"
-
-#: data/py/i18n.py:89
-msgid "Long (30 questions)"
-msgstr "Long (30 questions)"
-
-#: data/py/i18n.py:90
+#: py\i18n.py:88
 msgid "Language:"
 msgstr "Langage :"
 
-#: data/py/i18n.py:91
+#: py\i18n.py:89
 msgid "English"
 msgstr "Anglais"
 
-#: data/py/i18n.py:92
+#: py\i18n.py:90
 msgid "French"
 msgstr "Français"
 
-#: data/py/i18n.py:93
+#: py\i18n.py:91
 msgid "Portuguese (Brazil)"
 msgstr "Portugais (Brésil)"
 
-#: data/py/i18n.py:94
+#: py\i18n.py:92
 msgid "Swedish"
 msgstr "Suédois"
 
-#: data/py/i18n.py:95
+#: py\i18n.py:93
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: data/py/i18n.py:96
+#: py\i18n.py:94
 msgid "Cancel"
 msgstr "Annuler"
 
-#: data/py/i18n.py:97
+#: py\i18n.py:95
 msgid "Kana no quiz, a kana reminder tool."
 msgstr "Kana no quiz, un outil pour mémoriser les kana."
 
-#: data/py/i18n.py:98
+#: py\i18n.py:96
 #, python-format
 msgid "Version %s."
 msgstr "Version %s."
 
-#: data/py/i18n.py:99
+#: py\i18n.py:97
 msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
 msgstr "Kana no quiz est un logiciel libre distribué sous la licence GNU GPL (voir `GPL.txt'). Les images de kana sont distribuées sous la licence Art Libre (voir `FAL.txt')."
 
-#: data/py/i18n.py:100
+#: py\i18n.py:98
 msgid "Credits"
 msgstr "Crédits"
 
-#: data/py/i18n.py:101
+#: py\i18n.py:99
 msgid ""
 "Coding: Choplair & Pachilor.\n"
 "Kana image: Ms. Marie-Claire.\n"
@@ -273,16 +270,16 @@ msgstr ""
 "Image de logo : Choplair.\n"
 "Traduction française : Choplair."
 
-#: data/py/i18n.py:102
+#: py\i18n.py:100
 msgid "Close"
 msgstr "Fermer"
 
-#: data/py/i18n.py:103
+#: py\i18n.py:101
 msgid "Warning"
 msgstr "Avertissement"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
-#: data/py/i18n.py:104
+#: py\i18n.py:102
 msgid "You must select at least one question set."
 msgstr "Veuillez sélectionner au moins un jeu de questions."
 
