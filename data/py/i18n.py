@@ -84,16 +84,17 @@ class I18n:
 			_("3 choices"),
 			_("4 choices"),
 			_("Length:"), #45
+			_("Don't repeat the same kana\n(as much as possible)."),
 			_("Language:"),
 			_("English"),
 			_("French"),
-			_("Portuguese (Brazil)"),
-			_("Swedish"), #50
+			_("Portuguese (Brazil)"), #50
+			_("Swedish"),
 			_("Save"),
 			_("Cancel"),
 			_("Kana no quiz, a kana reminder tool."),
-			_("Version %s."),
-			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."), #55
+			_("Version %s."), #55
+			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."),
 			_("Credits"),
 			_("Coding: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."),
 			_("Close"),

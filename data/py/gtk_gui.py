@@ -131,7 +131,8 @@ class Gui:
 			self.param.val('basic_katakana_part'),
 			self.param.val('modified_katakana_part'),
 			self.param.val('contracted_katakana_part'),
-			self.param.val('additional_katakana_part')))
+			self.param.val('additional_katakana_part')),
+			self.param.val('kana_no_repeat'))
 
 		if self.kana:
 			box = gtk.HBox(spacing=4)
@@ -233,7 +234,8 @@ class Gui:
 			self.param.val('basic_katakana_part'),
 			self.param.val('modified_katakana_part'),
 			self.param.val('contracted_katakana_part'),
-			self.param.val('additional_katakana_part'))) 
+			self.param.val('additional_katakana_part')),
+			self.param.val('kana_no_repeat')) 
 
 		self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana)) #Update kana's image
 
@@ -302,8 +304,9 @@ class Gui:
 				'additional_katakana_part':kanaParts[6],
 				'answer_mode':opt_answer_mode[option8.get_history()],
 				'list_size':option9.get_history()+2,
-				'length':option10.get_value(),
-				'lang':opt_lang[option11.get_history()]
+				'length':int(option10.get_value()),
+				'kana_no_repeat':opt_boolean[option11.get_active()],
+				'lang':opt_lang[option12.get_history()]
 				})
 			self.main(box) #Go back to the ``main".
 
@@ -323,15 +326,11 @@ class Gui:
 				label.set_line_wrap(gtk.TRUE)
 				dialog.vbox.pack_start(label)
 
+				set = self.kanaEngine.getASet(kanaset)
+
 				label = gtk.Label(str(36))
 				label.set_line_wrap(gtk.TRUE)
 				dialog.vbox.pack_start(label)
-
-				if kanaset==0 or kanaset==3: set = self.kanaEngine.kana_sets[0]
-				elif kanaset==1 or kanaset==4: set = self.kanaEngine.kana_sets[1]
-				elif kanaset==2 or kanaset==5: set = self.kanaEngine.kana_sets[2]
-				else: set = self.kanaEngine.kana_sets[3]
-
 				table = gtk.Table(2,abs(len(set)/2+1))
 				dialog.vbox.pack_start(table)
 
@@ -510,19 +509,24 @@ class Gui:
 		adjustment = gtk.Adjustment(float(self.param.val('length')),1,200,1,10)
 		option10 = gtk.SpinButton(adjustment)
 		box3.pack_end(option10)
-		table.attach(box3,0,1,4,6)
+		table.attach(box3,0,1,4,5)
+
+		#`kana_no_repeat'
+		option11 = gtk.CheckButton(str(46))
+		option11.set_active(opt_boolean[self.param.val('kana_no_repeat')])
+		table.attach(option11,0,1,5,6)
 
 		#`lang'
-		label = gtk.Label(str(49))
+		label = gtk.Label(str(47))
 		table.attach(label,0,1,6,7)
 		menu = gtk.Menu()
-		for val in (str(50),str(51),str(52),str(53)):
+		for val in (str(48),str(49),str(50),str(51)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
-		option11 = gtk.OptionMenu()
-		option11.set_menu(menu)
-		option11.set_history(opt_lang[self.param.val('lang')])
-		table.attach(option11,0,1,7,8)
+		option12 = gtk.OptionMenu()
+		option12.set_menu(menu)
+		option12.set_history(opt_lang[self.param.val('lang')])
+		table.attach(option12,0,1,7,8)
 
 		#Buttons at bottom...
 		box2 = gtk.HBox()
@@ -552,23 +556,23 @@ class Gui:
 			dialog.set_border_width(5)
 			dialog.vbox.set_spacing(5)
 
-			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(56),str(57) % self.version))
+			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(54),str(55) % self.version))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			label.set_use_markup(gtk.TRUE)
 			dialog.vbox.pack_start(label)
 
-			label = gtk.Label(str(58))
+			label = gtk.Label(str(56))
 			label.set_line_wrap(gtk.TRUE)
 			dialog.vbox.pack_start(label)
 
-			frame = gtk.Frame(str(59))
+			frame = gtk.Frame(str(57))
 			box = gtk.HBox()
 
 			logo = gtk.Image()
 			logo.set_from_file("data/img/chprod.png")
 			box.pack_start(logo,gtk.FALSE)
 
-			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(60))
+			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(58))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			box.pack_start(label)
 

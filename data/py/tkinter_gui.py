@@ -114,7 +114,8 @@ class Gui:
 			self.param.val('basic_katakana_part'),
 			self.param.val('modified_katakana_part'),
 			self.param.val('contracted_katakana_part'),
-			self.param.val('additional_katakana_part')))
+			self.param.val('additional_katakana_part')),
+			self.param.val('kana_no_repeat'))
 
 		if self.kana:
 			self.window.slaves()[0].destroy()
@@ -151,7 +152,7 @@ class Gui:
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
 
-		else:	tkMessageBox.showwarning(str(60),str(61))
+		else:	tkMessageBox.showwarning(str(61),str(62))
 
 	def checkAnswer(self,event=None):
 		"""Check the given answer, update the score
@@ -198,7 +199,8 @@ class Gui:
 			self.param.val('basic_katakana_part'),
 			self.param.val('modified_katakana_part'),
 			self.param.val('contracted_katakana_part'),
-			self.param.val('additional_katakana_part'))) 
+			self.param.val('additional_katakana_part')),
+			self.param.val('kana_no_repeat')) 
 
 		self.image["file"] = "data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana) #Update kana's image.
 
@@ -239,7 +241,7 @@ class Gui:
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
 		opt_list_size = {str(42):2,str(43):3,str(44):4,2:str(42),3:str(43),4:str(44)}
-		opt_lang = {str(47):'en',str(48):'fr',str(49):'pt_BR',str(50):'sv','en':str(47),'fr':str(48),'pt_BR':str(49),'sv':str(50)}
+		opt_lang = {str(48):'en',str(49):'fr',str(50):'pt_BR',str(51):'sv','en':str(48),'fr':str(49),'pt_BR':str(50),'sv':str(51)}
 
 		#Values for kana part params.
 		kanaParts = [
@@ -274,7 +276,8 @@ class Gui:
 			'answer_mode':opt_answer_mode[option8.get().encode('utf8')],
 			'list_size':opt_list_size[option9.get().encode('utf8')],
 			'length':int(option10.get()),
-			'lang':opt_lang[option11.get().encode('utf8')]
+			'kana_no_repeat':opt_boolean[option11.get()],
+			'lang':opt_lang[option12.get().encode('utf8')]
 			})
 			goBack() #Then, go back!
 
@@ -306,17 +309,13 @@ class Gui:
 				label = tk.Label(dialog,text=str(36),wraplength=350)
 				label.pack()
 
-				if kanaset==0 or kanaset==3: set = self.kanaEngine.kana_sets[0]
-				elif kanaset==1 or kanaset==4: set = self.kanaEngine.kana_sets[1]
-				elif kanaset==2 or kanaset==5: set = self.kanaEngine.kana_sets[2]
-				else: set = self.kanaEngine.kana_sets[3]
-
 				table = tk.Frame(dialog)
 				table.pack()
 
 				radio0 = tk.Radiobutton(table,text=str(37),variable=self.temp_value,value=0)
 				radio0.grid(column=0,row=0)
-
+				
+				set = self.kanaEngine.getASet(kanaset)
 				i,j,k = 1,1,0
 				for part in set:
 					string = ""
@@ -328,9 +327,9 @@ class Gui:
 					i+=1
 
 				#Buttons at bottom..
-				button = tk.Button(dialog,text=str(10),command=validedChanges)
+				button = tk.Button(dialog,text=str(59),command=close)
 				button.pack(side="right")
-				button = tk.Button(dialog,text=str(55),command=close)
+				button = tk.Button(dialog,text=str(10),command=validedChanges)
 				button.pack(side="right")
 
 		self.window.slaves()[0].destroy()
@@ -463,27 +462,35 @@ class Gui:
 		o.pack(fill="both",expand=1)
 
 		#`length'
-		label = tk.Label(right_frame,text=str(45))
-		label.pack(fill="both",expand=1)
+		frame2 = tk.Frame(right_frame)
+		label = tk.Label(frame2,text=str(45))
+		label.pack(side="left",expand=1)
 		option10 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option10,"10","20","30")
+		o = tk.OptionMenu(frame2,option10,"10","20","30")
 		option10.set(self.param.val('length'))
-		o.pack(fill="both",expand=1)
+		o.pack(expand=1)
+		frame2.pack(fill="both",expand=1)
+
+		#`kana_no_repeat'
+		option11 = tk.IntVar()
+		option11.set(opt_boolean[self.param.val('kana_no_repeat')])
+		c = tk.Checkbutton(right_frame,text=str(46),variable=option11)
+		c.pack(fill="both",expand=1)
 
 		#`lang'
-		label = tk.Label(right_frame,text=str(46))
+		label = tk.Label(right_frame,text=str(47))
 		label.pack(fill="both",expand=1)
-		option11 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option11,str(47),str(48),str(49),str(50))
-		option11.set(opt_lang[self.param.val('lang')])
+		option12 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option12,str(48),str(49),str(50),str(51))
+		option12.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 
 		#Buttons at bottom...
 		frame2 = tk.Frame(frame)
 		frame2.pack(fill="both")
-		button = tk.Button(frame2,text=str(51),command=save)
+		button = tk.Button(frame2,text=str(52),command=save)
 		button.pack(side="left",fill="both",expand=1)
-		button = tk.Button(frame2,text=str(52),command=goBack)
+		button = tk.Button(frame2,text=str(53),command=goBack)
 		button.pack(side="right",fill="both",expand=1)
 
 		self.window.mainloop() #Without that images aren't displayed! O_o;
@@ -505,27 +512,27 @@ class Gui:
 			frame = tk.Frame(dialog)
 			frame.pack(padx=4,pady=4)
 
-			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(53),str(54) % self.version),fg="#008")
+			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(54),str(55) % self.version),fg="#008")
 			label.pack()
 
-			label = tk.Label(frame,text=str(55),wraplength=320,justify="left")
+			label = tk.Label(frame,text=str(56),wraplength=320,justify="left")
 			label.pack()
 
 			frame2 = tk.Frame(frame,relief="ridge",borderwidth=1)
 			frame2.pack(expand=1,fill="both",pady=4)
 
-			label = tk.Label(frame2,text=str(56),justify="left",anchor="w")
+			label = tk.Label(frame2,text=str(57),justify="left",anchor="w")
 			label.pack(fill="x")
 
 			img = tk.PhotoImage(file="data/img/chprod.gif")
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")
 
-			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(57))
+			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(58))
 			label.pack(side="left",expand=1,fill="x")
 
 			#Button at bottom..
-			button = tk.Button(frame,text=str(58),command=close)
+			button = tk.Button(frame,text=str(59),command=close)
 			button.pack(side="right")
 
 			self.window.wait_window(dialog)
