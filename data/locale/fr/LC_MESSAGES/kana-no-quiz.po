@@ -40,7 +40,7 @@ msgid "Two different writing systems are commonly used by Japaneses: kanji & kan
 msgstr "Deux differents systèmes d'ecriture sont communément employés par les Japonais : les kanji et les kana."
 
 #: py\i18n.py:47
-msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
+msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
 msgstr "Les kanji sont des idéogrammes complexes qui retranscrivent des mots tandis que les kana sont de simples symboles utilisés comme syllabes qui doivent être combinées pour former des mots. N'importe quel mot en japonais peut être écrit en utilisant les kana, c'est comme un alphabet."
 
 #: py\i18n.py:48
@@ -48,7 +48,7 @@ msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-us
 msgstr "Il existe deux types de kana : les hiragana et les katakana. Le hiragana est le syllabaire traditionnel le plus utilisé, on l'emploi pour retranscrire les mots japonais. Le katakana et un syllabaire plus vaste, comportant plus de sons, principalement employé pour écrire les noms propres et les mots d'emprunt, d'origine étrangère."
 
 #: py\i18n.py:49
-msgid "Kana no quiz help you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of kana at a time."
+msgid "Kana no quiz helps you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."
 msgstr "Kana no quiz vous aide à mémoriser les kana et leur son associé (en utilisant le système de transcription romane d'Hepburn). Pour plus de simplicité, les syllabes ont été divisées en plusieurs jeux, et vous pouvez même choisir de n'apprendre qu'une portions de kana à la fois."
 
 #: py\i18n.py:50
@@ -233,6 +233,10 @@ msgstr "Portugais (Brésil)"
 #: py\i18n.py:92
 msgid "Swedish"
 msgstr "Suédois"
+
+#: py\i18n.py:103
+msgid "Serbian"
+msgstr "Serbe"
 
 #: py\i18n.py:93
 msgid "Save"

@@ -35,7 +35,7 @@ msgid "Two different writing systems are commonly used by Japaneses: kanji & kan
 msgstr "Två olika skriftsystem är vanliga i Japanskan; kanji & kana."
 
 #: py\i18n.py:47
-msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
+msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
 msgstr "Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla symboler som används som stavelser, som kombineras för att skapa ord. Alla japanska ord kan skrivas med kana, ungefär som ett alfabet."
 
 #: py\i18n.py:48
@@ -43,7 +43,7 @@ msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-us
 msgstr "Det finns två typer av kana; hiragana och katakana. Hiragana vanligaste traditionella kanauppsättningen för att skriva japanska ord. Katakana är en större täckenuppsättning, med fler ljud, oftast använd för att skriva låneord och utländska egennamn."
 
 #: py\i18n.py:49
-msgid "Kana no quiz help you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of kana at a time."
+msgid "Kana no quiz helps you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."
 msgstr "Kana no quiz hjälper dig att memorera kana och deras associerade ljud/transkriberingar enligt hepburnsystemet. För ökad enkelhet har stavelserna blivit uppdelade över flera set, och du kan t.o.m välja att bara öva en delkana åt gången."
 
 #: py\i18n.py:50
@@ -227,6 +227,10 @@ msgstr "Portugisiska (Braziliansk)"
 #: py\i18n.py:92
 msgid "Swedish"
 msgstr "Svenska"
+
+#: py\i18n.py:103
+msgid "Serbian"
+msgstr "Serbiska"
 
 #: py\i18n.py:93
 msgid "Save"
