@@ -1,6 +1,6 @@
 
  Kana no quiz - README
- version 1.2b - 2005-02-07
+ version 1.2c - 2005-02-14
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction

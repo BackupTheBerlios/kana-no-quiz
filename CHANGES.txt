@@ -2,6 +2,12 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Version 1.2c (2005-02-14):
+
+- A bug created in the last version has been fixed...
+Now the ``kana engine" should be clean ! :-D
+
+
 * Version 1.2b (2005-02-07):
 
 - Bugfix : prevention, while doing the quiz using the random
@@ -9,6 +15,7 @@ list mode, of getting the rigth answer appearing twice in
 the list.
 - The interface type used by Kana no quiz is now indicated
 in the ``About" window (in case that you don't see ! ^^).
+
 
 * Version 1.2 (2005-01-23):
 
