@@ -28,7 +28,7 @@ class Gui:
 		self.window = gtk.Window()
 		self.kanaEngine =  kanaengine.KanaEngine()
 		self.score = score.Score()
-		self.dialogState = {"about":0,"options":0}
+		self.dialogState = {"about":0}
 
 		#Localization.
 		self.i18n = i18n.I18n()
@@ -216,10 +216,9 @@ class Gui:
 	def options(self,oldbox):
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
-		opt_length = {0:'short',1:'normal',2:'long','short':0,'normal':1,'long':2}
 		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
 		opt_list_size = {0:'2',1:'3',2:'4','2':0,'3':1,'4':2}
-		opt_difficulty = {0:'novice',1:'medium',2:'sensei','novice':0,'medium':1,'sensei':2}
+		opt_length = {0:'short',1:'normal',2:'long','short':0,'normal':1,'long':2}
 		opt_lang = {0:'en',1:'fr',2:'sv','en':0,'fr':1,'sv':2}
 
 		def callback(widget,special=None):
