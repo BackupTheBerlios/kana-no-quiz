@@ -136,8 +136,8 @@ class Gui:
 			if self.param.val('answer_mode')=="list": self.nextButton.hide() #Hide the arrow.
 
 		else:	
-			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(44))
-			dialog.set_title(str(43))
+			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(45))
+			dialog.set_title(str(44))
 			dialog.connect('response', lambda dialog, response: dialog.destroy())
 			dialog.show()
 
@@ -227,13 +227,14 @@ class Gui:
 				'single_katakana':opt_boolean[option1.get_active()],
 				'modified_katakana':opt_boolean[option2.get_active()],
 				'combined_katakana':opt_boolean[option3.get_active()],
-				'single_hiragana':opt_boolean[option4.get_active()],
-				'modified_hiragana':opt_boolean[option5.get_active()],
-				'combined_hiragana':opt_boolean[option6.get_active()],
-				'answer_mode':opt_answer_mode[option7.get_history()],
-				'list_size':opt_list_size[option8.get_history()],
-				'length':opt_length[option9.get_history()],
-				'lang':opt_lang[option10.get_history()]
+				'extended_katakana':opt_boolean[option4.get_active()],
+				'single_hiragana':opt_boolean[option5.get_active()],
+				'modified_hiragana':opt_boolean[option6.get_active()],
+				'combined_hiragana':opt_boolean[option7.get_active()],
+				'answer_mode':opt_answer_mode[option8.get_history()],
+				'list_size':opt_list_size[option9.get_history()],
+				'length':opt_length[option10.get_history()],
+				'lang':opt_lang[option11.get_history()]
 				})
 			self.main(box) #Go back to the "main".
 
@@ -249,7 +250,7 @@ class Gui:
 
 		frame = gtk.Frame(str(14))
 		box3.pack_start(frame)
-		table = gtk.Table(2,3)
+		table = gtk.Table(2,4)
 		table.set_row_spacings(1)
 		table.set_border_width(2)
 		frame.add(table)
@@ -278,6 +279,14 @@ class Gui:
 		option3.set_active(opt_boolean[self.param.val('combined_katakana')])
 		table.attach(option3,1,2,2,3)
 
+		#`extended_katakana'
+		image = gtk.Image()
+		image.set_from_file("data/img/extended_katakana.gif")
+		table.attach(image,0,1,3,4)
+		option4 = gtk.CheckButton(str(19))
+		option4.set_active(opt_boolean[self.param.val('extended_katakana')])
+		table.attach(option4,1,2,3,4)
+
 		frame = gtk.Frame(str(15))
 		box3.pack_start(frame)
 		table = gtk.Table(2,3)
@@ -289,77 +298,77 @@ class Gui:
 		image = gtk.Image()
 		image.set_from_file("data/img/single_hiragana.gif")
 		table.attach(image,0,1,0,1)
-		option4 = gtk.CheckButton(str(16))
-		option4.set_active(opt_boolean[self.param.val('single_hiragana')])
-		table.attach(option4,1,2,0,1)
+		option5 = gtk.CheckButton(str(16))
+		option5.set_active(opt_boolean[self.param.val('single_hiragana')])
+		table.attach(option5,1,2,0,1)
 		
 		#`modified_hiragana'
 		image = gtk.Image()
 		image.set_from_file("data/img/modified_hiragana.gif")
 		table.attach(image,0,1,1,2)
-		option5 = gtk.CheckButton(str(17))
-		option5.set_active(opt_boolean[self.param.val('modified_hiragana')])
-		table.attach(option5,1,2,1,2)
+		option6 = gtk.CheckButton(str(17))
+		option6.set_active(opt_boolean[self.param.val('modified_hiragana')])
+		table.attach(option6,1,2,1,2)
 
 		#`combined_hiragana'
 		image = gtk.Image()
 		image.set_from_file("data/img/combined_hiragana.gif")
 		table.attach(image,0,1,2,3)
-		option6 = gtk.CheckButton(str(18))
-		option6.set_active(opt_boolean[self.param.val('combined_hiragana')])
-		table.attach(option6,1,2,2,3)
+		option7 = gtk.CheckButton(str(18))
+		option7.set_active(opt_boolean[self.param.val('combined_hiragana')])
+		table.attach(option7,1,2,2,3)
 
 		table = gtk.Table(1,8)
 		table.set_border_width(6)
 		box2.pack_start(table)
 
 		#`answer_mode'
-		label = gtk.Label(str(23))
+		label = gtk.Label(str(20))
 		table.attach(label,0,1,0,1)
 		menu = gtk.Menu()
-		for val in (str(24),str(25)):
-			item = gtk.MenuItem(val)
-			menu.append(item)
-		option7 = gtk.OptionMenu()
-		option7.set_menu(menu)
-		option7.set_history(opt_answer_mode[self.param.val('answer_mode')])
-		table.attach(option7,0,1,1,2)
-
-		#`list_size'
-		label = gtk.Label(str(26))
-		table.attach(label,0,1,2,3)
-		menu = gtk.Menu()
-		for val in (str(27),str(28),str(29)):
+		for val in (str(21),str(22)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option8 = gtk.OptionMenu()
 		option8.set_menu(menu)
-		option8.set_history(opt_list_size[self.param.val('list_size')])
-		table.attach(option8,0,1,3,4)
+		option8.set_history(opt_answer_mode[self.param.val('answer_mode')])
+		table.attach(option8,0,1,1,2)
 
-		#`length'
-		label = gtk.Label(str(19))
-		table.attach(label,0,1,4,5)
+		#`list_size'
+		label = gtk.Label(str(23))
+		table.attach(label,0,1,2,3)
 		menu = gtk.Menu()
-		for val in (str(20),str(21),str(22)):
+		for val in (str(24),str(25),str(26)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option9 = gtk.OptionMenu()
 		option9.set_menu(menu)
-		option9.set_history(opt_length[self.param.val('length')])
-		table.attach(option9,0,1,5,6)
+		option9.set_history(opt_list_size[self.param.val('list_size')])
+		table.attach(option9,0,1,3,4)
 
-		#`lang'
-		label = gtk.Label(str(30))
-		table.attach(label,0,1,6,7)
+		#`length'
+		label = gtk.Label(str(27))
+		table.attach(label,0,1,4,5)
 		menu = gtk.Menu()
-		for val in (str(31),str(32),str(33)):
+		for val in (str(28),str(29),str(30)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option10 = gtk.OptionMenu()
 		option10.set_menu(menu)
-		option10.set_history(opt_lang[self.param.val('lang')])
-		table.attach(option10,0,1,7,8)
+		option10.set_history(opt_length[self.param.val('length')])
+		table.attach(option10,0,1,5,6)
+
+		#`lang'
+		label = gtk.Label(str(31))
+		table.attach(label,0,1,6,7)
+		menu = gtk.Menu()
+		for val in (str(32),str(33),str(35)):
+			item = gtk.MenuItem(val)
+			menu.append(item)
+		option11 = gtk.OptionMenu()
+		option11.set_menu(menu)
+		option11.set_history(opt_lang[self.param.val('lang')])
+		table.attach(option11,0,1,7,8)
 
 		#Buttons at bottom...
 		box2 = gtk.HBox()
@@ -389,23 +398,23 @@ class Gui:
 			dialog.set_border_width(5)
 			dialog.vbox.set_spacing(5)
 
-			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(37),str(38) % self.version))
+			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(38),str(39) % self.version))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			label.set_use_markup(gtk.TRUE)
 			dialog.vbox.pack_start(label)
 
-			label = gtk.Label(str(39))
+			label = gtk.Label(str(40))
 			label.set_line_wrap(gtk.TRUE)
 			dialog.vbox.pack_start(label)
 
-			frame = gtk.Frame(str(40))
+			frame = gtk.Frame(str(41))
 			box = gtk.HBox()
 
 			logo = gtk.Image()
 			logo.set_from_file("data/img/chprod.png")
 			box.pack_start(logo,gtk.FALSE)
 
-			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(41))
+			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(42))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			box.pack_start(label)
 

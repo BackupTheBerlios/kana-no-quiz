@@ -117,7 +117,7 @@ class Gui:
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
 	
-		else:	tkMessageBox.showwarning(str(40),str(41))
+		else:	tkMessageBox.showwarning(str(44),str(45))
 
 	def checkAnswer(self,event=None):
 		"""Check the given answer, update the score
@@ -205,13 +205,14 @@ class Gui:
 			'single_katakana':opt_boolean[option1.get()],
 			'modified_katakana':opt_boolean[option2.get()],
 			'combined_katakana':opt_boolean[option3.get()],
-			'single_hiragana':opt_boolean[option4.get()],
-			'modified_hiragana':opt_boolean[option5.get()],
-			'combined_hiragana':opt_boolean[option6.get()],
-			'answer_mode':opt_answer_mode[option7.get().encode('utf8')],
-			'list_size':opt_list_size[option8.get().encode('utf8')],
-			'length':opt_length[option9.get().encode('utf8')],
-			'lang':opt_lang[option10.get().encode('utf8')]
+			'extended_katakana':opt_boolean[option4.get()],
+			'single_hiragana':opt_boolean[option5.get()],
+			'modified_hiragana':opt_boolean[option6.get()],
+			'combined_hiragana':opt_boolean[option7.get()],
+			'answer_mode':opt_answer_mode[option8.get().encode('utf8')],
+			'list_size':opt_list_size[option9.get().encode('utf8')],
+			'length':opt_length[option10.get().encode('utf8')],
+			'lang':opt_lang[option11.get().encode('utf8')]
 			})
 			goBack() #Then, go back!
 
@@ -226,7 +227,7 @@ class Gui:
 		frame.pack(padx=2,pady=2)
 
 		label = tk.Label(frame,text=str(13))
-		label.pack(fill="x",expand=1)
+		label.pack()
 
 		option_frame = tk.Frame(frame)
 		option_frame.pack(fill="both",expand=1)
@@ -235,10 +236,10 @@ class Gui:
 		left_frame.pack(fill="both",expand=1,side="left",pady=4,padx=4)
 
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
-		frame2.pack(fill="both",expand=1,pady=2)
+		frame2.pack(fill="both",expand=1)
 
 		label = tk.Label(frame2,text=str(14),justify="left",anchor="w")
-		label.pack(fill="x")
+		label.pack()
 
 		table = tk.Frame(frame2)
 		table.pack(fill="x")
@@ -270,83 +271,92 @@ class Gui:
 		c = tk.Checkbutton(table,text=str(18),variable=option3)
 		c.grid(column=1,row=2)
 
+		#`extended_katakana'
+		img4 = tk.PhotoImage(file="data/img/extended_katakana.gif")
+		label = tk.Label(table,image=img4)
+		label.grid(column=0,row=3)
+		option4 = tk.IntVar()
+		option4.set(opt_boolean[self.param.val('extended_katakana')])
+		c = tk.Checkbutton(table,text=str(19),variable=option4)
+		c.grid(column=1,row=3)
+
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
-		frame2.pack(fill="both",expand=1,pady=2)
+		frame2.pack(fill="both",expand=1)
 
 		label = tk.Label(frame2,text=str(15),justify="left",anchor="w")
-		label.pack(fill="x")
+		label.pack()
 
 		table = tk.Frame(frame2)
 		table.pack(fill="x")
 
 		#`single_hiragana'
-		img4 = tk.PhotoImage(file="data/img/single_hiragana.gif")
-		label = tk.Label(table,image=img4)
+		img5 = tk.PhotoImage(file="data/img/single_hiragana.gif")
+		label = tk.Label(table,image=img5)
 		label.grid(column=0,row=0)
-		option4 = tk.IntVar()
-		option4.set(opt_boolean[self.param.val('single_hiragana')])
-		c = tk.Checkbutton(table,text=str(16),variable=option4)
+		option5 = tk.IntVar()
+		option5.set(opt_boolean[self.param.val('single_hiragana')])
+		c = tk.Checkbutton(table,text=str(16),variable=option5)
 		c.grid(column=1,row=0)
 
 		#`modified_hiragana'
-		img5 = tk.PhotoImage(file="data/img/modified_hiragana.gif")
-		label = tk.Label(table,image=img5)
+		img6 = tk.PhotoImage(file="data/img/modified_hiragana.gif")
+		label = tk.Label(table,image=img6)
 		label.grid(column=0,row=1)
-		option5 = tk.IntVar()
-		option5.set(opt_boolean[self.param.val('modified_hiragana')])
-		c = tk.Checkbutton(table,text=str(17),variable=option5)
+		option6 = tk.IntVar()
+		option6.set(opt_boolean[self.param.val('modified_hiragana')])
+		c = tk.Checkbutton(table,text=str(17),variable=option6)
 		c.grid(column=1,row=1)
 
 		#`combined_hiragana'
-		img6 = tk.PhotoImage(file="data/img/combined_hiragana.gif")
-		label = tk.Label(table,image=img6)
+		img7 = tk.PhotoImage(file="data/img/combined_hiragana.gif")
+		label = tk.Label(table,image=img7)
 		label.grid(column=0,row=2)
-		option6 = tk.IntVar()
-		option6.set(opt_boolean[self.param.val('combined_hiragana')])
-		c = tk.Checkbutton(table,text=str(18),variable=option6)
+		option7 = tk.IntVar()
+		option7.set(opt_boolean[self.param.val('combined_hiragana')])
+		c = tk.Checkbutton(table,text=str(18),variable=option7)
 		c.grid(column=1,row=2)
 
 		right_frame = tk.Frame(option_frame)
 		right_frame.pack(fill="both",expand=1,pady=6,padx=6)
 
 		#`answer_mode'
-		label = tk.Label(right_frame,text=str(23))
+		label = tk.Label(right_frame,text=str(20))
 		label.pack(fill="both",expand=1)
-		option7 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option7,str(24),str(25))
-		option7.set(opt_answer_mode[self.param.val('answer_mode')])
+		option8 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option8,str(21),str(22))
+		option8.set(opt_answer_mode[self.param.val('answer_mode')])
 		o.pack(fill="both",expand=1)
 
 		#`list_size'
-		label = tk.Label(right_frame,text=str(26))
+		label = tk.Label(right_frame,text=str(23))
 		label.pack(fill="both",expand=1)
-		option8 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option8,str(27),str(28),str(29))
-		option8.set(opt_list_size[self.param.val('list_size')])
+		option9 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option9,str(24),str(25),str(26))
+		option9.set(opt_list_size[self.param.val('list_size')])
 		o.pack(fill="both",expand=1)
 
 		#`length'
-		label = tk.Label(right_frame,text=str(19))
+		label = tk.Label(right_frame,text=str(27))
 		label.pack(fill="both",expand=1)
-		option9 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option9,str(20),str(21),str(22))
-		option9.set(opt_length[self.param.val('length')])
+		option10 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option10,str(28),str(29),str(30))
+		option10.set(opt_length[self.param.val('length')])
 		o.pack(fill="both",expand=1)
 
 		#`lang'
-		label = tk.Label(right_frame,text=str(30))
+		label = tk.Label(right_frame,text=str(31))
 		label.pack(fill="both",expand=1)
-		option10 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option10,str(31),str(32),str(34))
-		option10.set(opt_lang[self.param.val('lang')])
+		option11 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option11,str(32),str(33),str(35))
+		option11.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 
 		#Buttons at bottom...
 		frame2 = tk.Frame(frame)
 		frame2.pack(fill="both")
-		button = tk.Button(frame2,text=str(35),command=save)
+		button = tk.Button(frame2,text=str(36),command=save)
 		button.pack(side="left",fill="both",expand=1)
-		button = tk.Button(frame2,text=str(36),command=goBack)
+		button = tk.Button(frame2,text=str(37),command=goBack)
 		button.pack(side="right",fill="both",expand=1)
 
 		self.window.mainloop() #Without that images aren't displayed! O_o;
@@ -368,27 +378,27 @@ class Gui:
 			frame = tk.Frame(dialog)
 			frame.pack(padx=4,pady=4)
 
-			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(37),str(38) % self.version),fg="#008")
+			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(38),str(39) % self.version),fg="#008")
 			label.pack()
 
-			label = tk.Label(frame,text=str(39),wraplength=320,justify="left")
+			label = tk.Label(frame,text=str(40),wraplength=320,justify="left")
 			label.pack()
 
 			frame2 = tk.Frame(frame,relief="ridge",borderwidth=1)
 			frame2.pack(expand=1,fill="both",pady=4)
 
-			label = tk.Label(frame2,text=str(40),justify="left",anchor="w")
+			label = tk.Label(frame2,text=str(41),justify="left",anchor="w")
 			label.pack(fill="x")
 	
 			img = tk.PhotoImage(file="data/img/chprod.gif")
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")
 
-			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(41))
+			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(42))
 			label.pack(side="left",expand=1,fill="x")
 
 			#Button at bottom..
-			button = tk.Button(frame,text=str(42),command=close)
+			button = tk.Button(frame,text=str(43),command=close)
 			button.pack(side="right")
 
 			self.window.wait_window(dialog)

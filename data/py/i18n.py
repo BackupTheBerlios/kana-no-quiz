@@ -57,32 +57,33 @@ class I18n:
 			_("Single"),
 			_("Modified"),
 			_("Combined"),
-			_("Length:"),
-			_("Short (10 questions)"), #20
-			_("Normal (20 questions)"),
-			_("Long (30 questions)"),
-			_("Answer mode:"),
+			_("Extended"),
+			_("Answer mode:"), #20
 			_("A random list"),
-			_("A text entry"), #25
+			_("A text entry"),
 			_("Random answer list size:"),
 			_("2 choices"),
-			_("3 choices"),
+			_("3 choices"), #25
 			_("4 choices"),
-			_("Language:"), #30
+			_("Length:"), 
+			_("Short (10 questions)"),
+			_("Normal (20 questions)"),
+			_("Long (30 questions)"), #30
+			_("Language:"),
 			_("English"),
 			_("French"),
 			_("Spanish"),
-			_("Swedish"),
-			_("Save"), #35
+			_("Swedish"), #35
+			_("Save"),
 			_("Cancel"), 
 			_("Kana no quiz, a kana reminder tool."),
 			_("Version %s."),
-			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."),
-			_("Credits"), #40
+			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."), #40
+			_("Credits"),
 			_("Code: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."),
 			_("Close"),
 			_("Warning"),
-			_("You must select at least one question set.")
+			_("You must select at least one question set.") #45
 			)
 
 		return string[num]
