@@ -61,7 +61,6 @@ class Options:
 		'contracted_katakana_part':range(5),
 		'additional_katakana':('true','false'),
 		'additional_katakana_part':range(5),
-		'length':('short','normal','long'),
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4),
 		'lang':('en','fr','pt_BR','sv')
@@ -82,7 +81,7 @@ class Options:
 					if key in ('basic_hiragana_part','modified_hiragana_part',
 						'contracted_hiragana_part','basic_katakana_part',
 						'modified_katakana_part','contracted_katakana_part',
-						'additional_katakana_part','list_size'): 
+						'additional_katakana_part','length','list_size'): 
 						try: val = int(val)
 						except: pass
 					self.check(key,val)

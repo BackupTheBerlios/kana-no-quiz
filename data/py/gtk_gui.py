@@ -270,7 +270,6 @@ class Gui:
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
-		opt_length = {0:'short',1:'normal',2:'long','short':0,'normal':1,'long':2}
 		opt_lang = {0:'en',1:'fr',2: 'pt_BR',3:'sv','en':0,'fr':1,'pt_BR':2,'sv':3}
 
 		#Values for kana part params.
@@ -303,7 +302,7 @@ class Gui:
 				'additional_katakana_part':kanaParts[6],
 				'answer_mode':opt_answer_mode[option8.get_history()],
 				'list_size':option9.get_history()+2,
-				'length':opt_length[option10.get_history()],
+				'length':option10.get_value(),
 				'lang':opt_lang[option11.get_history()]
 				})
 			self.main(box) #Go back to the ``main".
@@ -505,16 +504,13 @@ class Gui:
 		table.attach(option9,0,1,3,4)
 
 		#`length'
+		box3 = gtk.HBox()
 		label = gtk.Label(str(45))
-		table.attach(label,0,1,4,5)
-		menu = gtk.Menu()
-		for val in (str(46),str(47),str(48)):
-			item = gtk.MenuItem(val)
-			menu.append(item)
-		option10 = gtk.OptionMenu()
-		option10.set_menu(menu)
-		option10.set_history(opt_length[self.param.val('length')])
-		table.attach(option10,0,1,5,6)
+		box3.pack_start(label)
+		adjustment = gtk.Adjustment(float(self.param.val('length')),1,200,1,10)
+		option10 = gtk.SpinButton(adjustment)
+		box3.pack_end(option10)
+		table.attach(box3,0,1,4,6)
 
 		#`lang'
 		label = gtk.Label(str(49))

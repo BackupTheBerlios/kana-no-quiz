@@ -26,11 +26,7 @@ class Score:
 		self.score += point #Update the score.
 
 	def isQuizFinished(self,length):
-		if length=="short": num = 10
-		elif length=="normal": num = 20
-		elif length=="long": num = 30
-
-		if self.total>=num: return 1
+		if self.total>=length: return 1
 		else: return None
 
 	def getResults(self):
