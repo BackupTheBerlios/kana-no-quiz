@@ -18,7 +18,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 import gtk
 import kanaengine, score, i18n
-from string import upper
 
 class Gui:
 	def __init__(self,options,ver):
@@ -120,7 +119,7 @@ class Gui:
 				self.handlerid = self.nextButton.connect("clicked",self.newQuestion)
 			else: 
 				self.answerButt = gtk.Entry(3)
-				self.answerButt.connect("changed",lambda widget: widget.set_text(upper(widget.get_text())))
+				self.answerButt.connect("changed",lambda widget: widget.set_text(widget.get_text().upper()))
 				self.answerButt.set_width_chars(3)
 				box2.pack_start(self.answerButt)
 				self.handlerid = self.nextButton.connect("clicked",self.checkAnswer)

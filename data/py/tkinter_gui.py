@@ -86,7 +86,7 @@ class Gui:
 			self.window.slaves()[0].destroy()
 			frame = tk.Frame(self.window)
 			frame.pack(padx=3,pady=3)
-		
+
 			#Display kana image.
 			self.image = tk.PhotoImage(file="data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana))
 			self.kanaImage = tk.Label(frame,image=self.image)
@@ -98,28 +98,35 @@ class Gui:
 			self.quizLabel = tk.Label(frame2,text=(str(4),str(5))[self.kanaEngine.getKanaKind()],wraplength=120,width=18)
 			self.quizLabel.pack(pady=3,fill="both",expand=1)
 	
+			#The arrow.
+			self.nextButton = tk.Button(frame2,bitmap="@data/img/rarrow.xbm",pady=4)
+	
 			if self.param.val('answer_mode')=="list":
 				#Choice buttons generation.
 				self.answerButt = {}; i=0
-				for x in self.kanaEngine.randomAnswers(self.param.val('difficulty')):
+				for x in self.kanaEngine.randomAnswers(self.param.val('list_size')):
 					if x[-2:]=="-2": x = x[:-2]
 					self.answerButt[i] = tk.Button(frame2,text=x.upper(),height=2)
 					self.answerButt[i].bind("<ButtonRelease-1>",self.checkAnswer)
 					self.answerButt[i].pack(pady=1,fill="both",expand=1)
 					i+=1
-			else: pass
+				self.nextButton['command'] = self.newQuestion
+			else:
+				self.answerButt = tk.Entry(frame2,width=17)
+				self.answerButt.pack()
+				self.nextButton['command'] = self.checkAnswer
+				self.nextButton.pack(fill="both",pady=1,expand=1)
 	
-			self.nextButton = tk.Button(frame2,bitmap="@data/img/rarrow.xbm",command=self.newQuestion,pady=4)
-		else:
-			tkMessageBox.showwarning(str(40),str(41))
+		else:	tkMessageBox.showwarning(str(40),str(41))
 
-	def checkAnswer(self,event):
-		"""Check the given answer, display result, and
-		update the score."""
+	def checkAnswer(self,event=None):
+		"""Check the given answer, update the score
+		and display the result."""
 
 		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
+
 		if self.param.val('answer_mode')=="list": answer = event.widget["text"].lower()
-		else: pass
+		else: answer = self.answerButt.get().lower()
 
 		if answer==self.kana:
 			self.quizLabel["text"] = str(6)
@@ -133,6 +140,9 @@ class Gui:
 		if self.param.val('answer_mode')=="list":
 			for butt in self.answerButt.values(): butt.pack_forget() #Hide choices buttons.
 			self.nextButton.pack(fill="both",pady=1,expand=1)
+		else:
+			self.answerButt.pack_forget()
+			self.nextButton['command'] = self.newQuestion
 
 		if self.score.isQuizFinished(self.param.val('length')):
 			#The quiz is finished... Let's show results!
@@ -157,12 +167,17 @@ class Gui:
 			self.nextButton.pack_forget() #Hide the arrow.
 			#Display the random list.
 			i=0
-			for x in self.kanaEngine.randomAnswers(self.param.val('difficulty')):
+			for x in self.kanaEngine.randomAnswers(self.param.val('list_size')):
 				if x[-2:]=="-2": x = x[:-2]
 				self.answerButt[i]["text"] = x.upper()
 				self.answerButt[i].pack(pady=1,fill="both",expand=1)
 				i+=1
-		else: pass
+		else: #Display the text entry.
+			self.answerButt.delete(0,tk.END) 
+			self.nextButton.pack_forget()
+			self.answerButt.pack()
+			self.nextButton.pack(fill="both",pady=1,expand=1)
+			self.nextButton['command'] = self.checkAnswer
 
 	def results(self):
 		def goBack():
