@@ -2,7 +2,12 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.1 (2004-08-XX):
+* Version 1.2 (2004-12-XX):
+
+- The Sweedish translation has been finaly updated.
+
+
+* Version 1.1 (2004-09-25):
 
 - Doing the quiz, the same kana now won't appear twice in
 a row any more. :p
