@@ -175,7 +175,8 @@ class KanaEngine:
 
 		#First, addition of the selected kana in the list of answer.
 		answers.append(self.kana)
-		if self.no_repeat=="false": templist.remove(self.kana)
+		#Remove the selected kana from the temporary answer list to prevent a double selection as an answer.
+		templist.remove(self.kana)
 
 		for x in range(int(list_size)-1):
 			x = random.choice(templist) #Take a random wrong anwsers from the kana list.

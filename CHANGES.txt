@@ -2,6 +2,12 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Version 1.2b (2005-02-XX):
+
+- Bugfix : prevention, while doing the quiz using the random
+list mode, of getting the rigth answer appearing twice in
+the list.
+
 * Version 1.2 (2005-01-23):
 
 - The Sweedish translation has been finaly updated.
