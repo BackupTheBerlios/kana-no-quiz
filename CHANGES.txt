@@ -1,0 +1,65 @@
+
+ Kana no quiz - Changelog
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Version 0.9 (2004-05-24):
+
+- New combined hiragana & katakana added.
+- Questions are now divided in several sets (single/modified
+/combined).
+- At least one question set must be selected or a dialog will
+warn you. :p
+
+
+* Version 0.8 (2004-05-08):
+
+- Forty-one kana added (total: 142). All the basic
+syllables of both the katakana & hiragana syllabaries
+are now implemented. :)
+
+
+* Version 0.7 (2004-04-17):
+
+- Forty-five new kana added (total: 101).
+- Many previous kana have been enhanced!
+
+
+* Version 0.6 (2004-04-03):
+
+- Huge improvements of Tkinter interface (Windows)!
+- Thirteen new kana added (total: 66).
+- Better handling of the configuration file.
+- Program language can be now changed on the fly from the
+configuration panel.
+- Bug fix: first param appeared as a comment in the
+configuration file.
+- Bug fix: results were shown just after the last question
+without told whether the answer was right or wrong!
+
+
+* Version 0.5 (2004-03-22):
+
+- Internationalization (translations into French and Swedish).
+- Seventeen new kana added (total: 53).
+- New configuration panel (GTK interface only).
+- Display of quiz results.
+- A nice logo. :=)
+
+
+* Version 0.3 (2003-12-02):
+
+- Seventeen new kana added (total: 36).
+- The same archive can now run both on GNU/Linux and Windows
+using different interfaces.
+- Kana images are now placed under the Free Art Licence
+(http://www.artlibre.org/).
+
+
+* Version 0.2 (2003-10-31):
+
+- Thirteen new kana added (total: 19).
+
+
+* Version 0.1 (2003-09-27):
+
+- First release, with only 6 different kana!

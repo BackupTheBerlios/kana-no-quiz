@@ -1,0 +1,184 @@
+# translation of kana-no-quiz.po to French
+# Kana no quiz: a kana reminder tool.
+# Copyleft 2004 Choplair-network
+# This file is distributed under the same license as the Kana no quiz 
+package.
+# Pachilor <pachilor@choplair.org>, 2004.
+# Choplair <choplair@fr.st>, 2004
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kana-no-quiz\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-05-25 10:43+0200\n"
+"PO-Revision-Date: 2004-04-03 18:31+0200\n"
+"Last-Translator: Choplair <choplair@fr.st>\n"
+"Language-Team: French <fr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.1\n"
+
+msgid "Kana no quiz!"
+msgstr "Kana no quiz!"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "Options"
+msgstr "Alternativ"
+
+msgid "About"
+msgstr "Om"
+
+msgid "What is this katakana?"
+msgstr "Vad är katakana?"
+
+msgid "What is this hiragana?"
+msgstr "Vad är hiragana?"
+
+msgid "Right! ^^"
+msgstr "Rätt!^^"
+
+msgid "Wrong!"
+msgstr "Fel!"
+
+#, python-format
+msgid "The answer was %s."
+msgstr "Svaret var %s."
+
+msgid "Quiz results"
+msgstr "Fråge resultat"
+
+#, python-format
+msgid "Question total: %i."
+msgstr "Frågor totalt: %i."
+
+#, python-format
+msgid "Good answers: %i."
+msgstr "Rätt svar: %i."
+
+#, python-format
+msgid "Success rate: %i%%."
+msgstr "Slutresultat: %i%%."
+
+msgid "Here you can modify some quiz options."
+msgstr "Här kan du modifiera några fråge-alternativ."
+
+# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:55
+msgid "Katakana question sets"
+msgstr ""
+
+# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:56
+msgid "Hiragana question sets"
+msgstr ""
+
+# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:57
+msgid "Single"
+msgstr ""
+
+# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:58
+msgid "Modified"
+msgstr ""
+
+# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:59
+msgid "Combined"
+msgstr ""
+
+msgid "Length:"
+msgstr "Längd:"
+
+msgid "Short (10 questions)"
+msgstr "Kort (10 frågor)"
+
+msgid "Normal (20 questions)"
+msgstr "Normal (20 frågor)"
+
+msgid "Long (30 questions)"
+msgstr "Lång (30 frågor)"
+
+msgid "Difficulty:"
+msgstr "Svårighetsnivå:"
+
+msgid "Novice (2 choices)"
+msgstr "Novis (2 val)"
+
+msgid "Medium (3 choices)"
+msgstr "Medel (3 val)"
+
+msgid "Sensei! (4 choices)"
+msgstr "Mästare! (4 val)"
+
+msgid "Language:"
+msgstr "Språk:"
+
+msgid "English"
+msgstr "Engelsk"
+
+msgid "French"
+msgstr "Fransk"
+
+msgid "Swedish"
+msgstr "Svensk"
+
+msgid "Save"
+msgstr "Rädda"
+
+msgid "Cancel"
+msgstr "Annullera"
+
+msgid "Kana no quiz, a kana reminder tool."
+msgstr "Kana no quiz, ett minnesvertyg för kana."
+
+#, python-format
+msgid "Version %s."
+msgstr "Version %s."
+
+#, fuzzy
+msgid ""
+"Kana no quiz is free software released under the GNU GPL license (see 
+`GPL."
+"txt'). Kana images are released under the Free Art license (see 
+`FAL.txt')."
+msgstr ""
+"Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). 
+"
+"Kana bilder är utgivna under Free Art licens (se `FAL.txt')."
+
+msgid "Credits"
+msgstr "Medverkande"
+
+msgid ""
+"Code: Choplair & Pachilor.\n"
+"Kana image: Ms. Marie-Claire.\n"
+"Logo image: Choplair."
+msgstr ""
+"Kod: Choplair & Pachilor.\n"
+"Kana bilder: Ms. Marie-Claire.\n"
+"Bild logga: Choplair.\n"
+"Svensk översättning: Markus Fellnert."
+
+msgid "Close"
+msgstr "Stänga"
+
+#, fuzzy
+msgid "Warning"
+msgstr "Fel!"
+
+# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
+msgid "You must select at least one question set."
+msgstr ""
+
+#~ msgid "Question mode:"
+#~ msgstr "Fråge läge:"
+
+#~ msgid "Hiragana"
+#~ msgstr "Hiragana"
+
+#~ msgid "Katakana"
+#~ msgstr "Katakana"
+
+#~ msgid "Hiragana & Katakana"
+#~ msgstr "Hiragana & Katakana"
+
+
