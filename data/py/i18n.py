@@ -39,51 +39,54 @@ class I18n:
 		# Tuple of commom strings.
 		string = (
 			_("Kana no quiz!"), #0
-			_("Start"),
+			_("Introduction"),
 			_("Options"),
+			_("Start the quiz"),
 			_("About"),
-			_("What is this katakana?"),
-			_("What is this hiragana?"), #5
+			_("What is this katakana?"), #5
+			_("What is this hiragana?"),
 			_("Right! ^^"),
 			_("Wrong!"),
 			_("The answer was %s."),
-			_("Quiz results"),
-			_("Question total: %i."), #10
+			_("Quiz results"), #10
+			_("Question total: %i."),
 			_("Good answers: %i."),
 			_("Success rate: %i%%."),
 			_("Here you can modify some quiz options."),
-			_("Katakana question sets"),
 			_("Hiragana question sets"), #15
+			_("Katakana question sets"),
 			_("Basic"),
 			_("Modified"),
 			_("Contracted"),
-			_("Additional"),
-			_("Answer mode:"), #20
+			_("Additional"), #20
+			_("Parts"),
+			_("---"),
+			_("Answer mode:"),
 			_("A random list"),
-			_("A text entry"),
+			_("A text entry"), #25
 			_("Random answer list size:"),
 			_("2 choices"),
-			_("3 choices"), #25
+			_("3 choices"),
 			_("4 choices"),
-			_("Length:"), 
+			_("Length:"),  #30,
 			_("Short (10 questions)"),
 			_("Normal (20 questions)"),
-			_("Long (30 questions)"), #30
+			_("Long (30 questions)"),
 			_("Language:"),
-			_("English"),
+			_("English"), #35
 			_("French"),
 			_("Portuguese (Brazil)"),
-			_("Swedish"), #35
+			_("Swedish"),
 			_("Save"),
-			_("Cancel"), 
+			_("Cancel"),  #40
 			_("Kana no quiz, a kana reminder tool."),
 			_("Version %s."),
-			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."), #40
+			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."),
 			_("Credits"),
-			_("Code: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."),
+			_("Code: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."), #45
 			_("Close"),
 			_("Warning"),
-			_("You must select at least one question set.") #45
+			_("You must select at least one question set.")
 			)
 
 		return string[num]

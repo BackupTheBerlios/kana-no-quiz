@@ -59,18 +59,23 @@ class Gui:
 		#Logo
 		img = tk.PhotoImage(file="data/img/logo.gif")
 		label = tk.Label(frame,image=img)
-		label.pack()
+		label.pack(side="left")
 
 		frame2 = tk.Frame(frame)
-		frame2.pack(fill="both")
-		button = tk.Button(frame2,text=str(1),command=self.quiz)
-		button.pack(side="left",fill="both",expand=1)
+		frame2.pack(fill="both",expand=1)
+		button = tk.Button(frame2,text=str(1),command=self.intro)
+		button.pack(fill="both",expand=1)
 		button = tk.Button(frame2,text=str(2),command=self.options)
-		button.pack(side="left",fill="both",expand=1)
-		button = tk.Button(frame2,text=str(3),command=self.about)
-		button.pack(side="right",fill="both",expand=1)
+		button.pack(fill="both",expand=1)
+		button = tk.Button(frame2,text=str(3),command=self.quiz)
+		button.pack(fill="both",expand=1)
+		button = tk.Button(frame2,text=str(4),command=self.about)
+		button.pack(fill="both",expand=1)
 
 		self.window.mainloop()
+
+	def intro(self):
+		pass
 
 	def quiz(self):
 		#Randomly get a kana.
@@ -96,7 +101,7 @@ class Gui:
 			frame2 = tk.Frame(frame)
 			frame2.pack(padx=6,side="right",fill="both")
 
-			self.quizLabel = tk.Label(frame2,text=(str(4),str(5))[self.kanaEngine.getKanaKind()],wraplength=120,width=18)
+			self.quizLabel = tk.Label(frame2,text=(str(5),str(6))[self.kanaEngine.getKanaKind()],wraplength=120,width=18)
 			self.quizLabel.pack(pady=3,fill="both",expand=1)
 
 			#The arrow.
@@ -118,7 +123,7 @@ class Gui:
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
 
-		else:	tkMessageBox.showwarning(str(44),str(45))
+		else:	tkMessageBox.showwarning(str(47),str(48))
 
 	def checkAnswer(self,event=None):
 		"""Check the given answer, update the score
@@ -134,7 +139,7 @@ class Gui:
 			self.quizLabel["fg"] = "darkgreen"
 			self.score.update(1) #Update the score (add 1 point).
 		else:
-			self.quizLabel["text"] = "%s\n%s" % (str(7), str(8) % self.kana.upper())
+			self.quizLabel["text"] = "%s\n%s" % (str(8), str(9) % self.kana.upper())
 			self.quizLabel["fg"] = "red"
 			self.score.update() #Update the score.
 
@@ -162,7 +167,7 @@ class Gui:
 
 		self.image["file"] = "data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana) #Update kana's image.
 
-		self.quizLabel["text"] = (str(4),str(5))[self.kanaEngine.getKanaKind()]
+		self.quizLabel["text"] = (str(5),str(6))[self.kanaEngine.getKanaKind()]
 		self.quizLabel["fg"] = "black"
 
 		if self.param.val('answer_mode')=="list":
@@ -175,7 +180,7 @@ class Gui:
 				self.answerButt[i].pack(pady=1,fill="both",expand=1)
 				i+=1
 		else: #Display the text entry.
-			self.answerButt.delete(0,tk.END) 
+			self.answerButt.delete(0,tk.END)
 			self.nextButton.pack_forget()
 			self.answerButt.pack()
 			self.nextButton.pack(fill="both",pady=1,expand=1)
@@ -187,7 +192,7 @@ class Gui:
 			self.main()
 
 		#Display results.
-		self.quizLabel["text"] = ("%s\n\n%s\n%s\n%s" % (str(9),str(10) % self.score.getResults()[0],str(11) % self.score.getResults()[1],str(12) % self.score.getResults()[2]))
+		self.quizLabel["text"] = ("%s\n\n%s\n%s\n%s" % (str(10),str(11) % self.score.getResults()[0],str(12) % self.score.getResults()[1],str(13) % self.score.getResults()[2]))
 		self.quizLabel["fg"] = "black"
 
 		self.nextButton["command"] = goBack
