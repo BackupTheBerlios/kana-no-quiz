@@ -6,6 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz 0.9\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-05-25 10:43+0200\n"
 "PO-Revision-Date: 2004-05-30 16:40+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
@@ -113,9 +114,6 @@ msgstr "Anglais"
 msgid "French"
 msgstr "Français"
 
-msgid "Spanish"
-msgstr "Espagnol"
-
 msgid "Swedish"
 msgstr "Suédois"
 
@@ -133,8 +131,13 @@ msgid "Version %s."
 msgstr "Version %s."
 
 #, fuzzy
-msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
-msgstr "Kana no quiz est un logiciel libre distribué sous la licence GNU GPL (voir `GPL.txt'). Les images des kana sont distribuées sous la licence Art Libre (voir `FAL.txt')."
+msgid ""
+"Kana no quiz is free software released under the GNU GPL license (see `GPL."
+"txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr ""
+"Kana no quiz est un logiciel libre distribué sous la licence GNU GPL (voir "
+"`GPL.txt'). Les images des kana sont distribuées sous la licence Art Libre "
+"(voir `FAL.txt')."
 
 msgid "Credits"
 msgstr "Crédits"
@@ -159,3 +162,5 @@ msgstr "Avertissement"
 msgid "You must select at least one question set."
 msgstr "Veuillez sélectionner au moins un jeu de questions."
 
+#~ msgid "Spanish"
+#~ msgstr "Espagnol"

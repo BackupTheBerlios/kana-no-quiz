@@ -1,6 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-05-25 10:43+0200\n"
 "PO-Revision-Date: 2004-05-30 16:40+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
@@ -105,9 +106,6 @@ msgstr "Engelsk"
 msgid "French"
 msgstr "Fransk"
 
-msgid "Spanish"
-msgstr "Spansk"
-
 msgid "Swedish"
 msgstr "Svensk"
 
@@ -124,8 +122,12 @@ msgstr "Kana no quiz, ett minnesvertyg för kana."
 msgid "Version %s."
 msgstr "Version %s."
 
-msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
-msgstr "Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). Kana bilder är utgivna under Free Art licens (se `FAL.txt')."
+msgid ""
+"Kana no quiz is free software released under the GNU GPL license (see `GPL."
+"txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr ""
+"Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). "
+"Kana bilder är utgivna under Free Art licens (se `FAL.txt')."
 
 msgid "Credits"
 msgstr "Medverkande"
@@ -146,3 +148,9 @@ msgstr "Stänga"
 msgid "Warning"
 msgstr "Fel!"
 
+# E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
+msgid "You must select at least one question set."
+msgstr ""
+
+#~ msgid "Spanish"
+#~ msgstr "Spansk"
