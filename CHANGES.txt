@@ -2,7 +2,7 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.0 (2004-07-27):
+* Version 1.0 (2004-07-29):
 
 - Addition of the ``additional" katakana question set which
 contains syllabes used for foreign words.
@@ -13,8 +13,8 @@ implemented into Kana no quiz. ^_^
 - The answers can now be typed directly through a text entry
 rather than selected from a list. It's harder! ^^;
 - The option panel has been slighty redesigned.
-- Program translation into Portuguese of Brazil. Unfortunately,
-the Sweedish translation haven't been updated. :(
+- Program translation into Portuguese of Brazil.
+Unfortunately, the Sweedish translation has not been updated. ;( 
 
 
 * Version 0.9 (2004-05-31):

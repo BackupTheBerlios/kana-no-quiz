@@ -1,6 +1,6 @@
 
  Kana no quiz - README
- version 1.0 - 2004-07-27
+ version 1.0 - 2004-07-29
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
@@ -8,8 +8,8 @@
 
  This is ``Kana no quiz", a little tool, written in Python, to
 memorize Japanese kana (hiragana & katakana). The full list
-of kana is implemented. The romanization system used by
-this software is the Hepburn's.
+of kana is implemented. The romanization system used is the
+Hepburn's.
 
  How does it work ?
  ------------------
@@ -18,7 +18,7 @@ this software is the Hepburn's.
 have to find its romaji transcription; either by choosing the
 good answer from a random list containing several possibilities
 or by directly typing the answer through a text entry. This
-second way is more complicated.
+second method is more complicated.
 
  I18n
  ----
@@ -39,8 +39,8 @@ the use of an interface by passing either`-tk' (for Tkinter) or
  ----------
 
  Why do we use images in the GIF format to render kana?
-GIF is evil! Ok, but the Tkinter interface accept neither
-PNG nor JPG. So we must use GIF for compatibility...
+GIF is evil! Ok, but the Tkinter interface doesn't accept
+neither PNG nor JPG. So we must use GIF for compatibility...
 
 
  Licensing
