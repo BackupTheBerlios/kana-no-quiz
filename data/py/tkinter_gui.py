@@ -197,10 +197,10 @@ class Gui:
 	def options(self):
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
-		opt_answer_mode = {str(24):'list',str(25):'entry','list':str(24),'entry':str(25)}
-		opt_list_size = {str(27):'2',str(28):'3',str(29):'4','2':str(27),'3':str(28),'4':str(29)}
-		opt_length = {str(20):'short',str(21):'normal',str(22):'long','short':str(20),'normal':str(21),'long':str(22)}
-		opt_lang = {str(31):'en',str(32):'fr',str(34):'sv','en':str(31),'fr':str(32),'sv':str(34)}
+		opt_answer_mode = {str(21):'list',str(22):'entry','list':str(21),'entry':str(22)}
+		opt_list_size = {str(24):'2',str(25):'3',str(26):'4','2':str(24),'3':str(25),'4':str(26)}
+		opt_length = {str(28):'short',str(29):'normal',str(30):'long','short':str(28),'normal':str(29),'long':str(30)}
+		opt_lang = {str(32):'en',str(33):'fr',str(35):'sv','en':str(32),'fr':str(33),'sv':str(35)}
 
 		def save():
 			self.param.write({
@@ -253,7 +253,7 @@ class Gui:
 		option5 = tk.IntVar()
 		option5.set(opt_boolean[self.param.val('basic_hiragana')])
 		c = tk.Checkbutton(table,text=str(16),variable=option5)
-		c.grid(column=1,row=0)
+		c.grid(column=1,row=0,sticky='W')
 
 		#`modified_hiragana'
 		img6 = tk.PhotoImage(file="data/img/modified_hiragana.gif")
@@ -262,7 +262,7 @@ class Gui:
 		option6 = tk.IntVar()
 		option6.set(opt_boolean[self.param.val('modified_hiragana')])
 		c = tk.Checkbutton(table,text=str(17),variable=option6)
-		c.grid(column=1,row=1)
+		c.grid(column=1,row=1,sticky='W')
 
 		#`contracted_hiragana'
 		img7 = tk.PhotoImage(file="data/img/contracted_hiragana.gif")
@@ -271,7 +271,7 @@ class Gui:
 		option7 = tk.IntVar()
 		option7.set(opt_boolean[self.param.val('contracted_hiragana')])
 		c = tk.Checkbutton(table,text=str(18),variable=option7)
-		c.grid(column=1,row=2)
+		c.grid(column=1,row=2,sticky='W')
 
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
 		frame2.pack(fill="both",expand=1)
@@ -289,7 +289,7 @@ class Gui:
 		option1 = tk.IntVar()
 		option1.set(opt_boolean[self.param.val('basic_katakana')])
 		c = tk.Checkbutton(table,text=str(16),variable=option1)
-		c.grid(column=1,row=0)
+		c.grid(column=1,row=0,sticky='W')
 
 		#`modified_katakana'
 		img2 = tk.PhotoImage(file="data/img/modified_katakana.gif")
@@ -298,7 +298,7 @@ class Gui:
 		option2 = tk.IntVar()
 		option2.set(opt_boolean[self.param.val('modified_katakana')])
 		c = tk.Checkbutton(table,text=str(17),variable=option2)
-		c.grid(column=1,row=1)
+		c.grid(column=1,row=1,sticky='W')
 
 		#`contracted_katakana'
 		img3 = tk.PhotoImage(file="data/img/contracted_katakana.gif")
@@ -307,7 +307,7 @@ class Gui:
 		option3 = tk.IntVar()
 		option3.set(opt_boolean[self.param.val('contracted_katakana')])
 		c = tk.Checkbutton(table,text=str(18),variable=option3)
-		c.grid(column=1,row=2)
+		c.grid(column=1,row=2,sticky='W')
 
 		#`additional_katakana'
 		img4 = tk.PhotoImage(file="data/img/additional_katakana.gif")
@@ -316,7 +316,7 @@ class Gui:
 		option4 = tk.IntVar()
 		option4.set(opt_boolean[self.param.val('additional_katakana')])
 		c = tk.Checkbutton(table,text=str(19),variable=option4)
-		c.grid(column=1,row=3)
+		c.grid(column=1,row=3,sticky='W')
 
 		right_frame = tk.Frame(option_frame)
 		right_frame.pack(fill="both",expand=1,pady=6,padx=6)
