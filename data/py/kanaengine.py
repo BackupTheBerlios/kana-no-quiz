@@ -27,7 +27,7 @@ class KanaEngine:
 		"""This function returns the kana full list, divided in 
 		sets then splited in small portions of 5/6 kana."""
 		return (
-		( #Basic hiragana.
+		[ #Basic hiragana.
 		["a",	"i",	"u",	"e",	"o"],
 		["ka",	"ki",	"ku",	"ke",	"ko"],
 		["sa",	"shi",	"su",	"se",	"so"],
@@ -38,14 +38,14 @@ class KanaEngine:
 		["ra",	"ri",	"ru",	"re",	"ro"],
 		["ya",		"yu",		"yo",
 		"wa",					"o-2",
-		"n"]),
-		( #Modified hiragana.
+		"n"]],
+		[ #Modified hiragana.
 		["ga",	"gi",	"gu",	"ge",	"go"],
 		["za",	"ji",	"zu",	"ze",	"zo"],
 		["da",	"ji-2",	"zu-2",	"de",	"do"],
 		["ba",	"bi",	"bu",	"be",	"bo"],
-		["pa",	"pi",	"pu",	"pe",	"po"]),
-		( #Contracted hiragana.
+		["pa",	"pi",	"pu",	"pe",	"po"]],
+		[ #Contracted hiragana.
 		["kya",		"kyu",		"kyo",
 		"gya",		"gyu",		"gyo"],
 		["sha",		"shu",		"sho",
@@ -55,8 +55,8 @@ class KanaEngine:
 		["rya",		"ryu",		"ryo",
 		"hya",		"hyu",		"hyo"],
 		["bya",		"byu",		"byo",
-		"pya",		"pyu",		"pyo"]),
-		( #Basic katakana.
+		"pya",		"pyu",		"pyo"]],
+		[ #Basic katakana.
 		["a",	"i",	"u",	"e",	"o"],
 		["ka",	"ki",	"ku",	"ke",	"ko"],
 		["sa",	"shi",	"su",	"se",	"so"],
@@ -67,14 +67,14 @@ class KanaEngine:
 		["ra",	"ri",	"ru",	"re",	"ro"],
 		["ya",		"yu",		"yo",
 		"wa",					"o-2",
-		"n"]),
-		( #Modified katakana.
+		"n"]],
+		[ #Modified katakana.
 		["ga",	"gi",	"gu",	"ge",	"go"],
 		["za",	"ji",	"zu",	"ze",	"zo"],
 		["da",	"ji-2",	"zu-2",	"de",	"do"],
 		["ba",	"bi",	"bu",	"be",	"bo"],
-		["pa",	"pi",	"pu",	"pe",	"po"]),
-		( #Contracted katakana.
+		["pa",	"pi",	"pu",	"pe",	"po"]],
+		[ #Contracted katakana.
 		["kya",		"kyu",		"kyo",
 		"gya",		"gyu",		"gyo"],
 		["sha",		"shu",		"sho",
@@ -84,8 +84,8 @@ class KanaEngine:
 		["rya",		"ryu",		"ryo",
 		"hya",		"hyu",		"hyo"],
 		["bya",		"byu",		"byo",
-		"pya",		"pyu",		"pyo"]),
-		( #Additional katakana.
+		"pya",		"pyu",		"pyo"]],
+		[ #Additional katakana.
 		[	"wi",		"we",	"wo",
 		"kwa",				"kwo",
 		"gwa"],
@@ -98,54 +98,81 @@ class KanaEngine:
 			"tyu",	"dyu"],
 		[			"ye",
 		"fa",	"fi",		"fe",	"fo"],
-		["va",	"vi",	"vu",	"ve",	"vo"]))
+		["va",	"vi",	"vu",	"ve",	"vo"]])
 
 	def randomKana(self,*args):
-		sets = args[0]
-		self.parts = args[1]
-		self.no_repeat = args[2]
+		if "true" in args[0]:
+			ok = 0
+			while not ok:
+				sets = list(args[0])
+				self.parts = args[1]
+				self.no_repeat = args[2]
 
-		if "true" in sets:
-			if self.no_repeat=="false":
-				#Selection of syllabary kind.
-				if "true" in sets[0:3] and "true" in sets[3:7]: self.kind = random.choice((0,1))
-				elif "true" in sets[0:3]: self.kind = 1
-				else: self.kind = 0
-
-				#Selecton of possible question sets.
-				possible_sets = []
+				#Disable the 0 composed set.
 				i = 0
-				for value in (sets[3:7],sets[0:3])[self.kind]:
-					if value=="true": possible_sets.append(i)
+				for set in self.used_kana_list:
+					zero_list = []
+					for part in range(len(set)): zero_list.append(0)
+					if set==zero_list: sets[i] = "false"
 					i += 1
-
-				#Selection of THE question set.
-				if len(possible_sets)>1: self.question_set = random.choice(possible_sets)
-				else: self.question_set = possible_sets[0]
-
-				#Selection of the kana part.
-				i = (3,0)[self.kind]
-				if not self.parts[self.question_set+i]:
-					self.part = []
-					for x in self.used_kana_list[self.question_set]: self.part += x
-				else: #Yes, I was crazy when I wrote that! O_O;
-					self.part = self.used_kana_list[self.question_set][self.parts[self.question_set+i]-1]
-
-				#We prevent the previous kana of being selected again.
-				if self.previous_kana and (self.previous_kana[0],self.previous_kana[1],self.previous_kana[2])==(self.kind,self.question_set,self.part):
-					self.part.remove(self.previous_kana[3]) #We remove the previous kana from the list.
-
-				#Selection of the kana.
-				self.kana = random.choice(self.part)
-
-				#We now re-append the previous kana to the list.
-				if self.previous_kana: self.part.append(self.previous_kana[3])
 	
-				#Precisely memorize this kana to prevent it to be selected the next time.
-				self.previous_kana = (self.kind,self.question_set,self.part,self.kana)
+				for i in range(7):
+					if sets[i]=="true":
+						#Disable set when the only part used is empty.
+						if self.parts[i]!=0 and self.used_kana_list[i][self.parts[i]-1]==[]:
+							sets[i] = "false"
 
-			else: pass
+						#Remove empty part.
+						if self.parts[i]==0:
+							for j in self.used_kana_list[i]:
+								if j==[]: self.used_kana_list[i].remove(j)
+						#Disable empty set.
+						if self.used_kana_list[i]==[]: sets[i] = "false"
+
+				#Selection of syllabary kind.
+				if "true" in sets[0:3] and "true" in sets[3:7]: self.kind = random.choice((0,1)); ok = 1
+				elif "true" in sets[0:3]: self.kind = 1; ok = 1
+				elif "true" in sets[3:7]: self.kind = 0; ok = 1
+				else: self.used_kana_list=self.getKanaList(); continue
+
+			#Selecton of possible question sets.
+			possible_sets = []
+			i = (3,0)[self.kind]
+			for value in (sets[3:7],sets[0:3])[self.kind]:
+				if value=="true": possible_sets.append(i)
+				i += 1
+
+			#Selection of THE question set.
+			if len(possible_sets)>1: self.set_num = random.choice(possible_sets)
+			else: self.set_num = possible_sets[0]
+
+			#Selection of the kana part.
+			if not self.parts[self.set_num]:
+				self.part_num = random.choice(range(len(self.used_kana_list[self.set_num])))
+				self.part = self.used_kana_list[self.set_num][self.part_num]
+			else:
+				self.part_num = self.parts[self.set_num]-1
+				self.part = self.used_kana_list[self.set_num][self.part_num]
+	
+			#We prevent the previous kana of being selected again.
+			if self.no_repeat=="false" and self.previous_kana and (self.previous_kana[0],self.previous_kana[1],self.previous_kana[2])==(self.kind,self.set_num,self.part):
+				self.part.remove(self.previous_kana[3]) #We remove the previous kana from the list.
+
+			#Selection of the kana.
+			self.kana = random.choice(self.part)
+
+			#We now re-append the previous kana to the list.
+			if self.previous_kana: self.part.append(self.previous_kana[3])
+
+			if self.no_repeat=="true":
+				#The no-repeat option is activated, so we remove the kana from the list to prevent future selection.
+				self.used_kana_list[self.set_num][self.part_num].remove(self.kana)
+			else: 
+				#Precisely memorize this kana to prevent it to be selected the next time.
+				self.previous_kana = (self.kind,self.set_num,self.part,self.kana)
+
 			return self.kana
+
 		else: return 0
 
 	def getKanaKind(self): return self.kind #Katakana = 0 & hiragana = 1.
@@ -159,18 +186,12 @@ class KanaEngine:
 
 	def randomAnswers(self,list_size):
 		#Anwsers will be get from this temporary question set, it is the same kana part than the selected kana.
-		i = (3,0)[self.kind]
-		if not self.parts[self.question_set+i]:
-			templist = []
-			for x in self.getKanaList()[self.question_set]: templist += x
-		else: #Yes, I was crazy when I wrote that! O_O;
-			templist = self.getKanaList()[self.question_set][self.parts[self.question_set+i]-1]
-
+		templist = self.getKanaList()[self.set_num][self.part_num]
 		answers = [] #Anwsers' list.
 
 		#First, addition of the selected kana in the list of answer.
 		answers.append(self.kana)
-		templist.remove(self.kana)
+		if self.no_repeat=="false": templist.remove(self.kana)
 
 		for x in range(int(list_size)-1):
 			x = random.choice(templist) #Take a random wrong anwsers from the kana list.

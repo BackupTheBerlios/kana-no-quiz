@@ -5,6 +5,12 @@
 * Version 1.2 (2004-12-XX):
 
 - The Sweedish translation has been finaly updated.
+- In the GTK version, we can choose the length of the quiz
+from 1 to 200 questions.
+- Addition of a new option to not repeat the same kana
+during the quiz (as much as possible: a kana might appear
+several time if the quiz lenght is bigger than the number of
+selected kana).
 
 
 * Version 1.1 (2004-09-25):
