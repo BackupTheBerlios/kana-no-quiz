@@ -107,14 +107,6 @@ class KanaEngine:
 				sets = list(args[0])
 				self.parts = args[1]
 				self.no_repeat = args[2]
-
-				#Disable the 0 composed set.
-				i = 0
-				for set in self.used_kana_list:
-					zero_list = []
-					for part in range(len(set)): zero_list.append(0)
-					if set==zero_list: sets[i] = "false"
-					i += 1
 	
 				for i in range(7):
 					if sets[i]=="true":
