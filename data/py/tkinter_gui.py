@@ -241,7 +241,7 @@ class Gui:
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
 		opt_list_size = {str(42):2,str(43):3,str(44):4,2:str(42),3:str(43),4:str(44)}
-		opt_lang = {str(48):'en',str(49):'fr',str(50):'pt_BR',str(51):'sv','en':str(48),'fr':str(49),'pt_BR':str(50),'sv':str(51)}
+		opt_lang = {str(48):'en',str(49):'fr',str(50):'pt_BR',str(51):'sv',str(62):'sr','en':str(48),'fr':str(49),'pt_BR':str(50),'sv':str(51),'sr':str(62)}
 
 		#Values for kana part params.
 		kanaParts = [
@@ -481,7 +481,7 @@ class Gui:
 		label = tk.Label(right_frame,text=str(47))
 		label.pack(fill="both",expand=1)
 		option12 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option12,str(48),str(49),str(50),str(51))
+		o = tk.OptionMenu(right_frame,option12,str(48),str(49),str(50),str(62),str(51))
 		option12.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 

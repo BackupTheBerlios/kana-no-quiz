@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 Kana no quiz!
-Copyleft 2003, 2004 Choplair-network.
+Copyleft 2003, 2004 2005 Choplair-network.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import sys
 from os import path, chdir, environ
 
-VERSION = "1.2c"
+VERSION = "1.2d"
 
 #Change working directory to Kana no quiz's.
 chdir(path.abspath(sys.path[0]))

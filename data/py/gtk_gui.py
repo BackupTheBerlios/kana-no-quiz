@@ -272,7 +272,7 @@ class Gui:
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
-		opt_lang = {0:'en',1:'fr',2: 'pt_BR',3:'sv','en':0,'fr':1,'pt_BR':2,'sv':3}
+		opt_lang = {0:'en',1:'fr',2: 'pt_BR',3:'sr',4:'sv','en':0,'fr':1,'pt_BR':2,'sr':3,'sv':4}
 
 		#Values for kana part params.
 		kanaParts = [
@@ -520,7 +520,7 @@ class Gui:
 		label = gtk.Label(str(47))
 		table.attach(label,0,1,6,7)
 		menu = gtk.Menu()
-		for val in (str(48),str(49),str(50),str(51)):
+		for val in (str(48),str(49),str(50),str(62),str(51)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option12 = gtk.OptionMenu()

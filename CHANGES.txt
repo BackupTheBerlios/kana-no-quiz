@@ -2,6 +2,12 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Version 1.2d (2005-03-17):
+
+- Addition of a Serbian translation.
+- Some (English) spelling corrections.
+
+
 * Version 1.2c (2005-02-14):
 
 - A bug created in the last version has been fixed...
@@ -116,3 +122,11 @@ using different interfaces.
 * Version 0.1 (2003-09-27):
 
 - First release, with only 6 different kana!
+
+
+``Loneliness, your silent whisper
+Fills a rivers of tears through the nigh
+Memory, you never let me cry
+And you, you never said goodbye"
+(Tears, X Japan)
+

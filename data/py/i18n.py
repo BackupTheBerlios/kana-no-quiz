@@ -44,9 +44,9 @@ class I18n:
 			_("Start the quiz"),
 			_("About"),
 			_("Two different writing systems are commonly used by Japaneses: kanji & kana."), #5
-			_("Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."),
+			_("Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."),
 			_("There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."),
-			_("Kana no quiz help you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of kana at a time."),
+			_("Kana no quiz helps you to memorize kana and their associated sound (using the Hepburn's roman transcription system). For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."),
 			_("Have a good practice ! ^_^"),
 			_("OK"), #10
 			_("What is this katakana?"),
@@ -99,7 +99,8 @@ class I18n:
 			_("Coding: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."),
 			_("Close"),
 			_("Warning"), #60
-			_("You must select at least one question set.")
+			_("You must select at least one question set."),
+			_("Serbian")
 			)
 
 		return string[num]
