@@ -38,11 +38,15 @@ class KanaEngine:
 		"da",	"ji-2",	"zu-2",	"de",	"do",
 		"ba",	"bi",	"bu",	"be",	"bo",
 		"pa",	"pi",	"pu",	"pe",	"po"),(
-		"sha",			"sho",			"shu",
-		"za",	"ji",	"zu",	"ze",	"zo",
-		"da",	"ji-2",	"zu-2",	"de",	"do",
-		"ba",	"bi",	"bu",	"be",	"bo",
-		"pa",	"pi",	"pu",	"pe",	"po"))
+		"kya",			"kyu",			"kyo",
+		"sha",			"shu",			"sho",
+		"cha",			"chu",			"cho",
+		"nya",			"nyu",			"nyo",
+		"rya",			"ryu",			"ryo",
+		"gya",			"gyu",			"gyo",
+		"ja",			"ju",			"jo",
+		"bya",			"byu",			"byo",
+		"pya",			"pyu",			"pyo"))
 
 	def randomKana(self,*args):
 		if "true" in args:

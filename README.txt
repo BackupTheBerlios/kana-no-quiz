@@ -1,6 +1,6 @@
 
  Kana no quiz - README
- version 0.9 - 2004-05-31
+ version 1.0 - 2004-06-XX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
@@ -10,8 +10,8 @@
 to memorize Japanese kana (hiragana & katakana).
 
 The method is quite simple: kana appear randomly and you
-have to find their romanji transcription. There are several
-possibilities, but only one anwser is right!
+have to find their romaji transcription (Hepburn). There are
+several possibilities, but only one anwser is right!
 
  I18n
  ----

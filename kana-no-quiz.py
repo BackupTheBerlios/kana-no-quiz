@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import sys
 from os import chdir, environ
 
-VERSION = "0.9"
+VERSION = "1.0"
 
 #Change working directory to Kana no quiz's.
 chdir(sys.path[0])
