@@ -80,12 +80,13 @@ class Gui:
 	def quiz(self,oldbox):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana(
-			self.param.val('single_katakana'),
+			self.param.val('basic_katakana'),
 			self.param.val('modified_katakana'),
-			self.param.val('combined_katakana'),
-			self.param.val('single_hiragana'),
+			self.param.val('contracted_katakana'),
+			self.param.val('additional_katakana'),
+			self.param.val('basic_hiragana'),
 			self.param.val('modified_hiragana'),
-			self.param.val('combined_hiragana'))
+			self.param.val('contracted_hiragana'))
 
 		if self.kana:
 			box = gtk.HBox(spacing=4)
@@ -174,12 +175,13 @@ class Gui:
 	def newQuestion(self,widget):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana(
-			self.param.val('single_katakana'),
+			self.param.val('basic_katakana'),
 			self.param.val('modified_katakana'),
-			self.param.val('combined_katakana'),
-			self.param.val('single_hiragana'),
+			self.param.val('contracted_katakana'),
+			self.param.val('additional_katakana'),
+			self.param.val('basic_hiragana'),
 			self.param.val('modified_hiragana'),
-			self.param.val('combined_hiragana'))
+			self.param.val('contracted_hiragana'))
 
 		self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana)) #Update kana's image
 
@@ -224,13 +226,13 @@ class Gui:
 			if special=="save":
 				#Update the configuration.
 				self.param.write({
-				'single_katakana':opt_boolean[option1.get_active()],
+				'basic_katakana':opt_boolean[option1.get_active()],
 				'modified_katakana':opt_boolean[option2.get_active()],
-				'combined_katakana':opt_boolean[option3.get_active()],
-				'extended_katakana':opt_boolean[option4.get_active()],
-				'single_hiragana':opt_boolean[option5.get_active()],
+				'contracted_katakana':opt_boolean[option3.get_active()],
+				'additional_katakana':opt_boolean[option4.get_active()],
+				'basic_hiragana':opt_boolean[option5.get_active()],
 				'modified_hiragana':opt_boolean[option6.get_active()],
-				'combined_hiragana':opt_boolean[option7.get_active()],
+				'contracted_hiragana':opt_boolean[option7.get_active()],
 				'answer_mode':opt_answer_mode[option8.get_history()],
 				'list_size':opt_list_size[option9.get_history()],
 				'length':opt_length[option10.get_history()],
@@ -251,16 +253,16 @@ class Gui:
 		frame = gtk.Frame(str(14))
 		box3.pack_start(frame)
 		table = gtk.Table(2,4)
-		table.set_row_spacings(1)
+		table.set_row_spacings(2)
 		table.set_border_width(2)
 		frame.add(table)
 
-		#`single_katakana'
+		#`basic_katakana'
 		image = gtk.Image()
-		image.set_from_file("data/img/single_katakana.gif")
+		image.set_from_file("data/img/basic_katakana.gif")
 		table.attach(image,0,1,0,1)
 		option1 = gtk.CheckButton(str(16))
-		option1.set_active(opt_boolean[self.param.val('single_katakana')])
+		option1.set_active(opt_boolean[self.param.val('basic_katakana')])
 		table.attach(option1,1,2,0,1)
 		
 		#`modified_katakana'
@@ -271,35 +273,35 @@ class Gui:
 		option2.set_active(opt_boolean[self.param.val('modified_katakana')])
 		table.attach(option2,1,2,1,2)
 
-		#`combined_katakana'
+		#`contracted_katakana'
 		image = gtk.Image()
-		image.set_from_file("data/img/combined_katakana.gif")
+		image.set_from_file("data/img/contracted_katakana.gif")
 		table.attach(image,0,1,2,3)
 		option3 = gtk.CheckButton(str(18))
-		option3.set_active(opt_boolean[self.param.val('combined_katakana')])
+		option3.set_active(opt_boolean[self.param.val('contracted_katakana')])
 		table.attach(option3,1,2,2,3)
 
-		#`extended_katakana'
+		#`additional_katakana'
 		image = gtk.Image()
-		image.set_from_file("data/img/extended_katakana.gif")
+		image.set_from_file("data/img/additional_katakana.gif")
 		table.attach(image,0,1,3,4)
 		option4 = gtk.CheckButton(str(19))
-		option4.set_active(opt_boolean[self.param.val('extended_katakana')])
+		option4.set_active(opt_boolean[self.param.val('additional_katakana')])
 		table.attach(option4,1,2,3,4)
 
 		frame = gtk.Frame(str(15))
 		box3.pack_start(frame)
 		table = gtk.Table(2,3)
-		table.set_row_spacings(1)
+		table.set_row_spacings(2)
 		table.set_border_width(2)
 		frame.add(table)
 
-		#`single_hiragana'
+		#`basic_hiragana'
 		image = gtk.Image()
-		image.set_from_file("data/img/single_hiragana.gif")
+		image.set_from_file("data/img/basic_hiragana.gif")
 		table.attach(image,0,1,0,1)
 		option5 = gtk.CheckButton(str(16))
-		option5.set_active(opt_boolean[self.param.val('single_hiragana')])
+		option5.set_active(opt_boolean[self.param.val('basic_hiragana')])
 		table.attach(option5,1,2,0,1)
 		
 		#`modified_hiragana'
@@ -310,12 +312,12 @@ class Gui:
 		option6.set_active(opt_boolean[self.param.val('modified_hiragana')])
 		table.attach(option6,1,2,1,2)
 
-		#`combined_hiragana'
+		#`contracted_hiragana'
 		image = gtk.Image()
-		image.set_from_file("data/img/combined_hiragana.gif")
+		image.set_from_file("data/img/contracted_hiragana.gif")
 		table.attach(image,0,1,2,3)
 		option7 = gtk.CheckButton(str(18))
-		option7.set_active(opt_boolean[self.param.val('combined_hiragana')])
+		option7.set_active(opt_boolean[self.param.val('contracted_hiragana')])
 		table.attach(option7,1,2,2,3)
 
 		table = gtk.Table(1,8)
@@ -434,3 +436,4 @@ class Gui:
 
 	def quit(self,widget):
 		gtk.main_quit() #Bye~~
+

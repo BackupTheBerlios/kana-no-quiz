@@ -22,17 +22,17 @@ class KanaEngine:
 	def __init__(self):
 		#Kana lists.
 		self.kana_sets = (
-		( #Single.
-		"a",		"i",		"u",		"e",		"o",
+		( #Basic.
+		"a",	"i",	"u",	"e",	"o",
 		"ka",	"ki",	"ku",	"ke",	"ko",
 		"sa",	"shi",	"su",	"se",	"so",
 		"ta",	"chi",	"tsu",	"te",	"to",
 		"na",	"ni",	"nu",	"ne",	"no",
 		"ha",	"hi",	"fu",	"he",	"ho",
 		"ma",	"mi",	"mu",	"me",	"mo",
-		"ya",			"yu",			"yo",
+		"ya",		"yu",		"yo",
 		"ra",	"ri",	"ru",	"re",	"ro",
-		"wa",							"o-2",
+		"wa",				"o-2",
 		"n"),
 		( #Modified.
 		"ga",	"gi",	"gu",	"ge",	"go",
@@ -40,40 +40,43 @@ class KanaEngine:
 		"da",	"ji-2",	"zu-2",	"de",	"do",
 		"ba",	"bi",	"bu",	"be",	"bo",
 		"pa",	"pi",	"pu",	"pe",	"po"),
-		( #Combined.
-		"kya",			"kyu",			"kyo",
-		"sha",			"shu",			"sho",
-		"cha",			"chu",			"cho",
-		"nya",			"nyu",			"nyo",
-		"rya",			"ryu",			"ryo",
-		"gya",			"gyu",			"gyo",
-		"ja",			"ju",			"jo",
-		"bya",			"byu",			"byo",
-		"pya",			"pyu",			"pyo"),
-		( #Extended (katakana only).
-								"ye",
-				"wi",			"we",	"wo",
-		"va",	"vi",	"vu",	"ve",	"vo",
-								"she",
-								"je",
-								"che",
-				"ti",	"tu",
-				"di",	"du",
-		"tsa",	"tsi",			"tse",	"tso",
-		"fa",	"fi",	"fyu",	"fe",	"fo"))
+		( #Contracted.
+		"kya",		"kyu",		"kyo",
+		"sha",		"shu",		"sho",
+		"cha",		"chu",		"cho",
+		"nya",		"nyu",		"nyo",
+		"rya",		"ryu",		"ryo",
+		"gya",		"gyu",		"gyo",
+		"ja",		"ju",		"jo",
+		"bya",		"byu",		"byo",
+		"pya",		"pyu",		"pyo"),
+		( #Additional (katakana only).
+					"ye",
+			"wi",		"we",	"wo",
+		"kwa",				"kwo",
+		"gwa",
+					"she",
+					"je",
+					"che",
+		"tsa",			"tse",	"tso",
+			"ti",	"tu",
+			"di",	"du",
+			"tyu",	"dyu",
+		"fa",	"fi",		"fe",	"fo",
+		"va",	"vi",	"vu",	"ve",	"vo"))
 
 	def randomKana(self,*args):
 		if "true" in args:
 			#Select syllabary mode.
-			if "true" in args[0:3] and "true" in args[3:6]: self.mode = random.choice((0,1))
-			elif "true" in args[0:3]: self.mode = 0
+			if "true" in args[0:4] and "true" in args[4:7]: self.mode = random.choice((0,1))
+			elif "true" in args[0:4]: self.mode = 0
 			else: self.mode = 1
 
 			#Select possible question sets.
 			possible_sets = []
 
 			i = 0
-			for x in (args[0:3],args[3:7])[self.mode]:
+			for x in (args[0:4],args[4:7])[self.mode]:
 				if x=="true": possible_sets.append(self.kana_sets[i])
 				i+=1
 

@@ -54,10 +54,10 @@ class I18n:
 			_("Here you can modify some quiz options."),
 			_("Katakana question sets"),
 			_("Hiragana question sets"), #15
-			_("Single"),
+			_("Basic"),
 			_("Modified"),
-			_("Combined"),
-			_("Extended"),
+			_("Contracted"),
+			_("Additional"),
 			_("Answer mode:"), #20
 			_("A random list"),
 			_("A text entry"),

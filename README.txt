@@ -60,7 +60,7 @@ your computer:
 
  Kana no quiz is a project of the Choplair-network, you can
 get information and update from our website:
-	http://www.choplair.org/ 
+	http://www.choplair.org/
 
 
  That's all for now, have fun ;)

@@ -25,13 +25,13 @@ class Options:
 
 		#Default options & values.
 		self.params  = {
-		'single_katakana':'true',
+		'basic_katakana':'true',
 		'modified_katakana':'false',
-		'combined_katakana':'false',
-		'extended_katakana':'false',
-		'single_hiragana':'true',
+		'contracted_katakana':'false',
+		'additional_katakana':'false',
+		'basic_hiragana':'true',
 		'modified_hiragana':'false',
-		'combined_hiragana':'false',
+		'contracted_hiragana':'false',
 		'length':'normal',
 		'answer_mode':'list',
 		'list_size':'3'}
@@ -40,13 +40,13 @@ class Options:
 
 		#Valid values for each option contained as a tuple into a dictionnary.
 		self.validValues = {
-		'single_katakana':('true','false'),
+		'basic_katakana':('true','false'),
 		'modified_katakana':('true','false'),
-		'combined_katakana':('true','false'),
-		'extended_katakana':('true','false'),
-		'single_hiragana':('true','false'),
+		'contracted_katakana':('true','false'),
+		'additional_katakana':('true','false'),
+		'basic_hiragana':('true','false'),
 		'modified_hiragana':('true','false'),
-		'combined_hiragana':('true','false'),
+		'contracted_hiragana':('true','false'),
 		'length':('short','normal','long'),
 		'answer_mode':('list','entry'),
 		'list_size':('2','3','4'),
@@ -96,6 +96,6 @@ class Options:
 			content += "%s %s\n" % (key,val) #Add to the output file content.
 			self.params[key] = val #Update param dictionnary value.
 
-		file = open(self.path,"w") #Open (create if doesn't exist)
+		file = open(self.path,"wb") #Open (create if doesn't exist)
 		file.write(content) #Write
 		file.close() #And close

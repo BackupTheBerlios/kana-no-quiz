@@ -75,12 +75,13 @@ class Gui:
 	def quiz(self):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana(
-			self.param.val('single_katakana'),
+			self.param.val('basic_katakana'),
 			self.param.val('modified_katakana'),
-			self.param.val('combined_katakana'),
-			self.param.val('single_hiragana'),
+			self.param.val('contracted_katakana'),
+			self.param.val('additional_katakana'),
+			self.param.val('basic_hiragana'),
 			self.param.val('modified_hiragana'),
-			self.param.val('combined_hiragana'))
+			self.param.val('contracted_hiragana'))
 
 		if self.kana:
 			self.window.slaves()[0].destroy()
@@ -151,12 +152,13 @@ class Gui:
 	def newQuestion(self):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana(
-			self.param.val('single_katakana'),
+			self.param.val('basic_katakana'),
 			self.param.val('modified_katakana'),
-			self.param.val('combined_katakana'),
-			self.param.val('single_hiragana'),
+			self.param.val('contracted_katakana'),
+			self.param.val('additional_katakana'),
+			self.param.val('basic_hiragana'),
 			self.param.val('modified_hiragana'),
-			self.param.val('combined_hiragana'))
+			self.param.val('contracted_hiragana'))
 
 		self.image["file"] = "data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana) #Update kana's image.
 
@@ -202,13 +204,13 @@ class Gui:
 
 		def save():
 			self.param.write({
-			'single_katakana':opt_boolean[option1.get()],
+			'basic_katakana':opt_boolean[option1.get()],
 			'modified_katakana':opt_boolean[option2.get()],
-			'combined_katakana':opt_boolean[option3.get()],
-			'extended_katakana':opt_boolean[option4.get()],
-			'single_hiragana':opt_boolean[option5.get()],
+			'contracted_katakana':opt_boolean[option3.get()],
+			'additional_katakana':opt_boolean[option4.get()],
+			'basic_hiragana':opt_boolean[option5.get()],
 			'modified_hiragana':opt_boolean[option6.get()],
-			'combined_hiragana':opt_boolean[option7.get()],
+			'contracted_hiragana':opt_boolean[option7.get()],
 			'answer_mode':opt_answer_mode[option8.get().encode('utf8')],
 			'list_size':opt_list_size[option9.get().encode('utf8')],
 			'length':opt_length[option10.get().encode('utf8')],
@@ -244,12 +246,12 @@ class Gui:
 		table = tk.Frame(frame2)
 		table.pack(fill="x")
 
-		#`single_katakana'
-		img1 = tk.PhotoImage(file="data/img/single_katakana.gif")
+		#`basic_katakana'
+		img1 = tk.PhotoImage(file="data/img/basic_katakana.gif")
 		label = tk.Label(table,image=img1)
 		label.grid(column=0,row=0)
 		option1 = tk.IntVar()
-		option1.set(opt_boolean[self.param.val('single_katakana')])
+		option1.set(opt_boolean[self.param.val('basic_katakana')])
 		c = tk.Checkbutton(table,text=str(16),variable=option1)
 		c.grid(column=1,row=0)
 
@@ -262,21 +264,21 @@ class Gui:
 		c = tk.Checkbutton(table,text=str(17),variable=option2)
 		c.grid(column=1,row=1)
 
-		#`combined_katakana'
-		img3 = tk.PhotoImage(file="data/img/combined_katakana.gif")
+		#`contracted_katakana'
+		img3 = tk.PhotoImage(file="data/img/contracted_katakana.gif")
 		label = tk.Label(table,image=img3)
 		label.grid(column=0,row=2)
 		option3 = tk.IntVar()
-		option3.set(opt_boolean[self.param.val('combined_katakana')])
+		option3.set(opt_boolean[self.param.val('contracted_katakana')])
 		c = tk.Checkbutton(table,text=str(18),variable=option3)
 		c.grid(column=1,row=2)
 
-		#`extended_katakana'
-		img4 = tk.PhotoImage(file="data/img/extended_katakana.gif")
+		#`additional_katakana'
+		img4 = tk.PhotoImage(file="data/img/additional_katakana.gif")
 		label = tk.Label(table,image=img4)
 		label.grid(column=0,row=3)
 		option4 = tk.IntVar()
-		option4.set(opt_boolean[self.param.val('extended_katakana')])
+		option4.set(opt_boolean[self.param.val('additional_katakana')])
 		c = tk.Checkbutton(table,text=str(19),variable=option4)
 		c.grid(column=1,row=3)
 
@@ -289,12 +291,12 @@ class Gui:
 		table = tk.Frame(frame2)
 		table.pack(fill="x")
 
-		#`single_hiragana'
-		img5 = tk.PhotoImage(file="data/img/single_hiragana.gif")
+		#`basic_hiragana'
+		img5 = tk.PhotoImage(file="data/img/basic_hiragana.gif")
 		label = tk.Label(table,image=img5)
 		label.grid(column=0,row=0)
 		option5 = tk.IntVar()
-		option5.set(opt_boolean[self.param.val('single_hiragana')])
+		option5.set(opt_boolean[self.param.val('basic_hiragana')])
 		c = tk.Checkbutton(table,text=str(16),variable=option5)
 		c.grid(column=1,row=0)
 
@@ -307,12 +309,12 @@ class Gui:
 		c = tk.Checkbutton(table,text=str(17),variable=option6)
 		c.grid(column=1,row=1)
 
-		#`combined_hiragana'
-		img7 = tk.PhotoImage(file="data/img/combined_hiragana.gif")
+		#`contracted_hiragana'
+		img7 = tk.PhotoImage(file="data/img/contracted_hiragana.gif")
 		label = tk.Label(table,image=img7)
 		label.grid(column=0,row=2)
 		option7 = tk.IntVar()
-		option7.set(opt_boolean[self.param.val('combined_hiragana')])
+		option7.set(opt_boolean[self.param.val('contracted_hiragana')])
 		c = tk.Checkbutton(table,text=str(18),variable=option7)
 		c.grid(column=1,row=2)
 

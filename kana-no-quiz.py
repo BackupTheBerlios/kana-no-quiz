@@ -18,12 +18,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 import sys
-from os import chdir, environ
+from os import path, chdir, environ
 
 VERSION = "1.0"
 
 #Change working directory to Kana no quiz's.
-chdir(sys.path[0])
+chdir(path.abspath(sys.path[0]))
 
 sys.path.append("data/py/")
 import options
