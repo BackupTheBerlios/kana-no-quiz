@@ -27,7 +27,7 @@ class Gui:
 		self.window = gtk.Window()
 		self.kanaEngine =  kanaengine.KanaEngine()
 		self.score = score.Score()
-		self.dialogState = {"about":0}
+		self.dialogState = {"about":0,"kanaPartPopup":0}
 
 		#Localization.
 		self.i18n = i18n.I18n()
@@ -85,28 +85,24 @@ class Gui:
 		#Here comes the marvelous introduction...
 		self.window.set_title(str(1)) #Change title of window.
 		box = gtk.VBox(spacing=5)
-	
-		label = gtk.Label("Two different writing systems are commonly used by Japaneses: <b>Kanji</b> &amp; <b>Kana</b>.")
+
+		label = gtk.Label(str(5))
 		label.set_line_wrap(gtk.TRUE)
 		box.pack_start(label)
-		label.set_use_markup(gtk.TRUE)
 
-		label = gtk.Label("Kanji are complex ideograms retranscribing words whereas Kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using Kana.")
+		label = gtk.Label(str(6))
 		label.set_line_wrap(gtk.TRUE)
-		label.set_use_markup(gtk.TRUE)
 		box.pack_start(label)
 
-		label = gtk.Label("There are two kinds of Kana: <b>Hiragana</b> &amp; <b>Katakana</b>. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary mostly used to write proper nouns and words of foreign origin.")
+		label = gtk.Label(str(7))
 		label.set_line_wrap(gtk.TRUE)
-		label.set_use_markup(gtk.TRUE)
 		box.pack_start(label)
 
-		label = gtk.Label("<b>Kana no quiz</b> help you to memorize Kana and their associated roman transcription (<b>Hepburn</b> system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of Kana at a time.")
+		label = gtk.Label(str(8))
 		label.set_line_wrap(gtk.TRUE)
-		label.set_use_markup(gtk.TRUE)
 		box.pack_start(label)
 
-		label = gtk.Label("Have a good practice !")
+		label = gtk.Label(str(9))
 		box.pack_start(label)
 
 		button = gtk.Button(stock=gtk.STOCK_OK)
@@ -122,34 +118,41 @@ class Gui:
 	def quiz(self,oldbox):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana(
+			(self.param.val('basic_hiragana'),
+			self.param.val('modified_hiragana'),
+			self.param.val('contracted_hiragana'),
 			self.param.val('basic_katakana'),
 			self.param.val('modified_katakana'),
 			self.param.val('contracted_katakana'),
-			self.param.val('additional_katakana'),
-			self.param.val('basic_hiragana'),
-			self.param.val('modified_hiragana'),
-			self.param.val('contracted_hiragana'))
+			self.param.val('additional_katakana')),
+			(self.param.val('basic_hiragana_part'),
+			self.param.val('modified_hiragana_part'),
+			self.param.val('contracted_hiragana_part'),
+			self.param.val('basic_katakana_part'),
+			self.param.val('modified_katakana_part'),
+			self.param.val('contracted_katakana_part'),
+			self.param.val('additional_katakana_part')))
 
 		if self.kana:
 			box = gtk.HBox(spacing=4)
-	
+
 			#Display kana image.
 			self.kanaImage = gtk.Image()
 			self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana))
 			box.pack_start(self.kanaImage,gtk.FALSE)
-	
+
 			box2 = gtk.VBox(spacing=4)
-	
-			self.quizLabel = gtk.Label((str(5),str(6))[self.kanaEngine.getKanaKind()])
+
+			self.quizLabel = gtk.Label((str(11),str(12))[self.kanaEngine.getKanaKind()])
 			self.quizLabel.set_justify(gtk.JUSTIFY_CENTER)
 			self.quizLabel.set_line_wrap(gtk.TRUE)
 			box2.pack_start(self.quizLabel)
-	
+
 			#The arrow.
 			arrow = gtk.Arrow(gtk.ARROW_RIGHT,gtk.SHADOW_IN)
 			self.nextButton = gtk.Button()
 			self.nextButton.add(arrow)
-	
+
 			if self.param.val('answer_mode')=="list":
 				#Choice buttons generation.
 				self.answerButt = {}; i=0
@@ -166,21 +169,21 @@ class Gui:
 				self.answerButt.set_width_chars(3)
 				box2.pack_start(self.answerButt)
 				self.handlerid = self.nextButton.connect("clicked",self.checkAnswer)
-	
+
 			box2.pack_start(self.nextButton)
 			box.pack_end(box2)
-	
+
 			#Forget the old box
 			self.window.remove(oldbox)
 			#Then add the new one
 			self.window.add(box)
 			self.window.show_all()
-	
+
 			if self.param.val('answer_mode')=="list": self.nextButton.hide() #Hide the arrow.
 
 		else:	
-			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(48))
-			dialog.set_title(str(47))
+			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(63))
+			dialog.set_title(str(62))
 			dialog.connect('response', lambda dialog, response: dialog.destroy())
 			dialog.show()
 
@@ -194,10 +197,10 @@ class Gui:
 		else: answer = self.answerButt.get_text().lower()
 
 		if answer==self.kana: 
-			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" % str(7))
+			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" % str(13))
 			self.score.update(1) #Update the score (add 1 point).
 		else:
-			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" % (str(8),str(9) % "<b>%s</b>" % self.kana.upper()))
+			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" % (str(14),str(15) % "<b>%s</b>" % self.kana.upper()))
 			self.score.update() #Update the score.
 		self.quizLabel.set_use_markup(gtk.TRUE)
 
@@ -217,17 +220,24 @@ class Gui:
 	def newQuestion(self,widget):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana(
+			(self.param.val('basic_hiragana'),
+			self.param.val('modified_hiragana'),
+			self.param.val('contracted_hiragana'),
 			self.param.val('basic_katakana'),
 			self.param.val('modified_katakana'),
 			self.param.val('contracted_katakana'),
-			self.param.val('additional_katakana'),
-			self.param.val('basic_hiragana'),
-			self.param.val('modified_hiragana'),
-			self.param.val('contracted_hiragana'))
+			self.param.val('additional_katakana')),
+			(self.param.val('basic_hiragana_part'),
+			self.param.val('modified_hiragana_part'),
+			self.param.val('contracted_hiragana_part'),
+			self.param.val('basic_katakana_part'),
+			self.param.val('modified_katakana_part'),
+			self.param.val('contracted_katakana_part'),
+			self.param.val('additional_katakana_part'))) 
 
 		self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana)) #Update kana's image
 
-		self.quizLabel.set_text((str(5),str(6))[self.kanaEngine.getKanaKind()])
+		self.quizLabel.set_text((str(11),str(12))[self.kanaEngine.getKanaKind()])
 
 		if self.param.val('answer_mode')=="list":
 			self.nextButton.hide() #Hide the arrow.
@@ -243,10 +253,10 @@ class Gui:
 			self.answerButt.show()
 			self.nextButton.disconnect(self.handlerid)
 			self.handlerid = self.nextButton.connect("clicked",self.checkAnswer)
-	
+
 	def results(self,data):
 		#Display results.
-		self.quizLabel.set_text("<big>%s</big>\n\n%s\n%s\n%s" % (str(10),str(11) % self.score.getResults()[0],str(12) % self.score.getResults()[1],str(13) % self.score.getResults()[2]))
+		self.quizLabel.set_text("<big>%s</big>\n\n%s\n%s\n%s" % (str(16),str(17) % self.score.getResults()[0],str(18) % self.score.getResults()[1],str(19) % self.score.getResults()[2]))
 		self.quizLabel.set_use_markup(gtk.TRUE)
 
 		self.score.reset() #Reset the score.
@@ -260,42 +270,109 @@ class Gui:
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
-		opt_list_size = {0:'2',1:'3',2:'4','2':0,'3':1,'4':2}
 		opt_length = {0:'short',1:'normal',2:'long','short':0,'normal':1,'long':2}
 		opt_lang = {0:'en',1:'fr',2: 'pt_BR',3:'sv','en':0,'fr':1,'pt_BR':2,'sv':3}
+
+		#Values for kana part params.
+		kanaParts = [
+			self.param.val('basic_hiragana_part'),
+			self.param.val('modified_hiragana_part'),
+			self.param.val('contracted_hiragana_part'),
+			self.param.val('basic_katakana_part'),
+			self.param.val('modified_katakana_part'),
+			self.param.val('contracted_katakana_part'),
+			self.param.val('additional_katakana_part')]
 
 		def callback(widget,special=None):
 			if special=="save":
 				#Update the configuration.
 				self.param.write({
 				'basic_hiragana':opt_boolean[option1.get_active()],
+				'basic_hiragana_part':kanaParts[0],
 				'modified_hiragana':opt_boolean[option2.get_active()],
+				'modified_hiragana_part':kanaParts[1],
 				'contracted_hiragana':opt_boolean[option3.get_active()],
+				'contracted_hiragana_part':kanaParts[2],
 				'basic_katakana':opt_boolean[option4.get_active()],
+				'basic_katakana_part':kanaParts[3],
 				'modified_katakana':opt_boolean[option5.get_active()],
+				'modified_katakana_part':kanaParts[4],
 				'contracted_katakana':opt_boolean[option6.get_active()],
+				'contracted_katakana_part':kanaParts[5],
 				'additional_katakana':opt_boolean[option7.get_active()],
+				'additional_katakana_part':kanaParts[6],
 				'answer_mode':opt_answer_mode[option8.get_history()],
-				'list_size':opt_list_size[option9.get_history()],
+				'list_size':option9.get_history()+2,
 				'length':opt_length[option10.get_history()],
 				'lang':opt_lang[option11.get_history()]
 				})
-			self.main(box) #Go back to the "main".
+			self.main(box) #Go back to the ``main".
 
 		def parts_popup(widget,kanaset):
-			label = gtk.Label(str(22))	
+			self.temp_value = kanaParts[kanaset] #Temporary variable.
+
+			def newValue(widget,value): self.temp_value = value #Update the emporary variable value.
+			def validedChanges(widget,*args): kanaParts[kanaset] = self.temp_value; dialog.destroy()
+
+			if not self.dialogState["kanaPartPopup"]:
+				self.dialogState["kanaPartPopup"] = 1
+
+				dialog = gtk.Dialog(str(28+kanaset),self.window)
+				dialog.connect("destroy",self.destroy,"kanaPartPopup")
+				dialog.vbox.set_spacing(3)				
+
+				label = gtk.Label(str(35))
+				label.set_line_wrap(gtk.TRUE)
+				dialog.vbox.pack_start(label)
+
+				label = gtk.Label(str(36))
+				label.set_line_wrap(gtk.TRUE)
+				dialog.vbox.pack_start(label)
+
+				if kanaset==0 or kanaset==3: set = self.kanaEngine.kana_sets[0]
+				elif kanaset==1 or kanaset==4: set = self.kanaEngine.kana_sets[1]
+				elif kanaset==2 or kanaset==5: set = self.kanaEngine.kana_sets[2]
+				else: set = self.kanaEngine.kana_sets[3]
+
+				table = gtk.Table(2,abs(len(set)/2+1))
+				dialog.vbox.pack_start(table)
+
+				radio = gtk.RadioButton(None,str(37))
+				radio.connect("toggled",newValue,0)
+				table.attach(radio,0,1,0,1)
+
+				i,j,k = 1,1,0
+				for part in set:
+					string = ""
+					for kana in part: string += "%s " % kana.upper()
+					radio = gtk.RadioButton(radio,string[:-1])
+					radio.connect("toggled",newValue,i)
+					if kanaParts[kanaset]==i: radio.set_active(gtk.TRUE)
+					if j: table.attach(radio,1,2,k,k+1); j=0; k+=1
+					else: table.attach(radio,0,1,k,k+1); j=1
+					i+=1
+
+				#Buttons at bottom..
+				button = gtk.Button(stock=gtk.STOCK_OK)
+				button.connect("clicked",validedChanges)
+				dialog.action_area.pack_end(button)
+				button = gtk.Button(stock=gtk.STOCK_CANCEL)
+				button.connect_object("clicked",self.destroy,dialog)
+				dialog.action_area.pack_end(button)
+
+				dialog.show_all()
 
 		self.window.set_title(str(2)) #Change title of window.
 		box = gtk.VBox(spacing=3)
 
-		label = gtk.Label(str(14))
+		label = gtk.Label(str(20))
 		box.pack_start(label,gtk.FALSE)
 		box2 = gtk.HBox()
 		box.pack_start(box2)
 		box3 = gtk.VBox()
 		box2.pack_start(box3)
 
-		frame = gtk.Frame(str(15))
+		frame = gtk.Frame(str(21))
 		box3.pack_start(frame)
 		table = gtk.Table(3,3)
 		table.set_row_spacings(2)
@@ -306,22 +383,24 @@ class Gui:
 		image = gtk.Image()
 		image.set_from_file("data/img/basic_hiragana.gif")
 		table.attach(image,0,1,0,1)
-		option1 = gtk.CheckButton(str(17))
+		option1 = gtk.CheckButton(str(23))
 		option1.set_active(opt_boolean[self.param.val('basic_hiragana')])
 		table.attach(option1,1,2,0,1)
-		button = gtk.Button(str(21))
+		button = gtk.Button(str(27))
+		button.connect("clicked",parts_popup,0)
 		button.set_sensitive(option1.get_active())
 		option1.connect("toggled",lambda *args: args[1].set_sensitive(option1.get_active()),button)
 		table.attach(button,2,3,0,1)
-		
+
 		#`modified_hiragana'
 		image = gtk.Image()
 		image.set_from_file("data/img/modified_hiragana.gif")
 		table.attach(image,0,1,1,2)
-		option2 = gtk.CheckButton(str(18))
+		option2 = gtk.CheckButton(str(24))
 		option2.set_active(opt_boolean[self.param.val('modified_hiragana')])
 		table.attach(option2,1,2,1,2)
-		button = gtk.Button(str(21))
+		button = gtk.Button(str(27))
+		button.connect("clicked",parts_popup,1)
 		button.set_sensitive(option2.get_active())
 		option2.connect("toggled",lambda *args: args[1].set_sensitive(option2.get_active()),button)
 		table.attach(button,2,3,1,2)
@@ -330,15 +409,16 @@ class Gui:
 		image = gtk.Image()
 		image.set_from_file("data/img/contracted_hiragana.gif")
 		table.attach(image,0,1,2,3)
-		option3 = gtk.CheckButton(str(19))
+		option3 = gtk.CheckButton(str(25))
 		option3.set_active(opt_boolean[self.param.val('contracted_hiragana')])
 		table.attach(option3,1,2,2,3)
-		button = gtk.Button(str(21))
+		button = gtk.Button(str(27))
+		button.connect("clicked",parts_popup,2)
 		button.set_sensitive(option3.get_active())
 		option3.connect("toggled",lambda *args: args[1].set_sensitive(option3.get_active()),button)
 		table.attach(button,2,3,2,3)
 
-		frame = gtk.Frame(str(16))
+		frame = gtk.Frame(str(22))
 		box3.pack_start(frame)
 		table = gtk.Table(3,4)
 		table.set_row_spacings(2)
@@ -349,22 +429,24 @@ class Gui:
 		image = gtk.Image()
 		image.set_from_file("data/img/basic_katakana.gif")
 		table.attach(image,0,1,0,1)
-		option4 = gtk.CheckButton(str(17))
+		option4 = gtk.CheckButton(str(23))
 		option4.set_active(opt_boolean[self.param.val('basic_katakana')])
 		table.attach(option4,1,2,0,1)
-		button = gtk.Button(str(21))
+		button = gtk.Button(str(27))
+		button.connect("clicked",parts_popup,3)
 		button.set_sensitive(option4.get_active())
 		option4.connect("toggled",lambda *args: args[1].set_sensitive(option4.get_active()),button)
 		table.attach(button,2,3,0,1)
-		
+
 		#`modified_katakana'
 		image = gtk.Image()
 		image.set_from_file("data/img/modified_katakana.gif")
 		table.attach(image,0,1,1,2)
-		option5 = gtk.CheckButton(str(18))
+		option5 = gtk.CheckButton(str(24))
 		option5.set_active(opt_boolean[self.param.val('modified_katakana')])
 		table.attach(option5,1,2,1,2)
-		button = gtk.Button(str(21))
+		button = gtk.Button(str(27))
+		button.connect("clicked",parts_popup,4)
 		button.set_sensitive(option5.get_active())
 		option5.connect("toggled",lambda *args: args[1].set_sensitive(option5.get_active()),button)
 		table.attach(button,2,3,1,2)
@@ -373,10 +455,11 @@ class Gui:
 		image = gtk.Image()
 		image.set_from_file("data/img/contracted_katakana.gif")
 		table.attach(image,0,1,2,3)
-		option6 = gtk.CheckButton(str(19))
+		option6 = gtk.CheckButton(str(25))
 		option6.set_active(opt_boolean[self.param.val('contracted_katakana')])
 		table.attach(option6,1,2,2,3)
-		button = gtk.Button(str(21))
+		button = gtk.Button(str(27))
+		button.connect("clicked",parts_popup,5)
 		button.set_sensitive(option6.get_active())
 		option6.connect("toggled",lambda *args: args[1].set_sensitive(option6.get_active()),button)
 		table.attach(button,2,3,2,3)
@@ -385,10 +468,11 @@ class Gui:
 		image = gtk.Image()
 		image.set_from_file("data/img/additional_katakana.gif")
 		table.attach(image,0,1,3,4)
-		option7 = gtk.CheckButton(str(20))
+		option7 = gtk.CheckButton(str(26))
 		option7.set_active(opt_boolean[self.param.val('additional_katakana')])
 		table.attach(option7,1,2,3,4)
-		button = gtk.Button(str(21))
+		button = gtk.Button(str(27))
+		button.connect("clicked",parts_popup,6)
 		button.set_sensitive(option7.get_active())
 		option7.connect("toggled",lambda *args: args[1].set_sensitive(option7.get_active()),button)
 		table.attach(button,2,3,3,4)
@@ -398,10 +482,10 @@ class Gui:
 		box2.pack_start(table)
 
 		#`answer_mode'
-		label = gtk.Label(str(23))
+		label = gtk.Label(str(38))
 		table.attach(label,0,1,0,1)
 		menu = gtk.Menu()
-		for val in (str(24),str(25)):
+		for val in (str(39),str(40)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option8 = gtk.OptionMenu()
@@ -410,22 +494,22 @@ class Gui:
 		table.attach(option8,0,1,1,2)
 
 		#`list_size'
-		label = gtk.Label(str(26))
+		label = gtk.Label(str(41))
 		table.attach(label,0,1,2,3)
 		menu = gtk.Menu()
-		for val in (str(27),str(28),str(29)):
+		for val in (str(42),str(43),str(44)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option9 = gtk.OptionMenu()
 		option9.set_menu(menu)
-		option9.set_history(opt_list_size[self.param.val('list_size')])
+		option9.set_history(self.param.val('list_size')-2)
 		table.attach(option9,0,1,3,4)
 
 		#`length'
-		label = gtk.Label(str(30))
+		label = gtk.Label(str(45))
 		table.attach(label,0,1,4,5)
 		menu = gtk.Menu()
-		for val in (str(31),str(32),str(33)):
+		for val in (str(46),str(47),str(48)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option10 = gtk.OptionMenu()
@@ -434,10 +518,10 @@ class Gui:
 		table.attach(option10,0,1,5,6)
 
 		#`lang'
-		label = gtk.Label(str(34))
+		label = gtk.Label(str(49))
 		table.attach(label,0,1,6,7)
 		menu = gtk.Menu()
-		for val in (str(35),str(36),str(37),str(38)):
+		for val in (str(50),str(51),str(52),str(53)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option11 = gtk.OptionMenu()
@@ -453,7 +537,7 @@ class Gui:
 		button = gtk.Button(stock=gtk.STOCK_CANCEL)
 		button.connect("clicked",callback)
 		box2.pack_start(button)
-		box.pack_end(box2,gtk.FALSE)
+		box.pack_end(box2)
 
 		#Remove the old box then add the new one.
 		self.window.remove(oldbox)
@@ -466,30 +550,30 @@ class Gui:
 		if not self.dialogState["about"]:
 			self.dialogState["about"] = 1
 
-			dialog = gtk.Dialog(str(4),flags=gtk.DIALOG_NO_SEPARATOR)
+			dialog = gtk.Dialog(str(4),self.window,gtk.DIALOG_NO_SEPARATOR)
 			dialog.connect("destroy",self.destroy,"about")
 
 			#Border and spacing...
 			dialog.set_border_width(5)
 			dialog.vbox.set_spacing(5)
 
-			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(41),str(42) % self.version))
+			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(56),str(57) % self.version))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			label.set_use_markup(gtk.TRUE)
 			dialog.vbox.pack_start(label)
 
-			label = gtk.Label(str(43))
+			label = gtk.Label(str(58))
 			label.set_line_wrap(gtk.TRUE)
 			dialog.vbox.pack_start(label)
 
-			frame = gtk.Frame(str(44))
+			frame = gtk.Frame(str(59))
 			box = gtk.HBox()
 
 			logo = gtk.Image()
 			logo.set_from_file("data/img/chprod.png")
 			box.pack_start(logo,gtk.FALSE)
 
-			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(45))
+			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(60))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			box.pack_start(label)
 
@@ -509,4 +593,3 @@ class Gui:
 
 	def quit(self,widget):
 		gtk.main_quit() #Bye~~
-

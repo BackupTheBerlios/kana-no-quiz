@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
-# This is Tkinter interface, mainly designed for windows user.
+# This is the Tkinter interface, mainly designed for Windows user.
 
 import Tkinter as tk
 import tkMessageBox
@@ -40,7 +40,6 @@ class Gui:
 		str = self.i18n.str
 
 		#Initial window attributes.
-		
 		self.window.resizable(0,0)
 
 	def main(self,event=None):
@@ -75,18 +74,47 @@ class Gui:
 		self.window.mainloop()
 
 	def intro(self):
-		pass
+		def goBack():
+			self.window.slaves()[0].destroy()
+			self.main()
+
+		self.window.slaves()[0].destroy()
+		self.window.title(str(1)) #Change title of the window.
+
+		frame = tk.Frame(self.window)
+		frame.pack(padx=2,pady=2)
+
+		label = tk.Label(frame,text=str(5),wraplength=420)
+		label.pack(side="top")
+		label = tk.Label(frame,text=str(6),wraplength=420)
+		label.pack(side="top")
+		label = tk.Label(frame,text=str(7),wraplength=420)
+		label.pack(side="top")
+		label = tk.Label(frame,text=str(8),wraplength=420)
+		label.pack(side="top")
+		label = tk.Label(frame,text=str(9),wraplength=420)
+		label.pack(side="top")
+
+		button = tk.Button(frame,text=str(10),command=goBack)
+		button.pack(side="top",fill="both",expand=1)
 
 	def quiz(self):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana(
+			(self.param.val('basic_hiragana'),
+			self.param.val('modified_hiragana'),
+			self.param.val('contracted_hiragana'),
 			self.param.val('basic_katakana'),
 			self.param.val('modified_katakana'),
 			self.param.val('contracted_katakana'),
-			self.param.val('additional_katakana'),
-			self.param.val('basic_hiragana'),
-			self.param.val('modified_hiragana'),
-			self.param.val('contracted_hiragana'))
+			self.param.val('additional_katakana')),
+			(self.param.val('basic_hiragana_part'),
+			self.param.val('modified_hiragana_part'),
+			self.param.val('contracted_hiragana_part'),
+			self.param.val('basic_katakana_part'),
+			self.param.val('modified_katakana_part'),
+			self.param.val('contracted_katakana_part'),
+			self.param.val('additional_katakana_part')))
 
 		if self.kana:
 			self.window.slaves()[0].destroy()
@@ -101,7 +129,7 @@ class Gui:
 			frame2 = tk.Frame(frame)
 			frame2.pack(padx=6,side="right",fill="both")
 
-			self.quizLabel = tk.Label(frame2,text=(str(5),str(6))[self.kanaEngine.getKanaKind()],wraplength=120,width=18)
+			self.quizLabel = tk.Label(frame2,text=(str(11),str(12))[self.kanaEngine.getKanaKind()],wraplength=120,width=18)
 			self.quizLabel.pack(pady=3,fill="both",expand=1)
 
 			#The arrow.
@@ -123,7 +151,7 @@ class Gui:
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
 
-		else:	tkMessageBox.showwarning(str(47),str(48))
+		else:	tkMessageBox.showwarning(str(62),str(63))
 
 	def checkAnswer(self,event=None):
 		"""Check the given answer, update the score
@@ -135,11 +163,11 @@ class Gui:
 		else: answer = self.answerButt.get().lower()
 
 		if answer==self.kana:
-			self.quizLabel["text"] = str(6)
+			self.quizLabel["text"] = str(13)
 			self.quizLabel["fg"] = "darkgreen"
 			self.score.update(1) #Update the score (add 1 point).
 		else:
-			self.quizLabel["text"] = "%s\n%s" % (str(8), str(9) % self.kana.upper())
+			self.quizLabel["text"] = "%s\n%s" % (str(14), str(15) % self.kana.upper())
 			self.quizLabel["fg"] = "red"
 			self.score.update() #Update the score.
 
@@ -157,17 +185,24 @@ class Gui:
 	def newQuestion(self):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana(
+			(self.param.val('basic_hiragana'),
+			self.param.val('modified_hiragana'),
+			self.param.val('contracted_hiragana'),
 			self.param.val('basic_katakana'),
 			self.param.val('modified_katakana'),
 			self.param.val('contracted_katakana'),
-			self.param.val('additional_katakana'),
-			self.param.val('basic_hiragana'),
-			self.param.val('modified_hiragana'),
-			self.param.val('contracted_hiragana'))
+			self.param.val('additional_katakana')),
+			(self.param.val('basic_hiragana_part'),
+			self.param.val('modified_hiragana_part'),
+			self.param.val('contracted_hiragana_part'),
+			self.param.val('basic_katakana_part'),
+			self.param.val('modified_katakana_part'),
+			self.param.val('contracted_katakana_part'),
+			self.param.val('additional_katakana_part'))) 
 
 		self.image["file"] = "data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana) #Update kana's image.
 
-		self.quizLabel["text"] = (str(5),str(6))[self.kanaEngine.getKanaKind()]
+		self.quizLabel["text"] = (str(11),str(12))[self.kanaEngine.getKanaKind()]
 		self.quizLabel["fg"] = "black"
 
 		if self.param.val('answer_mode')=="list":
@@ -192,7 +227,7 @@ class Gui:
 			self.main()
 
 		#Display results.
-		self.quizLabel["text"] = ("%s\n\n%s\n%s\n%s" % (str(10),str(11) % self.score.getResults()[0],str(12) % self.score.getResults()[1],str(13) % self.score.getResults()[2]))
+		self.quizLabel["text"] = ("%s\n\n%s\n%s\n%s" % (str(16),str(17) % self.score.getResults()[0],str(18) % self.score.getResults()[1],str(19) % self.score.getResults()[2]))
 		self.quizLabel["fg"] = "black"
 
 		self.nextButton["command"] = goBack
@@ -202,20 +237,34 @@ class Gui:
 	def options(self):
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
-		opt_answer_mode = {str(21):'list',str(22):'entry','list':str(21),'entry':str(22)}
-		opt_list_size = {str(24):'2',str(25):'3',str(26):'4','2':str(24),'3':str(25),'4':str(26)}
-		opt_length = {str(28):'short',str(29):'normal',str(30):'long','short':str(28),'normal':str(29),'long':str(30)}
-		opt_lang = {str(32):'en',str(33):'fr',str(34):'pt_BR',str(35):'sv','en':str(32),'fr':str(33),'pt_BR':str(34),'sv':str(35)}
+		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
+		opt_list_size = {str(42):2,str(43):3,str(44):4,2:str(42),3:str(43),4:str(44)}
+		opt_length = {str(46):'short',str(47):'normal',str(48):'long','short':str(46),'normal':str(47),'long':str(48)}
+		opt_lang = {str(50):'en',str(51):'fr',str(52):'pt_BR',str(53):'sv','en':str(50),'fr':str(51),'pt_BR':str(52),'sv':str(53)}
+
+		#Values for kana part params.
+		kanaParts = [
+			self.param.val('basic_hiragana_part'),
+			self.param.val('modified_hiragana_part'),
+			self.param.val('contracted_hiragana_part'),
+			self.param.val('basic_katakana_part'),
+			self.param.val('modified_katakana_part'),
+			self.param.val('contracted_katakana_part'),
+			self.param.val('additional_katakana_part')]
+
+		def goBack():
+			self.window.slaves()[0].destroy()
+			self.main()
 
 		def save():
 			self.param.write({
-			'basic_katakana':opt_boolean[option1.get()],
-			'modified_katakana':opt_boolean[option2.get()],
-			'contracted_katakana':opt_boolean[option3.get()],
-			'additional_katakana':opt_boolean[option4.get()],
-			'basic_hiragana':opt_boolean[option5.get()],
-			'modified_hiragana':opt_boolean[option6.get()],
-			'contracted_hiragana':opt_boolean[option7.get()],
+			'basic_hiragana':opt_boolean[option1.get()],
+			'modified_hiragana':opt_boolean[option2.get()],
+			'contracted_hiragana':opt_boolean[option3.get()],
+			'basic_katakana':opt_boolean[option4.get()],
+			'modified_katakana':opt_boolean[option5.get()],
+			'contracted_katakana':opt_boolean[option6.get()],
+			'additional_katakana':opt_boolean[option7.get()],
 			'answer_mode':opt_answer_mode[option8.get().encode('utf8')],
 			'list_size':opt_list_size[option9.get().encode('utf8')],
 			'length':opt_length[option10.get().encode('utf8')],
@@ -223,17 +272,13 @@ class Gui:
 			})
 			goBack() #Then, go back!
 
-		def goBack():
-			self.window.slaves()[0].destroy()
-			self.main()
-
 		self.window.slaves()[0].destroy()
 		self.window.title(str(2)) #Change title of window.
 
 		frame = tk.Frame(self.window)
 		frame.pack(padx=2,pady=2)
 
-		label = tk.Label(frame,text=str(13))
+		label = tk.Label(frame,text=str(20))
 		label.pack()
 
 		option_frame = tk.Frame(frame)
@@ -245,7 +290,7 @@ class Gui:
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
 		frame2.pack(fill="both",expand=1)
 
-		label = tk.Label(frame2,text=str(15),justify="left",anchor="w")
+		label = tk.Label(frame2,text=str(21),justify="left",anchor="w")
 		label.pack()
 
 		table = tk.Frame(frame2)
@@ -255,33 +300,33 @@ class Gui:
 		img5 = tk.PhotoImage(file="data/img/basic_hiragana.gif")
 		label = tk.Label(table,image=img5)
 		label.grid(column=0,row=0)
-		option5 = tk.IntVar()
-		option5.set(opt_boolean[self.param.val('basic_hiragana')])
-		c = tk.Checkbutton(table,text=str(16),variable=option5)
+		option1 = tk.IntVar()
+		option1.set(opt_boolean[self.param.val('basic_hiragana')])
+		c = tk.Checkbutton(table,text=str(23),variable=option1)
 		c.grid(column=1,row=0,sticky='W')
 
 		#`modified_hiragana'
 		img6 = tk.PhotoImage(file="data/img/modified_hiragana.gif")
 		label = tk.Label(table,image=img6)
 		label.grid(column=0,row=1)
-		option6 = tk.IntVar()
-		option6.set(opt_boolean[self.param.val('modified_hiragana')])
-		c = tk.Checkbutton(table,text=str(17),variable=option6)
+		option2 = tk.IntVar()
+		option2.set(opt_boolean[self.param.val('modified_hiragana')])
+		c = tk.Checkbutton(table,text=str(24),variable=option2)
 		c.grid(column=1,row=1,sticky='W')
 
 		#`contracted_hiragana'
 		img7 = tk.PhotoImage(file="data/img/contracted_hiragana.gif")
 		label = tk.Label(table,image=img7)
 		label.grid(column=0,row=2)
-		option7 = tk.IntVar()
-		option7.set(opt_boolean[self.param.val('contracted_hiragana')])
-		c = tk.Checkbutton(table,text=str(18),variable=option7)
+		option3 = tk.IntVar()
+		option3.set(opt_boolean[self.param.val('contracted_hiragana')])
+		c = tk.Checkbutton(table,text=str(25),variable=option3)
 		c.grid(column=1,row=2,sticky='W')
 
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
 		frame2.pack(fill="both",expand=1)
 
-		label = tk.Label(frame2,text=str(14),justify="left",anchor="w")
+		label = tk.Label(frame2,text=str(22),justify="left",anchor="w")
 		label.pack()
 
 		table = tk.Frame(frame2)
@@ -291,79 +336,79 @@ class Gui:
 		img1 = tk.PhotoImage(file="data/img/basic_katakana.gif")
 		label = tk.Label(table,image=img1)
 		label.grid(column=0,row=0)
-		option1 = tk.IntVar()
-		option1.set(opt_boolean[self.param.val('basic_katakana')])
-		c = tk.Checkbutton(table,text=str(16),variable=option1)
+		option4 = tk.IntVar()
+		option4.set(opt_boolean[self.param.val('basic_katakana')])
+		c = tk.Checkbutton(table,text=str(23),variable=option4)
 		c.grid(column=1,row=0,sticky='W')
 
 		#`modified_katakana'
 		img2 = tk.PhotoImage(file="data/img/modified_katakana.gif")
 		label = tk.Label(table,image=img2)
 		label.grid(column=0,row=1)
-		option2 = tk.IntVar()
-		option2.set(opt_boolean[self.param.val('modified_katakana')])
-		c = tk.Checkbutton(table,text=str(17),variable=option2)
+		option5 = tk.IntVar()
+		option5.set(opt_boolean[self.param.val('modified_katakana')])
+		c = tk.Checkbutton(table,text=str(24),variable=option5)
 		c.grid(column=1,row=1,sticky='W')
 
 		#`contracted_katakana'
 		img3 = tk.PhotoImage(file="data/img/contracted_katakana.gif")
 		label = tk.Label(table,image=img3)
 		label.grid(column=0,row=2)
-		option3 = tk.IntVar()
-		option3.set(opt_boolean[self.param.val('contracted_katakana')])
-		c = tk.Checkbutton(table,text=str(18),variable=option3)
+		option6 = tk.IntVar()
+		option6.set(opt_boolean[self.param.val('contracted_katakana')])
+		c = tk.Checkbutton(table,text=str(25),variable=option6)
 		c.grid(column=1,row=2,sticky='W')
 
 		#`additional_katakana'
 		img4 = tk.PhotoImage(file="data/img/additional_katakana.gif")
 		label = tk.Label(table,image=img4)
 		label.grid(column=0,row=3)
-		option4 = tk.IntVar()
-		option4.set(opt_boolean[self.param.val('additional_katakana')])
-		c = tk.Checkbutton(table,text=str(19),variable=option4)
+		option7 = tk.IntVar()
+		option7.set(opt_boolean[self.param.val('additional_katakana')])
+		c = tk.Checkbutton(table,text=str(26),variable=option7)
 		c.grid(column=1,row=3,sticky='W')
 
 		right_frame = tk.Frame(option_frame)
 		right_frame.pack(fill="both",expand=1,pady=6,padx=6)
 
 		#`answer_mode'
-		label = tk.Label(right_frame,text=str(20))
+		label = tk.Label(right_frame,text=str(38))
 		label.pack(fill="both",expand=1)
 		option8 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option8,str(21),str(22))
+		o = tk.OptionMenu(right_frame,option8,str(39),str(40))
 		option8.set(opt_answer_mode[self.param.val('answer_mode')])
 		o.pack(fill="both",expand=1)
 
 		#`list_size'
-		label = tk.Label(right_frame,text=str(23))
+		label = tk.Label(right_frame,text=str(41))
 		label.pack(fill="both",expand=1)
 		option9 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option9,str(24),str(25),str(26))
+		o = tk.OptionMenu(right_frame,option9,str(42),str(43),str(44))
 		option9.set(opt_list_size[self.param.val('list_size')])
 		o.pack(fill="both",expand=1)
 
 		#`length'
-		label = tk.Label(right_frame,text=str(27))
+		label = tk.Label(right_frame,text=str(45))
 		label.pack(fill="both",expand=1)
 		option10 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option10,str(28),str(29),str(30))
+		o = tk.OptionMenu(right_frame,option10,str(46),str(47),str(48))
 		option10.set(opt_length[self.param.val('length')])
 		o.pack(fill="both",expand=1)
 
 		#`lang'
-		label = tk.Label(right_frame,text=str(31))
+		label = tk.Label(right_frame,text=str(49))
 		label.pack(fill="both",expand=1)
 		option11 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option11,str(32),str(33),str(34),str(35))
+		o = tk.OptionMenu(right_frame,option11,str(50),str(51),str(52),str(53))
 		option11.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 
 		#Buttons at bottom...
 		frame2 = tk.Frame(frame)
 		frame2.pack(fill="both")
-		button = tk.Button(frame2,text=str(36),command=save)
+		button = tk.Button(frame2,text=str(54),command=save)
 		button.pack(side="left",fill="both",expand=1)
-		button = tk.Button(frame2,text=str(37),command=goBack)
+		button = tk.Button(frame2,text=str(55),command=goBack)
 		button.pack(side="right",fill="both",expand=1)
 
 		self.window.mainloop() #Without that images aren't displayed! O_o;
@@ -385,27 +430,27 @@ class Gui:
 			frame = tk.Frame(dialog)
 			frame.pack(padx=4,pady=4)
 
-			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(38),str(39) % self.version),fg="#008")
+			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(56),str(57) % self.version),fg="#008")
 			label.pack()
 
-			label = tk.Label(frame,text=str(40),wraplength=320,justify="left")
+			label = tk.Label(frame,text=str(58),wraplength=320,justify="left")
 			label.pack()
 
 			frame2 = tk.Frame(frame,relief="ridge",borderwidth=1)
 			frame2.pack(expand=1,fill="both",pady=4)
 
-			label = tk.Label(frame2,text=str(41),justify="left",anchor="w")
+			label = tk.Label(frame2,text=str(59),justify="left",anchor="w")
 			label.pack(fill="x")
 
 			img = tk.PhotoImage(file="data/img/chprod.gif")
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")
 
-			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(42))
+			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(60))
 			label.pack(side="left",expand=1,fill="x")
 
 			#Button at bottom..
-			button = tk.Button(frame,text=str(43),command=close)
+			button = tk.Button(frame,text=str(61),command=close)
 			button.pack(side="right")
 
 			self.window.wait_window(dialog)

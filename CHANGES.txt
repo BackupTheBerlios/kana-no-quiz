@@ -4,9 +4,13 @@
 
 * Version 1.1 (2004-08-XX):
 
-- Doing the quiz the same kana now won't appear twice in a row.  
-- A new ``Introduction" window which briefly introduce the Kana
-writing system and what this program is aimed to. 
+- Doing the quiz, the same kana now won't appear twice in
+a row any more. :p
+- A new ``Introduction" window which briefly introduce the
+Kana writing system and what this program is aimed to.
+- You can now choose to get trained only upon a portion of
+kana rather than the full kana set, it may be helpful for
+the beginers! ^_^;
 
 
 * Version 1.0 (2004-07-29):

@@ -43,47 +43,62 @@ class I18n:
 			_("Options"),
 			_("Start the quiz"),
 			_("About"),
-			_("What is this katakana?"), #5
+			_("Two different writing systems are commonly used by Japaneses: Kanji & Kana."), #5
+			_("Kanji are complex ideograms retranscribing words whereas Kana are simple symbols used as syllabes which have to be combined to make words. Any word in Japanese can be written using Kana, it is like an alphabet."),
+			_("There are two kinds of Kana: Hiragana & Katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary with more sounds mostly used to write proper nouns and words of foreign origin."),
+			_("Kana no quiz help you to memorize Kana and their associated roman transcription (using the Hepburn system). For more simplicity, syllabes have been splited in multiple sets, and you can even choose to learn only a portion of Kana at a time."),
+			_("Have a good practice ! ^_^"),
+			_("OK"), #10
+			_("What is this katakana?"),
 			_("What is this hiragana?"),
 			_("Right! ^^"),
 			_("Wrong!"),
-			_("The answer was %s."),
-			_("Quiz results"), #10
+			_("The answer was %s."), #15
+			_("Quiz results"),
 			_("Question total: %i."),
 			_("Good answers: %i."),
 			_("Success rate: %i%%."),
-			_("Here you can modify some quiz options."),
-			_("Hiragana question sets"), #15
+			_("Here you can modify some quiz options."), #20
+			_("Hiragana question sets"),
 			_("Katakana question sets"),
 			_("Basic"),
 			_("Modified"),
-			_("Contracted"),
-			_("Additional"), #20
+			_("Contracted"), #25
+			_("Additional"),
 			_("Parts"),
-			_("---"),
+			_("Basic hiragana parts"),
+			_("Modified hiragana parts"),
+			_("Contracted hiragana parts"), #30
+			_("Basic katakana parts"),
+			_("Modified katakana parts"),
+			_("Contracted katakana parts"),
+			_("Additional katakana parts"),
+			_("If you are novice, it may be interesting at the beginning to train yourself only on some kana instead of the full set."), #35
+			_("Select the kana portion you want to train yourself upon:"),
+			_("All"),
 			_("Answer mode:"),
 			_("A random list"),
-			_("A text entry"), #25
+			_("A text entry"), #40
 			_("Random answer list size:"),
 			_("2 choices"),
 			_("3 choices"),
 			_("4 choices"),
-			_("Length:"),  #30,
+			_("Length:"), #45
 			_("Short (10 questions)"),
 			_("Normal (20 questions)"),
 			_("Long (30 questions)"),
 			_("Language:"),
-			_("English"), #35
+			_("English"), #50
 			_("French"),
 			_("Portuguese (Brazil)"),
 			_("Swedish"),
 			_("Save"),
-			_("Cancel"),  #40
+			_("Cancel"), #55
 			_("Kana no quiz, a kana reminder tool."),
 			_("Version %s."),
 			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."),
 			_("Credits"),
-			_("Code: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."), #45
+			_("Coding: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."), #60
 			_("Close"),
 			_("Warning"),
 			_("You must select at least one question set.")

@@ -25,13 +25,20 @@ class Options:
 
 		#Default options & values.
 		self.params  = {
-		'basic_katakana':'true',
-		'modified_katakana':'false',
-		'contracted_katakana':'false',
-		'additional_katakana':'false',
 		'basic_hiragana':'true',
+		'basic_hiragana_part':0,
 		'modified_hiragana':'false',
+		'modified_hiragana_part':0,
 		'contracted_hiragana':'false',
+		'contracted_hiragana_part':0,
+		'basic_katakana':'true',
+		'basic_katakana_part':0,
+		'modified_katakana':'false',
+		'modified_katakana_part':0,
+		'contracted_katakana':'false',
+		'contracted_katakana_part':0,
+		'additional_katakana':'false',
+		'additional_katakana_part':0,
 		'length':'normal',
 		'answer_mode':'list',
 		'list_size':'3'}
@@ -40,16 +47,23 @@ class Options:
 
 		#Valid values for each option contained as a tuple into a dictionnary.
 		self.validValues = {
-		'basic_katakana':('true','false'),
-		'modified_katakana':('true','false'),
-		'contracted_katakana':('true','false'),
-		'additional_katakana':('true','false'),
 		'basic_hiragana':('true','false'),
+		'basic_hiragana_part':range(10),
 		'modified_hiragana':('true','false'),
+		'modified_hiragana_part':range(5),
 		'contracted_hiragana':('true','false'),
+		'contracted_hiragana_part':range(5),
+		'basic_katakana':('true','false'),
+		'basic_katakana_part':range(10),
+		'modified_katakana':('true','false'),
+		'modified_katakana_part':range(5),
+		'contracted_katakana':('true','false'),
+		'contracted_katakana_part':range(5),
+		'additional_katakana':('true','false'),
+		'additional_katakana_part':range(5),
 		'length':('short','normal','long'),
 		'answer_mode':('list','entry'),
-		'list_size':('2','3','4'),
+		'list_size':(2,3,4),
 		'lang':('en','fr','pt_BR','sv')
 		}
 
@@ -64,7 +78,14 @@ class Options:
 				line.strip()
 				if line[0]!="#" and line!="\n":
 					key,val = split(line)
-					self.check(key.strip(),val.strip())
+					key,val = key.strip(),val.strip()
+					if key in ('basic_hiragana_part','modified_hiragana_part',
+						'contracted_hiragana_part','basic_katakana_part',
+						'modified_katakana_part','contracted_katakana_part',
+						'additional_katakana_part','list_size'): 
+						try: val = int(val)
+						except: pass
+					self.check(key,val)
 	
 	def check(self,key,val):
 		"""Here we check whether the option value, which has been read,
@@ -99,3 +120,4 @@ class Options:
 		file = open(self.path,"wb") #Open (create if doesn't exist)
 		file.write(content) #Write
 		file.close() #And close
+
