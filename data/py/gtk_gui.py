@@ -182,8 +182,8 @@ class Gui:
 			if self.param.val('answer_mode')=="list": self.nextButton.hide() #Hide the arrow.
 
 		else:	
-			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(63))
-			dialog.set_title(str(62))
+			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(61))
+			dialog.set_title(str(60))
 			dialog.connect('response', lambda dialog, response: dialog.destroy())
 			dialog.show()
 

@@ -151,7 +151,7 @@ class Gui:
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
 
-		else:	tkMessageBox.showwarning(str(62),str(63))
+		else:	tkMessageBox.showwarning(str(60),str(61))
 
 	def checkAnswer(self,event=None):
 		"""Check the given answer, update the score
@@ -239,8 +239,7 @@ class Gui:
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
 		opt_list_size = {str(42):2,str(43):3,str(44):4,2:str(42),3:str(43),4:str(44)}
-		opt_length = {str(46):'short',str(47):'normal',str(48):'long','short':str(46),'normal':str(47),'long':str(48)}
-		opt_lang = {str(50):'en',str(51):'fr',str(52):'pt_BR',str(53):'sv','en':str(50),'fr':str(51),'pt_BR':str(52),'sv':str(53)}
+		opt_lang = {str(47):'en',str(48):'fr',str(49):'pt_BR',str(50):'sv','en':str(47),'fr':str(48),'pt_BR':str(49),'sv':str(50)}
 
 		#Values for kana part params.
 		kanaParts = [
@@ -274,7 +273,7 @@ class Gui:
 			'additional_katakana_part':kanaParts[6],
 			'answer_mode':opt_answer_mode[option8.get().encode('utf8')],
 			'list_size':opt_list_size[option9.get().encode('utf8')],
-			'length':opt_length[option10.get().encode('utf8')],
+			'length':int(option10.get()),
 			'lang':opt_lang[option11.get().encode('utf8')]
 			})
 			goBack() #Then, go back!
@@ -467,24 +466,24 @@ class Gui:
 		label = tk.Label(right_frame,text=str(45))
 		label.pack(fill="both",expand=1)
 		option10 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option10,str(46),str(47),str(48))
-		option10.set(opt_length[self.param.val('length')])
+		o = tk.OptionMenu(right_frame,option10,"10","20","30")
+		option10.set(self.param.val('length'))
 		o.pack(fill="both",expand=1)
 
 		#`lang'
-		label = tk.Label(right_frame,text=str(49))
+		label = tk.Label(right_frame,text=str(46))
 		label.pack(fill="both",expand=1)
 		option11 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option11,str(50),str(51),str(52),str(53))
+		o = tk.OptionMenu(right_frame,option11,str(47),str(48),str(49),str(50))
 		option11.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 
 		#Buttons at bottom...
 		frame2 = tk.Frame(frame)
 		frame2.pack(fill="both")
-		button = tk.Button(frame2,text=str(54),command=save)
+		button = tk.Button(frame2,text=str(51),command=save)
 		button.pack(side="left",fill="both",expand=1)
-		button = tk.Button(frame2,text=str(55),command=goBack)
+		button = tk.Button(frame2,text=str(52),command=goBack)
 		button.pack(side="right",fill="both",expand=1)
 
 		self.window.mainloop() #Without that images aren't displayed! O_o;
@@ -506,27 +505,27 @@ class Gui:
 			frame = tk.Frame(dialog)
 			frame.pack(padx=4,pady=4)
 
-			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(56),str(57) % self.version),fg="#008")
+			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(53),str(54) % self.version),fg="#008")
 			label.pack()
 
-			label = tk.Label(frame,text=str(58),wraplength=320,justify="left")
+			label = tk.Label(frame,text=str(55),wraplength=320,justify="left")
 			label.pack()
 
 			frame2 = tk.Frame(frame,relief="ridge",borderwidth=1)
 			frame2.pack(expand=1,fill="both",pady=4)
 
-			label = tk.Label(frame2,text=str(59),justify="left",anchor="w")
+			label = tk.Label(frame2,text=str(56),justify="left",anchor="w")
 			label.pack(fill="x")
 
 			img = tk.PhotoImage(file="data/img/chprod.gif")
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")
 
-			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(60))
+			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(57))
 			label.pack(side="left",expand=1,fill="x")
 
 			#Button at bottom..
-			button = tk.Button(frame,text=str(61),command=close)
+			button = tk.Button(frame,text=str(58),command=close)
 			button.pack(side="right")
 
 			self.window.wait_window(dialog)
