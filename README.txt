@@ -31,7 +31,7 @@ Markus Fellnert & Krister Kjellstrom).
  --------------
 
  The same package works both on GNU/Linux and Windows
- using GTK+ or the Python native GUI: Tkinter. You can force
+using GTK+ or the Python native GUI: Tkinter. You can force
 the use of an interface by passing either`-tk' (for Tkinter) or
 `-gtk' (for GTK+) as an argument. Though there is not much
 difference, the GTK+ interface is more evolved (and nicer !),
