@@ -147,29 +147,24 @@ class KanaEngine:
 			else: self.set_num = possible_sets[0]
 
 			#Selection of the kana part.
-			if not self.parts[self.set_num]:
+			if self.parts[self.set_num]==0:
 				self.part_num = random.choice(range(len(self.used_kana_list[self.set_num])))
-				self.part = self.used_kana_list[self.set_num][self.part_num]
 			else:
 				self.part_num = self.parts[self.set_num]-1
-				self.part = self.used_kana_list[self.set_num][self.part_num]
+			self.part = self.used_kana_list[self.set_num][self.part_num]
 	
-			#We prevent the previous kana of being selected again.
-			if self.no_repeat=="false" and self.previous_kana and (self.previous_kana[0],self.previous_kana[1],self.previous_kana[2])==(self.kind,self.set_num,self.part):
-				self.part.remove(self.previous_kana[3]) #We remove the previous kana from the list.
-
 			#Selection of the kana.
 			self.kana = random.choice(self.part)
-
-			#We now re-append the previous kana to the list.
-			if self.previous_kana: self.part.append(self.previous_kana[3])
+			while self.kana==self.previous_kana:
+				#Prevention of selecting the same kana than previously.
+				self.kana = random.choice(self.part)
 
 			if self.no_repeat=="true":
 				#The no-repeat option is activated, so we remove the kana from the list to prevent future selection.
 				self.used_kana_list[self.set_num][self.part_num].remove(self.kana)
-			else: 
-				#Precisely memorize this kana to prevent it to be selected the next time.
-				self.previous_kana = (self.kind,self.set_num,self.part,self.kana)
+
+			#Precisely memorize this kana to prevent it to be selected the next time.
+			self.previous_kana = self.kana
 
 			return self.kana
 
