@@ -39,7 +39,8 @@ class Options:
 		'contracted_katakana_part':0,
 		'additional_katakana':'false',
 		'additional_katakana_part':0,
-		'length':'normal',
+		'length':20,
+		'kana_no_repeat':'false',
 		'answer_mode':'list',
 		'list_size':3}
 		if locale.getlocale() in ("fr","pt_BR","sv"): self.params['lang'] = locale.getlocale()
@@ -63,6 +64,7 @@ class Options:
 		'additional_katakana_part':range(5),
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4),
+		'kana_no_repeat':('true','false'),
 		'lang':('en','fr','pt_BR','sv')
 		}
 
@@ -81,7 +83,8 @@ class Options:
 					if key in ('basic_hiragana_part','modified_hiragana_part',
 						'contracted_hiragana_part','basic_katakana_part',
 						'modified_katakana_part','contracted_katakana_part',
-						'additional_katakana_part','length','list_size'): 
+						'additional_katakana_part','length','kana_no_repeat',
+						'list_size'): 
 						try: val = int(val)
 						except: pass
 					self.check(key,val)
