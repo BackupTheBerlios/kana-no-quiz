@@ -18,6 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 import gtk
 import kanaengine, score, i18n
+from string import upper
 
 class Gui:
 	def __init__(self,options,ver):
@@ -100,6 +101,11 @@ class Gui:
 			self.quizLabel.set_line_wrap(gtk.TRUE)
 			box2.pack_start(self.quizLabel)
 	
+			#The arrow.
+			arrow = gtk.Arrow(gtk.ARROW_RIGHT,gtk.SHADOW_IN)
+			self.nextButton = gtk.Button()
+			self.nextButton.add(arrow)
+	
 			if self.param.val('answer_mode')=="list":
 				#Choice buttons generation.
 				self.answerButt = {}; i=0
@@ -109,12 +115,14 @@ class Gui:
 					self.answerButt[i].connect("clicked",self.checkAnswer)
 					box2.pack_start(self.answerButt[i])
 					i+=1
-			else: pass #TO DO: implement that function. ^_^
+				self.handlerid = self.nextButton.connect("clicked",self.newQuestion)
+			else: 
+				self.answerButt = gtk.Entry(3)
+				self.answerButt.connect("changed",lambda widget: widget.set_text(upper(widget.get_text())))
+				self.answerButt.set_width_chars(3)
+				box2.pack_start(self.answerButt)
+				self.handlerid = self.nextButton.connect("clicked",self.checkAnswer)
 	
-			arrow = gtk.Arrow(gtk.ARROW_RIGHT,gtk.SHADOW_IN)
-			self.nextButton = gtk.Button()
-			self.nextButton.add(arrow)
-			self.handlerid = self.nextButton.connect("clicked",self.newQuestion)
 			box2.pack_start(self.nextButton)
 			box.pack_end(box2)
 	
@@ -124,7 +132,7 @@ class Gui:
 			self.window.add(box)
 			self.window.show_all()
 	
-			self.nextButton.hide() #Hide the arrow.
+			if self.param.val('answer_mode')=="list": self.nextButton.hide() #Hide the arrow.
 
 		else:	
 			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(44))
@@ -133,12 +141,15 @@ class Gui:
 			dialog.show()
 
 	def checkAnswer(self,widget):
-		"""Check the given answer, display result, and
-		update the score."""
+		"""Check the given answer, update the score
+		and display the result."""
 
 		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
-		
-		if widget.get_label().lower()==self.kana: 
+
+		if self.param.val('answer_mode')=="list": answer = widget.get_label().lower()
+		else: answer = self.answerButt.get_text().lower()
+
+		if answer==self.kana: 
 			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" % str(6))
 			self.score.update(1) #Update the score (add 1 point).
 		else:
@@ -146,8 +157,13 @@ class Gui:
 			self.score.update() #Update the score.
 		self.quizLabel.set_use_markup(gtk.TRUE)
 
-		self.nextButton.show() #Show the arrow.
-		for butt in self.answerButt.values(): butt.hide() #Hide choices buttons.
+		if self.param.val('answer_mode')=="list":
+			for butt in self.answerButt.values(): butt.hide() #Hide choices buttons.
+			self.nextButton.show() #Show the arrow.
+		else:
+			self.answerButt.hide()
+			self.nextButton.disconnect(self.handlerid)
+			self.handlerid = self.nextButton.connect("clicked",self.newQuestion)
 
 		if self.score.isQuizFinished(self.param.val('length')):
 			#The quiz is finished... Let's show results!
@@ -168,15 +184,20 @@ class Gui:
 
 		self.quizLabel.set_text((str(4),str(5))[self.kanaEngine.getKanaKind()])
 
-		self.nextButton.hide() #Hide the arrow.
-
 		if self.param.val('answer_mode')=="list":
+			self.nextButton.hide() #Hide the arrow.
+			#Display the random list.
 			i=0
 			for x in self.kanaEngine.randomAnswers(self.param.val('list_size')):
 				if x[-2:]=="-2": x = x[:-2]
 				self.answerButt[i].set_label(x.upper())
 				self.answerButt[i].show()
 				i+=1
+		else:  #Display the text entry.
+			self.answerButt.set_text("")
+			self.answerButt.show()
+			self.nextButton.disconnect(self.handlerid)
+			self.handlerid = self.nextButton.connect("clicked",self.checkAnswer)
 	
 	def results(self,data):
 		#Display results.
@@ -194,7 +215,7 @@ class Gui:
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_length = {0:'short',1:'normal',2:'long','short':0,'normal':1,'long':2}
-		opt_answer_mode = {0:'list',1:'entry','entry':0,'list':1}
+		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
 		opt_list_size = {0:'2',1:'3',2:'4','2':0,'3':1,'4':2}
 		opt_difficulty = {0:'novice',1:'medium',2:'sensei','novice':0,'medium':1,'sensei':2}
 		opt_lang = {0:'en',1:'fr',2:'sv','en':0,'fr':1,'sv':2}
@@ -209,9 +230,9 @@ class Gui:
 				'single_hiragana':opt_boolean[option4.get_active()],
 				'modified_hiragana':opt_boolean[option5.get_active()],
 				'combined_hiragana':opt_boolean[option6.get_active()],
-				'length':opt_length[option7.get_history()],
-				'answer_mode':opt_answer_mode[option8.get_history()],
-				'list_size':opt_list_size[option9.get_history()],
+				'answer_mode':opt_answer_mode[option7.get_history()],
+				'list_size':opt_list_size[option8.get_history()],
+				'length':opt_length[option9.get_history()],
 				'lang':opt_lang[option10.get_history()]
 				})
 			self.main(box) #Go back to the "main".
