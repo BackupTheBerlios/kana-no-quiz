@@ -20,7 +20,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import sys
 from os import path, chdir, environ
 
-VERSION = "1.1"
+VERSION = "1.2"
 
 #Change working directory to Kana no quiz's.
 chdir(path.abspath(sys.path[0]))
@@ -42,8 +42,9 @@ except: arg = str()
 
 if arg=="-tk": import tkinter_gui as gui
 elif arg=="-gtk": import gtk_gui as gui
-elif sys.platform=="win32": import tkinter_gui as gui
-else: import gtk_gui as gui
+else:
+        try: import gtk_gui as gui
+	except: import tkinter_gui as gui
 
 #Let's go!
 gui = gui.Gui(options,VERSION)
