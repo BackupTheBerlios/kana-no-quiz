@@ -1,15 +1,13 @@
-# translation of kana-no-quiz.po to French
 # Kana no quiz: a kana reminder tool.
 # Copyleft 2004 Choplair-network
 # This file is distributed under the same license as the Kana no quiz package.
-# Pachilor <pachilor@choplair.org>, 2004.
 # Choplair <choplair@fr.st>, 2004
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: kana-no-quiz\n"
+"Project-Id-Version: kana-no-quiz 0.9\n"
 "POT-Creation-Date: 2004-05-25 10:43+0200\n"
-"PO-Revision-Date: 2004-05-25 10:52+0100\n"
+"PO-Revision-Date: 2004-05-30 16:40+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -64,11 +62,11 @@ msgstr "Ici vous pouvez modifier quelques options du quiz."
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:55
 msgid "Katakana question sets"
-msgstr "Jeux de questions Katakana"
+msgstr "Jeux de questions katakana"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:56
 msgid "Hiragana question sets"
-msgstr "Jeux de questions Hiragana"
+msgstr "Jeux de questions hiragana"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:57
 msgid "Single"
@@ -115,6 +113,9 @@ msgstr "Anglais"
 msgid "French"
 msgstr "Français"
 
+msgid "Spanish"
+msgstr "Espagnol"
+
 msgid "Swedish"
 msgstr "Suédois"
 
@@ -145,7 +146,8 @@ msgid ""
 msgstr ""
 "Code : Choplair et Pachilor.\n"
 "Images des kana : Mlle Marie-Claire.\n"
-"Image du logo : Choplair."
+"Image du logo : Choplair.\n"
+"Traduction française : Choplair."
 
 msgid "Close"
 msgstr "Fermer"

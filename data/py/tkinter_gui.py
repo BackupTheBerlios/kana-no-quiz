@@ -109,7 +109,7 @@ class Gui:
 	
 			self.nextButton = tk.Button(frame2,bitmap="@data/img/rarrow.xbm",command=self.newQuestion,pady=4)
 		else:
-			tkMessageBox.showwarning(str(39),str(40))
+			tkMessageBox.showwarning(str(40),str(41))
 
 	def checkAnswer(self,event):
 		"""Check the given answer, display result, and
@@ -175,7 +175,7 @@ class Gui:
 		opt_question_set = {0:'false',1:'true','false':0,'true':1}
 		opt_length = {str(20):'short',str(21):'normal',str(22):'long','short':str(20),'normal':str(21),'long':str(22)}
 		opt_difficulty = {str(24):'novice',str(25):'medium',str(26):'sensei','novice':str(24),'medium':str(25),'sensei':str(26)}
-		opt_lang = {str(28):'en',str(29):'fr',str(30):'sv','en':str(28),'fr':str(29),'sv':str(30)}
+		opt_lang = {str(28):'en',str(29):'fr',str(31):'sv','en':str(28),'fr':str(29),'sv':str(31)}
 
 		def save():
 			self.param.write({
@@ -293,16 +293,16 @@ class Gui:
 		label = tk.Label(frame2,text=str(27))
 		label.grid(column=0,row=3)
 		option9 = tk.StringVar()
-		o = tk.OptionMenu(frame2,option9,str(28),str(29),str(30))
+		o = tk.OptionMenu(frame2,option9,str(28),str(29),str(31))
 		option9.set(opt_lang[self.param.val('lang')])
 		o.grid(column=1,row=3)
 
 		#Buttons at bottom...
 		frame2 = tk.Frame(frame)
 		frame2.pack(fill="both")
-		button = tk.Button(frame2,text=str(31),command=save)
+		button = tk.Button(frame2,text=str(32),command=save)
 		button.pack(side="left",fill="both",expand=1)
-		button = tk.Button(frame2,text=str(32),command=goBack)
+		button = tk.Button(frame2,text=str(33),command=goBack)
 		button.pack(side="right",fill="both",expand=1)
 
 		self.window.mainloop() #Without that images aren't displayed! O_o;
@@ -324,27 +324,27 @@ class Gui:
 			frame = tk.Frame(dialog)
 			frame.pack(padx=4,pady=4)
 
-			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(33),str(34) % self.version),fg="#008")
+			label = tk.Label(frame,text="%s\n%s\nCopyleft 2003, 2004 Choplair-network." % (str(34),str(35) % self.version),fg="#008")
 			label.pack()
 
-			label = tk.Label(frame,text=str(35),wraplength=280,justify="left")
+			label = tk.Label(frame,text=str(36),wraplength=320,justify="left")
 			label.pack()
 
 			frame2 = tk.Frame(frame,relief="ridge",borderwidth=1)
 			frame2.pack(expand=1,fill="both",pady=4)
 
-			label = tk.Label(frame2,text=str(36),justify="left",anchor="w")
+			label = tk.Label(frame2,text=str(37),justify="left",anchor="w")
 			label.pack(fill="x")
 	
 			img = tk.PhotoImage(file="data/img/chprod.gif")
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")
 
-			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(37))
-			label.pack(side="left")
+			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(38))
+			label.pack(side="left",expand=1,fill="x")
 
 			#Button at bottom..
-			button = tk.Button(frame,text=str(38),command=close)
+			button = tk.Button(frame,text=str(39),command=close)
 			button.pack(side="right")
 
 			self.window.wait_window(dialog)

@@ -125,8 +125,8 @@ class Gui:
 			self.nextButton.hide() #Hide the arrow.
 
 		else:	
-			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(40))
-			dialog.set_title(str(39))
+			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(41))
+			dialog.set_title(str(40))
 			dialog.connect('response', lambda dialog, response: dialog.destroy())
 			dialog.show()
 
@@ -307,7 +307,7 @@ class Gui:
 		label = gtk.Label(str(27))
 		table.attach(label,0,1,3,4)
 		menu = gtk.Menu()
-		for val in (str(28),str(29),str(30)):
+		for val in (str(28),str(29),str(31)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option9 = gtk.OptionMenu()
@@ -346,23 +346,23 @@ class Gui:
 			dialog.set_border_width(5)
 			dialog.vbox.set_spacing(5)
 
-			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(33),str(34) % self.version))
+			label = gtk.Label("<span color='#008'><b>%s</b>\n%s\nCopyleft 2003, 2004 Choplair-network.</span>" % (str(34),str(35) % self.version))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			label.set_use_markup(gtk.TRUE)
 			dialog.vbox.pack_start(label)
 
-			label = gtk.Label(str(35))
+			label = gtk.Label(str(36))
 			label.set_line_wrap(gtk.TRUE)
 			dialog.vbox.pack_start(label)
 
-			frame = gtk.Frame(str(36))
+			frame = gtk.Frame(str(37))
 			box = gtk.HBox()
 
 			logo = gtk.Image()
 			logo.set_from_file("data/img/chprod.png")
 			box.pack_start(logo,gtk.FALSE)
 
-			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(37))
+			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(38))
 			label.set_justify(gtk.JUSTIFY_CENTER)
 			box.pack_start(label)
 

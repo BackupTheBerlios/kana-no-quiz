@@ -2,13 +2,14 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 0.9 (2004-05-24):
+* Version 0.9 (2004-05-31):
 
 - New combined hiragana & katakana added.
 - Questions are now divided in several sets (single/modified
 /combined).
 - At least one question set must be selected or a dialog will
 warn you. :p
+- Update of translations.
 
 
 * Version 0.8 (2004-05-08):

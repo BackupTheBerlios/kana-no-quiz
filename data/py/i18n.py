@@ -68,17 +68,18 @@ class I18n:
 			_("Language:"),
 			_("English"),
 			_("French"),
-			_("Swedish"), #30
+			_("Spanish"), #30
+			_("Swedish"),
 			_("Save"),
 			_("Cancel"), 
 			_("Kana no quiz, a kana reminder tool."),
-			_("Version %s."),
-			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."), #35
+			_("Version %s."), #35
+			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."),
 			_("Credits"),
 			_("Code: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."),
 			_("Close"),
-			_("Warning"),
-			_("You must select at least one question set.") #40
+			_("Warning"), #40
+			_("You must select at least one question set.")
 			)
 
 		return string[num]
