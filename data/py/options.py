@@ -23,7 +23,7 @@ class Options:
 	def __init__(self):
 		self.path = "data/options.conf" #Set path to the configuration file.
 
-		#Set default values.
+		#Default options & values.
 		self.params  = {
 		'single_katakana':'true',
 		'modified_katakana':'false',
@@ -32,13 +32,13 @@ class Options:
 		'modified_hiragana':'false',
 		'combined_hiragana':'false',
 		'length':'normal',
-		'difficulty':'medium'}
+		'answer_mode':'list',
+		'list_size':'3'}
 		if locale.getlocale() in ("fr","sv"): self.params['lang'] = locale.getlocale()
 		else: self.params['lang'] = "en"
 
-	def validValues(self):
-		"""Valid values for each option are contained as a tuple into a dictionnary."""
-		return {
+		#Valid values for each option contained as a tuple into a dictionnary.
+		self.validValues = {
 		'single_katakana':('true','false'),
 		'modified_katakana':('true','false'),
 		'combined_katakana':('true','false'),
@@ -46,7 +46,8 @@ class Options:
 		'modified_hiragana':('true','false'),
 		'combined_hiragana':('true','false'),
 		'length':('short','normal','long'),
-		'difficulty':('novice','medium','sensei'),
+		'answer_mode':('list','entry'),
+		'list_size':('2','3','4'),
 		'lang':('en','fr','sv')
 		}
 
@@ -65,16 +66,14 @@ class Options:
 	
 	def check(self,key,val):
 		"""Here we check whether the option value, which has been read,
-		is valid. In that case option value is modified, otherwise we
-		keep default value."""
+		is valid. In that case, the option value is modified. Otherwise, we
+		keep the default value."""
 
-		paramdict = self.validValues()
-	
-		#Do valid values for this option are referenced?
-		if paramdict.has_key(key):
-			if val in paramdict[key]: #The value is valid, so update the params.
+		#Do valid values for this option have been referenced?
+		if self.validValues.has_key(key):
+			if val in self.validValues[key]: #The value is valid, so update the params.
 				self.params[key] = val
-		else:	#Although it seems to be an unknow options, we use it.
+		else:	#We use it, although it seems to be an unknow options.
 			self.params[key] = val
 
 	def val(self,name):
@@ -85,7 +84,7 @@ class Options:
 		#Configuration file header.
 		content = """
 # Kana no quiz configuration file.
-# Look at the source code for more details. ;-)
+# See `data/py/options.py' for more details. ;-)
 
 """
 		#

@@ -21,7 +21,8 @@ import random
 class KanaEngine:
 	def __init__(self):
 		#Kana lists.
-		self.kana_sets = ((
+		self.kana_sets = (
+		( #Single.
 		"a",		"i",		"u",		"e",		"o",
 		"ka",	"ki",	"ku",	"ke",	"ko",
 		"sa",	"shi",	"su",	"se",	"so",
@@ -32,12 +33,14 @@ class KanaEngine:
 		"ya",			"yu",			"yo",
 		"ra",	"ri",	"ru",	"re",	"ro",
 		"wa",							"o-2",
-		"n"), (
+		"n"),
+		( #Modified.
 		"ga",	"gi",	"gu",	"ge",	"go",
 		"za",	"ji",	"zu",	"ze",	"zo",
 		"da",	"ji-2",	"zu-2",	"de",	"do",
 		"ba",	"bi",	"bu",	"be",	"bo",
-		"pa",	"pi",	"pu",	"pe",	"po"),(
+		"pa",	"pi",	"pu",	"pe",	"po"),
+		( #Combined.
 		"kya",			"kyu",			"kyo",
 		"sha",			"shu",			"sho",
 		"cha",			"chu",			"cho",
@@ -46,7 +49,18 @@ class KanaEngine:
 		"gya",			"gyu",			"gyo",
 		"ja",			"ju",			"jo",
 		"bya",			"byu",			"byo",
-		"pya",			"pyu",			"pyo"))
+		"pya",			"pyu",			"pyo"),
+		( #Extended (katakana only).
+								"ye",
+				"wi",			"we",	"wo",
+		"va",	"vi",	"vu",	"ve",	"vo",
+								"she",
+								"je",
+								"che",
+				"ti",	"tu",
+				"di",	"du",
+		"tsa",	"tsi",			"tse",	"tso",
+		"fa",	"fi",	"fyu",	"fe",	"fo"))
 
 	def randomKana(self,*args):
 		if "true" in args:
@@ -59,7 +73,7 @@ class KanaEngine:
 			possible_sets = []
 
 			i = 0
-			for x in (args[0:3],args[3:6])[self.mode]:
+			for x in (args[0:3],args[3:7])[self.mode]:
 				if x=="true": possible_sets.append(self.kana_sets[i])
 				i+=1
 
@@ -78,16 +92,11 @@ class KanaEngine:
 		if self.mode==0: return 0
 		else: return 1
 
-	def randomAnswers(self,difficulty):
-		#Set number of choices according to difficulty level.
-		if difficulty=='novice': number = 2
-		elif difficulty=='medium': number = 3
-		elif difficulty=='sensei': number = 4
-
+	def randomAnswers(self,list_size):
 		templist = list(self.question_set) #Anwsers will be get from this temporary question set.
 		answers = [] #Anwsers' list.
 
-		for x in range(number):
+		for x in range(int(list_size)):
 			if x==0: x = self.kana #Put the right anwser in the list.
 			else: x = random.choice(templist) #Put random wrong anwsers from the kana list.
 
