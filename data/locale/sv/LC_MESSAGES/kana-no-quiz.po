@@ -1,9 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-06-27 21:13+0200\n"
-"PO-Revision-Date: 2004-05-30 16:40+0100\n"
+"PO-Revision-Date: 2004-07-27 10:50+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -113,19 +112,16 @@ msgid "Random answer list size:"
 msgstr ""
 
 #: data/py/i18n.py:65
-#, fuzzy
 msgid "2 choices"
-msgstr "Novis (2 val)"
+msgstr "2 val"
 
 #: data/py/i18n.py:66
-#, fuzzy
 msgid "3 choices"
-msgstr "Medel (3 val)"
+msgstr "3 val"
 
 #: data/py/i18n.py:67
-#, fuzzy
 msgid "4 choices"
-msgstr "Mästare! (4 val)"
+msgstr "4 val"
 
 #: data/py/i18n.py:68
 msgid "Length:"
@@ -155,10 +151,6 @@ msgstr "Engelsk"
 msgid "French"
 msgstr "Fransk"
 
-#: data/py/i18n.py:75
-msgid "Spanish"
-msgstr "Spansk"
-
 #: data/py/i18n.py:76
 msgid "Swedish"
 msgstr "Svensk"
@@ -181,12 +173,8 @@ msgid "Version %s."
 msgstr "Version %s."
 
 #: data/py/i18n.py:81
-msgid ""
-"Kana no quiz is free software released under the GNU GPL license (see `GPL."
-"txt'). Kana images are released under the Free Art license (see `FAL.txt')."
-msgstr ""
-"Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). "
-"Kana bilder är utgivna under Free Art licens (se `FAL.txt')."
+msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr "Kana no quiz är fri mjukvara utgivet under GNU GPL licens (se `GPL.txt'). Kana bilder är utgivna under Free Art licens (se `FAL.txt')."
 
 #: data/py/i18n.py:82
 msgid "Credits"
@@ -209,18 +197,10 @@ msgstr "Stänga"
 
 #: data/py/i18n.py:85
 msgid "Warning"
-msgstr "Fel!"
+msgstr ""
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
 #: data/py/i18n.py:86
 msgid "You must select at least one question set."
 msgstr ""
 
-#~ msgid "Single"
-#~ msgstr "Enkel"
-
-#~ msgid "Combined"
-#~ msgstr "Combinerad"
-
-#~ msgid "Difficulty:"
-#~ msgstr "Svårighetsnivå:"

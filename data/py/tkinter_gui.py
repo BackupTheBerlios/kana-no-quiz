@@ -200,7 +200,7 @@ class Gui:
 		opt_answer_mode = {str(21):'list',str(22):'entry','list':str(21),'entry':str(22)}
 		opt_list_size = {str(24):'2',str(25):'3',str(26):'4','2':str(24),'3':str(25),'4':str(26)}
 		opt_length = {str(28):'short',str(29):'normal',str(30):'long','short':str(28),'normal':str(29),'long':str(30)}
-		opt_lang = {str(32):'en',str(33):'fr',str(35):'sv','en':str(32),'fr':str(33),'sv':str(35)}
+		opt_lang = {str(32):'en',str(33):'fr',str(34):'pt_BR',str(35):'sv','en':str(32),'fr':str(33),'pt_BR':str(34),'sv':str(35)}
 
 		def save():
 			self.param.write({
@@ -349,7 +349,7 @@ class Gui:
 		label = tk.Label(right_frame,text=str(31))
 		label.pack(fill="both",expand=1)
 		option11 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option11,str(32),str(33),str(35))
+		o = tk.OptionMenu(right_frame,option11,str(32),str(33),str(34),str(35))
 		option11.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 

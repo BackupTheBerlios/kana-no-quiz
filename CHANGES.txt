@@ -2,15 +2,19 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.0 (2004-06-XX):
+* Version 1.0 (2004-07-27):
 
 - Addition of the ``additional" katakana question set which
-contains syllabes for foreign words. Sets are now: ``Basic"
-(formaly ``Single"), ``Modified", ``Contracted" (formaly
-``Combined") & ``Additional" (for katakana only).
-- The answers can now be given through a text entry rather
-than selected from a list. It's harder! ^^;
+contains syllabes used for foreign words.
+The sets are now: ``Basic" (formerly ``Single"), ``Modified",
+``Contracted" (formerly ``Combined") & ``Additional" (for
+katakana only). In other words: *ALL* kana have been (normally ;)
+implemented into Kana no quiz. ^_^
+- The answers can now be typed directly through a text entry
+rather than selected from a list. It's harder! ^^;
 - The option panel has been slighty redesigned.
+- Program translation into Portuguese of Brazil. Unfortunately,
+the Sweedish translation haven't been updated. :(
 
 
 * Version 0.9 (2004-05-31):

@@ -220,7 +220,7 @@ class Gui:
 		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
 		opt_list_size = {0:'2',1:'3',2:'4','2':0,'3':1,'4':2}
 		opt_length = {0:'short',1:'normal',2:'long','short':0,'normal':1,'long':2}
-		opt_lang = {0:'en',1:'fr',2:'sv','en':0,'fr':1,'sv':2}
+		opt_lang = {0:'en',1:'fr',2: 'pt_BR',3:'sv','en':0,'fr':1,'pt_BR':2,'sv':3}
 
 		def callback(widget,special=None):
 			if special=="save":
@@ -364,7 +364,7 @@ class Gui:
 		label = gtk.Label(str(31))
 		table.attach(label,0,1,6,7)
 		menu = gtk.Menu()
-		for val in (str(32),str(33),str(35)):
+		for val in (str(32),str(33),str(34),str(35)):
 			item = gtk.MenuItem(val)
 			menu.append(item)
 		option11 = gtk.OptionMenu()

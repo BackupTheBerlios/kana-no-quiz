@@ -1,31 +1,39 @@
 
  Kana no quiz - README
- version 1.0 - 2004-06-XX
+ version 1.0 - 2004-07-27
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
  ============
 
- This is ``Kana no quiz", a little tool, written in Python,
-to memorize Japanese kana (hiragana & katakana).
+ This is ``Kana no quiz", a little tool, written in Python, to
+memorize Japanese kana (hiragana & katakana). The full list
+of kana is implemented. The romanization system used by
+this software is the Hepburn's.
 
-The method is quite simple: kana appear randomly and you
-have to find their romaji transcription (Hepburn). There are
-several possibilities, but only one anwser is right!
+ How does it work ?
+ ------------------
+
+ The method is quite simple: a kana appear randomly and you
+have to find its romaji transcription; either by choosing the
+good answer from a random list containing several possibilities
+or by directly typing the answer through a text entry. This
+second way is more complicated.
 
  I18n
  ----
 
- Kana no quiz is currently translated into English, French
-and Swedish (thanks to Markus Fellnert).
+ Kana no quiz is currently translated into English, French,
+Portuguese of Brazil (by Matheus Villela) and Swedish (by
+Markus Fellnert).
 
  Cross platform
  --------------
 
  The same package works both on GNU/Linux (using GTK+) and
 Windows (using the Python native GUI: Tkinter). You can force
-an interface by passing the `-tk' (for Tkinter) or `-gtk' (for
-GTK+) argument.
+the use of an interface by passing either`-tk' (for Tkinter) or
+`-gtk' (for GTK+) as an argument.
 
  GIF choice
  ----------

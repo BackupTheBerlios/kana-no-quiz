@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz 0.9\n"
 "POT-Creation-Date: 2004-06-27 21:13+0200\n"
-"PO-Revision-Date: 2004-06-27 21:24+0100\n"
+"PO-Revision-Date: 2004-07-27 10:48+0100\n"
 "Last-Translator: Choplair <chopinou@choplair.org>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -158,8 +158,8 @@ msgid "French"
 msgstr "Français"
 
 #: data/py/i18n.py:75
-msgid "Spanish"
-msgstr "Espagnol"
+msgid "Portuguese (Brazil)"
+msgstr "Portugais (Brésil)"
 
 #: data/py/i18n.py:76
 msgid "Swedish"

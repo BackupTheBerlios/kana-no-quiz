@@ -72,7 +72,7 @@ class I18n:
 			_("Language:"),
 			_("English"),
 			_("French"),
-			_("Spanish"),
+			_("Portuguese (Brazil)"),
 			_("Swedish"), #35
 			_("Save"),
 			_("Cancel"), 

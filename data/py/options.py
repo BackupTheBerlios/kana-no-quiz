@@ -35,7 +35,7 @@ class Options:
 		'length':'normal',
 		'answer_mode':'list',
 		'list_size':'3'}
-		if locale.getlocale() in ("fr","sv"): self.params['lang'] = locale.getlocale()
+		if locale.getlocale() in ("fr","pt_BR","sv"): self.params['lang'] = locale.getlocale()
 		else: self.params['lang'] = "en"
 
 		#Valid values for each option contained as a tuple into a dictionnary.
@@ -50,7 +50,7 @@ class Options:
 		'length':('short','normal','long'),
 		'answer_mode':('list','entry'),
 		'list_size':('2','3','4'),
-		'lang':('en','fr','sv')
+		'lang':('en','fr','pt_BR','sv')
 		}
 
 	def read(self):
