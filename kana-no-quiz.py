@@ -43,7 +43,7 @@ except: arg = str()
 if arg=="-tk": import tkinter_gui as gui
 elif arg=="-gtk": import gtk_gui as gui
 else:
-        try: 	import gtk_gui as gui
+	try: 	import gtk_gui as gui
 	except: import tkinter_gui as gui
 
 #Let's go!
