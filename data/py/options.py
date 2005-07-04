@@ -1,6 +1,6 @@
 """
 Kana no quiz!
-Copyleft 2003, 2004 Choplair-network.
+Copyleft 2003, 2004, 2005 Choplair-network.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -43,7 +43,7 @@ class Options:
 		'kana_no_repeat':'false',
 		'answer_mode':'list',
 		'list_size':3}
-		if locale.getlocale() in ("fr","pt_BR","sv"): self.params['lang'] = locale.getlocale()
+		if locale.getlocale() in ("fr","pt_BR","sr","sv"): self.params['lang'] = locale.getlocale()
 		else: self.params['lang'] = "en"
 
 		#Valid values for each option contained as a tuple into a dictionnary.
@@ -65,7 +65,7 @@ class Options:
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4),
 		'kana_no_repeat':('true','false'),
-		'lang':('en','fr','pt_BR','sv')
+		'lang':('en','fr','pt_BR','sr','sv')
 		}
 
 	def read(self):

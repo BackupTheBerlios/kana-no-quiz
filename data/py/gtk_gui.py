@@ -40,6 +40,7 @@ class Gui:
 		self.window.set_title(str(0))
 		self.window.connect("destroy",self.quit)
 		self.window.set_border_width(5)
+		gtk.window_set_default_icon_from_file("data/img/icon.png")
 
 	def main(self,oldbox=None):
 		if self.currentlang!=self.param.val('lang'):
@@ -57,7 +58,7 @@ class Gui:
 
 		image = gtk.Image()
 		image.set_from_file("data/img/logo.gif")
-		box.pack_start(image,gtk.FALSE)
+		box.pack_start(image,False)
 
 		box2 = gtk.VBox()
 		button = gtk.Button(str(1))
@@ -87,19 +88,19 @@ class Gui:
 		box = gtk.VBox(spacing=5)
 
 		label = gtk.Label(str(5))
-		label.set_line_wrap(gtk.TRUE)
+		label.set_line_wrap(True)
 		box.pack_start(label)
 
 		label = gtk.Label(str(6))
-		label.set_line_wrap(gtk.TRUE)
+		label.set_line_wrap(True)
 		box.pack_start(label)
 
 		label = gtk.Label(str(7))
-		label.set_line_wrap(gtk.TRUE)
+		label.set_line_wrap(True)
 		box.pack_start(label)
 
 		label = gtk.Label(str(8))
-		label.set_line_wrap(gtk.TRUE)
+		label.set_line_wrap(True)
 		box.pack_start(label)
 
 		label = gtk.Label(str(9))
@@ -140,13 +141,13 @@ class Gui:
 			#Display kana image.
 			self.kanaImage = gtk.Image()
 			self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana))
-			box.pack_start(self.kanaImage,gtk.FALSE)
+			box.pack_start(self.kanaImage,False)
 
 			box2 = gtk.VBox(spacing=4)
 
 			self.quizLabel = gtk.Label((str(11),str(12))[self.kanaEngine.getKanaKind()])
 			self.quizLabel.set_justify(gtk.JUSTIFY_CENTER)
-			self.quizLabel.set_line_wrap(gtk.TRUE)
+			self.quizLabel.set_line_wrap(True)
 			box2.pack_start(self.quizLabel)
 
 			#The arrow.
@@ -203,7 +204,7 @@ class Gui:
 		else:
 			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" % (str(14),str(15) % "<b>%s</b>" % self.kana.upper()))
 			self.score.update() #Update the score.
-		self.quizLabel.set_use_markup(gtk.TRUE)
+		self.quizLabel.set_use_markup(True)
 
 		if self.param.val('answer_mode')=="list":
 			for butt in self.answerButt.values(): butt.hide() #Hide choices buttons.
@@ -259,12 +260,12 @@ class Gui:
 	def results(self,data):
 		#Display results.
 		self.quizLabel.set_text("<big>%s</big>\n\n%s\n%s\n%s" % (str(16),str(17) % self.score.getResults()[0],str(18) % self.score.getResults()[1],str(19) % self.score.getResults()[2]))
-		self.quizLabel.set_use_markup(gtk.TRUE)
+		self.quizLabel.set_use_markup(True)
 
 		self.score.reset() #Reset the score.
 		self.kanaImage.hide() #Hide kana image.
 
-		#Connect the arrow to the "main".
+		#Connect the arrow to the ``main".
 		self.nextButton.disconnect(self.handlerid)
 		self.nextButton.connect_object("clicked",self.main,self.window.get_child())
 
@@ -302,11 +303,11 @@ class Gui:
 				'contracted_katakana_part':kanaParts[5],
 				'additional_katakana':opt_boolean[option7.get_active()],
 				'additional_katakana_part':kanaParts[6],
-				'answer_mode':opt_answer_mode[option8.get_history()],
-				'list_size':option9.get_history()+2,
+				'answer_mode':opt_answer_mode[option8.get_active()],
+				'list_size':option9.get_active()+2,
 				'length':int(option10.get_value()),
 				'kana_no_repeat':opt_boolean[option11.get_active()],
-				'lang':opt_lang[option12.get_history()]
+				'lang':opt_lang[option12.get_active()]
 				})
 			self.main(box) #Go back to the ``main".
 
@@ -323,13 +324,13 @@ class Gui:
 				dialog.vbox.set_spacing(3)				
 
 				label = gtk.Label(str(35))
-				label.set_line_wrap(gtk.TRUE)
+				label.set_line_wrap(True)
 				dialog.vbox.pack_start(label)
 
 				set = self.kanaEngine.getASet(kanaset)
 
 				label = gtk.Label(str(36))
-				label.set_line_wrap(gtk.TRUE)
+				label.set_line_wrap(True)
 				dialog.vbox.pack_start(label)
 				table = gtk.Table(2,abs(len(set)/2+1))
 				dialog.vbox.pack_start(table)
@@ -344,7 +345,7 @@ class Gui:
 					for kana in part: string += "%s " % kana.upper()
 					radio = gtk.RadioButton(radio,string[:-1])
 					radio.connect("toggled",newValue,i)
-					if kanaParts[kanaset]==i: radio.set_active(gtk.TRUE)
+					if kanaParts[kanaset]==i: radio.set_active(True)
 					if j: table.attach(radio,1,2,k,k+1); j=0; k+=1
 					else: table.attach(radio,0,1,k,k+1); j=1
 					i+=1
@@ -363,7 +364,7 @@ class Gui:
 		box = gtk.VBox(spacing=3)
 
 		label = gtk.Label(str(20))
-		box.pack_start(label,gtk.FALSE)
+		box.pack_start(label,False)
 		box2 = gtk.HBox()
 		box.pack_start(box2)
 		box3 = gtk.VBox()
@@ -481,26 +482,28 @@ class Gui:
 		#`answer_mode'
 		label = gtk.Label(str(38))
 		table.attach(label,0,1,0,1)
-		menu = gtk.Menu()
+		option8 = gtk.combo_box_new_text()
 		for val in (str(39),str(40)):
-			item = gtk.MenuItem(val)
-			menu.append(item)
-		option8 = gtk.OptionMenu()
-		option8.set_menu(menu)
-		option8.set_history(opt_answer_mode[self.param.val('answer_mode')])
+			option8.append_text(val)
+		option8.set_active(opt_answer_mode[self.param.val('answer_mode')])
 		table.attach(option8,0,1,1,2)
 
 		#`list_size'
 		label = gtk.Label(str(41))
 		table.attach(label,0,1,2,3)
-		menu = gtk.Menu()
+		option9 = gtk.combo_box_new_text()
 		for val in (str(42),str(43),str(44)):
-			item = gtk.MenuItem(val)
-			menu.append(item)
-		option9 = gtk.OptionMenu()
-		option9.set_menu(menu)
-		option9.set_history(self.param.val('list_size')-2)
+			option9.append_text(val)
+		option9.set_active(self.param.val('list_size')-2)
 		table.attach(option9,0,1,3,4)
+
+		#Bouyaka!
+		def bouyaka(widget,targets):
+			"""Set list size widgets sensitive state according
+			to answer mode widget selected param."""
+			for x in targets: x.set_sensitive(not widget.get_active())
+		bouyaka(option8,(label,option9))
+		option8.connect("changed",bouyaka,(label,option9))
 
 		#`length'
 		box3 = gtk.HBox()
@@ -519,13 +522,10 @@ class Gui:
 		#`lang'
 		label = gtk.Label(str(47))
 		table.attach(label,0,1,6,7)
-		menu = gtk.Menu()
+		option12 = gtk.combo_box_new_text()
 		for val in (str(48),str(49),str(50),str(62),str(51)):
-			item = gtk.MenuItem(val)
-			menu.append(item)
-		option12 = gtk.OptionMenu()
-		option12.set_menu(menu)
-		option12.set_history(opt_lang[self.param.val('lang')])
+			option12.append_text(val)
+		option12.set_active(opt_lang[self.param.val('lang')])
 		table.attach(option12,0,1,7,8)
 
 		#Buttons at bottom...
@@ -554,15 +554,17 @@ class Gui:
 
 			#Border and spacing...
 			dialog.set_border_width(5)
-			dialog.vbox.set_spacing(5)
+			dialog.vbox.set_spacing(4)
 
-			label = gtk.Label("<span color='#008'><b>%s</b>\n%s (GTK+)\nCopyleft 2003, 2004, 2005 Choplair-network.</span>" % (str(54),str(55) % self.version))
+			label = gtk.Label("<span color='#008'><b>%s</b>\n%s (GTK+)</span>" % (str(54),str(55) % self.version))
 			label.set_justify(gtk.JUSTIFY_CENTER)
-			label.set_use_markup(gtk.TRUE)
+			label.set_use_markup(True)
 			dialog.vbox.pack_start(label)
 
+			label = gtk.Label("Copyleft 2003, 2004, 2005 Choplair-network.")
+			dialog.vbox.pack_start(label)
 			label = gtk.Label(str(56))
-			label.set_line_wrap(gtk.TRUE)
+			label.set_line_wrap(True)
 			dialog.vbox.pack_start(label)
 
 			frame = gtk.Frame(str(57))
@@ -570,11 +572,18 @@ class Gui:
 
 			logo = gtk.Image()
 			logo.set_from_file("data/img/chprod.png")
-			box.pack_start(logo,gtk.FALSE)
+			box.pack_start(logo,False)
 
-			label = gtk.Label("%s\n\nhttp://www.choplair.org/" % str(58))
+			box2 = gtk.VBox(spacing=4)
+			box2.set_border_width(4)
+			label = gtk.Label(str(58))
 			label.set_justify(gtk.JUSTIFY_CENTER)
-			box.pack_start(label)
+			label.set_line_wrap(True)
+			box2.pack_start(label)
+			label = gtk.Label("<i>http://www.choplair.org/</i>")
+			label.set_use_markup(True)
+			box2.pack_start(label)
+			box.pack_end(box2)
 
 			frame.add(box)
 			dialog.vbox.pack_start(frame)

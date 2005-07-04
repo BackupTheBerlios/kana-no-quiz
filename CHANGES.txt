@@ -2,6 +2,13 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Version 1.4 (2005-XX-XX):
+
+- Some improvement on the GTK+ interface, and replacement of
+the depracted widgets.
+- Addition of a marvellous icon (GTK+)!
+
+
 * Version 1.2d (2005-03-17):
 
 - Addition of a Serbian translation.
@@ -20,7 +27,7 @@ Now the ``kana engine" should be clean ! :-D
 list mode, of getting the rigth answer appearing twice in
 the list.
 - The interface type used by Kana no quiz is now indicated
-in the ``About" window (in case that you don't see ! ^^).
+in the ``About" window (in case that you don't see! ^^).
 
 
 * Version 1.2 (2005-01-23):
