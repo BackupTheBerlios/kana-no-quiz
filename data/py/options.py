@@ -26,19 +26,20 @@ class Options:
 		#Default options & values.
 		self.params  = {
 		'basic_hiragana':'true',
-		'basic_hiragana_part':0,
+		'basic_hiragana_portions':(1,1,1,1,1,1,1,1,1),
 		'modified_hiragana':'false',
-		'modified_hiragana_part':0,
+		'modified_hiragana_portions':(1,1,1,1,1),
 		'contracted_hiragana':'false',
-		'contracted_hiragana_part':0,
+		'contracted_hiragana_portions':(1,1,1,1,1),
 		'basic_katakana':'true',
-		'basic_katakana_part':0,
+		'basic_katakana_portions':(1,1,1,1,1,1,1,1,1),
 		'modified_katakana':'false',
-		'modified_katakana_part':0,
+		'modified_katakana_portions':(1,1,1,1,1),
 		'contracted_katakana':'false',
-		'contracted_katakana_part':0,
+		'contracted_katakana_portions':(1,1,1,1,1),
 		'additional_katakana':'false',
-		'additional_katakana_part':0,
+		'additional_katakana_portions':(1,1,1,1,1),
+		'romanization_system':'hepburn',
 		'length':20,
 		'kana_no_repeat':'false',
 		'answer_mode':'list',
@@ -49,19 +50,13 @@ class Options:
 		#Valid values for each option contained as a tuple into a dictionnary.
 		self.validValues = {
 		'basic_hiragana':('true','false'),
-		'basic_hiragana_part':range(10),
 		'modified_hiragana':('true','false'),
-		'modified_hiragana_part':range(5),
 		'contracted_hiragana':('true','false'),
-		'contracted_hiragana_part':range(5),
 		'basic_katakana':('true','false'),
-		'basic_katakana_part':range(10),
 		'modified_katakana':('true','false'),
-		'modified_katakana_part':range(5),
 		'contracted_katakana':('true','false'),
-		'contracted_katakana_part':range(5),
 		'additional_katakana':('true','false'),
-		'additional_katakana_part':range(5),
+		'romanization_system':("hepburn","kunrei","nihon"),
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4),
 		'kana_no_repeat':('true','false'),
@@ -71,22 +66,22 @@ class Options:
 	def read(self):
 		#Check whether the option file exists...
 		if os.path.isfile(self.path):
-			file = open(self.path,"r") #Open
+			file = open(self.path,"r") #Open.
 			content = file.readlines() #Read the content.
-			file.close() #And close :p
+			file.close() #And close. :p
 
 			for line in content:
 				line.strip()
 				if line[0]!="#" and line!="\n":
-					key,val = split(line)
+					key,val = split(line)[:2]
 					key,val = key.strip(),val.strip()
-					if key in ('basic_hiragana_part','modified_hiragana_part',
-						'contracted_hiragana_part','basic_katakana_part',
-						'modified_katakana_part','contracted_katakana_part',
-						'additional_katakana_part','length','kana_no_repeat',
-						'list_size'): 
-						try: val = int(val)
-						except: pass
+
+					#String to integrer list convertion (kana portions).
+					if key[-8:]=="portions":
+						plop = list()
+						for x in val.split(","): plop.append(int(x))
+						val = plop
+
 					self.check(key,val)
 	
 	def check(self,key,val):
@@ -98,7 +93,7 @@ class Options:
 		if self.validValues.has_key(key):
 			if val in self.validValues[key]: #The value is valid, so update the params.
 				self.params[key] = val
-		else:	#We use it, although it seems to be an unknow options.
+		else:	#We use it, although it seems to be an unknow option.
 			self.params[key] = val
 
 	def val(self,name):
@@ -107,16 +102,24 @@ class Options:
 
 	def write(self,paramdict):
 		#Configuration file header.
-		content = """
-# Kana no quiz configuration file.
-# See `data/py/options.py' for more details. ;-)
+		content = "# Kana no quiz configuration file.\n\
+# See `data/py/options.py' for more details. ;-)\n"
 
-"""
 		#
 		# Use of the amazing WAGLAMOT (tm) technology!
 		#
 		for key,val in paramdict.items():
-			content += "%s %s\n" % (key,val) #Add to the output file content.
+			#The param values written to the configuration files may slightly differ from their interal format.
+			#So there is a second variable just for configuration file output.
+			written_val = val
+
+			#List to string convertion (kana portions).
+			if key[-8:]=="portions": 
+				string = str()
+				for x in written_val: string += "%s," % x
+				written_val = string[:-1]
+
+			content += "%s %s\n" % (key,written_val) #Add to the output file content.
 			self.params[key] = val #Update param dictionnary value.
 
 		file = open(self.path,"wb") #Open (create if doesn't exist)

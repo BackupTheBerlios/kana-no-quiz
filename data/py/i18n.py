@@ -1,6 +1,6 @@
 """
 Kana no quiz!
-Copyleft 2003, 2004 Choplair-network.
+Copyleft 2003, 2004, 2005 Choplair-network.
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -74,33 +74,35 @@ class I18n:
 			_("Contracted katakana parts"),
 			_("Additional katakana parts"),
 			_("If you are novice, it may be interesting at the beginning to train yourself only on some kana instead of the full set."), #35
-			_("Select the kana portion you want to train yourself upon:"),
-			_("All"),
+			_("Select the kana portions you want to train yourself upon:"),
+			_("Select all"),
 			_("Answer mode:"),
 			_("A random list"),
 			_("A text entry"), #40
 			_("Random answer list size:"),
-			_("2 choices"),
-			_("3 choices"),
-			_("4 choices"),
-			_("Length:"), #45
+			_("%s choices"),
+			_("Length:"),
 			_("Don't repeat the same kana\n(as much as possible)."),
-			_("Language:"),
+			_("Language:"), #45
 			_("English"),
 			_("French"),
-			_("Portuguese (Brazil)"), #50
-			_("Swedish"),
+			_("Portuguese (Brazil)"),
+			_("Serbian"),
+			_("Swedish"), #50
 			_("Save"),
 			_("Cancel"),
 			_("Kana no quiz, a kana reminder tool."),
-			_("Version %s."), #55
-			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."),
+			_("Version %s."),
+			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."),   #55
 			_("Credits"),
 			_("Coding: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."),
 			_("Close"),
-			_("Warning"), #60
-			_("You must select at least one question set."),
-			_("Serbian")
+			_("Warning"),
+			_("You must select at least one question set."),  #60
+			_("Romanization system:"),
+			_("Hepburn (recommended)"),
+			_("Kunrei-shiki"),
+			_("Nihon-shiki")
 			)
 
 		return string[num]

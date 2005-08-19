@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 Kana no quiz!
-Copyleft 2003, 2004 2005 Choplair-network.
+Copyleft 2003, 2004, 2005 Choplair-network.
 $id: $
 
 This program is free software; you can redistribute it and/or
