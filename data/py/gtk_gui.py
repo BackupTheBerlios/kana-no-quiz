@@ -186,7 +186,6 @@ class Gui:
 
 		else:	
 			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(60))
-			dialog.set_title(str(59))
 			dialog.connect('response', lambda dialog, response: dialog.destroy())
 			dialog.show()
 
@@ -319,14 +318,35 @@ class Gui:
 			def newValue(widget,num): temp_list[num] = (0,1)[widget.get_active()] #Update the emporary variable value.
 			def selectAll(widget): 
 				for x in widget.get_children(): x.set_active(True)
-			def validedChanges(widget,*args): kanaParts[kanaset] = temp_list; dialog.destroy()
+			def validedChanges(widget,*args):
+				"""Check for a least one selected kana portion (display of a message
+				if not the case), catch parameters, then close the window."""
+				plop = 0
+				for x in widget.get_children():
+					plop += (0,1)[x.get_active()]
+				if plop==0:
+					dialog2 = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_INFO,gtk.BUTTONS_OK,str(66))
+					dialog2.connect('response', lambda dialog, response: dialog.destroy())
+					dialog2.show()
+
+					if kanaset==0: widget = option1
+					elif kanaset==1: widget = option2
+					elif kanaset==2: widget = option3
+					elif kanaset==3: widget = option4
+					elif kanaset==4: widget = option5
+					elif kanaset==5: widget = option6
+					elif kanaset==6: widget = option7
+					widget.set_active(False)
+
+				kanaParts[kanaset] = temp_list
+				dialog.destroy()
 
 			if not self.dialogState["kanaPartPopup"]:
 				self.dialogState["kanaPartPopup"] = 1
 
 				dialog = gtk.Dialog(str(28+kanaset),self.window)
 				dialog.connect("destroy",self.destroy,"kanaPartPopup")
-				dialog.vbox.set_spacing(3)				
+				dialog.vbox.set_spacing(3)
 
 				label = gtk.Label(str(35))
 				label.set_line_wrap(True)
@@ -353,11 +373,13 @@ class Gui:
 
 				button = gtk.Button(str(37))
 				button.connect_object("clicked",selectAll,table)
+				#If nothing selected, select all. :p
+				if not 1 in kanaParts[kanaset]: button.emit("clicked")
 				dialog.vbox.pack_start(button)
 
 				#Buttons at bottom...
 				button = gtk.Button(stock=gtk.STOCK_OK)
-				button.connect("clicked",validedChanges)
+				button.connect_object("clicked",validedChanges,table)
 				dialog.action_area.pack_end(button)
 				button = gtk.Button(stock=gtk.STOCK_CANCEL)
 				button.connect_object("clicked",self.destroy,dialog)

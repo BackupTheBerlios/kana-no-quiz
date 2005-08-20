@@ -5,7 +5,8 @@
 * Version 1.4 (2005-XX-XX):
 
 - You can now choose several portions of the same kana set to
-train upon in the same time.
+train upon in the same time (if no portion selected in a set,
+that one becomes disabled :p).
 - Random list answer mode now permits up to five choices. :p
 - Support for the 2 other popular romanization systems: the
 Kunrei-shiki's and the Nihon-shiki's. (Because they remain
