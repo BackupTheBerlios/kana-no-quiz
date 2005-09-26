@@ -19,6 +19,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 import gtk
 import kanaengine, score, i18n
+from pango import FontDescription
 
 class Gui:
 	def __init__(self,options,ver):
@@ -28,7 +29,7 @@ class Gui:
 		self.window = gtk.Window()
 		self.kanaEngine =  kanaengine.KanaEngine(self.param.val('romanization_system'))
 		self.score = score.Score()
-		self.dialogState = {"about":0,"kanaPartPopup":0}
+		self.dialogState = {"about":0,"kanaPortionPopup":0}
 
 		#Localization.
 		self.i18n = i18n.I18n()
@@ -167,11 +168,14 @@ class Gui:
 					i+=1
 				self.handlerid = self.nextButton.connect("clicked",self.newQuestion)
 			else: 
-				self.answerButt = gtk.Entry(3)
-				self.answerButt.connect("changed",lambda widget: widget.set_text(widget.get_text().upper()))
-				self.answerButt.set_width_chars(3)
-				box2.pack_start(self.answerButt)
-				self.handlerid = self.nextButton.connect("clicked",self.checkAnswer)
+				entry = gtk.Entry(3)
+				entry.modify_font(FontDescription("normal 35"))
+				entry.set_alignment(0.5)
+				entry.set_width_chars(3)
+				entry.connect("changed",lambda widget: widget.set_text(widget.get_text().upper()))
+				entry.connect("activate",self.checkAnswer)
+				box2.pack_start(entry)
+				self.handlerid = self.nextButton.connect_object("clicked",self.checkAnswer,entry)
 
 			box2.pack_start(self.nextButton)
 			box.pack_end(box2)
@@ -196,7 +200,7 @@ class Gui:
 		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
 
 		if self.param.val('answer_mode')=="list": answer = widget.get_label().lower()
-		else: answer = self.answerButt.get_text().lower()
+		else: answer = widget.get_text().lower()
 
 		if answer==self.kana: 
 			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" % str(13))
@@ -210,9 +214,9 @@ class Gui:
 			for butt in self.answerButt.values(): butt.hide() #Hide choices buttons.
 			self.nextButton.show() #Show the arrow.
 		else:
-			self.answerButt.hide()
+			widget.hide()
 			self.nextButton.disconnect(self.handlerid)
-			self.handlerid = self.nextButton.connect("clicked",self.newQuestion)
+			self.handlerid = self.nextButton.connect_object("clicked",self.newQuestion,widget)
 
 		if self.score.isQuizFinished(self.param.val('length')):
 			#The quiz is finished... Let's show results!
@@ -252,10 +256,10 @@ class Gui:
 				self.answerButt[i].show()
 				i+=1
 		else:  #Display the text entry.
-			self.answerButt.set_text("")
-			self.answerButt.show()
+			widget.set_text("")
+			widget.show()
 			self.nextButton.disconnect(self.handlerid)
-			self.handlerid = self.nextButton.connect("clicked",self.checkAnswer)
+			self.handlerid = self.nextButton.connect_object("clicked",self.checkAnswer,widget)
 
 	def results(self,data):
 		#Display results.
@@ -277,7 +281,7 @@ class Gui:
 		opt_lang = {0:'en',1:'fr',2: 'pt_BR',3:'sr',4:'sv','en':0,'fr':1,'pt_BR':2,'sr':3,'sv':4}
 
 		#Values for kana portion params.
-		kanaParts = [
+		kanaPortions = [
 			self.param.val('basic_hiragana_portions'),
 			self.param.val('modified_hiragana_portions'),
 			self.param.val('contracted_hiragana_portions'),
@@ -291,19 +295,19 @@ class Gui:
 				#Update the configuration.
 				self.param.write({
 				'basic_hiragana':opt_boolean[option1.get_active()],
-				'basic_hiragana_portions':kanaParts[0],
+				'basic_hiragana_portions':kanaPortions[0],
 				'modified_hiragana':opt_boolean[option2.get_active()],
-				'modified_hiragana_portions':kanaParts[1],
+				'modified_hiragana_portions':kanaPortions[1],
 				'contracted_hiragana':opt_boolean[option3.get_active()],
-				'contracted_hiragana_portions':kanaParts[2],
+				'contracted_hiragana_portions':kanaPortions[2],
 				'basic_katakana':opt_boolean[option4.get_active()],
-				'basic_katakana_portions':kanaParts[3],
+				'basic_katakana_portions':kanaPortions[3],
 				'modified_katakana':opt_boolean[option5.get_active()],
-				'modified_katakana_portions':kanaParts[4],
+				'modified_katakana_portions':kanaPortions[4],
 				'contracted_katakana':opt_boolean[option6.get_active()],
-				'contracted_katakana_portions':kanaParts[5],
+				'contracted_katakana_portions':kanaPortions[5],
 				'additional_katakana':opt_boolean[option7.get_active()],
-				'additional_katakana_portions':kanaParts[6],
+				'additional_katakana_portions':kanaPortions[6],
 				'romanization_system':opt_romanization_system[option9.get_active()],
 				'answer_mode':opt_answer_mode[option9.get_active()],
 				'list_size':option10.get_active()+2,
@@ -314,7 +318,9 @@ class Gui:
 			self.main(box) #Go back to the ``main".
 
 		def portions_popup(widget,kanaset):
-			temp_list = kanaParts[kanaset] #Temporary portion list.
+			temp_list = list(kanaPortions[kanaset]) #Temporary portion list.
+
+			#Callbacks.
 			def newValue(widget,num): temp_list[num] = (0,1)[widget.get_active()] #Update the emporary variable value.
 			def selectAll(widget): 
 				for x in widget.get_children(): x.set_active(True)
@@ -338,14 +344,14 @@ class Gui:
 					elif kanaset==6: widget = option7
 					widget.set_active(False)
 
-				kanaParts[kanaset] = temp_list
+				kanaPortions[kanaset] = temp_list
 				dialog.destroy()
 
-			if not self.dialogState["kanaPartPopup"]:
-				self.dialogState["kanaPartPopup"] = 1
+			if not self.dialogState["kanaPortionPopup"]:
+				self.dialogState["kanaPortionPopup"] = 1
 
 				dialog = gtk.Dialog(str(28+kanaset),self.window)
-				dialog.connect("destroy",self.destroy,"kanaPartPopup")
+				dialog.connect("destroy",self.destroy,"kanaPortionPopup")
 				dialog.vbox.set_spacing(3)
 
 				label = gtk.Label(str(35))
@@ -360,21 +366,20 @@ class Gui:
 				table = gtk.Table(2,abs(len(set)/2+1))
 				dialog.vbox.pack_start(table)
 
-				i,j,k = 0,1,0
-				for portion in set:
+				j,k = 1,0
+				for i in range(len(set)):
 					string = ""
-					for kana in portion: string += "%s " % kana.upper()
+					for kana in set[i]: string += "%s " % kana.upper()
 					check = gtk.CheckButton(string[:-1])
 					check.connect("toggled",newValue,i)
-					if kanaParts[kanaset][i]==1: check.set_active(True)
+					if temp_list[i]==1: check.set_active(True)
 					if j: table.attach(check,0,1,k,k+1); j=0
 					else: table.attach(check,1,2,k,k+1); j=1; k+=1
-					i+=1
 
 				button = gtk.Button(str(37))
 				button.connect_object("clicked",selectAll,table)
 				#If nothing selected, select all. :p
-				if not 1 in kanaParts[kanaset]: button.emit("clicked")
+				if not 1 in kanaPortions[kanaset]: button.emit("clicked")
 				dialog.vbox.pack_start(button)
 
 				#Buttons at bottom...

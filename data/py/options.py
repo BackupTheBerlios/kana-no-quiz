@@ -103,7 +103,7 @@ class Options:
 	def write(self,paramdict):
 		#Configuration file header.
 		content = "# Kana no quiz configuration file.\n\
-# See `data/py/options.py' for more details. ;-)\n"
+# See `data/py/options.py' for more details. ;-)\n\n"
 
 		#
 		# Use of the amazing WAGLAMOT (tm) technology!

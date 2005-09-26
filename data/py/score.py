@@ -1,6 +1,7 @@
 """
 Kana no quiz!
-Copyleft 2003 Choplair-network.
+Copyleft 2003, 2004, 2005 Choplair-network.
+$id: $
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -26,8 +27,8 @@ class Score:
 		self.score += point #Update the score.
 
 	def isQuizFinished(self,length):
-		if self.total>=length: return 1
-		else: return None
+		if self.total>=int(length): return True
+		else: return False
 
 	def getResults(self):
 		#Compute the success rate (percent).

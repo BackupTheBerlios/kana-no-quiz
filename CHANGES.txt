@@ -13,8 +13,9 @@ Kunrei-shiki's and the Nihon-shiki's. (Because they remain
 really less used worldwide than the Hepburn's, choosing one
 of these systems is for people who know what they are doing.)
 [IMPLEMENTATION IN PROGRESS]
-- Some improvements on the GTK+ interface, and replacement of
-the depracted widgets.
+- Bug fix: no more endless quiz!
+- Some improvements over the GTK+ interface, and replacement
+of the depracted widgets.
 - Addition of a marvellous icon (GTK+)!
 
 
@@ -32,7 +33,7 @@ Now the ``kana engine" should be clean ! :-D
 
 * Version 1.2b (2005-02-07):
 
-- Bugfix : prevention, while doing the quiz using the random
+- Bug fix : prevention, while doing the quiz using the random
 list mode, of getting the right answer appearing twice in
 the list.
 - The interface type used by Kana no quiz is now indicated

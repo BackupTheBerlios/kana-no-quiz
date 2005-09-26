@@ -1,6 +1,7 @@
 """
 Kana no quiz!
 Copyleft 2003, 2004, 2005 Choplair-network.
+$id: $
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -28,7 +29,7 @@ class Gui:
 		self.version = ver
 
 		self.window = tk.Tk()
-		self.kanaEngine = kanaengine.KanaEngine()
+		self.kanaEngine = kanaengine.KanaEngine(self.param.val('romanization_system'))
 		self.score = score.Score()
 		self.dialogState = {"about":0}
 
@@ -108,13 +109,13 @@ class Gui:
 			self.param.val('modified_katakana'),
 			self.param.val('contracted_katakana'),
 			self.param.val('additional_katakana')),
-			(self.param.val('basic_hiragana_part'),
-			self.param.val('modified_hiragana_part'),
-			self.param.val('contracted_hiragana_part'),
-			self.param.val('basic_katakana_part'),
-			self.param.val('modified_katakana_part'),
-			self.param.val('contracted_katakana_part'),
-			self.param.val('additional_katakana_part')),
+			(self.param.val('basic_hiragana_portions'),
+			self.param.val('modified_hiragana_portions'),
+			self.param.val('contracted_hiragana_portions'),
+			self.param.val('basic_katakana_portions'),
+			self.param.val('modified_katakana_portions'),
+			self.param.val('contracted_katakana_portions'),
+			self.param.val('additional_katakana_portions')),
 			self.param.val('kana_no_repeat'))
 
 		if self.kana:
@@ -152,7 +153,7 @@ class Gui:
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
 
-		else:	tkMessageBox.showwarning(str(61),str(62))
+		else:	tkMessageBox.showwarning(str(59),str(60))
 
 	def checkAnswer(self,event=None):
 		"""Check the given answer, update the score
@@ -193,13 +194,13 @@ class Gui:
 			self.param.val('modified_katakana'),
 			self.param.val('contracted_katakana'),
 			self.param.val('additional_katakana')),
-			(self.param.val('basic_hiragana_part'),
-			self.param.val('modified_hiragana_part'),
-			self.param.val('contracted_hiragana_part'),
-			self.param.val('basic_katakana_part'),
-			self.param.val('modified_katakana_part'),
-			self.param.val('contracted_katakana_part'),
-			self.param.val('additional_katakana_part')),
+			(self.param.val('basic_hiragana_portions'),
+			self.param.val('modified_hiragana_portions'),
+			self.param.val('contracted_hiragana_portions'),
+			self.param.val('basic_katakana_portions'),
+			self.param.val('modified_katakana_portions'),
+			self.param.val('contracted_katakana_portions'),
+			self.param.val('additional_katakana_portions')),
 			self.param.val('kana_no_repeat')) 
 
 		self.image["file"] = "data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana) #Update kana's image.
@@ -239,19 +240,20 @@ class Gui:
 	def options(self):
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
+		opt_romanization_system = {0:str(62),1:str(63),2:str(64),'hepburn':str(62),'kunrei':str(63),'nihon':str(64)}
 		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
-		opt_list_size = {str(42):2,str(43):3,str(44):4,2:str(42),3:str(43),4:str(44)}
+		opt_list_size = {str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5}
 		opt_lang = {str(48):'en',str(49):'fr',str(50):'pt_BR',str(51):'sv',str(62):'sr','en':str(48),'fr':str(49),'pt_BR':str(50),'sv':str(51),'sr':str(62)}
 
-		#Values for kana part params.
-		kanaParts = [
-			self.param.val('basic_hiragana_part'),
-			self.param.val('modified_hiragana_part'),
-			self.param.val('contracted_hiragana_part'),
-			self.param.val('basic_katakana_part'),
-			self.param.val('modified_katakana_part'),
-			self.param.val('contracted_katakana_part'),
-			self.param.val('additional_katakana_part')]
+		#Values for kana portion params.
+		kanaPortions = [
+			self.param.val('basic_hiragana_portions'),
+			self.param.val('modified_hiragana_portions'),
+			self.param.val('contracted_hiragana_portions'),
+			self.param.val('basic_katakana_portions'),
+			self.param.val('modified_katakana_portions'),
+			self.param.val('contracted_katakana_portions'),
+			self.param.val('additional_katakana_portions')]
 
 		def goBack():
 			self.window.slaves()[0].destroy()
@@ -260,19 +262,19 @@ class Gui:
 		def save():
 			self.param.write({
 			'basic_hiragana':opt_boolean[option1.get()],
-			'basic_hiragana_part':kanaParts[0],
+			'basic_hiragana_portions':kanaPortions[0],
 			'modified_hiragana':opt_boolean[option2.get()],
-			'modified_hiragana_part':kanaParts[1],
+			'modified_hiragana_portions':kanaPortions[1],
 			'contracted_hiragana':opt_boolean[option3.get()],
-			'contracted_hiragana_part':kanaParts[2],
+			'contracted_hiragana_portions':kanaPortions[2],
 			'basic_katakana':opt_boolean[option4.get()],
-			'basic_katakana_part':kanaParts[3],
+			'basic_katakana_portions':kanaPortions[3],
 			'modified_katakana':opt_boolean[option5.get()],
-			'modified_katakana_part':kanaParts[4],
+			'modified_katakana_portions':kanaPortions[4],
 			'contracted_katakana':opt_boolean[option6.get()],
-			'contracted_katakana_part':kanaParts[5],
+			'contracted_katakana_portions':kanaPortions[5],
 			'additional_katakana':opt_boolean[option7.get()],
-			'additional_katakana_part':kanaParts[6],
+			'additional_katakana_portions':kanaPortions[6],
 			'answer_mode':opt_answer_mode[option8.get().encode('utf8')],
 			'list_size':opt_list_size[option9.get().encode('utf8')],
 			'length':int(option10.get()),
@@ -281,22 +283,27 @@ class Gui:
 			})
 			goBack() #Then, go back!
 
-		def parts_popup(kanaset):
+		def portions_popup(kanaset):
+			temp_list = list(kanaPortions[kanaset]) #Temporary portion list.
+
+			#Callbacks.
+			class newValue:
+				def __init__(self,num,var): self.num = num; self.var = var
+				def plop(self):	temp_list[self.num] = self.var.get() #Update the emporary variable value.
+			class selectAll:
+				def __init__(self,list): self.list = list
+				def plop(self):
+					for x in self.list: x.select()
 			def close():
 				self.dialogState["about"] = 0
 				dialog.destroy()
-
 			def validedChanges():
-				kanaParts[kanaset] = self.temp_value.get()
+				kanaPortions[kanaset] = temp_list
 				close()
 
 			#Check whether this dialog window is not opened yet.
 			if not self.dialogState["about"]:
 				self.dialogState["about"] = 1
-
-				#Temporary variable.
-				self.temp_value = tk.IntVar()
-				self.temp_value.set(kanaParts[kanaset])
 
 				dialog = tk.Toplevel()
 				dialog.resizable(0,0)
@@ -306,30 +313,32 @@ class Gui:
 				label = tk.Label(dialog,text=str(35),wraplength=350)
 				label.pack()
 
+				set = self.kanaEngine.getASet(kanaset)
 				label = tk.Label(dialog,text=str(36),wraplength=350)
 				label.pack()
-
 				table = tk.Frame(dialog)
 				table.pack()
 
-				radio0 = tk.Radiobutton(table,text=str(37),variable=self.temp_value,value=0)
-				radio0.grid(column=0,row=0)
-				
-				set = self.kanaEngine.getASet(kanaset)
-				i,j,k = 1,1,0
-				for part in set:
+				j,k = 1,0
+				checks = []
+				for i in range(len(set)):
 					string = ""
-					for kana in part: string += "%s " % kana.upper()
-					radio = tk.Radiobutton(table,text=string[:-1],variable=self.temp_value,value=i)
-					if kanaParts[kanaset]==i: radio.select()
-					if j: radio.grid(column=1,row=k); j=0; k+=1
-					else: radio.grid(column=0,row=k); j=1
-					i+=1
+					for kana in set[i]: string += "%s " % kana.upper()
+					var = tk.IntVar()
+					checks.append(tk.Checkbutton(table,text=string[:-1],variable=var,command=newValue(i,var).plop))
+					if temp_list[i]==1: checks[i].select()
+					if j: checks[i].grid(column=0,row=k); j=0
+					else: checks[i].grid(column=1,row=k); j=1; k+=1
+
+				button =  tk.Button(dialog,text=str(37),command=selectAll(checks).plop)
+				#If nothing selected, select all. :p
+				if not 1 in kanaPortions[kanaset]: button.invoke()
+				button.pack()
 
 				#Buttons at bottom..
-				button = tk.Button(dialog,text=str(59),command=close)
+				button = tk.Button(dialog,text=str(52),command=close)
 				button.pack(side="right")
-				button = tk.Button(dialog,text=str(10),command=validedChanges)
+				button = tk.Button(dialog,text=str(51),command=validedChanges)
 				button.pack(side="right")
 
 		self.window.slaves()[0].destroy()
@@ -364,7 +373,7 @@ class Gui:
 		option1.set(opt_boolean[self.param.val('basic_hiragana')])
 		c = tk.Checkbutton(table,text=str(23),variable=option1)
 		c.grid(column=1,row=0,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: parts_popup(0))
+		button = tk.Button(table,text=str(27),command=lambda: portions_popup(0))
 		button.grid(column=2,row=0)
 
 		#`modified_hiragana'
@@ -375,7 +384,7 @@ class Gui:
 		option2.set(opt_boolean[self.param.val('modified_hiragana')])
 		c = tk.Checkbutton(table,text=str(24),variable=option2)
 		c.grid(column=1,row=1,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: parts_popup(1))
+		button = tk.Button(table,text=str(27),command=lambda: portions_popup(1))
 		button.grid(column=2,row=1)
 
 		#`contracted_hiragana'
@@ -386,7 +395,7 @@ class Gui:
 		option3.set(opt_boolean[self.param.val('contracted_hiragana')])
 		c = tk.Checkbutton(table,text=str(25),variable=option3)
 		c.grid(column=1,row=2,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: parts_popup(2))
+		button = tk.Button(table,text=str(27),command=lambda: portions_popup(2))
 		button.grid(column=2,row=2)
 
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
@@ -406,7 +415,7 @@ class Gui:
 		option4.set(opt_boolean[self.param.val('basic_katakana')])
 		c = tk.Checkbutton(table,text=str(23),variable=option4)
 		c.grid(column=1,row=0,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: parts_popup(3))
+		button = tk.Button(table,text=str(27),command=lambda: portions_popup(3))
 		button.grid(column=2,row=0)
 
 		#`modified_katakana'
@@ -417,7 +426,7 @@ class Gui:
 		option5.set(opt_boolean[self.param.val('modified_katakana')])
 		c = tk.Checkbutton(table,text=str(24),variable=option5)
 		c.grid(column=1,row=1,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: parts_popup(4))
+		button = tk.Button(table,text=str(27),command=lambda: portions_popup(4))
 		button.grid(column=2,row=1)
 
 		#`contracted_katakana'
@@ -428,7 +437,7 @@ class Gui:
 		option6.set(opt_boolean[self.param.val('contracted_katakana')])
 		c = tk.Checkbutton(table,text=str(25),variable=option6)
 		c.grid(column=1,row=2,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: parts_popup(5))
+		button = tk.Button(table,text=str(27),command=lambda: portions_popup(5))
 		button.grid(column=2,row=2)
 
 		#`additional_katakana'
@@ -439,11 +448,19 @@ class Gui:
 		option7.set(opt_boolean[self.param.val('additional_katakana')])
 		c = tk.Checkbutton(table,text=str(26),variable=option7)
 		c.grid(column=1,row=3,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: parts_popup(6))
+		button = tk.Button(table,text=str(27),command=lambda: portions_popup(6))
 		button.grid(column=2,row=3)
 
 		right_frame = tk.Frame(option_frame)
 		right_frame.pack(fill="both",expand=1,pady=6,padx=6)
+
+		#`romanization_system'
+		label = tk.Label(right_frame,text=str(61))
+		label.pack(fill="both",expand=1)
+		option8 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option8,str(62),str(63),str(64))
+		option8.set(opt_romanization_system[self.param.val('romanization_system')])
+		o.pack(fill="both",expand=1)
 
 		#`answer_mode'
 		label = tk.Label(right_frame,text=str(38))
@@ -457,13 +474,13 @@ class Gui:
 		label = tk.Label(right_frame,text=str(41))
 		label.pack(fill="both",expand=1)
 		option9 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option9,str(42),str(43),str(44))
+		o = tk.OptionMenu(right_frame,option9,str(42) % 2,str(42) % 3,str(42) % 4,str(42) % 5)
 		option9.set(opt_list_size[self.param.val('list_size')])
 		o.pack(fill="both",expand=1)
 
 		#`length'
 		frame2 = tk.Frame(right_frame)
-		label = tk.Label(frame2,text=str(45))
+		label = tk.Label(frame2,text=str(43))
 		label.pack(side="left",expand=1)
 		option10 = tk.StringVar()
 		o = tk.OptionMenu(frame2,option10,"10","20","30")
@@ -474,23 +491,23 @@ class Gui:
 		#`kana_no_repeat'
 		option11 = tk.IntVar()
 		option11.set(opt_boolean[self.param.val('kana_no_repeat')])
-		c = tk.Checkbutton(right_frame,text=str(46),variable=option11)
+		c = tk.Checkbutton(right_frame,text=str(44),variable=option11)
 		c.pack(fill="both",expand=1)
 
 		#`lang'
-		label = tk.Label(right_frame,text=str(47))
+		label = tk.Label(right_frame,text=str(45))
 		label.pack(fill="both",expand=1)
 		option12 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option12,str(48),str(49),str(50),str(62),str(51))
+		o = tk.OptionMenu(right_frame,option12,str(46),str(47),str(48),str(49),str(50))
 		option12.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 
 		#Buttons at bottom...
 		frame2 = tk.Frame(frame)
 		frame2.pack(fill="both")
-		button = tk.Button(frame2,text=str(52),command=save)
+		button = tk.Button(frame2,text=str(51),command=save)
 		button.pack(side="left",fill="both",expand=1)
-		button = tk.Button(frame2,text=str(53),command=goBack)
+		button = tk.Button(frame2,text=str(52),command=goBack)
 		button.pack(side="right",fill="both",expand=1)
 
 		self.window.mainloop() #Without that images aren't displayed! O_o;
@@ -506,33 +523,33 @@ class Gui:
 
 			dialog = tk.Toplevel()
 			dialog.resizable(0,0)
-			dialog.title(str(3))
+			dialog.title(str(4))
 			dialog.protocol("WM_DELETE_WINDOW",close)
 
 			frame = tk.Frame(dialog)
 			frame.pack(padx=4,pady=4)
 
-			label = tk.Label(frame,text="%s\n (Tkinter)%s\nCopyleft 2003, 2004, 2005 Choplair-network." % (str(54),str(55) % self.version),fg="#008")
+			label = tk.Label(frame,text="%s\n %s (Tkinter)\nCopyleft 2003, 2004, 2005 Choplair-network." % (str(53),str(54) % self.version),fg="#008")
 			label.pack()
 
-			label = tk.Label(frame,text=str(56),wraplength=320,justify="left")
+			label = tk.Label(frame,text=str(55),wraplength=320,justify="left")
 			label.pack()
 
 			frame2 = tk.Frame(frame,relief="ridge",borderwidth=1)
 			frame2.pack(expand=1,fill="both",pady=4)
 
-			label = tk.Label(frame2,text=str(57),justify="left",anchor="w")
+			label = tk.Label(frame2,text=str(56),justify="left",anchor="w")
 			label.pack(fill="x")
 
 			img = tk.PhotoImage(file="data/img/chprod.gif")
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")
 
-			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(58))
+			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(57))
 			label.pack(side="left",expand=1,fill="x")
 
 			#Button at bottom..
-			button = tk.Button(frame,text=str(59),command=close)
+			button = tk.Button(frame,text=str(58),command=close)
 			button.pack(side="right")
 
 			self.window.wait_window(dialog)
