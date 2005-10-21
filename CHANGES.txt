@@ -9,10 +9,9 @@ train upon in the same time (if no portion selected in a set,
 that one becomes disabled :p).
 - Random list answer mode now permits up to five choices. :p
 - Support for the 2 other popular romanization systems: the
-Kunrei-shiki's and the Nihon-shiki's. (Because they remain
-really less used worldwide than the Hepburn's, choosing one
-of these systems is for people who know what they are doing.)
-[IMPLEMENTATION IN PROGRESS]
+Kunrei-shiki's and the Nihon-shiki's. (Because they are really
+less used worldwide than the Hepburn's, choosing one of these
+systems remains for people who know what they are doing.)
 - Bug fix: no more endless quiz!
 - Some improvements over the GTK+ interface, and replacement
 of the depracted widgets.

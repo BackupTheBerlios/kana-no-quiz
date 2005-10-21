@@ -30,6 +30,8 @@ class Score:
 		if self.total>=int(length): return True
 		else: return False
 
+	def getQuestionTotal(self): return self.total
+
 	def getResults(self):
 		#Compute the success rate (percent).
 		if self.total: successrate = self.score * 100 / self.total

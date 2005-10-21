@@ -29,9 +29,9 @@ class Gui:
 		self.version = ver
 
 		self.window = tk.Tk()
-		self.kanaEngine = kanaengine.KanaEngine(self.param.val('romanization_system'))
+		self.kanaEngine = kanaengine.KanaEngine()
 		self.score = score.Score()
-		self.dialogState = {"about":0}
+		self.dialogState = {"about":0,"kanaPortionPopup":0}
 
 		#Localization.
 		self.i18n = i18n.I18n()
@@ -141,6 +141,12 @@ class Gui:
 				#Choice buttons generation.
 				self.answerButt = {}; i=0
 				for x in self.kanaEngine.randomAnswers(self.param.val('list_size')):
+					#If the selected romanization system is *other* than Hepburn (default),
+					#let's convert that answer list (given in the Hepburn internal format)
+					#into the user-selected romanization system.
+					if self.param.val('romanization_system')!="hepburn":
+						x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('romanization_system'))
+
 					if x[-2:]=="-2": x = x[:-2]
 					self.answerButt[i] = tk.Button(frame2,text=x.upper(),height=2)
 					self.answerButt[i].bind("<ButtonRelease-1>",self.checkAnswer)
@@ -159,16 +165,22 @@ class Gui:
 		"""Check the given answer, update the score
 		and display the result."""
 
-		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
-
 		if self.param.val('answer_mode')=="list": answer = event.widget["text"].lower()
 		else: answer = self.answerButt.get().lower()
 
-		if answer==self.kana:
+		#If the selected romanization system is *other* than Hepburn (default),
+		#let's convert the good answer (given in the Hepburn internal format)
+		#to the user-selected romanization system, in order to compare with its
+		#chosen answer.
+		if self.param.val('romanization_system')!="hepburn":
+			self.kana = kanaengine.HepburnToOtherSysConvert(self.kana,self.param.val('romanization_system'))
+		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
+
+		if answer==self.kana: # \o/
 			self.quizLabel["text"] = str(13)
 			self.quizLabel["fg"] = "darkgreen"
 			self.score.update(1) #Update the score (add 1 point).
-		else:
+		else: # /o\
 			self.quizLabel["text"] = "%s\n%s" % (str(14), str(15) % self.kana.upper())
 			self.quizLabel["fg"] = "red"
 			self.score.update() #Update the score.
@@ -201,7 +213,7 @@ class Gui:
 			self.param.val('modified_katakana_portions'),
 			self.param.val('contracted_katakana_portions'),
 			self.param.val('additional_katakana_portions')),
-			self.param.val('kana_no_repeat')) 
+			self.param.val('kana_no_repeat'))
 
 		self.image["file"] = "data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana) #Update kana's image.
 
@@ -213,6 +225,12 @@ class Gui:
 			#Display the random list.
 			i=0
 			for x in self.kanaEngine.randomAnswers(self.param.val('list_size')):
+				#If the selected romanization system is *other* than Hepburn (default),
+				#let's convert that answer list (given in the Hepburn internal format)
+				#into the user-selected romanization system.
+				if self.param.val('romanization_system')!="hepburn":
+					x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('romanization_system'))
+
 				if x[-2:]=="-2": x = x[:-2]
 				self.answerButt[i]["text"] = x.upper()
 				self.answerButt[i].pack(pady=1,fill="both",expand=1)
@@ -240,7 +258,7 @@ class Gui:
 	def options(self):
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
-		opt_romanization_system = {0:str(62),1:str(63),2:str(64),'hepburn':str(62),'kunrei':str(63),'nihon':str(64)}
+		opt_romanization_system = {str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",'hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64)}
 		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
 		opt_list_size = {str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5}
 		opt_lang = {str(48):'en',str(49):'fr',str(50):'pt_BR',str(51):'sv',str(62):'sr','en':str(48),'fr':str(49),'pt_BR':str(50),'sv':str(51),'sr':str(62)}
@@ -275,11 +293,12 @@ class Gui:
 			'contracted_katakana_portions':kanaPortions[5],
 			'additional_katakana':opt_boolean[option7.get()],
 			'additional_katakana_portions':kanaPortions[6],
-			'answer_mode':opt_answer_mode[option8.get().encode('utf8')],
-			'list_size':opt_list_size[option9.get().encode('utf8')],
-			'length':int(option10.get()),
-			'kana_no_repeat':opt_boolean[option11.get()],
-			'lang':opt_lang[option12.get().encode('utf8')]
+			'romanization_system':opt_romanization_system[option8.get().encode('utf8')],
+			'answer_mode':opt_answer_mode[option9.get().encode('utf8')],
+			'list_size':opt_list_size[option10.get().encode('utf8')],
+			'length':int(option11.get()),
+			'kana_no_repeat':opt_boolean[option12.get()],
+			'lang':opt_lang[option13.get().encode('utf8')]
 			})
 			goBack() #Then, go back!
 
@@ -289,21 +308,41 @@ class Gui:
 			#Callbacks.
 			class newValue:
 				def __init__(self,num,var): self.num = num; self.var = var
-				def plop(self):	temp_list[self.num] = self.var.get() #Update the emporary variable value.
+				def plop(self):
+					temp_list[self.num] = self.var.get() #Update the emporary variable value.
 			class selectAll:
 				def __init__(self,list): self.list = list
 				def plop(self):
-					for x in self.list: x.select()
+					"""Activate the check buttons."""
+					i = 0
+					for x in self.list:
+						x.set(1)
+						newValue(i,x).plop()
+						i+=1
 			def close():
-				self.dialogState["about"] = 0
+				self.dialogState["kanaPortionPopup"] = 0
 				dialog.destroy()
 			def validedChanges():
+				"""Check for a least one selected kana portion (display of a message
+				if not the case), catch parameters, then close the window."""
+				if not 1 in temp_list:
+					tkMessageBox.showinfo(str(65),str(66))
+
+					if kanaset==0: widget = option1
+					elif kanaset==1: widget = option2
+					elif kanaset==2: widget = option3
+					elif kanaset==3: widget = option4
+					elif kanaset==4: widget = option5
+					elif kanaset==5: widget = option6
+					elif kanaset==6: widget = option7
+					widget.set(0)
+
 				kanaPortions[kanaset] = temp_list
 				close()
 
 			#Check whether this dialog window is not opened yet.
-			if not self.dialogState["about"]:
-				self.dialogState["about"] = 1
+			if not self.dialogState["kanaPortionPopup"]:
+				self.dialogState["kanaPortionPopup"] = 1
 
 				dialog = tk.Toplevel()
 				dialog.resizable(0,0)
@@ -320,17 +359,17 @@ class Gui:
 				table.pack()
 
 				j,k = 1,0
-				checks = []
+				vars = []
 				for i in range(len(set)):
 					string = ""
 					for kana in set[i]: string += "%s " % kana.upper()
-					var = tk.IntVar()
-					checks.append(tk.Checkbutton(table,text=string[:-1],variable=var,command=newValue(i,var).plop))
-					if temp_list[i]==1: checks[i].select()
-					if j: checks[i].grid(column=0,row=k); j=0
-					else: checks[i].grid(column=1,row=k); j=1; k+=1
+					vars.append(tk.IntVar())
+					c = tk.Checkbutton(table,text=string[:-1],variable=vars[i],command=newValue(i,vars[i]).plop)
+					if temp_list[i]==1: c.select()
+					if j: c.grid(column=0,row=k); j=0
+					else: c.grid(column=1,row=k); j=1; k+=1
 
-				button =  tk.Button(dialog,text=str(37),command=selectAll(checks).plop)
+				button =  tk.Button(dialog,text=str(37),command=selectAll(vars).plop)
 				#If nothing selected, select all. :p
 				if not 1 in kanaPortions[kanaset]: button.invoke()
 				button.pack()
@@ -465,41 +504,41 @@ class Gui:
 		#`answer_mode'
 		label = tk.Label(right_frame,text=str(38))
 		label.pack(fill="both",expand=1)
-		option8 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option8,str(39),str(40))
-		option8.set(opt_answer_mode[self.param.val('answer_mode')])
+		option9 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option9,str(39),str(40))
+		option9.set(opt_answer_mode[self.param.val('answer_mode')])
 		o.pack(fill="both",expand=1)
 
 		#`list_size'
 		label = tk.Label(right_frame,text=str(41))
 		label.pack(fill="both",expand=1)
-		option9 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option9,str(42) % 2,str(42) % 3,str(42) % 4,str(42) % 5)
-		option9.set(opt_list_size[self.param.val('list_size')])
+		option10 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option10,str(42) % 2,str(42) % 3,str(42) % 4,str(42) % 5)
+		option10.set(opt_list_size[self.param.val('list_size')])
 		o.pack(fill="both",expand=1)
 
 		#`length'
 		frame2 = tk.Frame(right_frame)
 		label = tk.Label(frame2,text=str(43))
 		label.pack(side="left",expand=1)
-		option10 = tk.StringVar()
-		o = tk.OptionMenu(frame2,option10,"10","20","30")
-		option10.set(self.param.val('length'))
+		option11 = tk.StringVar()
+		o = tk.OptionMenu(frame2,option11,"10","20","30")
+		option11.set(self.param.val('length'))
 		o.pack(expand=1)
 		frame2.pack(fill="both",expand=1)
 
 		#`kana_no_repeat'
-		option11 = tk.IntVar()
-		option11.set(opt_boolean[self.param.val('kana_no_repeat')])
-		c = tk.Checkbutton(right_frame,text=str(44),variable=option11)
+		option12 = tk.IntVar()
+		option12.set(opt_boolean[self.param.val('kana_no_repeat')])
+		c = tk.Checkbutton(right_frame,text=str(44),variable=option12)
 		c.pack(fill="both",expand=1)
 
 		#`lang'
 		label = tk.Label(right_frame,text=str(45))
 		label.pack(fill="both",expand=1)
-		option12 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option12,str(46),str(47),str(48),str(49),str(50))
-		option12.set(opt_lang[self.param.val('lang')])
+		option13 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option13,str(46),str(47),str(48),str(49),str(50))
+		option13.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 
 		#Buttons at bottom...

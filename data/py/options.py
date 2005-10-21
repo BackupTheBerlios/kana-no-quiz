@@ -56,7 +56,7 @@ class Options:
 		'modified_katakana':('true','false'),
 		'contracted_katakana':('true','false'),
 		'additional_katakana':('true','false'),
-		'romanization_system':("hepburn","kunrei","nihon"),
+		'romanization_system':("hepburn","kunrei-shiki","nihon-shiki"),
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4),
 		'kana_no_repeat':('true','false'),

@@ -1,4 +1,4 @@
-﻿
+
  Kana no quiz - README
  version 1.4 - 2005-XX-XX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -12,8 +12,8 @@ pronouncing. The full list of kana is implemented, including
 additional katakana used in modern language. The romanization
 system used is the Hepburn's.
 
- How does it work ?
- ------------------
+ How does it work?
+ -----------------
 
  The method is quite simple: a kana appear randomly and you
 have to find its romaji transcription; either by choosing the

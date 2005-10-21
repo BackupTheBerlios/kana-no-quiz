@@ -55,38 +55,35 @@ class Usability:
 			plop.append(self.usability[x][type])
 		return plop
 
-def SysConvert(kana,inputsys,outputsys=None):
-	if inputsys=="hepburn":
-		#Kunrei-shiki/Nihon-shiki common kana values.
-		if kana=="shi": return "si"
-		elif kana=="sha": return "sya"
-		elif kana=="shu": return "syu"
-		elif kana=="sho": return "syo"
-		elif kana=="ji": return "zi"
-		elif kana=="ja": return "zi"
-		elif kana=="ju": return "zi"
-		elif kana=="jo": return "zi"
-		elif kana=="chi": return "ti"
-		elif kana=="tsu": return "tu"
-		elif kana=="cha": return "tya"
-		elif kana=="chu": return "tyu"
-		elif kana=="cho": return "tyo"
-		elif kana=="fu": return "hu"
-		#Kunrei-shiki specific kana values.
-		if outputsys=="kunrei":
-			if kana=="ji-2": return "zi"
-			if kana=="zu-2": return "zu"
-		#Nihon-shiki specific kana values.
-		elif outputsys=="kunrei":
-			if kana=="ji-2": return "di"
-			if kana=="zu-2": return "du"
+def HepburnToOtherSysConvert(kana,outputsys):
+	#Kunrei-shiki/Nihon-shiki common kana values.
+	if kana=="shi": return "si"
+	elif kana=="sha": return "sya"
+	elif kana=="shu": return "syu"
+	elif kana=="sho": return "syo"
+	elif kana=="ji": return "zi"
+	elif kana=="ja": return "zya"
+	elif kana=="ju": return "zyu"
+	elif kana=="jo": return "zyo"
+	elif kana=="tsu": return "tu"	
+	elif kana=="chi": return "ti"
+	elif kana=="cha": return "tya"
+	elif kana=="chu": return "tyu"
+	elif kana=="cho": return "tyo"
+	elif kana=="fu": return "hu"
+	#Kunrei-shiki specific kana values.
+	if outputsys=="kunrei-shiki":
+		if kana=="ji-2": return "zi" 
+	#Nihon-shiki specific kana values.
+	elif outputsys=="nihon-shiki":
+		if kana=="ji-2": return "di"
+		elif kana=="zu-2": return "du"
 
-	#Return the same value if no modification beetween the systems.
+	#Return the same value if no modification of the kana beetween the systems.
 	return kana
 
 class KanaEngine:
-	def __init__(self,system):
-		self.system = system
+	def __init__(self):
 		self.previous_kana = None
 		self.default_kana_list = self.getKanaList()
 		self.used_kana_list = self.getKanaList()
@@ -175,9 +172,6 @@ class KanaEngine:
 		parameters, which will be the right answer."""
 
 		if "true" in args[0]:
-			#Definitions of some variable.
-			self.no_repeat = args[2]
-
 			ok = 0
 			while not ok:
 				#Althougth I know that's more ressource consuming to put this instruction in the ``while", 
@@ -229,14 +223,13 @@ class KanaEngine:
 				#Prevention of selecting the same kana than previously.
 				self.kana = random.choice(self.portion)
 
-			if self.no_repeat=="true":
-				print self.used_kana_list[self.set_num][self.portion_num]
+			if args[2]=="true":
 				#The no-repeat option is activated, so we remove the kana from the list to prevent future selection.
 				self.used_kana_list[self.set_num][self.portion_num].remove(self.kana)
 
 			#Precisely memorize this kana to prevent it to be selected the next time.
 			self.previous_kana = self.kana
-
+			
 			return self.kana
 
 		else: return 0
@@ -260,7 +253,7 @@ class KanaEngine:
 		for x in range(int(list_size)-1):
 			x = random.choice(templist) #Take a random wrong anwsers from the kana list.
 
-			#Prevent selection of kana with the same romanji transcription.
+			#Prevent selection of kana with the same romaji transcription.
 			if x[-2:]=="-2" and x[:-2] in templist: templist.remove(x[:-2])
 			elif "%s-2" % x in templist: templist.remove("%s-2" % x)
 

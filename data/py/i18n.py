@@ -104,7 +104,10 @@ class I18n:
 			_("Kunrei-shiki"),
 			_("Nihon-shiki"),
 			_("Information"), #65
-			_("No portion selected: that kana set is disabled. :p")
+			_("No portion selected: that question set is disabled. :p"),
+			_("Question %s of %s."),
+			_("%s system."),
+			_("Stop")
 			)
 
 		return string[num]
