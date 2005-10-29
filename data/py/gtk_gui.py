@@ -1,7 +1,7 @@
 """
 Kana no quiz!
 Copyleft 2003, 2004, 2005 Choplair-network.
-$id: $
+$Id$
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -141,25 +141,23 @@ class Gui:
 		if self.kana:
 			self.quizWidget = {}
 			box = gtk.HBox(spacing=4)
-
 			box2 = gtk.VBox()
 
 			#Kana image.
 			self.kanaImage = gtk.Image()
 			self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana))
 			box2.pack_start(self.kanaImage,False)
-			#Quiz stop & informations.
-			self.stopAndInfo = {}
-			self.stopAndInfo['questionNumLabel'] = gtk.Label(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
-			self.stopAndInfo['systemLabel'] = gtk.Label(str(68) % capwords(self.param.val('romanization_system')))
-			self.stopAndInfo['container'] = gtk.EventBox()
-			self.stopAndInfo['container'].modify_bg(gtk.STATE_NORMAL,gtk.gdk.color_parse("white"))
-			#~ box3 = gtk.HBox(spacing=4)
+			#Quiz informations.
+			self.quizInfos = {}
+			self.quizInfos['questionNumLabel'] = gtk.Label(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
+			self.quizInfos['systemLabel'] = gtk.Label(str(68) % capwords(self.param.val('romanization_system')))
+			self.quizInfos['container'] = gtk.EventBox()
+			self.quizInfos['container'].modify_bg(gtk.STATE_NORMAL,gtk.gdk.color_parse("white"))
 			box3 = gtk.HBox()
-			box3.pack_start(self.stopAndInfo['questionNumLabel'])
-			box3.pack_start(self.stopAndInfo['systemLabel'])
-			self.stopAndInfo['container'].add(box3)
-			box2.pack_start(self.stopAndInfo['container'])
+			box3.pack_start(self.quizInfos['questionNumLabel'])
+			box3.pack_start(self.quizInfos['systemLabel'])
+			self.quizInfos['container'].add(box3)
+			box2.pack_start(self.quizInfos['container'])
 			box.pack_start(box2,False)
 
 			box2 = gtk.VBox(spacing=4)
@@ -278,7 +276,7 @@ class Gui:
 			self.param.val('kana_no_repeat'))
 
 		self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana)) #Update kana's image
-		self.stopAndInfo['questionNumLabel'].set_text(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
+		self.quizInfos['questionNumLabel'].set_text(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
 
 		self.quizLabel.set_text((str(11),str(12))[self.kanaEngine.getKanaKind()])
 
@@ -312,7 +310,7 @@ class Gui:
 
 		self.score.reset() #Reset the score.
 		self.kanaImage.hide() #Hide kana image.
-		self.stopAndInfo['container'].hide() #Hide quiz stop & informations.
+		self.quizInfos['container'].hide() #Hide quiz stop & informations.
 
 		#Connect the arrow to the ``main".
 		self.nextButton.disconnect(self.handlerid)

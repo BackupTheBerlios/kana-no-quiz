@@ -2,7 +2,7 @@
 """
 Kana no quiz!
 Copyleft 2003, 2004, 2005 Choplair-network.
-$id: $
+$Id$
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -44,8 +44,9 @@ except: arg = str()
 if arg=="-tk": import tkinter_gui as gui
 elif arg=="-gtk": import gtk_gui as gui
 else:
-	try: 	import gtk_gui as gui
-	except: import tkinter_gui as gui
+	import tkinter_gui as gui
+	#~ try: 	import gtk_gui as gui
+	#~ except: import tkinter_gui as gui
 
 #Let's go!
 gui = gui.Gui(options,VERSION)

@@ -1,7 +1,7 @@
 """
 Kana no quiz!
 Copyleft 2003, 2004, 2005 Choplair-network.
-$id: $
+$Id$
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import Tkinter as tk
 import tkMessageBox
 import kanaengine, score, i18n
+from string import capwords
 
 class Gui:
 	def __init__(self,options,ver):
@@ -122,11 +123,23 @@ class Gui:
 			self.window.slaves()[0].destroy()
 			frame = tk.Frame(self.window)
 			frame.pack(padx=3,pady=3)
+			frame2 = tk.Frame(frame)
 
-			#Display kana image.
+			#Kana image.
 			self.image = tk.PhotoImage(file="data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana))
-			self.kanaImage = tk.Label(frame,image=self.image)
-			self.kanaImage.pack(side="left")
+			self.kanaImage = tk.Label(frame2,image=self.image,border=0)
+			self.kanaImage.pack(side="top")
+			#Quiz informations.
+			frame3 = tk.Frame(frame2)
+			self.quizInfos = {}
+			self.quizInfos['questionNumLabel'] = tk.Label(frame3,text=str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')),font=("Helvetica",10),bg="white")
+			self.quizInfos['systemLabel'] = tk.Label(frame3,text=str(68) % capwords(self.param.val('romanization_system')),font=("Helvetica",10),bg="white")
+			self.quizInfos['questionNumLabel'].pack(side="left",expand=1,fill="x")
+			self.quizInfos['systemLabel'].pack(side="left",expand=1,fill="x")
+			#~ self.quizInfos['container'].add(box3)
+			#~ box2.pack_start(self.quizInfos['container'])
+			frame3.pack(side="top",expand=1,fill="both")
+			frame2.pack(side="left",expand=1,fill="both")
 
 			frame2 = tk.Frame(frame)
 			frame2.pack(padx=6,side="right",fill="both")
