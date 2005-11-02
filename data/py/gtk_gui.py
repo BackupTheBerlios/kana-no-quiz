@@ -151,14 +151,14 @@ class Gui:
 			self.quizInfos = {}
 			self.quizInfos['questionNumLabel'] = gtk.Label(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
 			self.quizInfos['systemLabel'] = gtk.Label(str(68) % capwords(self.param.val('romanization_system')))
-			self.quizInfos['container'] = gtk.EventBox()
-			self.quizInfos['container'].modify_bg(gtk.STATE_NORMAL,gtk.gdk.color_parse("white"))
-			box3 = gtk.HBox()
+			box3 = gtk.VBox(spacing=2)
 			box3.pack_start(self.quizInfos['questionNumLabel'])
 			box3.pack_start(self.quizInfos['systemLabel'])
-			self.quizInfos['container'].add(box3)
-			box2.pack_start(self.quizInfos['container'])
-			box.pack_start(box2,False)
+			box2.pack_start(box3)
+			self.quizInfos['container'] = gtk.EventBox()
+			self.quizInfos['container'].modify_bg(gtk.STATE_NORMAL,gtk.gdk.color_parse("white"))
+			self.quizInfos['container'].add(box2)
+			box.pack_start(self.quizInfos['container'],False)
 
 			box2 = gtk.VBox(spacing=4)
 			#Stop button.
@@ -277,7 +277,6 @@ class Gui:
 
 		self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana)) #Update kana's image
 		self.quizInfos['questionNumLabel'].set_text(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
-
 		self.quizLabel.set_text((str(11),str(12))[self.kanaEngine.getKanaKind()])
 
 		if self.param.val('answer_mode')=="list":

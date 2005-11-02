@@ -132,12 +132,10 @@ class Gui:
 			#Quiz informations.
 			frame3 = tk.Frame(frame2)
 			self.quizInfos = {}
-			self.quizInfos['questionNumLabel'] = tk.Label(frame3,text=str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')),font=("Helvetica",10),bg="white")
-			self.quizInfos['systemLabel'] = tk.Label(frame3,text=str(68) % capwords(self.param.val('romanization_system')),font=("Helvetica",10),bg="white")
-			self.quizInfos['questionNumLabel'].pack(side="left",expand=1,fill="x")
-			self.quizInfos['systemLabel'].pack(side="left",expand=1,fill="x")
-			#~ self.quizInfos['container'].add(box3)
-			#~ box2.pack_start(self.quizInfos['container'])
+			self.quizInfos['questionNumLabel'] = tk.Label(frame3,bd=0,text=str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')),bg="white")
+			self.quizInfos['questionNumLabel'].pack(expand=1,fill="both")
+			self.quizInfos['systemLabel'] = tk.Label(frame3,bd=0,text=str(68) % capwords(self.param.val('romanization_system')),bg="white")
+			self.quizInfos['systemLabel'].pack(expand=1,fill="both")
 			frame3.pack(side="top",expand=1,fill="both")
 			frame2.pack(side="left",expand=1,fill="both")
 
@@ -229,7 +227,7 @@ class Gui:
 			self.param.val('kana_no_repeat'))
 
 		self.image["file"] = "data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana) #Update kana's image.
-
+		self.quizInfos['questionNumLabel']["text"] = str(67) % (self.score.getQuestionTotal()+1,self.param.val('length'))
 		self.quizLabel["text"] = (str(11),str(12))[self.kanaEngine.getKanaKind()]
 		self.quizLabel["fg"] = "black"
 
@@ -274,7 +272,7 @@ class Gui:
 		opt_romanization_system = {str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",'hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64)}
 		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
 		opt_list_size = {str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5}
-		opt_lang = {str(48):'en',str(49):'fr',str(50):'pt_BR',str(51):'sv',str(62):'sr','en':str(48),'fr':str(49),'pt_BR':str(50),'sv':str(51),'sr':str(62)}
+		opt_lang = {str(46):'en',str(47):'fr',str(48):'pt_BR',str(49):'sv',str(50):'sr','en':str(46),'fr':str(47),'pt_BR':str(48),'sv':str(49),'sr':str(50)}
 
 		#Values for kana portion params.
 		kanaPortions = [

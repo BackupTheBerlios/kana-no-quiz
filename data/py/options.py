@@ -59,7 +59,7 @@ class Options:
 		'additional_katakana':('true','false'),
 		'romanization_system':("hepburn","kunrei-shiki","nihon-shiki"),
 		'answer_mode':('list','entry'),
-		'list_size':(2,3,4),
+		'list_size':(2,3,4,5),
 		'kana_no_repeat':('true','false'),
 		'lang':('en','fr','pt_BR','sr','sv')
 		}
@@ -84,7 +84,7 @@ class Options:
 						val = plop
 
 					self.check(key,val)
-	
+
 	def check(self,key,val):
 		"""Here we check whether the option value, which has been read,
 		is valid. In that case, the option value is modified. Otherwise, we
@@ -92,9 +92,17 @@ class Options:
 
 		#Do valid values for this option have been referenced?
 		if self.validValues.has_key(key):
-			if val in self.validValues[key]: #The value is valid, so update the params.
+			if val in self.validValues[key]:
+				#The value is valid, so update the param.
 				self.params[key] = val
-		else:	#We use it, although it seems to be an unknow option.
+			else:
+				try: 
+					if int(val) in self.validValues[key]:
+						#As an integrer, the value is valid, so update the param.
+						self.params[key] = int(val)
+				except: pass
+		else:
+			#We use it, although it seems to be an unknow option.
 			self.params[key] = val
 
 	def val(self,name):
@@ -126,4 +134,3 @@ class Options:
 		file = open(self.path,"wb") #Open (create if doesn't exist)
 		file.write(content) #Write
 		file.close() #And close
-
