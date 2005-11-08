@@ -1,4 +1,4 @@
-
+﻿
  Kana no quiz - README
  version 1.4 - 2005-XX-XX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8,9 +8,15 @@
 
  This is ``Kana no quiz", a little educational tool, written
 in Python, to memorize Japanese kana (hiragana & katakana)
-pronouncing. The full list of kana is implemented, including
-additional katakana used in modern language. The romanization
-system used is the Hepburn's.
+pronouncing in an easy way.
+
+ The full list of kana is implemented, including additional
+katakana used in modern language. Default used romanization
+system is the Hepburn's (most common world-wide), but it also
+supports Kunrei and Nihon-shiki system.
+
+ This program is cross platform, the same package works both
+on GNU/Linux and Windows.
 
  How does it work?
  -----------------
@@ -21,25 +27,69 @@ good answer from a random list containing several possibilities
 or by directly typing the answer through a text entry. This
 second method is more complicated.
 
+ Progressive learning
+ --------------------
+ 
+ (to be written)
+
+
+ Dependencies
+ ============
+
+ To run fine, Kana no quiz requires the following softwares
+installed on your computer:
+
+* Python - http://www.python.org/.
+* For the GTK+ interface (not mandatory but recommanded):
+  * The Gimp Tool Kit - http://www.gtk.org/.
+  * PyGTK - http://www.pygtk.org/.
+
+
+ Launching
+ =========
+
+ I guess it should be clear for most of people, but in order
+to launch Kana no quiz, you just have to execute the file
+`kana-no-quiz.py'.
+
+ On Windows, it is simply done by double-clicking on it.
+ 
+ On GNU/Linux, you can go to Kana-no-quiz directory using your
+favorite graphical shell, then type `python kana-no-quiz.py'.
+
+
+ Some details
+ ============
+
  I18n
  ----
 
- Kana no quiz is currently translated into English, French,
-Portuguese of Brazil (by Matheus Villela), Serbian (by Dejan
-Danilović) and Swedish (by Markus Fellnert & Krister
-Kjellstrom).
+ Thanks to our contributors, Kana no quiz is currently
+translated into English, French, Portuguese of Brazil (by
+Matheus Villela), Serbian (by Dejan Danilović) and Swedish (by
+Markus Fellnert & Krister Kjellstrom). Feel free to help that
+list growing up!
 
- Cross platform
- --------------
+ Multiple interfaces
+ -------------------
 
- The same package works both on GNU/Linux and Windows
-using GTK+ or the Python native GUI: Tkinter. You can force
-the use of an interface by passing either `-tk' (for Tkinter)
-or `-gtk' (for GTK+) as an argument. Though there is not much
-difference, the GTK+ interface is more evolved (and nicer !),
-but you'll need to install some more software to use it (see
-bellow). The interface type used by Kana no quiz is indicated
-in the ``About" window.
+ Kana-no-quiz may be displayed using two different interface
+types, GTK+ or the Python native GUI: Tkinter. The second one
+has been introduced to reduce the chore of installing many
+dependencies, especialy for Windows users who may already feel
+borred by installing Python.
+
+ Although there is not huge differences, the GTK+ interface is
+still the most evolved (and the nicest!) and is recommended to
+use, but requires some more dependencies (see bellow).
+
+ If possible (satisfated dependencies), the GTK+ interface is
+choosen by default. Anyway, you can force the use of an
+interface by passing either `-tk' (for Tkinter) or `-gtk' (for
+GTK+) as an argument when launching the program.
+
+ The interface type used by Kana no quiz is indicated in the
+``About" window, after the version number.
 
  GIF choice
  ----------
@@ -48,6 +98,15 @@ in the ``About" window.
 GIF is evil! Ok, but the Tkinter interface doesn't accept
 either PNG or JPG. Thus we must use GIF for the sake of compa-
 tibility...
+
+ Kana image sources
+ ------------------
+ 
+ The kana images are bitmap exports of SVG files we modelized
+by ourselves, using Inkscape, with the hope they could also be
+reused for other purposes, by people who enjoy them. So, the
+source SVGs have been made publicly available (see our
+website), under the conditions indicated above.
 
 
  Licensing
@@ -58,18 +117,6 @@ license (see `GPL.txt'). Kana images are released under the
 Free Art license (see `FAL.txt'), as the Kana no quiz logo.
 
 
- Dependencies
- ============
-
- Kana no quiz requires the following softwares installed on
-your computer:
-
-* Python - http://www.python.org/.
-* For the GTK+ interface (not mandatory but recommanded):
-  * The Gimp Tool Kit - http://www.gtk.org/.
-  * PyGTK - http://www.pygtk.org/.
-
-
  Stay tuned
  ==========
 
@@ -78,4 +125,5 @@ you can get information and update from our website:
 	`http://www.choplair.org/'
 
 
- That's all for now, have fun ;)
+ That's all for now, have fun. ;)
+	Choplair

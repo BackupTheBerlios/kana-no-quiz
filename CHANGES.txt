@@ -12,6 +12,11 @@ that one becomes disabled :p).
 Kunrei-shiki's and the Nihon-shiki's. (Because they are really
 less used worldwide than the Hepburn's, choosing one of these
 systems remains for people who know what they are doing.)
+- Some informations are now displayed during the quiz (romani-
+zation system used and question number) and you can choose to
+stop it after every answer (useful for example if you realized
+the quiz you began to perform is truly too difficult). [IN
+PROGRESS]
 - Bug fix: no more endless quiz!
 - Some improvements over the GTK+ interface, and replacement
 of the depracted widgets.
