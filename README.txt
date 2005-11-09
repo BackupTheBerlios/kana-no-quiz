@@ -12,8 +12,8 @@ pronouncing in an easy way.
 
  The full list of kana is implemented, including additional
 katakana used in modern language. Default used romanization
-system is the Hepburn's (most common world-wide), but it also
-supports Kunrei and Nihon-shiki system.
+system is the Hepburn's (most common world-wide), but it does
+also support Kunrei and Nihon-shiki systems.
 
  This program is cross platform, the same package works both
 on GNU/Linux and Windows.
@@ -23,26 +23,49 @@ on GNU/Linux and Windows.
 
  The method is quite simple: a kana appear randomly and you
 have to find its romaji transcription; either by choosing the
-good answer from a random list containing several possibilities
-or by directly typing the answer through a text entry. This
-second method is more complicated.
+good answer from a random list containing several possibili-
+ties or by directly typing the answer through a text entry.
+This second method of course is more complicated.
 
  Progressive learning
  --------------------
  
- (to be written)
+ Through its option panel, Kana no quiz allows you to tune up
+the quiz precisely, like choosing which group of kana you want
+to train yourself upon.
+
+ First, hiragana and katakana are separated, both are then di-
+vided into big sets of kana according to their type (``Basic",
+``Modified", ``Combined"; and a special ``Additional" set for
+katakana only) which are thus composed of various portions
+containing 5/6 kana, following the traditional alphabet order
+(i.e.: ``ka ki ku ke ko").
+
+ According to your need and level, you may select one or more
+portions of the same or different sets, whole sets, all the
+kana... Once you feel comfortable (you can check it with the
+results displayed at the end of each quiz), you may also
+increase the number of possible answers in the random list,
+or even choose to answer directly through the text entry.
+Difficulty can be adapted to your skill: this is progressive
+learning.
+
+ From the complete beginner who has to start easily and learn
+step by step, to the wizard who just wants to confirm his/her
+absolute master of the kana, everyone should get satisfated
+with Kana no quiz!
 
 
  Dependencies
  ============
 
  To run fine, Kana no quiz requires the following softwares
-installed on your computer:
+to be installed on your computer:
 
-* Python - http://www.python.org/.
+* Python - `http://www.python.org/'.
 * For the GTK+ interface (not mandatory but recommanded):
-  * The Gimp Tool Kit - http://www.gtk.org/.
-  * PyGTK - http://www.pygtk.org/.
+  * The Gimp Tool Kit - `http://www.gtk.org/'.
+  * PyGTK - `http://www.pygtk.org/'.
 
 
  Launching
@@ -121,7 +144,7 @@ Free Art license (see `FAL.txt'), as the Kana no quiz logo.
  ==========
 
  Kana no quiz is a project conducted by the Choplair-network,
-you can get information and update from our website:
+you can get lastest information and update from our website:
 	`http://www.choplair.org/'
 
 
