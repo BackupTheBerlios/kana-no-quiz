@@ -120,6 +120,7 @@ class Gui:
 			self.param.val('kana_no_repeat'))
 
 		if self.kana:
+			self.quizWidget = {}
 			self.window.slaves()[0].destroy()
 			frame = tk.Frame(self.window)
 			frame.pack(padx=3,pady=3)
@@ -142,6 +143,11 @@ class Gui:
 			frame2 = tk.Frame(frame)
 			frame2.pack(padx=6,side="right",fill="both")
 
+			#Stop button.
+			self.quizWidget['stopframe'] = tk.Frame(frame2)
+			self.quizWidget['stopframe'].pack(fill="x",side="top")
+			self.quizWidget['stop'] = tk.Button(self.quizWidget['stopframe'],text=str(69),command=self.results)
+			#Question label.
 			self.quizLabel = tk.Label(frame2,text=(str(11),str(12))[self.kanaEngine.getKanaKind()],wraplength=120,width=18)
 			self.quizLabel.pack(pady=3,fill="both",expand=1)
 
@@ -206,6 +212,7 @@ class Gui:
 		if self.score.isQuizFinished(self.param.val('length')):
 			#The quiz is finished... Let's show results!
 			self.nextButton["command"]  = self.results
+		else: self.quizWidget['stop'].pack(fill="both",expand=1)
 
 	def newQuestion(self):
 		#Randomly get a kana.
@@ -252,6 +259,8 @@ class Gui:
 			self.answerButt.pack()
 			self.nextButton.pack(fill="both",pady=1,expand=1)
 			self.nextButton['command'] = self.checkAnswer
+		
+		self.quizWidget['stop'].pack_forget() #Hide the stop button.
 
 	def results(self):
 		def goBack():
@@ -265,6 +274,8 @@ class Gui:
 		self.nextButton["command"] = goBack
 
 		self.score.reset() #Reset the score.
+
+		self.quizWidget['stop'].pack_forget() #Hide the stop button.
 
 	def options(self):
 		#Dicts for integrer to string options convertion and vice-versa...

@@ -2,7 +2,7 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.4 (2005-XX-XX):
+* Version 1.4 (2005-11-XX):
 
 - You can now choose several portions of the same kana set to
 train upon in the same time (if no portion selected in a set,
@@ -15,8 +15,7 @@ systems remains for people who know what they are doing.)
 - Some informations are now displayed during the quiz (romani-
 zation system used and question number) and you can choose to
 stop it after every answer (useful for example if you realized
-the quiz you began to perform is truly too difficult). [IN
-PROGRESS]
+the quiz you began to perform is truly too difficult).
 - Bug fix: no more endless quiz!
 - Some improvements over the GTK+ interface, and replacement
 of the depracted widgets.
