@@ -191,13 +191,12 @@ msgstr ""
 "umesto na celom skupu."
 
 #: py/i18n.py:78
-#, fuzzy
 msgid "Select the kana portions you want to train yourself upon:"
-msgstr "Izaberite kana deo kojim hoćete da se vežbate:"
+msgstr "Izaberi delove kana kojim hoćeš da se treniraš"
 
 #: py/i18n.py:79
 msgid "Select all"
-msgstr ""
+msgstr "Izabrati sve"
 
 #: py/i18n.py:80
 msgid "Answer mode:"
@@ -216,9 +215,8 @@ msgid "Random answer list size:"
 msgstr "Veličina spiska nasumice odgovora:"
 
 #: py/i18n.py:84
-#, fuzzy, python-format
 msgid "%s choices"
-msgstr "4 izbora"
+msgstr "%s izbora"
 
 #: py/i18n.py:85
 msgid "Length:"
@@ -310,42 +308,40 @@ msgstr "Morate izabrati bar jedan skup pitanja!"
 
 #: py/i18n.py:103
 msgid "Romanization system:"
-msgstr ""
+msgstr "Romanizovan sistem:"
 
 #: py/i18n.py:104
 msgid "Hepburn (recommended)"
-msgstr ""
+msgstr "Hepburn (savetuje se)"
 
 #: py/i18n.py:105
 msgid "Kunrei-shiki"
-msgstr ""
+msgstr "Kunrei-shiki"
 
 #: py/i18n.py:106
 msgid "Nihon-shiki"
-msgstr ""
+msgstr "Nihon-shiki"
 
 #: py/i18n.py:107
-#, fuzzy
 msgid "Information"
-msgstr "Uvod"
+msgstr "Informacije"
 
 #: py/i18n.py:108
 msgid "No portion selected: that question set is disabled. :p"
-msgstr ""
+msgstr "Nijedan deo nije izabran: to pitanje je onemogućeno. :p"
 
 #: py/i18n.py:109
-#, fuzzy, python-format
 msgid "Question %s of %s."
-msgstr "Ukupno postavljenih pitanja: %i."
+msgstr "Pitanje %s od %s."
 
 #: py/i18n.py:110
 #, python-format
 msgid "%s system."
-msgstr ""
+msgstr "%s sistem."
 
 #: py/i18n.py:111
 msgid "Stop"
-msgstr ""
+msgstr "Stop"
 
 #~ msgid "All"
 #~ msgstr "Sve"
