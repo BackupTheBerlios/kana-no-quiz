@@ -2,7 +2,7 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.4 (2005-11-XX):
+* Version 1.4 (2005-12-14):
 
 - You can now choose several portions of the same kana set to
 train upon in the same time (if no portion selected in a set,
@@ -19,7 +19,8 @@ the quiz you began to perform is truly too difficult).
 - Bug fix: no more endless quiz!
 - Some improvements over the GTK+ interface, and replacement
 of the depracted widgets.
-- Addition of a marvellous icon (GTK+)!
+- Addition of a marvellous icon (GTK+ version)!
+- Translations update (except for Brazilian).
 
 
 * Version 1.2d (2005-03-17):
@@ -149,3 +150,4 @@ Fills a rivers of tears through the night
 Memory, you never let me cry
 And you, you never said goodbye"
  -- Tears, X Japan
+
