@@ -2,6 +2,13 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Version 1.4b (2005-12-31):
+
+- Language confusion between Serbian & Swedish with the
+Tkinter interface corrected.
+- Update of the Swedish translation.
+
+
 * Version 1.4 (2005-12-14):
 
 - You can now choose several portions of the same kana set to
