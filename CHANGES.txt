@@ -2,7 +2,7 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.4b (2005-12-31):
+* Version 1.4b (2006-01-01):
 
 - Language confusion between Serbian & Swedish with the
 Tkinter interface corrected.

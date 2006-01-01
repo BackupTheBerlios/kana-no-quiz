@@ -1,6 +1,6 @@
 """
 Kana no quiz!
-Copyleft 2003, 2004, 2005 Choplair-network.
+Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 $Id$
 
 This program is free software; you can redistribute it and/or
@@ -643,7 +643,7 @@ class Gui:
 			label.set_use_markup(True)
 			dialog.vbox.pack_start(label)
 
-			label = gtk.Label("Copyleft 2003, 2004, 2005 Choplair-network.")
+			label = gtk.Label("Copyleft 2003, 2004, 2005, 2006 Choplair-network.")
 			dialog.vbox.pack_start(label)
 			label = gtk.Label(str(55))
 			label.set_line_wrap(True)

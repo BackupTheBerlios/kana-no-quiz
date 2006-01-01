@@ -1,6 +1,6 @@
 """
 Kana no quiz!
-Copyleft 2003, 2004, 2005 Choplair-network.
+Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 $Id$
 
 This program is free software; you can redistribute it and/or
@@ -590,7 +590,7 @@ class Gui:
 			frame = tk.Frame(dialog)
 			frame.pack(padx=4,pady=4)
 
-			label = tk.Label(frame,text="%s\n %s (Tkinter)\nCopyleft 2003, 2004, 2005 Choplair-network." % (str(53),str(54) % self.version),fg="#008")
+			label = tk.Label(frame,text="%s\n %s (Tkinter)\nCopyleft 2003, 2004, 2005, 2006 Choplair-network." % (str(53),str(54) % self.version),fg="#008")
 			label.pack()
 
 			label = tk.Label(frame,text=str(55),wraplength=320,justify="left")

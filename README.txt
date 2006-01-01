@@ -1,7 +1,7 @@
 
  Kana no quiz - README
- version 1.4 - 2005-12-14
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+ version 1.4b - 2006-01-01
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
  ============
@@ -90,8 +90,7 @@ favorite graphical shell, then type `python kana-no-quiz.py'.
  Thanks to our contributors, Kana no quiz is currently
 translated into English, French, Portuguese of Brazil (by
 Matheus Villela), Serbian (by Dejan Danilović) and Swedish (by
-Markus Fellnert & Krister Kjellstrom). Feel free to help that
-list growing up!
+Markus Fellnert). Feel free to help that list growing up!
 
  Multiple interfaces
  -------------------
