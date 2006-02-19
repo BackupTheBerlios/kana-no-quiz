@@ -2,6 +2,11 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Version 1.5 (2006-XX-XX):
+
+- System-wide installation.
+
+
 * Version 1.4b (2006-01-01):
 
 - Language confusion between Serbian & Swedish with the

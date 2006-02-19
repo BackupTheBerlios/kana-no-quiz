@@ -1,0 +1,4 @@
+include *.txt
+recursive-include data/img *.png *.gif
+recursive-include data/locale *.pot *.po *.mo
+

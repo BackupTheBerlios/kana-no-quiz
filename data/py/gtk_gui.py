@@ -198,7 +198,7 @@ class Gui:
 				entry.set_alignment(0.5)
 				entry.set_width_chars(3)
 				entry.connect("changed",lambda widget: widget.set_text(widget.get_text().upper()))
-				entry.connect("activate",self.checkAnswer)
+				#entry.connect("activate",self.checkAnswer)
 				box2.pack_start(entry)
 				self.handlerid = self.nextButton.connect_object("clicked",self.checkAnswer,entry)
 
