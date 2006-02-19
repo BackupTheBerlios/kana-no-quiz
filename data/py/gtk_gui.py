@@ -17,15 +17,16 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
-import gtk
+import gtk, os.path
 import kanaengine, score, i18n
 from pango import FontDescription
 from string import capwords
 
 class Gui:
-	def __init__(self,options,ver):
-		self.param = options
-		self.version = ver
+	def __init__(self,*args):
+		self.param = args[0]
+		self.version = args[1]
+		self.datarootpath = args[2]
 
 		self.window = gtk.Window()
 		self.kanaEngine =  kanaengine.KanaEngine()
@@ -33,7 +34,7 @@ class Gui:
 		self.dialogState = {"about":0,"kanaPortionPopup":0}
 
 		#Localization.
-		self.i18n = i18n.I18n()
+		self.i18n = i18n.I18n(os.path.join(self.datarootpath,"locale/"))
 		self.currentlang = self.param.val('lang')
 		self.i18n.setlang(self.param.val('lang'))
 		global str
@@ -43,7 +44,7 @@ class Gui:
 		self.window.set_title(str(0))
 		self.window.connect("destroy",self.quit)
 		self.window.set_border_width(5)
-		gtk.window_set_default_icon_from_file("data/img/icon.png")
+		gtk.window_set_default_icon_from_file(os.path.join(self.datarootpath,"img/icon.png"))
 
 	def main(self,oldbox=None):
 		if self.currentlang!=self.param.val('lang'):
@@ -60,7 +61,7 @@ class Gui:
 		box = gtk.HBox()
 
 		image = gtk.Image()
-		image.set_from_file("data/img/logo.gif")
+		image.set_from_file(os.path.join(self.datarootpath,"img/logo.gif"))
 		box.pack_start(image,False)
 
 		box2 = gtk.VBox()
@@ -145,7 +146,7 @@ class Gui:
 
 			#Kana image.
 			self.kanaImage = gtk.Image()
-			self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana))
+			self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) #Initialy set kana's image.
 			box2.pack_start(self.kanaImage,False)
 			#Quiz informations.
 			self.quizInfos = {}
@@ -275,7 +276,7 @@ class Gui:
 			self.param.val('additional_katakana_portions')),
 			self.param.val('kana_no_repeat'))
 
-		self.kanaImage.set_from_file("data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana)) #Update kana's image
+		self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) #Update kana's image.
 		self.quizInfos['questionNumLabel'].set_text(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
 		self.quizLabel.set_text((str(11),str(12))[self.kanaEngine.getKanaKind()])
 
@@ -452,7 +453,7 @@ class Gui:
 
 		#`basic_hiragana'
 		image = gtk.Image()
-		image.set_from_file("data/img/basic_hiragana.gif")
+		image.set_from_file(os.path.join(self.datarootpath,"img/basic_hiragana.gif"))
 		table.attach(image,0,1,0,1)
 		option1 = gtk.CheckButton(str(23))
 		option1.set_active(opt_boolean[self.param.val('basic_hiragana')])
@@ -465,7 +466,7 @@ class Gui:
 
 		#`modified_hiragana'
 		image = gtk.Image()
-		image.set_from_file("data/img/modified_hiragana.gif")
+		image.set_from_file(os.path.join(self.datarootpath,"img/modified_hiragana.gif"))
 		table.attach(image,0,1,1,2)
 		option2 = gtk.CheckButton(str(24))
 		option2.set_active(opt_boolean[self.param.val('modified_hiragana')])
@@ -478,7 +479,7 @@ class Gui:
 
 		#`contracted_hiragana'
 		image = gtk.Image()
-		image.set_from_file("data/img/contracted_hiragana.gif")
+		image.set_from_file(os.path.join(self.datarootpath,"img/contracted_hiragana.gif"))
 		table.attach(image,0,1,2,3)
 		option3 = gtk.CheckButton(str(25))
 		option3.set_active(opt_boolean[self.param.val('contracted_hiragana')])
@@ -498,7 +499,7 @@ class Gui:
 
 		#`basic_katakana'
 		image = gtk.Image()
-		image.set_from_file("data/img/basic_katakana.gif")
+		image.set_from_file(os.path.join(self.datarootpath,"img/basic_katakana.gif"))
 		table.attach(image,0,1,0,1)
 		option4 = gtk.CheckButton(str(23))
 		option4.set_active(opt_boolean[self.param.val('basic_katakana')])
@@ -511,7 +512,7 @@ class Gui:
 
 		#`modified_katakana'
 		image = gtk.Image()
-		image.set_from_file("data/img/modified_katakana.gif")
+		image.set_from_file(os.path.join(self.datarootpath,"img/modified_katakana.gif"))
 		table.attach(image,0,1,1,2)
 		option5 = gtk.CheckButton(str(24))
 		option5.set_active(opt_boolean[self.param.val('modified_katakana')])
@@ -524,7 +525,7 @@ class Gui:
 
 		#`contracted_katakana'
 		image = gtk.Image()
-		image.set_from_file("data/img/contracted_katakana.gif")
+		image.set_from_file(os.path.join(self.datarootpath,"img/contracted_katakana.gif"))
 		table.attach(image,0,1,2,3)
 		option6 = gtk.CheckButton(str(25))
 		option6.set_active(opt_boolean[self.param.val('contracted_katakana')])
@@ -537,7 +538,7 @@ class Gui:
 
 		#`additional_katakana'
 		image = gtk.Image()
-		image.set_from_file("data/img/additional_katakana.gif")
+		image.set_from_file(os.path.join(self.datarootpath,"img/additional_katakana.gif"))
 		table.attach(image,0,1,3,4)
 		option7 = gtk.CheckButton(str(26))
 		option7.set_active(opt_boolean[self.param.val('additional_katakana')])
@@ -653,7 +654,7 @@ class Gui:
 			box = gtk.HBox()
 
 			logo = gtk.Image()
-			logo.set_from_file("data/img/chprod.png")
+			logo.set_from_file(os.path.join(self.datarootpath,"img/chprod.png"))
 			box.pack_start(logo,False)
 
 			box2 = gtk.VBox(spacing=4)
@@ -676,6 +677,10 @@ class Gui:
 			dialog.action_area.pack_end(button)
 
 			dialog.show_all()
+
+	def setKanaImage(self,kind,kana):
+		"""Update kana image."""
+		self.kanaImage.set_from_file(os.path.join(self.datarootpath,"img/kana/%s_%s.gif" % (("k","h")[kind],kana)))
 
 	def destroy(self,widget,data=None):
 		widget.destroy() #Emit destroy signal.

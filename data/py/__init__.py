@@ -21,14 +21,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import sys
 from os import path, chdir, environ
 
-VERSION = "1.4b"
+VERSION = "1.5cvs"
 
-#Change working directory to Kana no quiz's.
-chdir(path.abspath(sys.path[0]))
+ #Setting Kana no quiz's data root directory's path.
+datarootpath = path.join(sys.prefix,'share/kana-no-quiz/')
 
-sys.path.append("data/py/")
 import options
-
 options = options.Options()
 options.read()
 
@@ -48,5 +46,5 @@ else:
 	except: import tkinter_gui as gui
 
 #Let's go!
-gui = gui.Gui(options,VERSION)
+gui = gui.Gui(options,VERSION, datarootpath)
 gui.main()

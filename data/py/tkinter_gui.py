@@ -21,13 +21,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import Tkinter as tk
 import tkMessageBox
+import os.path
 import kanaengine, score, i18n
 from string import capwords
 
 class Gui:
-	def __init__(self,options,ver):
-		self.param = options
-		self.version = ver
+	def __init__(self,*args):
+		self.param = args[0]
+		self.version = args[1]
+		self.datarootpath = args[2]
 
 		self.window = tk.Tk()
 		self.kanaEngine = kanaengine.KanaEngine()
@@ -35,7 +37,7 @@ class Gui:
 		self.dialogState = {"about":0,"kanaPortionPopup":0}
 
 		#Localization.
-		self.i18n = i18n.I18n()
+		self.i18n = i18n.I18n(os.path.join(self.datarootpath,"locale/"))
 		self.currentlang = self.param.val('lang')
 		self.i18n.setlang(self.param.val('lang'))
 		global str
@@ -58,7 +60,7 @@ class Gui:
 		frame.pack(padx=2,pady=2)
 
 		#Logo
-		img = tk.PhotoImage(file="data/img/logo.gif")
+		img = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/logo.gif"))
 		label = tk.Label(frame,image=img)
 		label.pack(side="left")
 
@@ -127,7 +129,8 @@ class Gui:
 			frame2 = tk.Frame(frame)
 
 			#Kana image.
-			self.image = tk.PhotoImage(file="data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana))
+			self.image = tk.PhotoImage()
+			self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana)  #Initialy set kana's image.
 			self.kanaImage = tk.Label(frame2,image=self.image,border=0)
 			self.kanaImage.pack(side="top")
 			#Quiz informations.
@@ -152,7 +155,7 @@ class Gui:
 			self.quizLabel.pack(pady=3,fill="both",expand=1)
 
 			#The arrow.
-			self.nextButton = tk.Button(frame2,bitmap="@data/img/rarrow.xbm",pady=4)
+			self.nextButton = tk.Button(frame2,bitmap="@%s" % os.path.join(self.datarootpath,"img/rarrow.xbm"),pady=4)
 
 			if self.param.val('answer_mode')=="list":
 				#Choice buttons generation.
@@ -233,7 +236,7 @@ class Gui:
 			self.param.val('additional_katakana_portions')),
 			self.param.val('kana_no_repeat'))
 
-		self.image["file"] = "data/img/kana/%s_%s.gif" % (("k","h")[self.kanaEngine.getKanaKind()],self.kana) #Update kana's image.
+		self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) #Update kana's image.
 		self.quizInfos['questionNumLabel']["text"] = str(67) % (self.score.getQuestionTotal()+1,self.param.val('length'))
 		self.quizLabel["text"] = (str(11),str(12))[self.kanaEngine.getKanaKind()]
 		self.quizLabel["fg"] = "black"
@@ -427,7 +430,7 @@ class Gui:
 		table.pack(fill="x")
 
 		#`basic_hiragana'
-		img5 = tk.PhotoImage(file="data/img/basic_hiragana.gif")
+		img5 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/basic_hiragana.gif"))
 		label = tk.Label(table,image=img5)
 		label.grid(column=0,row=0)
 		option1 = tk.IntVar()
@@ -438,7 +441,7 @@ class Gui:
 		button.grid(column=2,row=0)
 
 		#`modified_hiragana'
-		img6 = tk.PhotoImage(file="data/img/modified_hiragana.gif")
+		img6 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/modified_hiragana.gif"))
 		label = tk.Label(table,image=img6)
 		label.grid(column=0,row=1)
 		option2 = tk.IntVar()
@@ -449,7 +452,7 @@ class Gui:
 		button.grid(column=2,row=1)
 
 		#`contracted_hiragana'
-		img7 = tk.PhotoImage(file="data/img/contracted_hiragana.gif")
+		img7 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/contracted_hiragana.gif"))
 		label = tk.Label(table,image=img7)
 		label.grid(column=0,row=2)
 		option3 = tk.IntVar()
@@ -469,7 +472,7 @@ class Gui:
 		table.pack(fill="x")
 
 		#`basic_katakana'
-		img1 = tk.PhotoImage(file="data/img/basic_katakana.gif")
+		img1 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/basic_katakana.gif"))
 		label = tk.Label(table,image=img1)
 		label.grid(column=0,row=0)
 		option4 = tk.IntVar()
@@ -480,7 +483,7 @@ class Gui:
 		button.grid(column=2,row=0)
 
 		#`modified_katakana'
-		img2 = tk.PhotoImage(file="data/img/modified_katakana.gif")
+		img2 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/modified_katakana.gif"))
 		label = tk.Label(table,image=img2)
 		label.grid(column=0,row=1)
 		option5 = tk.IntVar()
@@ -491,7 +494,7 @@ class Gui:
 		button.grid(column=2,row=1)
 
 		#`contracted_katakana'
-		img3 = tk.PhotoImage(file="data/img/contracted_katakana.gif")
+		img3 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/contracted_katakana.gif"))
 		label = tk.Label(table,image=img3)
 		label.grid(column=0,row=2)
 		option6 = tk.IntVar()
@@ -502,7 +505,7 @@ class Gui:
 		button.grid(column=2,row=2)
 
 		#`additional_katakana'
-		img4 = tk.PhotoImage(file="data/img/additional_katakana.gif")
+		img4 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/additional_katakana.gif"))
 		label = tk.Label(table,image=img4)
 		label.grid(column=0,row=3)
 		option7 = tk.IntVar()
@@ -602,7 +605,7 @@ class Gui:
 			label = tk.Label(frame2,text=str(56),justify="left",anchor="w")
 			label.pack(fill="x")
 
-			img = tk.PhotoImage(file="data/img/chprod.gif")
+			img = tk.PhotoImage(file=os.path.join(self.datarootpath,"img/chprod.gif"))
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")
 
@@ -614,3 +617,7 @@ class Gui:
 			button.pack(side="right")
 
 			self.window.wait_window(dialog)
+
+	def setKanaImage(self,kind,kana):
+		"""Update kana image."""
+		self.image["file"] = os.path.join(self.datarootpath,"img/kana/%s_%s.gif" % (("k","h")[kind],kana))

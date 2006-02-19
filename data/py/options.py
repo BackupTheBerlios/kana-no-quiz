@@ -1,6 +1,6 @@
 """
 Kana no quiz!
-Copyleft 2003, 2004, 2005 Choplair-network.
+Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 $Id$
 
 This program is free software; you can redistribute it and/or
@@ -18,11 +18,12 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 from string import split
-import os.path, locale
+import os, locale
 
 class Options:
 	def __init__(self):
-		self.path = "data/options.conf" #Set path to the configuration file.
+		self.conf_dir = os.path.expanduser("~/.kana-no-quiz")
+		self.conf_file = os.path.join(self.conf_dir,"option.conf")  #Set path to the configuration file.
 
 		#Default options & values.
 		self.params  = {
@@ -66,8 +67,8 @@ class Options:
 
 	def read(self):
 		#Check whether the option file exists...
-		if os.path.isfile(self.path):
-			file = open(self.path,"r") #Open.
+		if os.path.isfile(self.conf_file):
+			file = open(self.conf_file,"r") #Open.
 			content = file.readlines() #Read the content.
 			file.close() #And close. :p
 
@@ -111,8 +112,7 @@ class Options:
 
 	def write(self,paramdict):
 		#Configuration file header.
-		content = "# Kana no quiz configuration file.\n\
-# See `data/py/options.py' for more details. ;-)\n\n"
+		content = "# Kana no quiz configuration file.\n\n"
 
 		#
 		# Use of the amazing WAGLAMOT (tm) technology!
@@ -131,6 +131,7 @@ class Options:
 			content += "%s %s\n" % (key,written_val) #Add to the output file content.
 			self.params[key] = val #Update param dictionnary value.
 
-		file = open(self.path,"wb") #Open (create if doesn't exist)
+		if not os.path.isdir(self.conf_dir): os.mkdir(self.conf_dir)  #Create user config directory if doesn't exist.
+		file = open(self.conf_file,"wb") #Open (create if doesn't exist)
 		file.write(content) #Write
 		file.close() #And close

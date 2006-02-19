@@ -13,7 +13,7 @@ def filelist(dir):
 
 setup(
 	name='Kana no quiz',
-	version='1.4b',
+	version='1.5cvs',
 	description='A kana memorization tool.',
 	author='Choplair-network',
 	author_email='contact@choplair.org',

@@ -1,6 +1,6 @@
 """
 Kana no quiz!
-Copyleft 2003, 2004, 2005 Choplair-network.
+Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 $Id$
 
 This program is free software; you can redistribute it and/or
@@ -20,8 +20,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import gettext
 
 class I18n:
-	def __init__(self):
+	def __init__(self,path):
 		self.currlang = str()
+		self.localepath = path
 
 	def setlang(self,lang):
 		if lang=="en":
@@ -32,7 +33,7 @@ class I18n:
 				if self.currlang=="en": del _
 			except: pass
 
-			gettext.translation("kana-no-quiz","data/locale/",[lang]).install()
+			gettext.translation("kana-no-quiz",self.localepath,[lang]).install()
 
 		self.currlang = lang #Update the current language variable.
 
