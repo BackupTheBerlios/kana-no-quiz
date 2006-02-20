@@ -109,7 +109,8 @@ class I18n:
 			_("No portion selected: that question set is disabled. :p"),
 			_("Question %s of %s."),
 			_("%s system."),
-			_("Stop")
+			_("Stop"),
+			_("German") #70
 			)
 
 		return string[num]

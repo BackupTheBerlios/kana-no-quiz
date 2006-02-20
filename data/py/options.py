@@ -46,7 +46,7 @@ class Options:
 		'kana_no_repeat':'false',
 		'answer_mode':'list',
 		'list_size':3}
-		if locale.getlocale() in ("fr","pt_BR","sr","sv"): self.params['lang'] = locale.getlocale()
+		if locale.getlocale() in ("de","fr","pt_BR","sr","sv"): self.params['lang'] = locale.getlocale()
 		else: self.params['lang'] = "en"
 
 		#Valid values for each option contained as a tuple into a dictionnary.
@@ -62,7 +62,7 @@ class Options:
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4,5),
 		'kana_no_repeat':('true','false'),
-		'lang':('en','fr','pt_BR','sr','sv')
+		'lang':('de','en','fr','pt_BR','sr','sv')
 		}
 
 	def read(self):

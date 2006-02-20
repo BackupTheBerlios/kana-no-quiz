@@ -323,7 +323,7 @@ class Gui:
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_romanization_system = {0:'hepburn',1:'kunrei-shiki',2:'nihon-shiki','hepburn':0,'kunrei-shiki':1,'nihon-shiki':2}
 		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
-		opt_lang = {0:'en',1:'fr',2: 'pt_BR',3:'sr',4:'sv','en':0,'fr':1,'pt_BR':2,'sr':3,'sv':4}
+		opt_lang = {0:'en',1:'fr',2:'de',3:'pt_BR',4:'sr',5:'sv','en':0,'fr':1,'de':2,'pt_BR':3,'sr':4,'sv':5}
 
 		#Values for kana portion params.
 		kanaPortions = [
@@ -606,7 +606,7 @@ class Gui:
 		label = gtk.Label(str(45))
 		box3.pack_start(label)
 		option13 = gtk.combo_box_new_text()
-		for val in (str(46),str(47),str(48),str(49),str(50)):
+		for val in (str(46),str(47),str(70),str(48),str(49),str(50)):
 			option13.append_text(val)
 		option13.set_active(opt_lang[self.param.val('lang')])
 		box3.pack_start(option13)

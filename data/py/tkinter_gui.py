@@ -286,7 +286,7 @@ class Gui:
 		opt_romanization_system = {str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",'hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64)}
 		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
 		opt_list_size = {str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5}
-		opt_lang = {str(46):'en',str(47):'fr',str(48):'pt_BR',str(49):'sr',str(50):'sv','en':str(46),'fr':str(47),'pt_BR':str(48),'sr':str(49),'sv':str(50)}
+		opt_lang = {str(46):'en',str(47):'fr',str(70):'de',str(48):'pt_BR',str(49):'sr',str(50):'sv','en':str(46),'fr':str(47),'de':str(70),'pt_BR':str(48),'sr':str(49),'sv':str(50)}
 
 		#Values for kana portion params.
 		kanaPortions = [
@@ -562,7 +562,7 @@ class Gui:
 		label = tk.Label(right_frame,text=str(45))
 		label.pack(fill="both",expand=1)
 		option13 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option13,str(46),str(47),str(48),str(49),str(50))
+		o = tk.OptionMenu(right_frame,option13,str(46),str(47),str(70),str(48),str(49),str(50))
 		option13.set(opt_lang[self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 
