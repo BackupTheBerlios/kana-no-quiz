@@ -27,9 +27,8 @@ setup(
 		('share/kana-no-quiz/img',filelist("data/img")),
 		('share/kana-no-quiz/img/kana',filelist("data/img/kana")),
 		#Localisation.
-		('share/kana-no-quiz/locale',['data/locale/kana-no-quiz.pot']),
-		('share/kana-no-quiz/locale/fr/LC_MESSAGES',filelist('data/locale/fr/LC_MESSAGES')), #French
-		('share/kana-no-quiz/locale/pt_BR/LC_MESSAGES',filelist('data/locale/pt_BR/LC_MESSAGES')), #Portuguese of Brazil
-		('share/kana-no-quiz/locale/sr/LC_MESSAGES',filelist('data/locale/sr/LC_MESSAGES')), #Serbian
-		('share/kana-no-quiz/locale/sv/LC_MESSAGES',filelist('data/locale/sv/LC_MESSAGES'))] #Swedish
+		('share/kana-no-quiz/locale/fr/LC_MESSAGES',['data/locale/fr/LC_MESSAGES/kana-no-quiz.mo']), #French
+		('share/kana-no-quiz/locale/pt_BR/LC_MESSAGES',['data/locale/pt_BR/LC_MESSAGES/kana-no-quiz.mo']), #Portuguese of Brazil
+		('share/kana-no-quiz/locale/sr/LC_MESSAGES',['data/locale/sr/LC_MESSAGES/kana-no-quiz.mo']), #Serbian
+		('share/kana-no-quiz/locale/sv/LC_MESSAGES',['data/locale/sv/LC_MESSAGES/kana-no-quiz.mo'])] #Swedish
 	)

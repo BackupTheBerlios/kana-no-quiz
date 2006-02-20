@@ -22,7 +22,7 @@ import os, locale
 
 class Options:
 	def __init__(self):
-		self.conf_dir = os.path.expanduser("~/.kana-no-quiz")
+		self.conf_dir = os.path.expanduser("~/.kana-no-quiz") #Kana no quiz local configuration directory.
 		self.conf_file = os.path.join(self.conf_dir,"option.conf")  #Set path to the configuration file.
 
 		#Default options & values.
