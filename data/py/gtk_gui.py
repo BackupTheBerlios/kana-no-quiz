@@ -77,6 +77,9 @@ class Gui:
 		button = gtk.Button(str(4))
 		button.connect("clicked",self.about)
 		box2.pack_start(button)
+		button = gtk.Button(str(71))
+		button.connect("clicked",self.quit)
+		box2.pack_start(button)
 		box.pack_start(box2)
 
 		if oldbox: self.window.remove(oldbox)

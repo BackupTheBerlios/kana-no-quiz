@@ -74,6 +74,9 @@ class Gui:
 		button.pack(fill="both",expand=1)
 		button = tk.Button(frame2,text=str(4),command=self.about)
 		button.pack(fill="both",expand=1)
+		#~ button = tk.Button(frame2,text=str(71),command=self.quit)
+		button = tk.Button(frame2,text=str(71))
+		button.pack(fill="both",expand=1)
 
 		self.window.mainloop()
 

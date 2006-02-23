@@ -110,7 +110,8 @@ class I18n:
 			_("Question %s of %s."),
 			_("%s system."),
 			_("Stop"),
-			_("German") #70
+			_("German"), #70
+			_("Quit")
 			)
 
 		return string[num]
