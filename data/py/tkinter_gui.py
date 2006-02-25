@@ -74,8 +74,7 @@ class Gui:
 		button.pack(fill="both",expand=1)
 		button = tk.Button(frame2,text=str(4),command=self.about)
 		button.pack(fill="both",expand=1)
-		#~ button = tk.Button(frame2,text=str(71),command=self.quit)
-		button = tk.Button(frame2,text=str(71))
+		button = tk.Button(frame2,text=str(71),command=self.quit)
 		button.pack(fill="both",expand=1)
 
 		self.window.mainloop()
@@ -624,3 +623,6 @@ class Gui:
 	def setKanaImage(self,kind,kana):
 		"""Update kana image."""
 		self.image["file"] = os.path.join(self.datarootpath,"img/kana/%s_%s.gif" % (("k","h")[kind],kana))
+
+	def quit(self):
+		self.window.destroy() #Bye~~
