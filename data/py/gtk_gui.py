@@ -307,8 +307,25 @@ class Gui:
 		self.quizWidget['stop'].hide() #Hide the stop button.
 
 	def results(self,data):
-		#Display results.
-		self.quizLabel.set_text("<big>%s</big>\n\n%s\n%s\n%s" % (str(16),str(17) % self.score.getResults()[0],str(18) % self.score.getResults()[1],str(19) % self.score.getResults()[2]))
+		results = self.score.getResults()
+
+		#Displaying results.
+		text = "<big>%s</big>\n\n%s\n%s\n%s" % (str(16),str(17) % results[0],str(18) % results[1],str(19) % results[2])
+
+		def getUnrecStr(kind):
+			"""Returning a ready-to-display string which indicates the
+			unrecognized kana (by kind) during the quiz."""
+			plop = ""
+			for key,val in results[3][kind].items():
+				for x in val: 
+					if key!=1: plop += "%s (%s), " % x.upper(),key
+					else: plop += "%s, " % x.upper()
+			return "\n%s" % str(72+kind) % plop[:-2]
+
+		if len(results[3][0])>0: text += getUnrecStr(0)
+		if len(results[3][1])>0: text += getUnrecStr(1)
+
+		self.quizLabel.set_text(text)
 		self.quizLabel.set_use_markup(True)
 
 		self.score.reset() #Reset the score.

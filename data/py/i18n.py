@@ -111,7 +111,9 @@ class I18n:
 			_("%s system."),
 			_("Stop"),
 			_("German"), #70
-			_("Quit")
+			_("Quit"),
+			_("Unrecognized katakana: %s."),
+			_("Unrecognized hiragana: %s.")
 			)
 
 		return string[num]

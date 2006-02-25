@@ -272,8 +272,10 @@ class Gui:
 			self.window.slaves()[0].pack_forget()
 			self.main()
 
+		results = self.score.getResults()
+
 		#Display results.
-		self.quizLabel["text"] = ("%s\n\n%s\n%s\n%s" % (str(16),str(17) % self.score.getResults()[0],str(18) % self.score.getResults()[1],str(19) % self.score.getResults()[2]))
+		self.quizLabel["text"] = ("%s\n\n%s\n%s\n%s" % (str(16),str(17) % results[0],str(18) % results[1],str(19) % results[2]))
 		self.quizLabel["fg"] = "black"
 
 		self.nextButton["command"] = goBack

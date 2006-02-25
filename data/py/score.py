@@ -21,7 +21,7 @@ class Score:
 	def __init__(self):
 		self.total = 0 #Total question number.
 		self.score = 0 #The score value.
-		self.unrecKana = [{},{}] #Unrecognized katakana/hiragana list (with repetition number).
+		self.unrecKana = [{},{}] #Unrecognized kana dicts (katakana or hiragana, with repetition number).
 
 	def update(self,point,kana=None,kind=0):
 		self.total += 1 #Increment the total question number.
@@ -44,10 +44,17 @@ class Score:
 		if self.total: successrate = self.score * 100 / self.total
 		else: successrate = 0
 
-		return self.total, self.score, successrate, self.unrecKana 
+		#Postformating unrecognized kana dicts.
+		unrecKanaPF = [{},{}]
+		for i in range(2):
+			for key,val in self.unrecKana[i].items():
+				if unrecKanaPF[i].has_key(val): unrecKanaPF[i][val].append(key)
+				else: unrecKanaPF[i][val] = [key]
+			unrecKanaPF[i].keys().sort()
+			unrecKanaPF[i].keys().reverse()
+
+		return self.total, self.score, successrate, unrecKanaPF
 
 	def reset(self):
 		#Reset values...
-		self.total = 0
-		self.score = 0
-		self.unrecKana = {}
+		self.__init__()
