@@ -1,6 +1,6 @@
 """
 Kana no quiz!
-Copyleft 2003, 2004, 2005 Choplair-network.
+Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 $Id$
 
 This program is free software; you can redistribute it and/or
@@ -21,10 +21,17 @@ class Score:
 	def __init__(self):
 		self.total = 0 #Total question number.
 		self.score = 0 #The score value.
+		self.unrecKana = [{},{}] #Unrecognized katakana/hiragana list (with repetition number).
 
-	def update(self,point=0):
+	def update(self,point,kana=None,kind=0):
 		self.total += 1 #Increment the total question number.
 		self.score += point #Update the score.
+
+		if point==0: #If wrong answer, taking note of the unrecognized kana.
+			if self.unrecKana[kind].has_key(kana): #This kana has yet been unrecognized: incrementing value.
+				self.unrecKana[kind][kana] += 1
+			else: #Setting value 1 to this kana in the wrong answer list.
+				self.unrecKana[kind][kana] = 1
 
 	def isQuizFinished(self,length):
 		if self.total>=int(length): return True
@@ -37,9 +44,10 @@ class Score:
 		if self.total: successrate = self.score * 100 / self.total
 		else: successrate = 0
 
-		return self.total, self.score, successrate
+		return self.total, self.score, successrate, self.unrecKana 
 
 	def reset(self):
 		#Reset values...
 		self.total = 0
 		self.score = 0
+		self.unrecKana = {}

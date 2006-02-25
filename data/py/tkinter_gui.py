@@ -205,7 +205,7 @@ class Gui:
 		else: # /o\
 			self.quizLabel["text"] = "%s\n%s" % (str(14), str(15) % self.kana.upper())
 			self.quizLabel["fg"] = "red"
-			self.score.update() #Update the score.
+			self.score.update(0,kana,self.kanaEngine.getKanaKind()) #Update the score (indicate unrecognized kana).
 
 		if self.param.val('answer_mode')=="list":
 			for butt in self.answerButt.values(): butt.pack_forget() #Hide choices buttons.

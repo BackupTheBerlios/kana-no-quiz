@@ -243,7 +243,7 @@ class Gui:
 			self.score.update(1) #Update the score (add 1 point).
 		else: # /o\
 			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" % (str(14),str(15) % "<b>%s</b>" % self.kana.upper()))
-			self.score.update() #Update the score.
+			self.score.update(0,kana,self.kanaEngine.getKanaKind()) #Update the score (indicate unrecognized kana).
 		self.quizLabel.set_use_markup(True)
 
 		if self.param.val('answer_mode')=="list":
