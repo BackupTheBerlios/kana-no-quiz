@@ -23,8 +23,8 @@ from os import path, chdir, environ
 
 VERSION = "1.5cvs"
 
- #Setting Kana no quiz's data root directory's path.
-datarootpath = path.join(sys.prefix,'share/kana-no-quiz/')
+#Setting Kana no quiz's data root directory's path.
+datarootpath = path.join(sys.prefix,'share','kana-no-quiz')
 
 import options
 options = options.Options()
