@@ -19,7 +19,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 from distutils.core import setup
-import os.path, glob
+import os.path, glob, sys
 
 setup(
 	name='Kana no quiz',
@@ -42,3 +42,10 @@ setup(
 		(os.path.join('share','kana-no-quiz','locale','sr','LC_MESSAGES'),[os.path.join("data","locale","sr","LC_MESSAGES","kana-no-quiz.mo")]), #Serbian
 		(os.path.join('share','kana-no-quiz','locale','sv','LC_MESSAGES'),[os.path.join("data","locale","sv","LC_MESSAGES","kana-no-quiz.mo")])] #Swedish
 	)
+
+if "install" in sys.argv:
+	# Post install stuff.
+	if os.name=="posix":
+		exec_script = "/usr/local/bin/kana-no-quiz"
+		print "Putting Kana no quiz executable script into `%s'." % os.path.dirname(exec_script)
+		do("cp ./data/py/__init__.py %s; chmod +x %s" % (exec_script,exec_script))
