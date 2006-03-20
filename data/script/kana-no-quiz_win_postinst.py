@@ -26,14 +26,11 @@ if sys.platform[:3] != "win":
 
 if sys.argv[1] == "-install":
     import os.path
-    import shutil
 
-    #Duplicating Kana no quiz init script and changing it's extension
-    #to `.pyw', so that it will be used (i.e. from the Start Menu) to
-    #launch the program without displaying the background console.
+    #Creating a Start Menu shortcut to a Kana no quiz init script
+    #with the `.pyw', so that the program will be lauched without
+    #displaying the background console.
     target = os.path.join(sys.prefix,"Scripts","kana-no-quiz_start.pyw")
-    shutil.copyfile(os.path.join(sys.prefix,"Lib","site-packages","kana-no-quiz","__init__.py"),target)
-
     try:
         programs_dir = get_special_folder_path("CSIDL_COMMON_PROGRAMS")
     except OSError:
@@ -44,9 +41,8 @@ if sys.argv[1] == "-install":
             sys.exit()
     programs_shortcut = os.path.join(programs_dir, "Kana no quiz.lnk")
 
-    #Create a Start Menu shortcut.
     create_shortcut(target,"A kana memorization tool.",programs_shortcut,"","",
         os.path.join(sys.prefix,'share','kana-no-quiz','img','icon.png'))
     file_created(programs_shortcut)
 
-    print "Created Kana no quiz shortcut in the Start menu."
+    print "Created Kana no quiz shortcut in the Start menu.\n You're done!"

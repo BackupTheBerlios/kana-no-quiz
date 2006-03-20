@@ -41,8 +41,8 @@ setup(
 		#Textual files.
 		(os.path.join('share','kana-no-quiz'),glob.glob("*.txt")),
 		#Images (per extention adding).
-		(os.path.join('share','kana-no-quiz','img'),glob.glob(os.path.join("data","img","*.png")),
-			glob.glob(os.path.join("data","img","*.gif")),
+		(os.path.join('share','kana-no-quiz','img'),glob.glob(os.path.join("data","img","*.png"))+
+			glob.glob(os.path.join("data","img","*.gif"))+
 			glob.glob(os.path.join("data","img","*.xbm"))),
 		(os.path.join('share','kana-no-quiz','img','kana'),glob.glob(os.path.join("data","img","kana","*.gif"))),
 		#Localisation.
