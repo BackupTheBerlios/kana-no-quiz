@@ -25,19 +25,8 @@ if 'bdist_wininst' in sys.argv:
 	scriptfiles = glob.glob(os.path.join('data','script','*.py*'))
 else: scriptfiles = []
 
-setup(
-	name			=	'Kana no quiz',
-	version			=	'1.5cvs',
-	description		=	'A kana memorization tool.',
-	author			=	'Choplair-network',
-	author_email	=	'contact@choplair.org',
-	url				=	'http://www.choplair.org/',
-	download_url	=	'http://developer.berlios.de/project/filelist.php?group_id=1783',
-	license			=	'GNU General Public License',
-	packages		=	['kana-no-quiz'],
-	package_dir		=	{'kana-no-quiz': 'data/py'},
-	scripts			=	scriptfiles,
-	data_files		=	[
+#Common data files.
+datafiles = [
 		#Textual files.
 		(os.path.join('share','kana-no-quiz'),glob.glob("*.txt")),
 		#Images (per extention adding).
@@ -50,6 +39,22 @@ setup(
 		(os.path.join('share','kana-no-quiz','locale','pt_BR','LC_MESSAGES'),[os.path.join("data","locale","pt_BR","LC_MESSAGES","kana-no-quiz.mo")]), #Portuguese of Brazil
 		(os.path.join('share','kana-no-quiz','locale','sr','LC_MESSAGES'),[os.path.join("data","locale","sr","LC_MESSAGES","kana-no-quiz.mo")]), #Serbian
 		(os.path.join('share','kana-no-quiz','locale','sv','LC_MESSAGES'),[os.path.join("data","locale","sv","LC_MESSAGES","kana-no-quiz.mo")])] #Swedish
+if 'bdist_wininst' in sys.argv: #Da Windows icon!
+	datafiles.append((os.path.join("share","kana-no-quiz","img"),[os.path.join("data","img","icon.ico")]))
+
+setup(
+	name			=	'Kana no quiz',
+	version			=	'1.5cvs',
+	description		=	'A kana memorization tool.',
+	author			=	'Choplair-network',
+	author_email	=	'contact@choplair.org',
+	url				=	'http://www.choplair.org/',
+	download_url	=	'http://developer.berlios.de/project/filelist.php?group_id=1783',
+	license			=	'GNU General Public License',
+	packages		=	['kana-no-quiz'],
+	package_dir		=	{'kana-no-quiz': 'data/py'},
+	scripts			=	scriptfiles,
+	data_files		=	datafiles
 	)
 
 if "install" in sys.argv:

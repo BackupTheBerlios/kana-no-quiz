@@ -30,7 +30,7 @@ if sys.argv[1] == "-install":
     #Creating a Start Menu shortcut to a Kana no quiz init script
     #with the `.pyw', so that the program will be lauched without
     #displaying the background console.
-    target = os.path.join(sys.prefix,"Scripts","kana-no-quiz_start.pyw")
+    target = os.path.join(sys.prefix,"Scripts","kana-no-quiz_win_startup.pyw")
     try:
         programs_dir = get_special_folder_path("CSIDL_COMMON_PROGRAMS")
     except OSError:
@@ -42,7 +42,7 @@ if sys.argv[1] == "-install":
     programs_shortcut = os.path.join(programs_dir, "Kana no quiz.lnk")
 
     create_shortcut(target,"A kana memorization tool.",programs_shortcut,"","",
-        os.path.join(sys.prefix,'share','kana-no-quiz','img','icon.png'))
+        os.path.join(sys.prefix,'share','kana-no-quiz','img','icon.ico'))
     file_created(programs_shortcut)
 
-    print "Created Kana no quiz shortcut in the Start menu.\n You're done!"
+    print "Created Kana no quiz shortcut in the Start menu.\nYou're done!"
