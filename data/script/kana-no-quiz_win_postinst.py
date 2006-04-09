@@ -17,20 +17,18 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
-
-#This script is based on the one found in the ``Kofoto" package.
+#This script is based upon the one found in the ``Kofoto" package.
 import sys
 
-if sys.platform[:3] != "win":
-    sys.exit()
+if sys.platform[:3]!="win": sys.exit()
 
-if sys.argv[1] == "-install":
+if sys.argv[1]=="-install":
     import os.path
 
     #Creating a Start Menu shortcut to a Kana no quiz init script
     #with the `.pyw', so that the program will be lauched without
     #displaying the background console.
-    target = os.path.join(sys.prefix,"Scripts","kana-no-quiz_win_startup.pyw")
+    target = os.path.join(sys.prefix,"Scripts","kana-no-quiz_startup.pyw")
     try:
         programs_dir = get_special_folder_path("CSIDL_COMMON_PROGRAMS")
     except OSError:

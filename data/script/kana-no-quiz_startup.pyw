@@ -18,7 +18,14 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 import sys, os.path
-package_dir = os.path.join(sys.prefix,"Lib","site-packages","kana-no-quiz")
+
+if sys.platform[:3]=="win": #Running on a Windows platform.
+	package_dir = os.path.join(sys.prefix,"Lib","site-packages","kana-no-quiz")
+else: #Running on a Unix platform.
+	package_dir = os.path.join(sys.prefix,"lib","python%s" % sys.version[:3],"site-packages","kana-no-quiz")
+
+#Append Kana no quiz's module directory to `sys.path'.
 sys.path.append(package_dir)
-#Let's start!
+
+#Launch the program!
 execfile(os.path.join(package_dir,"__init__.py"))

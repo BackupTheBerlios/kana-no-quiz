@@ -1,7 +1,7 @@
 
  Kana no quiz - README
- version 1.4b - 2006-01-01
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ version 1.5CVS - 2006-0X-XX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
  ============
@@ -56,11 +56,14 @@ absolute master of the kana, everyone should get satisfated
 with Kana no quiz!
 
 
- Dependencies
- ============
+ Use Kana-no-quiz
+ ================
+
+ Prerequisites
+ -------------
 
  To run fine, Kana no quiz requires the following softwares
-to be installed on your computer:
+to be priorly installed on your computer:
 
 * Python - `http://www.python.org/'.
 * For the GTK+ interface (not mandatory but recommanded):
@@ -68,18 +71,28 @@ to be installed on your computer:
   * PyGTK - `http://www.pygtk.org/'.
 
 
- Launching
- =========
-
- I guess it should be clear for most of people, but in order
-to launch Kana no quiz, you just have to execute the file
-`kana-no-quiz.py'.
-
- On Windows, it is simply done by double-clicking on it.
+ Program installation
+ --------------------
  
- On GNU/Linux, you can go to Kana-no-quiz directory using your
-favorite graphical shell, then type `python kana-no-quiz.py'.
+ This process depends on your package type and platform.
 
+ On Windows, simply install Kana-no-quiz using the graphical,
+binary installer
+
+ On GNU/Linux, like other Unixes, if not using any distro-
+specific package but the classic source code, simply enter 
+`python setup.py install' as root to install Kana-no-quiz.
+
+ Launching
+ ---------
+
+ On Windows, simply click on the shortcut created in the
+Start Menu.
+
+ On GNU/Linux, run `/usr/local/bin/kana-no-quiz' (or simply
+`kana-no-quiz' if `/usr/local/bin/' is in your `$PATH').
+
+ Enjoy. ;)
 
  Some details
  ============
