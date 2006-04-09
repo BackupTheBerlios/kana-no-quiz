@@ -114,7 +114,12 @@ class I18n:
 			_("Quit"),
 			_("Unrecognized katakana: %s."),
 			_("Unrecognized hiragana: %s."),
-			_("Russian")
+			_("Russian"),
+			_("Random answer selection range:"),  #75
+			_("Same kana parts"),
+			_("Same kana set"),
+			_("Same kana kind"),
+			_("Whole kana list")
 			)
 
 		return string[num]

@@ -415,7 +415,7 @@ class Gui:
 			plop = ""
 			for key,val in results[3][kind].items():
 				for x in val: 
-					if key!=1: plop += "%s (%s), " % x.upper(),key
+					if key!=1: plop += "%s (%s), " % (x.upper(),key)
 					else: plop += "%s, " % x.upper()
 			return "\n%s" % str(72+kind) % plop[:-2]
 
@@ -439,7 +439,7 @@ class Gui:
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_romanization_system = {0:'hepburn',1:'kunrei-shiki',2:'nihon-shiki','hepburn':0,'kunrei-shiki':1,'nihon-shiki':2}
 		opt_answer_mode = {0:'random_list',1:'text_entry','random_list':0,'text_entry':1}
-		opt_lang = {0:'en',1:'fr',2:'de',3:'pt_BR',4:'ru':5:'sr',6:'sv','en':0,'fr':1,'de':2,'pt_BR':3,'ru':4,'sr':5,'sv':6}
+		opt_lang = {0:'en',1:'fr',2:'de',3:'pt_BR',4:'ru',5:'sr',6:'sv','en':0,'fr':1,'de':2,'pt_BR':3,'ru':4,'sr':5,'sv':6}
 
 		#Values for kana portion params.
 		kanaPortions = [
