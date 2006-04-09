@@ -62,5 +62,5 @@ if "install" in sys.argv:
 	if os.name=="posix":
 		import shutil
 		startup_script = "/usr/local/bin/kana-no-quiz"
-		print "Putting Kana no quiz start-up script into `%s'." % os.path.dirname(exec_script)
+		print "Putting Kana no quiz start-up script into `%s'." % os.path.dirname(startup_script)
 		shutil.copy("./data/script/kana-no-quiz_startup.pyw",startup_script)
