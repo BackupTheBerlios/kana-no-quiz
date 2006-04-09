@@ -113,7 +113,8 @@ class I18n:
 			_("German"), #70
 			_("Quit"),
 			_("Unrecognized katakana: %s."),
-			_("Unrecognized hiragana: %s.")
+			_("Unrecognized hiragana: %s."),
+			_("Russian")
 			)
 
 		return string[num]

@@ -44,9 +44,10 @@ class Options:
 		'romanization_system':'hepburn',
 		'length':20,
 		'kana_no_repeat':'false',
-		'answer_mode':'list',
-		'list_size':3}
-		if locale.getlocale() in ("de","fr","pt_BR","sr","sv"): self.params['lang'] = locale.getlocale()
+		'answer_mode':'random_list',
+		'list_size':3,
+		'random_answer_select_range':'portion'}
+		if locale.getlocale() in ("de","fr","pt_BR","ru","sr","sv"): self.params['lang'] = locale.getlocale()
 		else: self.params['lang'] = "en"
 
 		#Valid values for each option contained as a tuple into a dictionnary.
@@ -58,11 +59,12 @@ class Options:
 		'modified_katakana':('true','false'),
 		'contracted_katakana':('true','false'),
 		'additional_katakana':('true','false'),
-		'romanization_system':("hepburn","kunrei-shiki","nihon-shiki"),
+		'romanization_system':('hepburn','kunrei-shiki','nihon-shiki'),
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4,5),
+		'random_answer_select_range':('portion','set','kind','all'),
 		'kana_no_repeat':('true','false'),
-		'lang':('de','en','fr','pt_BR','sr','sv')
+		'lang':('de','en','fr','pt_BR','ru','sr','sv')
 		}
 
 	def read(self):

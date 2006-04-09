@@ -8,6 +8,7 @@
 - More complete quiz result informations.
 - A quit button in the main window.
 - Windows binary installation package.
+- New Russian translation (made by Aleksej R. Serdyukov).
 
 
 * Version 1.4b (2006-01-01):

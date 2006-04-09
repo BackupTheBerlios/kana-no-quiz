@@ -37,9 +37,10 @@ datafiles = [
 		#Localisation.
 		(os.path.join('share','kana-no-quiz','locale','fr','LC_MESSAGES'),[os.path.join("data","locale","fr","LC_MESSAGES","kana-no-quiz.mo")]), #French
 		(os.path.join('share','kana-no-quiz','locale','pt_BR','LC_MESSAGES'),[os.path.join("data","locale","pt_BR","LC_MESSAGES","kana-no-quiz.mo")]), #Portuguese of Brazil
+		(os.path.join('share','kana-no-quiz','locale','ru','LC_MESSAGES'),[os.path.join("data","locale","ru","LC_MESSAGES","kana-no-quiz.mo")]), #Russian
 		(os.path.join('share','kana-no-quiz','locale','sr','LC_MESSAGES'),[os.path.join("data","locale","sr","LC_MESSAGES","kana-no-quiz.mo")]), #Serbian
 		(os.path.join('share','kana-no-quiz','locale','sv','LC_MESSAGES'),[os.path.join("data","locale","sv","LC_MESSAGES","kana-no-quiz.mo")])] #Swedish
-if 'bdist_wininst' in sys.argv: #Da Windows icon!
+if 'bdist_wininst' in sys.argv: #Windows Start Menu icon!
 	datafiles.append((os.path.join("share","kana-no-quiz","img"),[os.path.join("data","img","icon.ico")]))
 
 setup(

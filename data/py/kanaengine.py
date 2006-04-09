@@ -57,27 +57,28 @@ class Usability:
 
 def HepburnToOtherSysConvert(kana,outputsys):
 	#Kunrei-shiki/Nihon-shiki common kana values.
-	if kana=="shi": return "si"
-	elif kana=="sha": return "sya"
-	elif kana=="shu": return "syu"
-	elif kana=="sho": return "syo"
-	elif kana=="ji": return "zi"
-	elif kana=="ja": return "zya"
-	elif kana=="ju": return "zyu"
-	elif kana=="jo": return "zyo"
-	elif kana=="tsu": return "tu"	
-	elif kana=="chi": return "ti"
-	elif kana=="cha": return "tya"
-	elif kana=="chu": return "tyu"
-	elif kana=="cho": return "tyo"
-	elif kana=="fu": return "hu"
-	#Kunrei-shiki specific kana values.
-	if outputsys=="kunrei-shiki":
-		if kana=="ji-2": return "zi" 
-	#Nihon-shiki specific kana values.
-	elif outputsys=="nihon-shiki":
-		if kana=="ji-2": return "di"
-		elif kana=="zu-2": return "du"
+	if outputsys in ("kunrei-shiki","nihon-shiki"):
+		if kana=="shi": return "si"
+		elif kana=="sha": return "sya"
+		elif kana=="shu": return "syu"
+		elif kana=="sho": return "syo"
+		elif kana=="ji": return "zi"
+		elif kana=="ja": return "zya"
+		elif kana=="ju": return "zyu"
+		elif kana=="jo": return "zyo"
+		elif kana=="tsu": return "tu"	
+		elif kana=="chi": return "ti"
+		elif kana=="cha": return "tya"
+		elif kana=="chu": return "tyu"
+		elif kana=="cho": return "tyo"
+		elif kana=="fu": return "hu"
+		#Kunrei-shiki specific kana values.
+		if outputsys=="kunrei-shiki":
+			if kana=="ji-2": return "zi" 
+		#Nihon-shiki specific kana values.
+		elif outputsys=="nihon-shiki":
+			if kana=="ji-2": return "di"
+			elif kana=="zu-2": return "du"
 
 	#Return the same value if no modification of the kana beetween the systems.
 	return kana
@@ -176,7 +177,7 @@ class KanaEngine:
 			while not ok:
 				#Althougth I know that's more ressource consuming to put this instruction in the ``while", 
 				#it becomes buggy when placed just before (for reasons which I don't understand...). O_o
-				#At least, it works ! But, anyway, this kana engine is hunted ! XD
+				#At least, it works! But, anyway, this kana engine is hunted! XD
 				self.usability = Usability(args[0],args[1])
 
 				sets = self.usability.getStateList(0)
