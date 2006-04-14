@@ -102,7 +102,7 @@ class I18n:
 			_("Warning"),
 			_("You must select at least one question set."), #60
 			_("Romanization system:"),
-			_("Hepburn (recommended)"),
+			_("Hepburn (most used)"),
 			_("Kunrei-shiki"),
 			_("Nihon-shiki"),
 			_("Information"), #65
@@ -119,7 +119,8 @@ class I18n:
 			_("Same kana parts"),
 			_("Same kana set"),
 			_("Same kana kind"),
-			_("Whole kana list")
+			_("Whole kana list"),
+			_("Polivanov (cyrillic)") #80
 			)
 
 		return string[num]

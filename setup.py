@@ -35,6 +35,7 @@ datafiles = [
 			glob.glob(os.path.join("data","img","*.xbm"))),
 		(os.path.join('share','kana-no-quiz','img','kana'),glob.glob(os.path.join("data","img","kana","*.gif"))),
 		#Localisation.
+		(os.path.join('share','kana-no-quiz','locale','de','LC_MESSAGES'),[os.path.join("data","locale","de","LC_MESSAGES","kana-no-quiz.mo")]), #French
 		(os.path.join('share','kana-no-quiz','locale','fr','LC_MESSAGES'),[os.path.join("data","locale","fr","LC_MESSAGES","kana-no-quiz.mo")]), #French
 		(os.path.join('share','kana-no-quiz','locale','pt_BR','LC_MESSAGES'),[os.path.join("data","locale","pt_BR","LC_MESSAGES","kana-no-quiz.mo")]), #Portuguese of Brazil
 		(os.path.join('share','kana-no-quiz','locale','ru','LC_MESSAGES'),[os.path.join("data","locale","ru","LC_MESSAGES","kana-no-quiz.mo")]), #Russian
@@ -63,5 +64,5 @@ if "install" in sys.argv:
 	if os.name=="posix":
 		import shutil
 		startup_script = "/usr/local/bin/kana-no-quiz"
-		print "Putting Kana no quiz start-up script into `%s'." % os.path.dirname(startup_script)
 		shutil.copy("./data/script/kana-no-quiz_startup.pyw",startup_script)
+		print "Kana no quiz start-up script put into `%s'." % os.path.dirname(startup_script)

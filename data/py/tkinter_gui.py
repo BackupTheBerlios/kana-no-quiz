@@ -140,7 +140,7 @@ class Gui:
 			self.quizInfos = {}
 			self.quizInfos['questionNumLabel'] = tk.Label(frame3,bd=0,text=str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')),bg="white")
 			self.quizInfos['questionNumLabel'].pack(expand=1,fill="both")
-			self.quizInfos['systemLabel'] = tk.Label(frame3,bd=0,text=str(68) % capwords(self.param.val('romanization_system')),bg="white")
+			self.quizInfos['systemLabel'] = tk.Label(frame3,bd=0,text=str(68) % capwords(self.param.val('transcription_system')),bg="white")
 			self.quizInfos['systemLabel'].pack(expand=1,fill="both")
 			frame3.pack(side="top",expand=1,fill="both")
 			frame2.pack(side="left",expand=1,fill="both")
@@ -166,8 +166,8 @@ class Gui:
 					#If the selected romanization system is *other* than Hepburn (default),
 					#let's convert that answer list (given in the Hepburn internal format)
 					#into the user-selected romanization system.
-					if self.param.val('romanization_system')!="hepburn":
-						x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('romanization_system'))
+					if self.param.val('transcription_system')!="hepburn":
+						x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('transcription_system'))
 
 					if x[-2:]=="-2": x = x[:-2]
 					self.answerButt[i] = tk.Button(frame2,text=x.upper(),height=2)
@@ -194,8 +194,8 @@ class Gui:
 		#let's convert the good answer (given in the Hepburn internal format)
 		#to the user-selected romanization system, in order to compare with its
 		#chosen answer.
-		if self.param.val('romanization_system')!="hepburn":
-			self.kana = kanaengine.HepburnToOtherSysConvert(self.kana,self.param.val('romanization_system'))
+		if self.param.val('transcription_system')!="hepburn":
+			self.kana = kanaengine.HepburnToOtherSysConvert(self.kana,self.param.val('transcription_system'))
 		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
 
 		if answer==self.kana: # \o/
@@ -254,8 +254,8 @@ class Gui:
 				#If the selected romanization system is *other* than Hepburn (default),
 				#let's convert that answer list (given in the Hepburn internal format)
 				#into the user-selected romanization system.
-				if self.param.val('romanization_system')!="hepburn":
-					x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('romanization_system'))
+				if self.param.val('transcription_system')!="hepburn":
+					x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('transcription_system'))
 				if x[-2:]=="-2": x = x[:-2]
 				self.answerButt[i]["text"] = x.upper()
 				self.answerButt[i].pack(pady=1,fill="both",expand=1)
@@ -288,7 +288,7 @@ class Gui:
 	def options(self):
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
-		opt_romanization_system = {str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",'hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64)}
+		opt_transcription_system = {str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",str(80):'polivanov','hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64),'polivanov':str(80)}
 		opt_answer_mode = {str(39):'random_list',str(40):'text_entry','random_list':str(39),'text_entry':str(40)}
 		opt_list_size = {str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5}
 		opt_lang = {str(46):'en',str(47):'fr',str(70):'de',str(48):'pt_BR',str(74):'ru',str(49):'sr',str(50):'sv','en':str(46),'fr':str(47),'de':str(70),'pt_BR':str(48),'ru':str(74),'sr':str(49),'sv':str(50)}
@@ -323,7 +323,7 @@ class Gui:
 			'contracted_katakana_portions':kanaPortions[5],
 			'additional_katakana':opt_boolean[option7.get()],
 			'additional_katakana_portions':kanaPortions[6],
-			'romanization_system':opt_romanization_system[option8.get().encode('utf8')],
+			'transcription_system':opt_transcription_system[option8.get().encode('utf8')],
 			'answer_mode':opt_answer_mode[option9.get().encode('utf8')],
 			'list_size':opt_list_size[option10.get().encode('utf8')],
 			'length':int(option11.get()),
@@ -521,12 +521,12 @@ class Gui:
 		right_frame = tk.Frame(option_frame)
 		right_frame.pack(fill="both",expand=1,pady=6,padx=6)
 
-		#`romanization_system'
+		#`transcription_system'
 		label = tk.Label(right_frame,text=str(61))
 		label.pack(fill="both",expand=1)
 		option8 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option8,str(62),str(63),str(64))
-		option8.set(opt_romanization_system[self.param.val('romanization_system')])
+		o = tk.OptionMenu(right_frame,option8,str(62),str(63),str(64),str(80))
+		option8.set(opt_transcription_system[self.param.val('transcription_system')])
 		o.pack(fill="both",expand=1)
 
 		#`answer_mode'

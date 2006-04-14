@@ -1,4 +1,4 @@
-"""
+﻿"""
 Kana no quiz!
 Copyleft 2003, 2004, 2005 Choplair-network.
 $Id$
@@ -58,20 +58,26 @@ class Usability:
 def HepburnToOtherSysConvert(kana,outputsys):
 	#Kunrei-shiki/Nihon-shiki common kana values.
 	if outputsys in ("kunrei-shiki","nihon-shiki"):
-		if kana=="shi": return "si"
-		elif kana=="sha": return "sya"
-		elif kana=="shu": return "syu"
-		elif kana=="sho": return "syo"
-		elif kana=="ji": return "zi"
-		elif kana=="ja": return "zya"
-		elif kana=="ju": return "zyu"
-		elif kana=="jo": return "zyo"
-		elif kana=="tsu": return "tu"	
-		elif kana=="chi": return "ti"
-		elif kana=="cha": return "tya"
-		elif kana=="chu": return "tyu"
-		elif kana=="cho": return "tyo"
-		elif kana=="fu": return "hu"
+		convert = {
+			"shi":"si", "sha":"sya", "shu":"syu", "sho":"syo",
+			"ji":"zi", "ja":"zya", "ju":"zyu", "jo":"zyo",
+			"tsu":"tu", "chi":"ti", "cha":"tya", "chu":"tyu",
+			"cho":"tyo", "fu":"hu"}
+		if convert.has_key(kana): return convert[kana]
+	#	if kana=="shi": return "si"
+	#	elif kana=="sha": return "sya"
+	#	elif kana=="shu": return "syu"
+	#	elif kana=="sho": return "syo"
+	#	elif kana=="ji": return "zi"
+	#	elif kana=="ja": return "zya"
+	#	elif kana=="ju": return "zyu"
+	#	elif kana=="jo": return "zyo"
+	#	elif kana=="tsu": return "tu"	
+	#	elif kana=="chi": return "ti"
+	#	elif kana=="cha": return "tya"
+	#	elif kana=="chu": return "tyu"
+	#	elif kana=="cho": return "tyo"
+	#	elif kana=="fu": return "hu"
 		#Kunrei-shiki specific kana values.
 		if outputsys=="kunrei-shiki":
 			if kana=="ji-2": return "zi" 
@@ -79,6 +85,43 @@ def HepburnToOtherSysConvert(kana,outputsys):
 		elif outputsys=="nihon-shiki":
 			if kana=="ji-2": return "di"
 			elif kana=="zu-2": return "du"
+	#Convertion to Polivanov.	
+	if outputsys=="polivanov":
+		convert = {
+			#Basic/modified kana.
+			"a":"а", "i":"и/й", "u":"у", "e":"э",
+			"o":"о", "ka":"ка", "ki":"ки", "ku":"ку",
+		 	"ke":"кэ", "ko":"ко","ga":"га", "gi":"ги",
+ 			"gu":"гу", "ge":"гэ", "go":"го", "sa": "са",
+		 	"shi":"си", "su":"су", "se":"сэ", "so":"со",
+			"za":"дза", "ji":"дзи", "zu":"дзу", "ze": "дзэ",
+			"zo":"дзо", "ta":"та", "chi":"ти", "tsu":"цу",
+			"te":"тэ", "to":"то", "da":"да", "ji":"дзи",
+		 	"zu":"дзу", "de":"дэ", "do": "до", "na":"на",
+		 	"ni":"ни", "nu":"ну", "ne":"нэ", "no":"но",
+			"ha":"ха", "hi":"хи", "fu":"фу",  "he":"хэ",
+			"ho":"хо","pa":"па", "pi":"пи", "pu":"пу",
+			"pe":"пэ", "po":"по", "ba":"ба", "bi":"би",
+			"bu":"бу", "be":"бэ", "bo":"бо", "ma":"ма",
+		 	"mi":"ми", "mu":"му", "me":"мэ", "mo":"мо",
+			"ya":"я", "yu":"ю", "yo":"ё", "ra":"ра",
+			"ri":"ри", "ru":"ру", "re":"рэ", "ro":"ро",
+			"wa":"ва", "wo":"о",
+			#Contracted kana.
+			"kya":"кя", 	"kyu":"кю", 	"kyo":"кё",
+			"gya":"гя", 	"gyu":"гю", 	"gyo":"гё",
+			"sha":"ся",	"shu":"сю",	"sho":"сё",
+			"ja":"дзя",	"ju":"дзю", 	"jo":"дзё",
+			"cha":"тя", 	"chu":"тю",	"cho":"тё",
+			"ja":"дзя", 	"ju":"дзю", 	"jo":"дзё",
+			"nya":"ня", 	"nyu":"ню", 	"nyo":"нё",
+			"hya":"хя", 	"hyu":"хю", 	"hyo":"хё",
+			"pya":"пя", 	"pyu":"пю", 	"pyo":"пё",
+			"bya":"бя", 	"byu":"бю", 	"byo":"бё",
+			"mya":"мя", 	"myu":"мю", 	"myo":"мё",
+			"rya":"ря", 	"ryu":"рю", 	"ryo":"рё"
+			}
+		if convert.has_key(kana): return convert[kana]
 
 	#Return the same value if no modification of the kana beetween the systems.
 	return kana
