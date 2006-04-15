@@ -1,6 +1,6 @@
 ﻿"""
 Kana no quiz!
-Copyleft 2003, 2004, 2005 Choplair-network.
+Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 $Id$
 
 This program is free software; you can redistribute it and/or
@@ -64,20 +64,7 @@ def HepburnToOtherSysConvert(kana,outputsys):
 			"tsu":"tu", "chi":"ti", "cha":"tya", "chu":"tyu",
 			"cho":"tyo", "fu":"hu"}
 		if convert.has_key(kana): return convert[kana]
-	#	if kana=="shi": return "si"
-	#	elif kana=="sha": return "sya"
-	#	elif kana=="shu": return "syu"
-	#	elif kana=="sho": return "syo"
-	#	elif kana=="ji": return "zi"
-	#	elif kana=="ja": return "zya"
-	#	elif kana=="ju": return "zyu"
-	#	elif kana=="jo": return "zyo"
-	#	elif kana=="tsu": return "tu"	
-	#	elif kana=="chi": return "ti"
-	#	elif kana=="cha": return "tya"
-	#	elif kana=="chu": return "tyu"
-	#	elif kana=="cho": return "tyo"
-	#	elif kana=="fu": return "hu"
+
 		#Kunrei-shiki specific kana values.
 		if outputsys=="kunrei-shiki":
 			if kana=="ji-2": return "zi" 
@@ -85,25 +72,26 @@ def HepburnToOtherSysConvert(kana,outputsys):
 		elif outputsys=="nihon-shiki":
 			if kana=="ji-2": return "di"
 			elif kana=="zu-2": return "du"
+
 	#Convertion to Polivanov.	
 	if outputsys=="polivanov":
 		convert = {
 			#Basic/modified kana.
 			"a":"а", "i":"и/й", "u":"у", "e":"э",
 			"o":"о", "ka":"ка", "ki":"ки", "ku":"ку",
-		 	"ke":"кэ", "ko":"ко","ga":"га", "gi":"ги",
- 			"gu":"гу", "ge":"гэ", "go":"го", "sa": "са",
-		 	"shi":"си", "su":"су", "se":"сэ", "so":"со",
+			"ke":"кэ", "ko":"ко","ga":"га", "gi":"ги",
+			"gu":"гу", "ge":"гэ", "go":"го", "sa": "са",
+			"shi":"си", "su":"су", "se":"сэ", "so":"со",
 			"za":"дза", "ji":"дзи", "zu":"дзу", "ze": "дзэ",
 			"zo":"дзо", "ta":"та", "chi":"ти", "tsu":"цу",
 			"te":"тэ", "to":"то", "da":"да", "ji":"дзи",
-		 	"zu":"дзу", "de":"дэ", "do": "до", "na":"на",
-		 	"ni":"ни", "nu":"ну", "ne":"нэ", "no":"но",
+			"zu":"дзу", "de":"дэ", "do": "до", "na":"на",
+			"ni":"ни", "nu":"ну", "ne":"нэ", "no":"но",
 			"ha":"ха", "hi":"хи", "fu":"фу",  "he":"хэ",
 			"ho":"хо","pa":"па", "pi":"пи", "pu":"пу",
 			"pe":"пэ", "po":"по", "ba":"ба", "bi":"би",
 			"bu":"бу", "be":"бэ", "bo":"бо", "ma":"ма",
-		 	"mi":"ми", "mu":"му", "me":"мэ", "mo":"мо",
+			"mi":"ми", "mu":"му", "me":"мэ", "mo":"мо",
 			"ya":"я", "yu":"ю", "yo":"ё", "ra":"ра",
 			"ri":"ри", "ru":"ру", "re":"рэ", "ro":"ро",
 			"wa":"ва", "wo":"о",
@@ -131,12 +119,17 @@ class KanaEngine:
 		self.previous_kana = None
 		self.default_kana_list = self.getKanaList()
 		self.used_kana_list = self.getKanaList()
+		
+	def reset(self):
+		"""Reset main variable values (i.e. when quiz	is finished,
+		to permit starting one another	in a safe mode)."""
+		self.__init__()
 
 	def getKanaList(self):
-		"""This function returns the kana full list (using Hepburn
-		trascription), divided in sets (the 3 firsts are hiragana,
-		the 4 nexts are katakana) then splited into small portions
-		of 5/6 kana."""
+		"""This function returns the kana full list (using default/
+		Hepburn	trascription), divided in sets (the 3 firsts are
+		hiragana, the 4 nexts are katakana) then splited into small
+		portions	of 5/6 kana."""
 		return (
 		[ #Basic hiragana.
 		["a",	"i",	"u",	"e",	"o"],
@@ -211,17 +204,22 @@ class KanaEngine:
 		"fa",	"fi",		"fe",	"fo"],
 		["va",	"vi",	"vu",	"ve",	"vo"]])
 
-	def randomKana(self,*args):
-		"""Randomly choose a kana, respecting many
-		parameters, which will be the right answer."""
+	def kanaSelectParams(self,*args):
+		"""Kana will be choosed respecting these
+		parameters."""
+		self.select_params = args
 
-		if "true" in args[0]:
+	def randomKana(self):
+		"""Randomly choose a kana which will be
+		considered as the right answer."""
+
+		if "true" in self.select_params[0]:
 			ok = 0
 			while not ok:
 				#Althougth I know that's more ressource consuming to put this instruction in the ``while", 
 				#it becomes buggy when placed just before (for reasons which I don't understand...). O_o
 				#At least, it works! But, anyway, this kana engine is hunted! XD
-				self.usability = Usability(args[0],args[1])
+				self.usability = Usability(self.select_params[0],self.select_params[1])
 
 				sets = self.usability.getStateList(0)
 				portions = self.usability.getStateList(1)
@@ -267,16 +265,17 @@ class KanaEngine:
 				#Prevention of selecting the same kana than previously.
 				self.kana = random.choice(self.portion)
 
-			if args[2]=="true":
+			if self.select_params[2]=="true":
 				#The no-repeat option is activated, so we remove the kana from the list to prevent future selection.
 				self.used_kana_list[self.set_num][self.portion_num].remove(self.kana)
+				print len(self.used_kana_list[0][0])
 
 			#Precisely memorize this kana to prevent it to be selected the next time.
 			self.previous_kana = self.kana
 			
 			return self.kana
 
-		else: return 0
+		else: return False
 
 	def getKanaKind(self): return self.kind #Katakana = 0 & hiragana = 1.
 

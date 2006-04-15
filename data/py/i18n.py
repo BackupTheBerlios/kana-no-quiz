@@ -78,7 +78,7 @@ class I18n:
 			_("If you are novice, it may be interesting at the beginning to train yourself only on some kana instead of the full set."), #35
 			_("Select the kana portions you want to train yourself upon:"),
 			_("Select all"),
-			_("Answer mode:"),
+			_("Answering method:"),
 			_("A random list"),
 			_("A text entry"), #40
 			_("Random answer list size:"),

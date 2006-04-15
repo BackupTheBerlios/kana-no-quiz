@@ -126,8 +126,8 @@ class Gui:
 		self.window.show_all()
 
 	def quiz(self,oldbox):
-		#Randomly get a kana.
-		self.kana = self.kanaEngine.randomKana(
+		#Defining kana selection parameters.
+		self.kanaEngine.kanaSelectParams(
 			(self.param.val('basic_hiragana'),
 			self.param.val('modified_hiragana'),
 			self.param.val('contracted_hiragana'),
@@ -143,6 +143,8 @@ class Gui:
 			self.param.val('contracted_katakana_portions'),
 			self.param.val('additional_katakana_portions')),
 			self.param.val('kana_no_repeat'))
+		#Randomly getting a kana (respecting bellow conditions).
+		self.kana = self.kanaEngine.randomKana()
 
 		if self.kana:
 			self.quizWidget = {}
@@ -203,7 +205,6 @@ class Gui:
 				entry.set_alignment(0.5)
 				entry.set_width_chars(3)
 				entry.connect("changed",lambda widget: widget.set_text(widget.get_text().upper()))
-				#entry.connect("activate",self.checkAnswer)
 				box2.pack_start(entry)
 				self.handlerid = self.nextButton.connect_object("clicked",self.checkAnswer,entry)
 
@@ -218,6 +219,8 @@ class Gui:
 			self.window.show_all()
 
 			if self.param.val('answer_mode')=="list": self.nextButton.hide() #Hide the arrow.
+			else: entry.grab_focus() #Give focus to text entry.
+
 			self.quizWidget['stop'].hide() #Hide the stop button.
 
 		else:
@@ -243,7 +246,7 @@ class Gui:
 			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" % str(13))
 			self.score.update(1) #Update the score (add 1 point).
 		else: # /o\
-			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" % (str(14),str(15) % "<b>%s</b>" % self.kana.upper()))
+			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" % (str(14),str(15) % "<big><b>%s</b></big>" % self.kana.upper()))
 			self.score.update(0,self.kana,self.kanaEngine.getKanaKind()) #Update the score (indicate unrecognized kana).
 		self.quizLabel.set_use_markup(True)
 
@@ -263,22 +266,7 @@ class Gui:
 
 	def newQuestion(self,widget):
 		#Randomly get a kana.
-		self.kana = self.kanaEngine.randomKana(
-			(self.param.val('basic_hiragana'),
-			self.param.val('modified_hiragana'),
-			self.param.val('contracted_hiragana'),
-			self.param.val('basic_katakana'),
-			self.param.val('modified_katakana'),
-			self.param.val('contracted_katakana'),
-			self.param.val('additional_katakana')),
-			(self.param.val('basic_hiragana_portions'),
-			self.param.val('modified_hiragana_portions'),
-			self.param.val('contracted_hiragana_portions'),
-			self.param.val('basic_katakana_portions'),
-			self.param.val('modified_katakana_portions'),
-			self.param.val('contracted_katakana_portions'),
-			self.param.val('additional_katakana_portions')),
-			self.param.val('kana_no_repeat'))
+		self.kana = self.kanaEngine.randomKana()
 
 		self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) #Update kana's image.
 
@@ -303,8 +291,10 @@ class Gui:
 		else:  #Display the text entry.
 			widget.set_text("")
 			widget.show()
+			widget.grab_focus() #Give focus to text entry.
 			self.nextButton.disconnect(self.handlerid)
 			self.handlerid = self.nextButton.connect_object("clicked",self.checkAnswer,widget)
+
 		self.quizWidget['stop'].hide() #Hide the stop button.
 
 	def results(self,data):
@@ -328,14 +318,15 @@ class Gui:
 		self.quizLabel.set_text(text)
 		self.quizLabel.set_use_markup(True)
 
-		self.score.reset() #Reset the score.
-		self.kanaImage.hide() #Hide kana image.
-		self.quizInfos['container'].hide() #Hide quiz stop & informations.
+		self.score.reset() #Reseting the score.
+		self.kanaEngine.reset() #Reseting kana engine's variables.
+		self.kanaImage.hide() #Hidding kana image.
+		self.quizInfos['container'].hide() #Hidding quiz stop & informations.
 
-		#Connect the arrow to the ``main".
+		#Connecting the arrow to the ``main".
 		self.nextButton.disconnect(self.handlerid)
 		self.nextButton.connect_object("clicked",self.main,self.window.get_child())
-		self.quizWidget['stop'].hide() #Hide the stop button.
+		self.quizWidget['stop'].hide() #Hidding the stop button.
 
 	def options(self,oldbox):
 		#Dicts for integrer to string options convertion and vice-versa...
