@@ -107,7 +107,7 @@ def HepburnToOtherSysConvert(kana,outputsys):
 			"rya":"ря", "ryu":"рю", "ryo":"рё",
 			#Additionnal katakana.
 			"wi":"вх", "we":"вщ", "wo":"вн",
-			"kwa":"ква", "kwo":"квн","гва",
+			"kwa":"ква", "kwo":"квн",
 			"she":"сэ", "je":"дзщ", "che":"тэ",
 			"tsa":"цю", "tse":"цщ", "tso":"цн",
 			"ti":"ти", "tu":"ту", "di":"ди", "du":"ду",
