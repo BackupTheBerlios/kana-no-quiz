@@ -289,7 +289,7 @@ class Gui:
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_transcription_system = {str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",str(80):'polivanov','hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64),'polivanov':str(80)}
-		opt_answer_mode = {str(39):'random_list',str(40):'text_entry','random_list':str(39),'text_entry':str(40)}
+		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
 		opt_list_size = {str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5}
 		opt_lang = {str(46):'en',str(47):'fr',str(70):'de',str(48):'pt_BR',str(74):'ru',str(49):'sr',str(50):'sv','en':str(46),'fr':str(47),'de':str(70),'pt_BR':str(48),'ru':str(74),'sr':str(49),'sv':str(50)}
 

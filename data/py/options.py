@@ -44,7 +44,7 @@ class Options:
 		'transcription_system':'hepburn',
 		'length':20,
 		'kana_no_repeat':'false',
-		'answer_mode':'random_list',
+		'answer_mode':'list',
 		'list_size':3,
 		'random_answer_select_range':'portion'}
 		if locale.getlocale() in ("de","fr","pt_BR","ru","sr","sv"): self.params['lang'] = locale.getlocale()

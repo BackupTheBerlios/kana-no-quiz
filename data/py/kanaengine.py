@@ -273,7 +273,6 @@ class KanaEngine:
 			if self.select_params[2]=="true":
 				#The no-repeat option is activated, so we remove the kana from the list to prevent future selection.
 				self.used_kana_list[self.set_num][self.portion_num].remove(self.kana)
-				print len(self.used_kana_list[0][0])
 
 			#Precisely memorize this kana to prevent it to be selected the next time.
 			self.previous_kana = self.kana

@@ -333,7 +333,7 @@ class Gui:
 		#Dicts for integrer to string options convertion and vice-versa...
 		opt_boolean = {0:'false',1:'true','false':0,'true':1}
 		opt_transcription_system = {0:'hepburn',1:'kunrei-shiki',2:'nihon-shiki',3:'polivanov','hepburn':0,'kunrei-shiki':1,'nihon-shiki':2,'polivanov':3}
-		opt_answer_mode = {0:'random_list',1:'text_entry','random_list':0,'text_entry':1}
+		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
 		opt_lang = {0:'en',1:'fr',2:'de',3:'pt_BR',4:'ru',5:'sr',6:'sv','en':0,'fr':1,'de':2,'pt_BR':3,'ru':4,'sr':5,'sv':6}
 
 		#Values for kana portion params.
