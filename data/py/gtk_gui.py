@@ -47,6 +47,7 @@ class Gui:
 		self.window.connect("destroy",self.quit)
 		self.window.set_border_width(5)
 		gtk.window_set_default_icon_from_file(os.path.join(self.datarootpath,"img","icon.png"))
+		self.handlerid = {}
 
 	def main(self,oldbox=None):
 		if self.currentlang!=self.param.val('lang'):
@@ -198,7 +199,7 @@ class Gui:
 					self.answerButt[i].connect("clicked",self.checkAnswer)
 					box2.pack_start(self.answerButt[i])
 					i+=1
-				self.handlerid = self.nextButton.connect("clicked",self.newQuestion)
+				self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",self.newQuestion)
 			else: 
 				entry = gtk.Entry(3)
 				entry.modify_font(FontDescription("normal 35"))
@@ -206,7 +207,7 @@ class Gui:
 				entry.set_width_chars(3)
 				entry.connect("changed",lambda widget: widget.set_text(widget.get_text().upper()))
 				box2.pack_start(entry)
-				self.handlerid = self.nextButton.connect_object("clicked",self.checkAnswer,entry)
+				self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object("clicked",self.checkAnswer,entry)
 
 			box2.pack_start(self.nextButton)
 			box.pack_end(box2)
@@ -239,7 +240,7 @@ class Gui:
 		#to the user-selected romanization system, in order to compare with its
 		#chosen answer.
 		if self.param.val('transcription_system')!="hepburn":
-			self.kana = kanaengine.HepburnToOtherSysConvert(self.kana,self.param.val('transcription_system'))
+			self.kana = kanaengine.HepburnToOtherSysConvert(self.kana,self.param.val('transcription_system')).lower()
 		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
 
 		if answer==self.kana: # \o/
@@ -255,13 +256,13 @@ class Gui:
 			self.nextButton.show() #Show the arrow.
 		else:
 			widget.hide()
-			self.nextButton.disconnect(self.handlerid)
-			self.handlerid = self.nextButton.connect_object("clicked",self.newQuestion,widget)
+			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
+			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object("clicked",self.newQuestion,widget)
 
 		if self.score.isQuizFinished(self.param.val('length')):
 			#The quiz is finished... Let's show results!
-			self.nextButton.disconnect(self.handlerid)
-			self.handlerid = self.nextButton.connect("clicked",self.results)
+			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
+			self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",self.results)
 		else: self.quizWidget['stop'].show()
 
 	def newQuestion(self,widget):
@@ -292,8 +293,8 @@ class Gui:
 			widget.set_text("")
 			widget.show()
 			widget.grab_focus() #Give focus to text entry.
-			self.nextButton.disconnect(self.handlerid)
-			self.handlerid = self.nextButton.connect_object("clicked",self.checkAnswer,widget)
+			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
+			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object("clicked",self.checkAnswer,widget)
 
 		self.quizWidget['stop'].hide() #Hide the stop button.
 
@@ -324,7 +325,7 @@ class Gui:
 		self.quizInfos['container'].hide() #Hidding quiz stop & informations.
 
 		#Connecting the arrow to the ``main".
-		self.nextButton.disconnect(self.handlerid)
+		self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
 		self.nextButton.connect_object("clicked",self.main,self.window.get_child())
 		self.quizWidget['stop'].hide() #Hidding the stop button.
 
