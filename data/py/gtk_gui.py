@@ -143,7 +143,8 @@ class Gui:
 			self.param.val('modified_katakana_portions'),
 			self.param.val('contracted_katakana_portions'),
 			self.param.val('additional_katakana_portions')),
-			self.param.val('kana_no_repeat'))
+			self.param.val('kana_no_repeat'),
+			self.param.val('rand_answer_sel_range'))
 		#Randomly getting a kana (respecting bellow conditions).
 		self.kana = self.kanaEngine.randomKana()
 

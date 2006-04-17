@@ -46,7 +46,7 @@ class Options:
 		'kana_no_repeat':'false',
 		'answer_mode':'list',
 		'list_size':3,
-		'random_answer_select_range':'portion'}
+		'rand_answer_sel_range':'portion'}
 		if locale.getlocale() in ("de","fr","pt_BR","ru","sr","sv"): self.params['lang'] = locale.getlocale()
 		else: self.params['lang'] = "en"
 
@@ -62,7 +62,7 @@ class Options:
 		'transcription_system':('hepburn','kunrei-shiki','nihon-shiki','polivanov'),
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4,5),
-		'random_answer_select_range':('portion','set','kind','all'),
+		'rand_answer_sel_range':('portion','set','kind'),
 		'kana_no_repeat':('true','false'),
 		'lang':('de','en','fr','pt_BR','ru','sr','sv')
 		}

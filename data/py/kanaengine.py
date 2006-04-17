@@ -212,19 +212,23 @@ class KanaEngine:
 	def kanaSelectParams(self,*args):
 		"""Kana will be choosed respecting these
 		parameters."""
-		self.select_params = args
+		self.select_params = {
+			"set_states":args[0],
+			"portion_states":args[1],
+			"allow_repetition":args[2],
+			"rand_answer_sel_range":args[3]}
 
 	def randomKana(self):
 		"""Randomly choose a kana which will be
 		considered as the right answer."""
 
-		if "true" in self.select_params[0]:
+		if "true" in self.select_params["set_states"]:
 			ok = 0
 			while not ok:
 				#Althougth I know that's more ressource consuming to put this instruction in the ``while", 
 				#it becomes buggy when placed just before (for reasons which I don't understand...). O_o
 				#At least, it works! But, anyway, this kana engine is hunted! XD
-				self.usability = Usability(self.select_params[0],self.select_params[1])
+				self.usability = Usability(self.select_params["set_states"],self.select_params["portion_states"])
 
 				sets = self.usability.getStateList(0)
 				portions = self.usability.getStateList(1)
@@ -270,7 +274,7 @@ class KanaEngine:
 				#Prevention of selecting the same kana than previously.
 				self.kana = random.choice(self.portion)
 
-			if self.select_params[2]=="true":
+			if self.select_params["allow_repetition"]=="true":
 				#The no-repeat option is activated, so we remove the kana from the list to prevent future selection.
 				self.used_kana_list[self.set_num][self.portion_num].remove(self.kana)
 
@@ -288,25 +292,41 @@ class KanaEngine:
 		return self.default_kana_list[num]
 
 	def randomAnswers(self,list_size):
-		#Anwsers will be get from this temporary question set, it is the same kana portion than the selected kana.
-		templist = self.getKanaList()[self.set_num][self.portion_num]
-		answers = [] #Anwsers' list.
+		"""Selection of random wrong anwsers from a certain range, mixed
+		with the previously selected ("right") kana into a list which gets shuffled
+		and is returned at the end of this function."""
 
-		#First, addition of the selected kana in the list of answer.
-		answers.append(self.kana)
-		#Remove the selected kana from the temporary answer list to prevent a double selection as an answer.
+		answers = [] #The random anwsers list which will be returned at final.
+		answers.append(self.kana) #Firstly adding of the selected kana in that list.
+		templist = []
+
+		if self.select_params["rand_answer_sel_range"]=="portion":
+			#With wrong answers from the same set & portion as the right kana.
+			templist = self.getKanaList()[self.set_num][self.portion_num]
+		elif self.select_params["rand_answer_sel_range"]=="set":
+			#With wrong answers from the same set.
+			for portion in self.getKanaList()[self.set_num]:
+				for kana in portion:	templist.append(kana)
+		else: #With wrong answers from the same kind.
+			if self.kind==1: kind = self.getKanaList()[0:3]
+			else: kind = self.getKanaList()[3:7]
+			for set in kind:
+				for portion in set:
+					for kana in portion: templist.append(kana)
+
+		#Removing of the right kana from the temporary answer list to prevent another selection as possible answer.
 		templist.remove(self.kana)
 
 		for x in range(int(list_size)-1):
-			x = random.choice(templist) #Take a random wrong anwsers from the kana list.
+			x = random.choice(templist) #Select a random wrong anwser from the temp list.
 
-			#Prevent selection of kana with the same romaji transcription.
+			#Prevent selection of kana with the same transcription.
 			if x[-2:]=="-2" and x[:-2] in templist: templist.remove(x[:-2])
 			elif "%s-2" % x in templist: templist.remove("%s-2" % x)
 
 			answers.append(x)
 			templist.remove(x) #We remove it from the kana list to prevent multiple selection of the same kana...
-
-		random.shuffle(answers)
+			
+		random.shuffle(answers) #Shuffling the answer list before returning it.
 
 		return answers
