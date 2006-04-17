@@ -67,15 +67,15 @@ class I18n:
 			_("Modified"),
 			_("Contracted"), #25
 			_("Additional"),
-			_("Parts"),
-			_("Basic hiragana parts"),
-			_("Modified hiragana parts"),
-			_("Contracted hiragana parts"), #30
-			_("Basic katakana parts"),
-			_("Modified katakana parts"),
-			_("Contracted katakana parts"),
-			_("Additional katakana parts"),
-			_("If you are novice, it may be interesting at the beginning to train yourself only on some kana instead of the full set."), #35
+			_("Portions"),
+			_("Basic hiragana portions"),
+			_("Modified hiragana portions"),
+			_("Contracted hiragana portions"), #30
+			_("Basic katakana portions"),
+			_("Modified katakana portions"),
+			_("Contracted katakana portions"),
+			_("Additional katakana portions"),
+			_("If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."), #35
 			_("Select the kana portions you want to train yourself upon:"),
 			_("Select all"),
 			_("Answering method:"),
@@ -83,7 +83,7 @@ class I18n:
 			_("A text entry"), #40
 			_("Random answer list size:"),
 			_("%s choices"),
-			_("Length:"),
+			_("Quiz length:"),
 			_("Don't repeat the same kana\n(as much as possible)."),
 			_("Language:"), #45
 			_("English"),
@@ -100,7 +100,7 @@ class I18n:
 			_("Coding: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."),
 			_("Close"),
 			_("Warning"),
-			_("You must select at least one question set."), #60
+			_("Please select at least one kana portion to start the quiz."), #60
 			_("Romanization system:"),
 			_("Hepburn (most used)"),
 			_("Kunrei-shiki"),
@@ -116,11 +116,11 @@ class I18n:
 			_("Unrecognized hiragana: %s."),
 			_("Russian"),
 			_("Random answer selection range:"),  #75
-			_("Same kana parts"),
+			_("Same kana portions"),
 			_("Same kana set"),
 			_("Same kana kind"),
-			_("Whole kana list"),
-			_("Polivanov (cyrillic)") #80
+			_("Polivanov (cyrillic)"),
+			_(" questions.")  #80
 			)
 
 		return string[num]

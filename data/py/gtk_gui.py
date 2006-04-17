@@ -331,11 +331,14 @@ class Gui:
 		self.quizWidget['stop'].hide() #Hidding the stop button.
 
 	def options(self,oldbox):
-		#Dicts for integrer to string options convertion and vice-versa...
-		opt_boolean = {0:'false',1:'true','false':0,'true':1}
-		opt_transcription_system = {0:'hepburn',1:'kunrei-shiki',2:'nihon-shiki',3:'polivanov','hepburn':0,'kunrei-shiki':1,'nihon-shiki':2,'polivanov':3}
-		opt_answer_mode = {0:'list',1:'entry','list':0,'entry':1}
-		opt_lang = {0:'en',1:'fr',2:'de',3:'pt_BR',4:'ru',5:'sr',6:'sv','en':0,'fr':1,'de':2,'pt_BR':3,'ru':4,'sr':5,'sv':6}
+		#Dicts for integrer to string param convertion and vice-versa...
+		opt_conv = {
+			"boolean":{0:'false',1:'true','false':0,'true':1},
+			"transcription_system":{0:'hepburn',1:'kunrei-shiki',2:'nihon-shiki',3:'polivanov','hepburn':0,'kunrei-shiki':1,'nihon-shiki':2,'polivanov':3},
+			"answer_mode":{0:'list',1:'entry','list':0,'entry':1},
+			"rand_answer_sel_range":{0:'portion',1:'set',2:'kind','portion':0,'set':1,'kind':2},
+			"lang":{0:'en',1:'fr',2:'de',3:'pt_BR',4:'ru',5:'sr',6:'sv','en':0,'fr':1,'de':2,'pt_BR':3,'ru':4,'sr':5,'sv':6}
+			}
 
 		#Values for kana portion params.
 		kanaPortions = [
@@ -351,26 +354,27 @@ class Gui:
 			if special=="save":
 				#Update the configuration.
 				self.param.write({
-				'basic_hiragana':opt_boolean[option1.get_active()],
+				'basic_hiragana':opt_conv["boolean"][option1.get_active()],
 				'basic_hiragana_portions':kanaPortions[0],
-				'modified_hiragana':opt_boolean[option2.get_active()],
+				'modified_hiragana':opt_conv["boolean"][option2.get_active()],
 				'modified_hiragana_portions':kanaPortions[1],
-				'contracted_hiragana':opt_boolean[option3.get_active()],
+				'contracted_hiragana':opt_conv["boolean"][option3.get_active()],
 				'contracted_hiragana_portions':kanaPortions[2],
-				'basic_katakana':opt_boolean[option4.get_active()],
+				'basic_katakana':opt_conv["boolean"][option4.get_active()],
 				'basic_katakana_portions':kanaPortions[3],
-				'modified_katakana':opt_boolean[option5.get_active()],
+				'modified_katakana':opt_conv["boolean"][option5.get_active()],
 				'modified_katakana_portions':kanaPortions[4],
-				'contracted_katakana':opt_boolean[option6.get_active()],
+				'contracted_katakana':opt_conv["boolean"][option6.get_active()],
 				'contracted_katakana_portions':kanaPortions[5],
-				'additional_katakana':opt_boolean[option7.get_active()],
+				'additional_katakana':opt_conv["boolean"][option7.get_active()],
 				'additional_katakana_portions':kanaPortions[6],
-				'transcription_system':opt_transcription_system[option8.get_active()],
-				'answer_mode':opt_answer_mode[option9.get_active()],
+				'transcription_system':opt_conv["transcription_system"][option8.get_active()],
+				'answer_mode':opt_conv["answer_mode"][option9.get_active()],
 				'list_size':option10.get_active()+2,
-				'length':int(option11.get_value()),
-				'kana_no_repeat':opt_boolean[option12.get_active()],
-				'lang':opt_lang[option13.get_active()]
+				'rand_answer_sel_range':opt_conv["rand_answer_sel_range"][option11.get_active()],
+				'length':int(option12.get_value()),
+				'kana_no_repeat':opt_conv["boolean"][option13.get_active()],
+				'lang':opt_conv["lang"][option14.get_active()]
 				})
 			self.main(box) #Go back to the ``main".
 
@@ -460,6 +464,7 @@ class Gui:
 		box3.pack_start(frame)
 		table = gtk.Table(3,3)
 		table.set_row_spacings(2)
+		table.set_col_spacing(0,2)
 		table.set_border_width(2)
 		frame.add(table)
 
@@ -468,7 +473,7 @@ class Gui:
 		image.set_from_file(os.path.join(self.datarootpath,"img","basic_hiragana.gif"))
 		table.attach(image,0,1,0,1)
 		option1 = gtk.CheckButton(str(23))
-		option1.set_active(opt_boolean[self.param.val('basic_hiragana')])
+		option1.set_active(opt_conv["boolean"][self.param.val('basic_hiragana')])
 		table.attach(option1,1,2,0,1)
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,0)
@@ -481,7 +486,7 @@ class Gui:
 		image.set_from_file(os.path.join(self.datarootpath,"img","modified_hiragana.gif"))
 		table.attach(image,0,1,1,2)
 		option2 = gtk.CheckButton(str(24))
-		option2.set_active(opt_boolean[self.param.val('modified_hiragana')])
+		option2.set_active(opt_conv["boolean"][self.param.val('modified_hiragana')])
 		table.attach(option2,1,2,1,2)
 		button = gtk.Button(str(27))
 
@@ -495,7 +500,7 @@ class Gui:
 		image.set_from_file(os.path.join(self.datarootpath,"img","contracted_hiragana.gif"))
 		table.attach(image,0,1,2,3)
 		option3 = gtk.CheckButton(str(25))
-		option3.set_active(opt_boolean[self.param.val('contracted_hiragana')])
+		option3.set_active(opt_conv["boolean"][self.param.val('contracted_hiragana')])
 		table.attach(option3,1,2,2,3)
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,2)
@@ -507,6 +512,7 @@ class Gui:
 		box3.pack_start(frame)
 		table = gtk.Table(3,4)
 		table.set_row_spacings(2)
+		table.set_col_spacing(0,2)
 		table.set_border_width(2)
 		frame.add(table)
 
@@ -515,7 +521,7 @@ class Gui:
 		image.set_from_file(os.path.join(self.datarootpath,"img","basic_katakana.gif"))
 		table.attach(image,0,1,0,1)
 		option4 = gtk.CheckButton(str(23))
-		option4.set_active(opt_boolean[self.param.val('basic_katakana')])
+		option4.set_active(opt_conv["boolean"][self.param.val('basic_katakana')])
 		table.attach(option4,1,2,0,1)
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,3)
@@ -528,7 +534,7 @@ class Gui:
 		image.set_from_file(os.path.join(self.datarootpath,"img","modified_katakana.gif"))
 		table.attach(image,0,1,1,2)
 		option5 = gtk.CheckButton(str(24))
-		option5.set_active(opt_boolean[self.param.val('modified_katakana')])
+		option5.set_active(opt_conv["boolean"][self.param.val('modified_katakana')])
 		table.attach(option5,1,2,1,2)
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,4)
@@ -541,7 +547,7 @@ class Gui:
 		image.set_from_file(os.path.join(self.datarootpath,"img","contracted_katakana.gif"))
 		table.attach(image,0,1,2,3)
 		option6 = gtk.CheckButton(str(25))
-		option6.set_active(opt_boolean[self.param.val('contracted_katakana')])
+		option6.set_active(opt_conv["boolean"][self.param.val('contracted_katakana')])
 		table.attach(option6,1,2,2,3)
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,5)
@@ -554,7 +560,7 @@ class Gui:
 		image.set_from_file(os.path.join(self.datarootpath,"img","additional_katakana.gif"))
 		table.attach(image,0,1,3,4)
 		option7 = gtk.CheckButton(str(26))
-		option7.set_active(opt_boolean[self.param.val('additional_katakana')])
+		option7.set_active(opt_conv["boolean"][self.param.val('additional_katakana')])
 		table.attach(option7,1,2,3,4)
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,6)
@@ -570,9 +576,9 @@ class Gui:
 		label = gtk.Label(str(61))
 		box3.pack_start(label)
 		option8 = gtk.combo_box_new_text()
-		for val in (str(62),str(63),str(64),str(80)):
+		for val in (str(62),str(63),str(64),str(79)):
 			option8.append_text(val)
-		option8.set_active(opt_transcription_system[self.param.val('transcription_system')])
+		option8.set_active(opt_conv["transcription_system"][self.param.val('transcription_system')])
 		box3.pack_start(option8)
 
 		#`answer_mode'
@@ -581,7 +587,7 @@ class Gui:
 		option9 = gtk.combo_box_new_text()
 		for val in (str(39),str(40)):
 			option9.append_text(val)
-		option9.set_active(opt_answer_mode[self.param.val('answer_mode')])
+		option9.set_active(opt_conv["answer_mode"][self.param.val('answer_mode')])
 		box3.pack_start(option9)
 
 		#`list_size'
@@ -593,36 +599,47 @@ class Gui:
 		option10.set_active(self.param.val('list_size')-2)
 		box3.pack_start(option10)
 
+		#`rand_answer_sel_range'
+		label2 = gtk.Label(str(75))
+		box3.pack_start(label2)
+		option11 = gtk.combo_box_new_text()
+		for val in (str(76),str(77),str(78)):
+			option11.append_text(val)
+		option11.set_active(opt_conv["rand_answer_sel_range"][self.param.val('rand_answer_sel_range')])
+		box3.pack_start(option11)
+
 		#Bouyaka!
 		def bouyaka(widget,targets):
 			"""Set list size widgets sensitive state according
 			to answer mode widget selected param."""
 			for x in targets: x.set_sensitive(not widget.get_active())
-		bouyaka(option9,(label,option10))
-		option9.connect("changed",bouyaka,(label,option10))
+		bouyaka(option9,(label,option10,label2,option11))
+		option9.connect("changed",bouyaka,(label,option10,label2,option11))
 
 		#`length'
 		box4 = gtk.HBox()
 		label = gtk.Label(str(43))
 		box4.pack_start(label)
 		adjustment = gtk.Adjustment(float(self.param.val('length')),1,200,1,10)
-		option11 = gtk.SpinButton(adjustment)
-		box4.pack_end(option11)
+		option12 = gtk.SpinButton(adjustment)
+		option12.set_alignment(0.5)
+		box4.pack_start(option12)
+		box4.pack_end(gtk.Label(str(80)),False)
 		box3.pack_start(box4)
 
 		#`kana_no_repeat'
-		option12 = gtk.CheckButton(str(44))
-		option12.set_active(opt_boolean[self.param.val('kana_no_repeat')])
-		box3.pack_start(option12)
+		option13 = gtk.CheckButton(str(44))
+		option13.set_active(opt_conv["boolean"][self.param.val('kana_no_repeat')])
+		box3.pack_start(option13)
 
 		#`lang'
 		label = gtk.Label(str(45))
 		box3.pack_start(label)
-		option13 = gtk.combo_box_new_text()
+		option14 = gtk.combo_box_new_text()
 		for val in (str(46),str(47),str(70),str(48),str(74),str(49),str(50)):
-			option13.append_text(val)
-		option13.set_active(opt_lang[self.param.val('lang')])
-		box3.pack_start(option13)
+			option14.append_text(val)
+		option14.set_active(opt_conv["lang"][self.param.val('lang')])
+		box3.pack_start(option14)
 
 		#Buttons at bottom...
 		box2 = gtk.HBox()
