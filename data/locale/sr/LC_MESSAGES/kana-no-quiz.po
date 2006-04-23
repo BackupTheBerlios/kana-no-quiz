@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz 1.2c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-29 23:10+0100\n"
+"POT-Creation-Date: 2006-04-23 02:11+0200\n"
 "PO-Revision-Date: 2005-03-17 18:41+0100\n"
 "Last-Translator: Choplair <chopinou-NOSPAM-choplair.org>\n"
 "Language-Team: srpski <sr@li.org>\n"
@@ -14,33 +14,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: py/i18n.py:42
+#: ../py/i18n.py:43
 msgid "Kana no quiz!"
 msgstr "Kana no quiz!"
 
-#: py/i18n.py:43
+#: ../py/i18n.py:44
 msgid "Introduction"
 msgstr "Uvod"
 
-#: py/i18n.py:44
+#: ../py/i18n.py:45
 msgid "Options"
 msgstr "Opcije"
 
-#: py/i18n.py:45
+#: ../py/i18n.py:46
 msgid "Start the quiz"
 msgstr "Početi kviz"
 
-#: py/i18n.py:46
+#: ../py/i18n.py:47
 msgid "About"
 msgstr "O čemu je reč..."
 
-#: py/i18n.py:47
+#: ../py/i18n.py:48
 msgid ""
 "Two different writing systems are commonly used by Japaneses: kanji & kana."
 msgstr ""
 "U Japanu se uobičajeno koriste dva različita načina pisanja: kandži i kana."
 
-#: py/i18n.py:48
+#: ../py/i18n.py:49
 msgid ""
 "Kanji are complex ideograms retranscribing words whereas kana are simple "
 "symbols used as syllables which have to be combined to make words. Any word "
@@ -50,7 +50,7 @@ msgstr ""
 "simboli korišćeni kao slog koji, kombinovani, stvaraju reči. Na japanskom, "
 "bilo koja reč može se napisati koristeći kana, to je kao jedna vrsta azbuke."
 
-#: py/i18n.py:49
+#: ../py/i18n.py:50
 msgid ""
 "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
 "traditional syllabary used to write Japanese words. Katakana is a larger "
@@ -62,7 +62,7 @@ msgstr ""
 "veći slog sa više zvukova obično korišćen u prepisu osobnih imena i reči "
 "pozajmljenih stranim jezicima."
 
-#: py/i18n.py:50
+#: ../py/i18n.py:51
 msgid ""
 "Kana no quiz helps you to memorize kana and their associated sound (using "
 "the Hepburn's roman transcription system). For more simplicity, syllables "
@@ -74,155 +74,167 @@ msgstr ""
 "veći slog sa više zvukova obično korišćen u prepisu osobnih imena i reči "
 "pozajmljenih stranim jezicima."
 
-#: py/i18n.py:51
+#: ../py/i18n.py:52
 msgid "Have a good practice ! ^_^"
 msgstr "Lepo se izvežbajte ! ^_^"
 
-#: py/i18n.py:52
+#: ../py/i18n.py:53
 msgid "OK"
 msgstr "Okej"
 
-#: py/i18n.py:53
+#: ../py/i18n.py:54
 msgid "What is this katakana?"
 msgstr "Šta znači ovaj katakana?"
 
-#: py/i18n.py:54
+#: ../py/i18n.py:55
 msgid "What is this hiragana?"
 msgstr "Šta znači ovaj hiragana?"
 
-#: py/i18n.py:55
+#: ../py/i18n.py:56
 msgid "Right! ^^"
 msgstr "Tačno! ^^"
 
-#: py/i18n.py:56
+#: ../py/i18n.py:57
 msgid "Wrong!"
 msgstr "Pogrešno!"
 
-#: py/i18n.py:57
+#: ../py/i18n.py:58
 #, python-format
 msgid "The answer was %s."
 msgstr "Odgovor je %s."
 
-#: py/i18n.py:58
+#: ../py/i18n.py:59
 msgid "Quiz results"
 msgstr "Rezultati kviza"
 
-#: py/i18n.py:59
+#: ../py/i18n.py:60
 #, python-format
 msgid "Question total: %i."
 msgstr "Ukupno postavljenih pitanja: %i."
 
-#: py/i18n.py:60
+#: ../py/i18n.py:61
 #, python-format
 msgid "Good answers: %i."
 msgstr "Tačnih odgovora: %i."
 
-#: py/i18n.py:61
+#: ../py/i18n.py:62
 #, python-format
 msgid "Success rate: %i%%."
 msgstr "Procenat uspeha: %i%%"
 
-#: py/i18n.py:62
+#: ../py/i18n.py:63
 msgid "Here you can modify some quiz options."
 msgstr "Ovde mogu da se podese opcije kviza."
 
-#: py/i18n.py:63
+#: ../py/i18n.py:64
 msgid "Hiragana question sets"
 msgstr "Skupovi hiragana pitanja"
 
-#: py/i18n.py:64
+#: ../py/i18n.py:65
 msgid "Katakana question sets"
 msgstr "Skupovi katakana pitanja"
 
-#: py/i18n.py:65
+#: ../py/i18n.py:66
 msgid "Basic"
 msgstr "Osnovni"
 
-#: py/i18n.py:66
+#: ../py/i18n.py:67
 msgid "Modified"
 msgstr "Modifikovani"
 
-#: py/i18n.py:67
+#: ../py/i18n.py:68
 msgid "Contracted"
 msgstr "Skupljeni"
 
-#: py/i18n.py:68
+#: ../py/i18n.py:69
 msgid "Additional"
 msgstr "Dodatni"
 
-#: py/i18n.py:69
-msgid "Parts"
-msgstr "Delovi"
+#: ../py/i18n.py:70
+#, fuzzy
+msgid "Portions"
+msgstr "Opcije"
 
-#: py/i18n.py:70
-msgid "Basic hiragana parts"
+#: ../py/i18n.py:71
+#, fuzzy
+msgid "Basic hiragana portions"
 msgstr "Osnovni hiragana delovi"
 
-#: py/i18n.py:71
-msgid "Modified hiragana parts"
+#: ../py/i18n.py:72
+#, fuzzy
+msgid "Modified hiragana portions"
 msgstr "Modifikovani hiragana delovi"
 
-#: py/i18n.py:72
-msgid "Contracted hiragana parts"
+#: ../py/i18n.py:73
+#, fuzzy
+msgid "Contracted hiragana portions"
 msgstr "Skupljeni hiragana delovi"
 
-#: py/i18n.py:73
-msgid "Basic katakana parts"
+#: ../py/i18n.py:74
+#, fuzzy
+msgid "Basic katakana portions"
 msgstr "Osnovni katakana delovi"
 
-#: py/i18n.py:74
-msgid "Modified katakana parts"
+#: ../py/i18n.py:75
+#, fuzzy
+msgid "Modified katakana portions"
 msgstr "Modifikovani katakana delovi"
 
-#: py/i18n.py:75
-msgid "Contracted katakana parts"
+#: ../py/i18n.py:76
+#, fuzzy
+msgid "Contracted katakana portions"
 msgstr "Skupljeni katakana delovi"
 
-#: py/i18n.py:76
-msgid "Additional katakana parts"
+#: ../py/i18n.py:77
+#, fuzzy
+msgid "Additional katakana portions"
 msgstr "Dodatni katakana delovi"
 
-#: py/i18n.py:77
+#: ../py/i18n.py:78
+#, fuzzy
 msgid ""
 "If you are novice, it may be interesting at the beginning to train yourself "
-"only on some kana instead of the full set."
+"only on portions instead of the full kana set."
 msgstr ""
 "Ako ste novak, interesantnije je početi se trenirati samo na nekoliko kana "
 "umesto na celom skupu."
 
-#: py/i18n.py:78
+#: ../py/i18n.py:79
 msgid "Select the kana portions you want to train yourself upon:"
 msgstr "Izaberi delove kana kojim hoćeš da se treniraš"
 
-#: py/i18n.py:79
+#: ../py/i18n.py:80
 msgid "Select all"
 msgstr "Izabrati sve"
 
-#: py/i18n.py:80
-msgid "Answer mode:"
+#: ../py/i18n.py:81
+#, fuzzy
+msgid "Answering method:"
 msgstr "Način odgovora:"
 
-#: py/i18n.py:81
+#: ../py/i18n.py:82
 msgid "A random list"
 msgstr "Nasumice spisak"
 
-#: py/i18n.py:82
+#: ../py/i18n.py:83
 msgid "A text entry"
 msgstr "tekstualni ispis"
 
-#: py/i18n.py:83
+#: ../py/i18n.py:84
 msgid "Random answer list size:"
 msgstr "Veličina spiska nasumice odgovora:"
 
-#: py/i18n.py:84
+#: ../py/i18n.py:85
+#, python-format
 msgid "%s choices"
 msgstr "%s izbora"
 
-#: py/i18n.py:85
-msgid "Length:"
+#: ../py/i18n.py:86
+#, fuzzy
+msgid "Quiz length:"
 msgstr "Dužina:"
 
-#: py/i18n.py:86
+#: ../py/i18n.py:87
 msgid ""
 "Don't repeat the same kana\n"
 "(as much as possible)."
@@ -230,48 +242,48 @@ msgstr ""
 "Ne ponavljati isti kana\n"
 "(po mogućnosti)"
 
-#: py/i18n.py:87
+#: ../py/i18n.py:88
 msgid "Language:"
 msgstr "Jezik:"
 
-#: py/i18n.py:88
+#: ../py/i18n.py:89
 msgid "English"
 msgstr "Engleski"
 
-#: py/i18n.py:89
+#: ../py/i18n.py:90
 msgid "French"
 msgstr "Francuski"
 
-#: py/i18n.py:90
+#: ../py/i18n.py:91
 msgid "Portuguese (Brazil)"
 msgstr "Portugalski (iz Brazila)"
 
-#: py/i18n.py:91
+#: ../py/i18n.py:92
 msgid "Serbian"
 msgstr "Srpski"
 
-#: py/i18n.py:92
+#: ../py/i18n.py:93
 msgid "Swedish"
 msgstr "Švedski"
 
-#: py/i18n.py:93
+#: ../py/i18n.py:94
 msgid "Save"
 msgstr "Sačuvati"
 
-#: py/i18n.py:94
+#: ../py/i18n.py:95
 msgid "Cancel"
 msgstr "Odustati"
 
-#: py/i18n.py:95
+#: ../py/i18n.py:96
 msgid "Kana no quiz, a kana reminder tool."
 msgstr "Kana no quiz, alatka za učenje kana"
 
-#: py/i18n.py:96
+#: ../py/i18n.py:97
 #, python-format
 msgid "Version %s."
 msgstr "Verzija %s."
 
-#: py/i18n.py:97
+#: ../py/i18n.py:98
 msgid ""
 "Kana no quiz is free software released under the GNU GPL license (see `GPL."
 "txt'). Kana images are released under the Free Art license (see `FAL.txt')."
@@ -279,11 +291,11 @@ msgstr ""
 "Kana no quiz je slobodan softver izdan pod GNU GPL licencom (pročitaj `GPL."
 "txt'). Kana slike su izdate pod Free Art License (pročitaj `FAL.txt')."
 
-#: py/i18n.py:98
+#: ../py/i18n.py:99
 msgid "Credits"
 msgstr "Krediti"
 
-#: py/i18n.py:99
+#: ../py/i18n.py:100
 msgid ""
 "Coding: Choplair & Pachilor.\n"
 "Kana image: Ms. Marie-Claire.\n"
@@ -294,54 +306,109 @@ msgstr ""
 "Logo slika: Choplair\n"
 "Prevod na srpski: Dejan Danilović"
 
-#: py/i18n.py:100
+#: ../py/i18n.py:101
 msgid "Close"
 msgstr "Zatvori"
 
-#: py/i18n.py:101
+#: ../py/i18n.py:102
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: py/i18n.py:102
-msgid "You must select at least one question set."
+#: ../py/i18n.py:103
+#, fuzzy
+msgid "Please select at least one kana portion to start the quiz."
 msgstr "Morate izabrati bar jedan skup pitanja!"
 
-#: py/i18n.py:103
+#: ../py/i18n.py:104
 msgid "Romanization system:"
 msgstr "Romanizovan sistem:"
 
-#: py/i18n.py:104
-msgid "Hepburn (recommended)"
+#: ../py/i18n.py:105
+#, fuzzy
+msgid "Hepburn (most used)"
 msgstr "Hepburn (savetuje se)"
 
-#: py/i18n.py:105
+#: ../py/i18n.py:106
 msgid "Kunrei-shiki"
 msgstr "Kunrei-shiki"
 
-#: py/i18n.py:106
+#: ../py/i18n.py:107
 msgid "Nihon-shiki"
 msgstr "Nihon-shiki"
 
-#: py/i18n.py:107
+#: ../py/i18n.py:108
 msgid "Information"
 msgstr "Informacije"
 
-#: py/i18n.py:108
+#: ../py/i18n.py:109
 msgid "No portion selected: that question set is disabled. :p"
 msgstr "Nijedan deo nije izabran: to pitanje je onemogućeno. :p"
 
-#: py/i18n.py:109
+#: ../py/i18n.py:110
+#, python-format
 msgid "Question %s of %s."
 msgstr "Pitanje %s od %s."
 
-#: py/i18n.py:110
+#: ../py/i18n.py:111
 #, python-format
 msgid "%s system."
 msgstr "%s sistem."
 
-#: py/i18n.py:111
+#: ../py/i18n.py:112
 msgid "Stop"
 msgstr "Stop"
+
+#: ../py/i18n.py:113
+#, fuzzy
+msgid "German"
+msgstr "Srpski"
+
+#: ../py/i18n.py:114
+msgid "Quit"
+msgstr ""
+
+#: ../py/i18n.py:115
+#, fuzzy, python-format
+msgid "Unrecognized katakana: %s."
+msgstr "Skupljeni katakana delovi"
+
+#: ../py/i18n.py:116
+#, fuzzy, python-format
+msgid "Unrecognized hiragana: %s."
+msgstr "Skupljeni hiragana delovi"
+
+#: ../py/i18n.py:117
+msgid "Russian"
+msgstr ""
+
+#: ../py/i18n.py:118
+#, fuzzy
+msgid "Random answer selection range:"
+msgstr "Veličina spiska nasumice odgovora:"
+
+#: ../py/i18n.py:119
+msgid "Same kana portions"
+msgstr ""
+
+#: ../py/i18n.py:120
+msgid "Same kana set"
+msgstr ""
+
+#: ../py/i18n.py:121
+msgid "Same kana kind"
+msgstr ""
+
+#: ../py/i18n.py:122
+msgid "Polivanov (cyrillic)"
+msgstr ""
+
+#: ../py/i18n.py:123
+#, fuzzy
+msgid " questions."
+msgstr "Verzija %s."
+
+#~ msgid "Parts"
+#~ msgstr "Delovi"
 
 #~ msgid "All"
 #~ msgstr "Sve"

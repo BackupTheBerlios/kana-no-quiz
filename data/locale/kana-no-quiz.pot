@@ -1,19 +1,19 @@
-# Kana no quiz, a kana pronouncing learning tool.
-# Copyright (C) 2003, 2004, 2005, 2006 Choplair-network. 
-# This file is distributed under the same license as the Kana no quiz package.
-# Choplair <chopinou-NOSP@M-choplair.org>, 2006.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Kana-no-quiz 1.5\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-14 23:26+0200\n"
+"POT-Creation-Date: 2006-04-23 02:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../py/i18n.py:43
@@ -141,41 +141,41 @@ msgid "Additional"
 msgstr ""
 
 #: ../py/i18n.py:70
-msgid "Parts"
+msgid "Portions"
 msgstr ""
 
 #: ../py/i18n.py:71
-msgid "Basic hiragana parts"
+msgid "Basic hiragana portions"
 msgstr ""
 
 #: ../py/i18n.py:72
-msgid "Modified hiragana parts"
+msgid "Modified hiragana portions"
 msgstr ""
 
 #: ../py/i18n.py:73
-msgid "Contracted hiragana parts"
+msgid "Contracted hiragana portions"
 msgstr ""
 
 #: ../py/i18n.py:74
-msgid "Basic katakana parts"
+msgid "Basic katakana portions"
 msgstr ""
 
 #: ../py/i18n.py:75
-msgid "Modified katakana parts"
+msgid "Modified katakana portions"
 msgstr ""
 
 #: ../py/i18n.py:76
-msgid "Contracted katakana parts"
+msgid "Contracted katakana portions"
 msgstr ""
 
 #: ../py/i18n.py:77
-msgid "Additional katakana parts"
+msgid "Additional katakana portions"
 msgstr ""
 
 #: ../py/i18n.py:78
 msgid ""
 "If you are novice, it may be interesting at the beginning to train yourself "
-"only on some kana instead of the full set."
+"only on portions instead of the full kana set."
 msgstr ""
 
 #: ../py/i18n.py:79
@@ -187,7 +187,7 @@ msgid "Select all"
 msgstr ""
 
 #: ../py/i18n.py:81
-msgid "Answer mode:"
+msgid "Answering method:"
 msgstr ""
 
 #: ../py/i18n.py:82
@@ -208,7 +208,7 @@ msgid "%s choices"
 msgstr ""
 
 #: ../py/i18n.py:86
-msgid "Length:"
+msgid "Quiz length:"
 msgstr ""
 
 #: ../py/i18n.py:87
@@ -284,7 +284,7 @@ msgid "Warning"
 msgstr ""
 
 #: ../py/i18n.py:103
-msgid "You must select at least one question set."
+msgid "Please select at least one kana portion to start the quiz."
 msgstr ""
 
 #: ../py/i18n.py:104
@@ -292,7 +292,7 @@ msgid "Romanization system:"
 msgstr ""
 
 #: ../py/i18n.py:105
-msgid "Hepburn (recommended)"
+msgid "Hepburn (most used)"
 msgstr ""
 
 #: ../py/i18n.py:106
@@ -352,7 +352,7 @@ msgid "Random answer selection range:"
 msgstr ""
 
 #: ../py/i18n.py:119
-msgid "Same kana parts"
+msgid "Same kana portions"
 msgstr ""
 
 #: ../py/i18n.py:120
@@ -364,5 +364,9 @@ msgid "Same kana kind"
 msgstr ""
 
 #: ../py/i18n.py:122
-msgid "Whole kana list"
+msgid "Polivanov (cyrillic)"
+msgstr ""
+
+#: ../py/i18n.py:123
+msgid " questions."
 msgstr ""
