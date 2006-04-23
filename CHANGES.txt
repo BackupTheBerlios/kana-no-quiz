@@ -7,10 +7,12 @@
 - System-wide installation & per-user configuration.
 - More complete quiz result informations (wrong answer recap).
 - Windows binary installation package.
+- No more learning flow disturbance within a quiz using the
+text-entry answering method.
+- Added Polivanov's kana cyrillization system.
 - New Russian translation (made by Aleksej R. Serdyukov).
-- No more learning flow disturbance within a quiz using text
+- New German translation (made by Florian Niemann).
 entry answer method. (IN PROGRESS).
-- Added Polivanov's kana cyrillization system (IN PROGRESS).
 - A quit button added in the main window.
 
 

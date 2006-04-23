@@ -101,8 +101,9 @@ Start Menu.
  ----
 
  Thanks to our contributors, Kana no quiz is currently
-translated into English, French, Portuguese of Brazil (by
-Matheus Villela), Serbian (by Dejan Danilović) and Swedish (by
+translated into English, French, German (by Florian Niemann),
+Portuguese of Brazil (by Matheus Villela), Russian (by Aleksej
+R. Serdyukov), Serbian (by Dejan Danilović) and Swedish (by
 Markus Fellnert). Feel free to help that list growing up!
 
  Multiple interfaces
