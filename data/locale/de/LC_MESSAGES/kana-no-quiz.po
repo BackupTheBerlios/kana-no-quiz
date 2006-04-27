@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Kana-no-quiz 1.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-23 02:11+0200\n"
-"PO-Revision-Date: 2006-04-23 12:10+0100\n"
+"PO-Revision-Date: 2006-04-25 01:02+0100\n"
 "Last-Translator: Florian Niemann <mail@florian-niemann.de>\n"
 "Language-Team: German <mail@florian-niemann.de>\n"
 "MIME-Version: 1.0\n"
@@ -163,11 +163,11 @@ msgstr "Zusätzliche Katakana"
 
 #: ../py/i18n.py:78
 msgid "If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."
-msgstr "Wenn Sie ein Anfänger sind, ist es sinnvoll, am Anfang nur einige Kana zu lernen, anstatt der ganzen Gruppe."
+msgstr "Wenn Sie Anfänger sind, ist es sinnvoll anfangs nur einige Kana zu lernen, anstatt der ganzen Gruppe auf einmal."
 
 #: ../py/i18n.py:79
 msgid "Select the kana portions you want to train yourself upon:"
-msgstr "Wählen Sie einen Kana-Teilbereich, den Sie trainieren wollen:"
+msgstr "Wählen Sie die Teilbereiche, die Sie trainieren wollen:"
 
 #: ../py/i18n.py:80
 msgid "Select all"
