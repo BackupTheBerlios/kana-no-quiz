@@ -12,7 +12,6 @@ text-entry answering method.
 - Added Polivanov's kana cyrillization system.
 - New Russian translation (made by Aleksej R. Serdyukov).
 - New German translation (made by Florian Niemann).
-entry answer method. (IN PROGRESS).
 - A quit button added in the main window.
 
 

@@ -109,7 +109,7 @@ def HepburnToOtherSysConvert(kana,outputsys):
 			"wi":"ви", "we":"вщ", "wo":"вн",
 			"kwa":"ква", "kwo":"квн",
 			"she":"се", "je":"дзщ", "che":"тэ",
-			"tsa":"цю", "tse":"цщ", "tso":"цо"
+			"tsa":"цю", "tse":"цщ", "tso":"цо",
 			"ti":"ти", "tu":"ту", "di":"ди", "du":"ду",
 			"tyu":"тю", "dyu":"дю", "ye":"е",
 			"fa":"тю", "fi":"тх", "fe":"тщ", "fo":"тн",

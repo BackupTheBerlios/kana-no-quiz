@@ -35,6 +35,7 @@ class Gui:
 		self.kanaEngine = kanaengine.KanaEngine()
 		self.score = score.Score()
 		self.dialogState = {"about":0,"kanaPortionPopup":0}
+		self.main_win_geom = None
 
 		#Localization.
 		self.i18n = i18n.I18n(os.path.join(self.datarootpath,"locale"))
@@ -48,7 +49,7 @@ class Gui:
 
 	def main(self,event=None):
 		if self.currentlang!=self.param.val('lang'):
-			#Change localization...
+			#Changing localization...
 			self.currentlang = self.param.val('lang')
 			self.i18n.setlang(self.param.val('lang'))
 			global str
@@ -58,7 +59,7 @@ class Gui:
 		frame = tk.Frame(self.window)
 		frame.pack(padx=2,pady=2)
 
-		#Logo
+		#Logo.
 		img = tk.PhotoImage(file=os.path.join(self.datarootpath,"img","logo.gif"))
 		label = tk.Label(frame,image=img)
 		label.pack(side="left")
@@ -77,14 +78,14 @@ class Gui:
 		button.pack(fill="both",expand=1)
 
 		self.window.mainloop()
-
+		
 	def intro(self):
 		def goBack():
 			self.window.slaves()[0].destroy()
 			self.main()
 
 		self.window.slaves()[0].destroy()
-		self.window.title(str(1)) #Change title of the window.
+		self.window.title(str(1)) #Changeing window title.
 
 		frame = tk.Frame(self.window)
 		frame.pack(padx=2,pady=2)
@@ -103,9 +104,8 @@ class Gui:
 		button.pack(side="top",fill="both",expand=1)
 
 	def quiz(self):
-		#Randomly get a kana.
-
-		self.kana = self.kanaEngine.randomKana(
+		#Defining kana selection parameters.
+		self.kanaEngine.kanaSelectParams(
 			(self.param.val('basic_hiragana'),
 			self.param.val('modified_hiragana'),
 			self.param.val('contracted_hiragana'),
@@ -120,44 +120,46 @@ class Gui:
 			self.param.val('modified_katakana_portions'),
 			self.param.val('contracted_katakana_portions'),
 			self.param.val('additional_katakana_portions')),
-			self.param.val('kana_no_repeat'))
+			self.param.val('kana_no_repeat'),
+			self.param.val('rand_answer_sel_range'))
+		#Randomly getting a kana (respecting bellow conditions).
+		self.kana = self.kanaEngine.randomKana()
 
 		if self.kana:
 			self.quizWidget = {}
 			self.window.slaves()[0].destroy()
 			frame = tk.Frame(self.window)
 			frame.pack(padx=3,pady=3)
-			frame2 = tk.Frame(frame)
+			self.quizWidget["left_part"] = tk.Frame(frame)
 
 			#Kana image.
 			self.image = tk.PhotoImage()
-			self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana)  #Initialy set kana's image.
-			self.kanaImage = tk.Label(frame2,image=self.image,border=0)
-			self.kanaImage.pack(side="top")
+			self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana)  #Initialy setting kana's image.
+			self.quizWidget["kanaImage"] = tk.Label(self.quizWidget["left_part"],image=self.image,border=0)
+			self.quizWidget["kanaImage"].pack(side="top")
 
 			#Quiz informations.
-			frame3 = tk.Frame(frame2)
-			self.quizInfos = {}
-			self.quizInfos['questionNumLabel'] = tk.Label(frame3,bd=0,text=str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')),bg="white")
-			self.quizInfos['questionNumLabel'].pack(expand=1,fill="both")
-			self.quizInfos['systemLabel'] = tk.Label(frame3,bd=0,text=str(68) % capwords(self.param.val('transcription_system')),bg="white")
-			self.quizInfos['systemLabel'].pack(expand=1,fill="both")
+			frame3 = tk.Frame(self.quizWidget["left_part"])
+			self.quizWidget['questionNumLabel'] = tk.Label(frame3,bd=0,text=str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')),bg="white")
+			self.quizWidget['questionNumLabel'].pack(expand=1,fill="both")
+			self.quizWidget['systemLabel'] = tk.Label(frame3,bd=0,text=str(68) % capwords(self.param.val('transcription_system')),bg="white")
+			self.quizWidget['systemLabel'].pack(expand=1,fill="both")
 			frame3.pack(side="top",expand=1,fill="both")
-			frame2.pack(side="left",expand=1,fill="both")
+			self.quizWidget["left_part"].pack(side="left",expand=1,fill="both")
 
-			frame2 = tk.Frame(frame)
-			frame2.pack(padx=6,side="right",fill="both")
+			self.quizWidget["right_part"] = tk.Frame(frame)
+			self.quizWidget["right_part"].pack(padx=6,side="right",fill="both",expand=1)
 
 			#Stop button.
-			self.quizWidget['stopframe'] = tk.Frame(frame2)
+			self.quizWidget['stopframe'] = tk.Frame(self.quizWidget["right_part"])
 			self.quizWidget['stopframe'].pack(fill="x",side="top")
 			self.quizWidget['stop'] = tk.Button(self.quizWidget['stopframe'],text=str(69),command=self.results)
 			#Question label.
-			self.quizLabel = tk.Label(frame2,text=(str(11),str(12))[self.kanaEngine.getKanaKind()],wraplength=120,width=18)
-			self.quizLabel.pack(pady=3,fill="both",expand=1)
+			self.quizWidget['quiz_label']= tk.Label(self.quizWidget["right_part"],text=(str(11),str(12))[self.kanaEngine.getKanaKind()],wraplength=150,width=24)
+			self.quizWidget['quiz_label'].pack(pady=3,fill="both",expand=1)
 
 			#The arrow.
-			self.nextButton = tk.Button(frame2,bitmap="@%s" % os.path.join(self.datarootpath,"img","rarrow.xbm"),pady=4)
+			self.nextButton = tk.Button(self.quizWidget["right_part"],bitmap="@%s" % os.path.join(self.datarootpath,"img","rarrow.xbm"),pady=4)
 
 			if self.param.val('answer_mode')=="list":
 				#Choice buttons generation.
@@ -170,14 +172,14 @@ class Gui:
 						x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('transcription_system'))
 
 					if x[-2:]=="-2": x = x[:-2]
-					self.answerButt[i] = tk.Button(frame2,text=x.upper(),height=2)
+					self.answerButt[i] = tk.Button(self.quizWidget["right_part"],text=x.upper(),height=2)
 					self.answerButt[i].bind("<ButtonRelease-1>",self.checkAnswer)
 					self.answerButt[i].pack(pady=1,fill="both",expand=1)
 					i+=1
 
 				self.nextButton['command'] = self.newQuestion
 			else:
-				self.answerButt = tk.Entry(frame2,width=17)
+				self.answerButt = tk.Entry(self.quizWidget["right_part"],width=17)
 				self.answerButt.pack()
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
@@ -185,8 +187,8 @@ class Gui:
 		else:	tkMessageBox.showwarning(str(59),str(60))
 
 	def checkAnswer(self,event=None):
-		"""Check the given answer, update the score
-		and display the result."""
+		"""Checking the given answer, updating the score
+		and displaying the result."""
 		if self.param.val('answer_mode')=="list": answer = event.widget["text"].lower()
 		else: answer = self.answerButt.get().lower()
 
@@ -199,14 +201,14 @@ class Gui:
 		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
 
 		if answer==self.kana: # \o/
-			self.quizLabel["text"] = str(13)
-			self.quizLabel["fg"] = "darkgreen"
-			self.score.update(1) #Update the score (add 1 point).
+			self.quizWidget['quiz_label']["text"] = str(13)
+			self.quizWidget['quiz_label']["fg"] = "darkgreen"
+			self.score.update(1) #Updating the score (adding 1 point).
 
 		else: # /o\
-			self.quizLabel["text"] = "%s\n%s" % (str(14), str(15) % self.kana.upper())
-			self.quizLabel["fg"] = "red"
-			self.score.update(0,self.kana,self.kanaEngine.getKanaKind()) #Update the score (indicate unrecognized kana).
+			self.quizWidget['quiz_label']["text"] = "%s\n%s" % (str(14), str(15) % self.kana.upper())
+			self.quizWidget['quiz_label']["fg"] = "red"
+			self.score.update(0,self.kana,self.kanaEngine.getKanaKind()) #Updating the score (indicating unrecognized kana).
 
 		if self.param.val('answer_mode')=="list":
 			for butt in self.answerButt.values(): butt.pack_forget() #Hide choices buttons.
@@ -221,30 +223,12 @@ class Gui:
 		else: self.quizWidget['stop'].pack(fill="both",expand=1)
 
 	def newQuestion(self):
-		#Randomly get a kana.
-		self.kana = self.kanaEngine.randomKana(
-			(self.param.val('basic_hiragana'),
-			self.param.val('modified_hiragana'),
-			self.param.val('contracted_hiragana'),
-			self.param.val('basic_katakana'),
-			self.param.val('modified_katakana'),
-			self.param.val('contracted_katakana'),
-			self.param.val('additional_katakana')),
-			(self.param.val('basic_hiragana_portions'),
-			self.param.val('modified_hiragana_portions'),
-			self.param.val('contracted_hiragana_portions'),
-			self.param.val('basic_katakana_portions'),
-			self.param.val('modified_katakana_portions'),
-			self.param.val('contracted_katakana_portions'),
-			self.param.val('additional_katakana_portions')),
-			self.param.val('kana_no_repeat'))
-
+		self.kana = self.kanaEngine.randomKana() #Randomly get a kana.
 		self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) #Update kana's image.
 
-		self.quizInfos['questionNumLabel']["text"] = str(67) % (self.score.getQuestionTotal()+1,self.param.val('length'))
-		self.quizLabel["text"] = (str(11),str(12))[self.kanaEngine.getKanaKind()]
-		self.quizLabel["fg"] = "black"
-
+		self.quizWidget['questionNumLabel']["text"] = str(67) % (self.score.getQuestionTotal()+1,self.param.val('length'))
+		self.quizWidget['quiz_label']["text"] = (str(11),str(12))[self.kanaEngine.getKanaKind()]
+		self.quizWidget['quiz_label']["fg"] = "black"
 
 		if self.param.val('answer_mode')=="list":
 			self.nextButton.pack_forget() #Hide the arrow.
@@ -268,7 +252,8 @@ class Gui:
 			self.nextButton.pack(fill="both",pady=1,expand=1)
 			self.nextButton['command'] = self.checkAnswer
 	
-		self.quizWidget['stop'].pack_forget() #Hide the stop button.
+		self.quizWidget['stop'].pack_forget() #Hiding the stop button.
+		self.quizWidget['stopframe']['height'] = 1 #Reducing its container.
 
 	def results(self):
 		def goBack():
@@ -276,22 +261,45 @@ class Gui:
 			self.main()
 		results = self.score.getResults()
 
-		#Display results.
-		self.quizLabel["text"] = ("%s\n\n%s\n%s\n%s" % (str(16),str(17) % results[0],str(18) % results[1],str(19) % results[2]))
-		self.quizLabel["fg"] = "black"
+		self.quizWidget["left_part"].pack_forget() #Removing left part (kana image...).
+
+		#Displaying results.
+		text = "\n%s\n\n%s\n%s\n%s" % (str(16),str(17) % results[0],str(18) % results[1],str(19) % results[2])
+
+		def getUnrecStr(kind):
+			"""Returning a ready-to-display string which indicates the
+			unrecognized kana (by kind) during the quiz."""
+			plop = ""
+			for key,val in results[3][kind].items():
+				for x in val: 
+					if key!=1: plop += "%s (%s), " % (x.upper(),key)
+					else: plop += "%s, " % x.upper()
+			return "\n%s" % str(72+kind) % plop[:-2]
+
+		if len(results[3][0])>0: text += getUnrecStr(0)
+		if len(results[3][1])>0: text += getUnrecStr(1)
+		
+		self.quizWidget['quiz_label']["text"] = "%s\n" % text
+		self.quizWidget['quiz_label']["fg"] = "black"
+		self.quizWidget['quiz_label']['wraplength'] = 281
+		self.quizWidget['quiz_label']['width'] = 42
 
 		self.nextButton["command"] = goBack
 
-		self.score.reset() #Reset the score.
-		self.quizWidget['stop'].pack_forget() #Hide the stop button.
+		self.score.reset() #Reseting the score.
+		self.quizWidget['stop'].pack_forget() #Hiding the stop button.
+		self.quizWidget['stopframe']['height'] = 1 #Reducing its container.
 
 	def options(self):
-		#Dicts for integrer to string options convertion and vice-versa...
-		opt_boolean = {0:'false',1:'true','false':0,'true':1}
-		opt_transcription_system = {str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",str(80):'polivanov','hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64),'polivanov':str(80)}
-		opt_answer_mode = {str(39):'list',str(40):'entry','list':str(39),'entry':str(40)}
-		opt_list_size = {str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5}
-		opt_lang = {str(46):'en',str(47):'fr',str(70):'de',str(48):'pt_BR',str(74):'ru',str(49):'sr',str(50):'sv','en':str(46),'fr':str(47),'de':str(70),'pt_BR':str(48),'ru':str(74),'sr':str(49),'sv':str(50)}
+		#Dicts for integrer to string param convertion and vice-versa...
+		opt_conv = {
+			"boolean":{0:'false',1:'true','false':0,'true':1},
+			"transcription_system":{str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",str(79):'polivanov','hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64),'polivanov':str(79)},
+			"answer_mode":{str(39):'list',str(40):'entry','list':str(39),'entry':str(40)},
+			"list_size":{str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5},
+			"rand_answer_sel_range":{str(76):'portion',str(77):'set',str(78):'kind','portion':str(76),'set':str(77),'kind':str(78)},
+			"lang":{str(46):'en',str(47):'fr',str(70):'de',str(48):'pt_BR',str(74):'ru',str(49):'sr',str(50):'sv','en':str(46),'fr':str(47),'de':str(70),'pt_BR':str(48),'ru':str(74),'sr':str(49),'sv':str(50)}
+			}
 
 		#Values for kana portion params.
 		kanaPortions = [
@@ -309,26 +317,27 @@ class Gui:
 
 		def save():
 			self.param.write({
-			'basic_hiragana':opt_boolean[option1.get()],
+			'basic_hiragana':opt_conv["boolean"][option1.get()],
 			'basic_hiragana_portions':kanaPortions[0],
-			'modified_hiragana':opt_boolean[option2.get()],
+			'modified_hiragana':opt_conv["boolean"][option2.get()],
 			'modified_hiragana_portions':kanaPortions[1],
-			'contracted_hiragana':opt_boolean[option3.get()],
+			'contracted_hiragana':opt_conv["boolean"][option3.get()],
 			'contracted_hiragana_portions':kanaPortions[2],
-			'basic_katakana':opt_boolean[option4.get()],
+			'basic_katakana':opt_conv["boolean"][option4.get()],
 			'basic_katakana_portions':kanaPortions[3],
-			'modified_katakana':opt_boolean[option5.get()],
+			'modified_katakana':opt_conv["boolean"][option5.get()],
 			'modified_katakana_portions':kanaPortions[4],
-			'contracted_katakana':opt_boolean[option6.get()],
+			'contracted_katakana':opt_conv["boolean"][option6.get()],
 			'contracted_katakana_portions':kanaPortions[5],
-			'additional_katakana':opt_boolean[option7.get()],
+			'additional_katakana':opt_conv["boolean"][option7.get()],
 			'additional_katakana_portions':kanaPortions[6],
-			'transcription_system':opt_transcription_system[option8.get().encode('utf8')],
-			'answer_mode':opt_answer_mode[option9.get().encode('utf8')],
-			'list_size':opt_list_size[option10.get().encode('utf8')],
-			'length':int(option11.get()),
-			'kana_no_repeat':opt_boolean[option12.get()],
-			'lang':opt_lang[option13.get().encode('utf8')]
+			'transcription_system':opt_conv["transcription_system"][option8.get().encode('utf8')],
+			'answer_mode':opt_conv["answer_mode"][option9.get().encode('utf8')],
+			'list_size':opt_conv["list_size"][option10.get().encode('utf8')],
+			'rand_answer_sel_range':opt_conv["rand_answer_sel_range"][option11.get()],
+			'length':int(option12.get()),
+			'kana_no_repeat':opt_conv["boolean"][option13.get()],
+			'lang':opt_conv["lang"][option14.get().encode('utf8')]
 			})
 			goBack() #Then, go back!
 
@@ -431,14 +440,14 @@ class Gui:
 		label = tk.Label(frame2,text=str(21),justify="left",anchor="w")
 		label.pack()
 		table = tk.Frame(frame2)
-		table.pack(fill="x")
+		table.pack(fill="both",expand=1)
 
 		#`basic_hiragana'
 		img5 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img","basic_hiragana.gif"))
 		label = tk.Label(table,image=img5)
 		label.grid(column=0,row=0)
 		option1 = tk.IntVar()
-		option1.set(opt_boolean[self.param.val('basic_hiragana')])
+		option1.set(opt_conv["boolean"][self.param.val('basic_hiragana')])
 		c = tk.Checkbutton(table,text=str(23),variable=option1)
 		c.grid(column=1,row=0,sticky='W')
 		button = tk.Button(table,text=str(27),command=lambda: portions_popup(0))
@@ -449,7 +458,7 @@ class Gui:
 		label = tk.Label(table,image=img6)
 		label.grid(column=0,row=1)
 		option2 = tk.IntVar()
-		option2.set(opt_boolean[self.param.val('modified_hiragana')])
+		option2.set(opt_conv["boolean"][self.param.val('modified_hiragana')])
 		c = tk.Checkbutton(table,text=str(24),variable=option2)
 		c.grid(column=1,row=1,sticky='W')
 		button = tk.Button(table,text=str(27),command=lambda: portions_popup(1))
@@ -460,7 +469,7 @@ class Gui:
 		label = tk.Label(table,image=img7)
 		label.grid(column=0,row=2)
 		option3 = tk.IntVar()
-		option3.set(opt_boolean[self.param.val('contracted_hiragana')])
+		option3.set(opt_conv["boolean"][self.param.val('contracted_hiragana')])
 		c = tk.Checkbutton(table,text=str(25),variable=option3)
 		c.grid(column=1,row=2,sticky='W')
 		button = tk.Button(table,text=str(27),command=lambda: portions_popup(2))
@@ -472,14 +481,14 @@ class Gui:
 		label = tk.Label(frame2,text=str(22),justify="left",anchor="w")
 		label.pack()
 		table = tk.Frame(frame2)
-		table.pack(fill="x")
+		table.pack(fill="both",expand=1)
 
 		#`basic_katakana'
 		img1 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img","basic_katakana.gif"))
 		label = tk.Label(table,image=img1)
 		label.grid(column=0,row=0)
 		option4 = tk.IntVar()
-		option4.set(opt_boolean[self.param.val('basic_katakana')])
+		option4.set(opt_conv["boolean"][self.param.val('basic_katakana')])
 		c = tk.Checkbutton(table,text=str(23),variable=option4)
 		c.grid(column=1,row=0,sticky='W')
 		button = tk.Button(table,text=str(27),command=lambda: portions_popup(3))
@@ -490,7 +499,7 @@ class Gui:
 		label = tk.Label(table,image=img2)
 		label.grid(column=0,row=1)
 		option5 = tk.IntVar()
-		option5.set(opt_boolean[self.param.val('modified_katakana')])
+		option5.set(opt_conv["boolean"][self.param.val('modified_katakana')])
 		c = tk.Checkbutton(table,text=str(24),variable=option5)
 		c.grid(column=1,row=1,sticky='W')
 		button = tk.Button(table,text=str(27),command=lambda: portions_popup(4))
@@ -501,7 +510,7 @@ class Gui:
 		label = tk.Label(table,image=img3)
 		label.grid(column=0,row=2)
 		option6 = tk.IntVar()
-		option6.set(opt_boolean[self.param.val('contracted_katakana')])
+		option6.set(opt_conv["boolean"][self.param.val('contracted_katakana')])
 		c = tk.Checkbutton(table,text=str(25),variable=option6)
 		c.grid(column=1,row=2,sticky='W')
 		button = tk.Button(table,text=str(27),command=lambda: portions_popup(5))
@@ -512,7 +521,7 @@ class Gui:
 		label = tk.Label(table,image=img4)
 		label.grid(column=0,row=3)
 		option7 = tk.IntVar()
-		option7.set(opt_boolean[self.param.val('additional_katakana')])
+		option7.set(opt_conv["boolean"][self.param.val('additional_katakana')])
 		c = tk.Checkbutton(table,text=str(26),variable=option7)
 		c.grid(column=1,row=3,sticky='W')
 		button = tk.Button(table,text=str(27),command=lambda: portions_popup(6))
@@ -526,7 +535,7 @@ class Gui:
 		label.pack(fill="both",expand=1)
 		option8 = tk.StringVar()
 		o = tk.OptionMenu(right_frame,option8,str(62),str(63),str(64),str(80))
-		option8.set(opt_transcription_system[self.param.val('transcription_system')])
+		option8.set(opt_conv["transcription_system"][self.param.val('transcription_system')])
 		o.pack(fill="both",expand=1)
 
 		#`answer_mode'
@@ -534,7 +543,7 @@ class Gui:
 		label.pack(fill="both",expand=1)
 		option9 = tk.StringVar()
 		o = tk.OptionMenu(right_frame,option9,str(39),str(40))
-		option9.set(opt_answer_mode[self.param.val('answer_mode')])
+		option9.set(opt_conv["answer_mode"][self.param.val('answer_mode')])
 		o.pack(fill="both",expand=1)
 
 		#`list_size'
@@ -542,31 +551,41 @@ class Gui:
 		label.pack(fill="both",expand=1)
 		option10 = tk.StringVar()
 		o = tk.OptionMenu(right_frame,option10,str(42) % 2,str(42) % 3,str(42) % 4,str(42) % 5)
-		option10.set(opt_list_size[self.param.val('list_size')])
+		option10.set(opt_conv["list_size"][self.param.val('list_size')])
 		o.pack(fill="both",expand=1)
+		
+		#`rand_answer_sel_range'
+		label = tk.Label(right_frame,text=str(75))
+		label.pack(fill="both",expand=1)
+		option11 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option11,str(76),str(77),str(78))
+		option11.set(opt_conv["rand_answer_sel_range"][self.param.val('rand_answer_sel_range')])
+		o.pack(fill="both",expand=1)		
 
 		#`length'
 		frame2 = tk.Frame(right_frame)
 		label = tk.Label(frame2,text=str(43))
 		label.pack(side="left",expand=1)
-		option11 = tk.StringVar()
-		o = tk.OptionMenu(frame2,option11,"10","20","30")
-		option11.set(self.param.val('length'))
-		o.pack(expand=1)
+		option12 = tk.StringVar()
+		o = tk.OptionMenu(frame2,option12,"10","20","30","40","50")
+		option12.set(self.param.val('length'))
+		o.pack(side="left",expand=1)
+		label = tk.Label(frame2,text=str(80))
+		label.pack(expand=1)
 		frame2.pack(fill="both",expand=1)
 
 		#`kana_no_repeat'
-		option12 = tk.IntVar()
-		option12.set(opt_boolean[self.param.val('kana_no_repeat')])
+		option13 = tk.IntVar()
+		option13.set(opt_conv["boolean"][self.param.val('kana_no_repeat')])
 		c = tk.Checkbutton(right_frame,text=str(44),variable=option12)
 		c.pack(fill="both",expand=1)
 
 		#`lang'
 		label = tk.Label(right_frame,text=str(45))
 		label.pack(fill="both",expand=1)
-		option13 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option13,str(46),str(47),str(70),str(48),str(74),str(49),str(50))
-		option13.set(opt_lang[self.param.val('lang')])
+		option14 = tk.StringVar()
+		o = tk.OptionMenu(right_frame,option14,str(46),str(47),str(70),str(48),str(74),str(49),str(50))
+		option14.set(opt_conv["lang"][self.param.val('lang')])
 		o.pack(fill="both",expand=1)
 
 		#Buttons at bottom...
