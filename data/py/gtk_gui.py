@@ -209,6 +209,7 @@ class Gui:
 				entry.connect("changed",lambda widget: widget.set_text(widget.get_text().upper()))
 				box2.pack_start(entry)
 				self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object("clicked",self.checkAnswer,entry)
+				entry.connect("activate",lambda widget: self.nextButton.clicked())
 
 			box2.pack_start(self.nextButton)
 			box.pack_end(box2)
@@ -259,6 +260,8 @@ class Gui:
 			widget.hide()
 			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
 			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object("clicked",self.newQuestion,widget)
+
+		self.nextButton.grab_focus() #Give focus to the arrow.
 
 		if self.score.isQuizFinished(self.param.val('length')):
 			#The quiz is finished... Let's show results!
