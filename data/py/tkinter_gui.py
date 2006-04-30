@@ -189,8 +189,8 @@ class Gui:
 	def checkAnswer(self,event=None):
 		"""Checking the given answer, updating the score
 		and displaying the result."""
-		if self.param.val('answer_mode')=="list": answer = event.widget["text"].lower()
-		else: answer = self.answerButt.get().lower()
+		if self.param.val('answer_mode')=="list": answer = event.widget["text"].lower().encode('utf8')
+		else: answer = self.answerButt.get().lower().encode('utf8')
 
 		#If the selected romanization system is *other* than Hepburn (default),
 		#let's convert the good answer (given in the Hepburn internal format)
@@ -334,7 +334,7 @@ class Gui:
 			'transcription_system':opt_conv["transcription_system"][option8.get().encode('utf8')],
 			'answer_mode':opt_conv["answer_mode"][option9.get().encode('utf8')],
 			'list_size':opt_conv["list_size"][option10.get().encode('utf8')],
-			'rand_answer_sel_range':opt_conv["rand_answer_sel_range"][option11.get()],
+			'rand_answer_sel_range':opt_conv["rand_answer_sel_range"][option11.get().encode('utf8')],
 			'length':int(option12.get()),
 			'kana_no_repeat':opt_conv["boolean"][option13.get()],
 			'lang':opt_conv["lang"][option14.get().encode('utf8')]
@@ -432,15 +432,15 @@ class Gui:
 		option_frame.pack(fill="both",expand=1)
 
 		left_frame = tk.Frame(option_frame)
-		left_frame.pack(fill="both",expand=1,side="left",pady=4,padx=4)
+		left_frame.pack(fill="both",expand=1,side="left",pady=4)
 
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
-		frame2.pack(fill="both",expand=1)
+		frame2.pack(fill="both",expand=1,pady=4)
 
-		label = tk.Label(frame2,text=str(21),justify="left",anchor="w")
-		label.pack()
+		label = tk.Label(frame2,text=str(21))
+		label.pack(fill="both",expand=1)
 		table = tk.Frame(frame2)
-		table.pack(fill="both",expand=1)
+		table.pack(fill="both",expand=1,padx=4)
 
 		#`basic_hiragana'
 		img5 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img","basic_hiragana.gif"))
@@ -476,12 +476,12 @@ class Gui:
 		button.grid(column=2,row=2)
 
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
-		frame2.pack(fill="both",expand=1)
+		frame2.pack(fill="both",expand=1,pady=6)
 
-		label = tk.Label(frame2,text=str(22),justify="left",anchor="w")
-		label.pack()
+		label = tk.Label(frame2,text=str(22))
+		label.pack(fill="both",expand=1)
 		table = tk.Frame(frame2)
-		table.pack(fill="both",expand=1)
+		table.pack(fill="both",expand=1,padx=4)
 
 		#`basic_katakana'
 		img1 = tk.PhotoImage(file=os.path.join(self.datarootpath,"img","basic_katakana.gif"))
@@ -528,13 +528,13 @@ class Gui:
 		button.grid(column=2,row=3)
 
 		right_frame = tk.Frame(option_frame)
-		right_frame.pack(fill="both",expand=1,pady=6,padx=6)
+		right_frame.pack(fill="both",expand=1,padx=4)
 
 		#`transcription_system'
 		label = tk.Label(right_frame,text=str(61))
 		label.pack(fill="both",expand=1)
 		option8 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option8,str(62),str(63),str(64),str(80))
+		o = tk.OptionMenu(right_frame,option8,str(62),str(63),str(64),str(79))
 		option8.set(opt_conv["transcription_system"][self.param.val('transcription_system')])
 		o.pack(fill="both",expand=1)
 
@@ -577,16 +577,18 @@ class Gui:
 		#`kana_no_repeat'
 		option13 = tk.IntVar()
 		option13.set(opt_conv["boolean"][self.param.val('kana_no_repeat')])
-		c = tk.Checkbutton(right_frame,text=str(44),variable=option12)
+		c = tk.Checkbutton(right_frame,text=str(44),variable=option13)
 		c.pack(fill="both",expand=1)
 
 		#`lang'
-		label = tk.Label(right_frame,text=str(45))
-		label.pack(fill="both",expand=1)
+		frame2 = tk.Frame(right_frame)
+		label = tk.Label(frame2,text=str(45))
+		label.pack(side="left",expand=1)
 		option14 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option14,str(46),str(47),str(70),str(48),str(74),str(49),str(50))
+		o = tk.OptionMenu(frame2,option14,str(46),str(47),str(70),str(48),str(74),str(49),str(50))
 		option14.set(opt_conv["lang"][self.param.val('lang')])
-		o.pack(fill="both",expand=1)
+		o.pack(side="left",expand=1)
+		frame2.pack(fill="both",expand=1)
 
 		#Buttons at bottom...
 		frame2 = tk.Frame(frame)
