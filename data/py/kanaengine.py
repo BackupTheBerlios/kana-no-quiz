@@ -98,7 +98,6 @@ def HepburnToOtherSysConvert(kana,outputsys):
 			"sha":"ся", "shu":"сю",	"sho":"сё",
 			"ja":"дзя", "ju":"дзю", "jo":"дзё",
 			"cha":"тя", "chu":"тю",	"cho":"тё",
-			"ja":"дзя", "ju":"дзю", "jo":"дзё",
 			"nya":"ня", "nyu":"ню", "nyo":"нё",
 			"hya":"хя", "hyu":"хю", "hyo":"хё",
 			"pya":"пя", "pyu":"пю", "pyo":"пё",
@@ -106,14 +105,14 @@ def HepburnToOtherSysConvert(kana,outputsys):
 			"mya":"мя", "myu":"мю", "myo":"мё",
 			"rya":"ря", "ryu":"рю", "ryo":"рё",
 			#Additionnal katakana.
-			"wi":"ви", "we":"вщ", "wo":"вн",
-			"kwa":"ква", "kwo":"квн",
-			"she":"се", "je":"дзщ", "che":"тэ",
-			"tsa":"цю", "tse":"цщ", "tso":"цо",
+			"wi":"ви", "we":"вэ", "wo":"во",
+			"kwa":"ква", "kwo":"кво",
+			"she":"се", "je":"дзэ", "che":"тэ",
+			"tsa":"ца", "tse":"цэ", "tso":"цо",
 			"ti":"ти", "tu":"ту", "di":"ди", "du":"ду",
 			"tyu":"тю", "dyu":"дю", "ye":"е",
-			"fa":"тю", "fi":"тх", "fe":"тщ", "fo":"тн",
-			"va":"вю","vi":"вх","ve":"вщ","vo":"во"}
+			"fa":"фа", "fi":"фи", "fe":"фэ", "fo":"фо",
+			"va":"ва","vi":"ви","ve":"вэ","vo":"во"}
 		if convert.has_key(kana): return convert[kana]
 
 	#Return the same value if no modification of the kana beetween the systems.

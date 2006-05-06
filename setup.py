@@ -19,7 +19,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 from distutils.core import setup
-import os.path, glob, sys
+import os, glob, sys
 
 if 'bdist_wininst' in sys.argv:
 	scriptfiles = glob.glob(os.path.join('data','script','*.py*'))
@@ -62,7 +62,17 @@ setup(
 if "install" in sys.argv:
 	#Post-install stuffs (Unix).
 	if os.name=="posix":
+		#Determining the best start-up script path prefix.
+		prefix = None
+		str = "--prefix="
+		for val in sys.argv: #Check if mentioned as command parameter.
+			if val[:len(str)]==str: prefix = val[len(str):]; break 
+		if not prefix: prefix = sys.prefix #Use Python prefix.
+
+		startup_script = os.path.join(prefix,"bin/kana-no-quiz") #Startup script path.
+		startup_script_dir = os.path.dirname(startup_script) 
+		
 		import shutil
-		startup_script = "/usr/local/bin/kana-no-quiz"
+		if not os.path.exists(startup_script_dir): os.makedirs(startup_script_dir)
 		shutil.copy("./data/script/kana-no-quiz_startup.pyw",startup_script)
-		print "Kana no quiz start-up script put into `%s'." % os.path.dirname(startup_script)
+		print "Kana no quiz start-up script put into `%s'." % startup_script_dir
