@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-29 21:57+0200\n"
-"PO-Revision-Date: 2005-12-31 00:09+0100\n"
+"POT-Creation-Date: 2006-05-10 21:51+0200\n"
+"PO-Revision-Date: 2006-05-10 22:17+0100\n"
 "Last-Translator: Markus <markus_fellnert@hotmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,43 +32,20 @@ msgid "About"
 msgstr "Om"
 
 #: ../py/i18n.py:48
-msgid ""
-"Two different writing systems are commonly used by Japaneses: kanji & kana."
+msgid "Two different writing systems are commonly used by Japaneses: kanji & kana."
 msgstr "Två olika skriftsystem är vanliga i Japanskan; kanji & kana."
 
 #: ../py/i18n.py:49
-msgid ""
-"Kanji are complex ideograms retranscribing words whereas kana are simple "
-"symbols used as syllables which have to be combined to make words. Any word "
-"in Japanese can be written using kana, it is like an alphabet."
-msgstr ""
-"Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla "
-"symboler som används som stavelser, som kombineras för att skapa ord. Alla "
-"japanska ord kan skrivas med kana, ungefär som ett alfabet."
+msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
+msgstr "Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla symboler som används som stavelser, som kombineras för att skapa ord. Alla japanska ord kan skrivas med kana, ungefär som ett alfabet."
 
 #: ../py/i18n.py:50
-msgid ""
-"There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
-"traditional syllabary used to write Japanese words. Katakana is a larger "
-"syllabary, with more sounds, mostly used to write proper nouns and loanwords "
-"of foreign origin."
-msgstr ""
-"Det finns två typer av kana; hiragana och katakana. Hiragana är mest använda "
-"och den traditionella kanauppsättningen för att skriva japanska ord. "
-"Katakana har en större teckenuppsättning, med fler ljud, oftast använd för "
-"att skriva låneord och utländska egennamn."
+msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
+msgstr "Det finns två typer av kana; hiragana och katakana. Hiragana är mest använda och den traditionella kanauppsättningen för att skriva japanska ord. Katakana har en större teckenuppsättning, med fler ljud, oftast använd för att skriva låneord och utländska egennamn."
 
 #: ../py/i18n.py:51
-msgid ""
-"Kana no quiz helps you to memorize kana and their associated sound (using "
-"the Hepburn's roman transcription system). For more simplicity, syllables "
-"have been split in multiple sets, and you can even choose to learn only a "
-"portion of kana at a time."
-msgstr ""
-"Kana no quiz hjälper dig att memorera kana och deras associerade ljud/"
-"transkriberingar enligt hepburnsystemet. För ökad enkelhet har stavelserna "
-"blivit uppdelade över flera set, och du kan t.o.m välja att bara öva en del "
-"kana åt gången."
+msgid "Kana no quiz helps you to memorize kana and their associated sound, using transcription systems. For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."
+msgstr "Kana no quiz hjälper dig att memorera kana och deras associerade ljud/transkriberingar enligt hepburnsystemet. För ökad enkelhet har stavelserna blivit uppdelade över flera set, och du kan t.o.m välja att bara öva en del kana åt gången."
 
 #: ../py/i18n.py:52
 msgid "Have a good practice ! ^_^"
@@ -149,53 +126,40 @@ msgid "Additional"
 msgstr "Övriga"
 
 #: ../py/i18n.py:70
-#, fuzzy
 msgid "Portions"
-msgstr "Alternativ"
+msgstr "Uppdelningar"
 
 #: ../py/i18n.py:71
-#, fuzzy
 msgid "Basic hiragana portions"
 msgstr "Grundläggande hiraganadelar"
 
 #: ../py/i18n.py:72
-#, fuzzy
 msgid "Modified hiragana portions"
 msgstr "Modifierade hiraganadelar"
 
 #: ../py/i18n.py:73
-#, fuzzy
 msgid "Contracted hiragana portions"
 msgstr "Sammandragana hiraganadelar"
 
 #: ../py/i18n.py:74
-#, fuzzy
 msgid "Basic katakana portions"
 msgstr "Sammandragna katakanadelar"
 
 #: ../py/i18n.py:75
-#, fuzzy
 msgid "Modified katakana portions"
 msgstr "Modifierade katakanadelar"
 
 #: ../py/i18n.py:76
-#, fuzzy
 msgid "Contracted katakana portions"
 msgstr "Sammandragna katakanadelar"
 
 #: ../py/i18n.py:77
-#, fuzzy
 msgid "Additional katakana portions"
 msgstr "Övriga katakanadelar"
 
 #: ../py/i18n.py:78
-#, fuzzy
-msgid ""
-"If you are novice, it may be interesting at the beginning to train yourself "
-"only on portions instead of the full kana set."
-msgstr ""
-"Om du är nybörjare kan det vara intressant att börja med att bara öva på en "
-"del kana, i stället för alla samtidigt."
+msgid "If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."
+msgstr "Om du är nybörjare kan det vara intressant att börja med att bara öva på en del kana, i stället för alla samtidigt."
 
 #: ../py/i18n.py:79
 msgid "Select the kana portions you want to train yourself upon:"
@@ -206,7 +170,6 @@ msgid "Select all"
 msgstr "Välj alla"
 
 #: ../py/i18n.py:81
-#, fuzzy
 msgid "Answering method:"
 msgstr "Svarssätt:"
 
@@ -228,7 +191,6 @@ msgid "%s choices"
 msgstr "%s val"
 
 #: ../py/i18n.py:86
-#, fuzzy
 msgid "Quiz length:"
 msgstr "Längd:"
 
@@ -282,12 +244,8 @@ msgid "Version %s."
 msgstr "Version %s."
 
 #: ../py/i18n.py:98
-msgid ""
-"Kana no quiz is free software released under the GNU GPL license (see `GPL."
-"txt'). Kana images are released under the Free Art license (see `FAL.txt')."
-msgstr ""
-"Kana no quiz är en gratis-mjukvara utgiven under GNU GPL licens (se `GPL."
-"txt'). Kanabilder är utgivna under Free Art licens (se `FAL.txt')."
+msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr "Kana no quiz är en gratis-mjukvara utgiven under GNU GPL licens (se `GPL.txt'). Kanabilder är utgivna under Free Art licens (se `FAL.txt')."
 
 #: ../py/i18n.py:99
 msgid "Credits"
@@ -314,16 +272,14 @@ msgstr "Varning"
 
 # E:\choplair\MyBordel\Apps\ChoppyProg\kana-no-quiz\devel\data\py\i18n.py:81
 #: ../py/i18n.py:103
-#, fuzzy
 msgid "Please select at least one kana portion to start the quiz."
 msgstr "Du måste välja minst en uppsättning frågor."
 
 #: ../py/i18n.py:104
-msgid "Romanization system:"
+msgid "Transcription system:"
 msgstr "Romaniseringssystem:"
 
 #: ../py/i18n.py:105
-#, fuzzy
 msgid "Hepburn (most used)"
 msgstr "Hepburn (rekommenderat)"
 
@@ -358,62 +314,57 @@ msgid "Stop"
 msgstr "Stopp"
 
 #: ../py/i18n.py:113
-#, fuzzy
 msgid "German"
-msgstr "Serbiska"
+msgstr "Tyskt"
 
 #: ../py/i18n.py:114
 msgid "Quit"
-msgstr ""
+msgstr "Avsluta"
 
 #: ../py/i18n.py:115
-#, fuzzy, python-format
+#, python-format
 msgid "Unrecognized katakana: %s."
-msgstr "Sammandragna katakanadelar"
+msgstr "Sammandragna katakanadelar:%s."
 
 #: ../py/i18n.py:116
-#, fuzzy, python-format
+#, python-format
 msgid "Unrecognized hiragana: %s."
-msgstr "Sammandragana hiraganadelar"
+msgstr "Sammandragana hiraganadelar:%s."
 
 #: ../py/i18n.py:117
 msgid "Russian"
-msgstr ""
+msgstr "Rysk"
 
 #: ../py/i18n.py:118
-#, fuzzy
 msgid "Random answer selection range:"
 msgstr "Antal alternativ på slumplista:"
 
 #: ../py/i18n.py:119
 msgid "Same kana portions"
-msgstr ""
+msgstr "Samma kana-uppdelning"
 
 #: ../py/i18n.py:120
 msgid "Same kana set"
-msgstr ""
+msgstr "Samma kana-omgång"
 
 #: ../py/i18n.py:121
 msgid "Same kana kind"
-msgstr ""
+msgstr "Samma kana-sort"
 
 #: ../py/i18n.py:122
 msgid "Polivanov (cyrillic)"
 msgstr ""
 
 #: ../py/i18n.py:123
-#, fuzzy
 msgid " questions."
-msgstr "Version %s."
+msgstr "frågor%s."
 
 #~ msgid "Parts"
 #~ msgstr "Delar"
-
 #~ msgid "All"
 #~ msgstr "Alla"
-
 #~ msgid "2 choices"
 #~ msgstr "2 val"
-
 #~ msgid "3 choices"
 #~ msgstr "3 val"
+

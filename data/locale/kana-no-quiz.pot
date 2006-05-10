@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-29 21:57+0200\n"
+"POT-Creation-Date: 2006-05-10 21:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,10 +58,10 @@ msgstr ""
 
 #: ../py/i18n.py:51
 msgid ""
-"Kana no quiz helps you to memorize kana and their associated sound (using "
-"the Hepburn's roman transcription system). For more simplicity, syllables "
-"have been split in multiple sets, and you can even choose to learn only a "
-"portion of kana at a time."
+"Kana no quiz helps you to memorize kana and their associated sound, using "
+"transcription systems. For more simplicity, syllables have been split in "
+"multiple sets, and you can even choose to learn only a portion of kana at a "
+"time."
 msgstr ""
 
 #: ../py/i18n.py:52
@@ -288,7 +288,7 @@ msgid "Please select at least one kana portion to start the quiz."
 msgstr ""
 
 #: ../py/i18n.py:104
-msgid "Romanization system:"
+msgid "Transcription system:"
 msgstr ""
 
 #: ../py/i18n.py:105

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kana-no-quiz 1.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-29 21:57+0200\n"
-"PO-Revision-Date: 2006-04-25 01:02+0100\n"
-"Last-Translator: Florian Niemann <mail@florian-niemann.de>\n"
+"POT-Creation-Date: 2006-05-10 21:51+0200\n"
+"PO-Revision-Date: 2006-05-10 22:21+0100\n"
+"Last-Translator: Choplair <chopinou-NOSP@M-choplair.org>\n"
 "Language-Team: German <mail@florian-niemann.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,46 +38,20 @@ msgid "About"
 msgstr "Über"
 
 #: ../py/i18n.py:48
-msgid ""
-"Two different writing systems are commonly used by Japaneses: kanji & kana."
-msgstr ""
-"Üblicherweise werden in Japan zwei verschiedene Schriftsysteme verwendet: "
-"Kanji & Kana"
+msgid "Two different writing systems are commonly used by Japaneses: kanji & kana."
+msgstr "Üblicherweise werden in Japan zwei verschiedene Schriftsysteme verwendet: Kanji & Kana"
 
 #: ../py/i18n.py:49
-msgid ""
-"Kanji are complex ideograms retranscribing words whereas kana are simple "
-"symbols used as syllables which have to be combined to make words. Any word "
-"in Japanese can be written using kana, it is like an alphabet."
-msgstr ""
-"Kanji sind komplexe Ideogramme, die Worte beschreiben. Kana hingegen sind "
-"einfache Symbole, die für Silben stehen und zusammengesetzt Worte ergeben. "
-"Jedes Wort im Japanischen kann in Kana geschrieben werden. Es ist mit einem "
-"Alphabet vergleichbar."
+msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
+msgstr "Kanji sind komplexe Ideogramme, die Worte beschreiben. Kana hingegen sind einfache Symbole, die für Silben stehen und zusammengesetzt Worte ergeben. Jedes Wort im Japanischen kann in Kana geschrieben werden. Es ist mit einem Alphabet vergleichbar."
 
 #: ../py/i18n.py:50
-msgid ""
-"There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
-"traditional syllabary used to write Japanese words. Katakana is a larger "
-"syllabary, with more sounds, mostly used to write proper nouns and loanwords "
-"of foreign origin."
-msgstr ""
-"Es gibt zwei Arten von Kana: Hiragana & Katakana. Hiragana ist die "
-"gebräuchliche traditionelle Silbenschrift, zum Schreiben japanischer Worte. "
-"Katakana ist eine umfangreichere Silbenschrift, mit mehr Lauten, die dazu "
-"verwendet wird um Lehnworte zu schreiben."
+msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
+msgstr "Es gibt zwei Arten von Kana: Hiragana & Katakana. Hiragana ist die gebräuchliche traditionelle Silbenschrift, zum Schreiben japanischer Worte. Katakana ist eine umfangreichere Silbenschrift, mit mehr Lauten, die dazu verwendet wird um Lehnworte zu schreiben."
 
 #: ../py/i18n.py:51
-msgid ""
-"Kana no quiz helps you to memorize kana and their associated sound (using "
-"the Hepburn's roman transcription system). For more simplicity, syllables "
-"have been split in multiple sets, and you can even choose to learn only a "
-"portion of kana at a time."
-msgstr ""
-"Kana no quiz! hilft Ihnen Kana und ihren zugehörigen Laut (unter Verwendung "
-"des Hepburn-Systems) zu lernen. Für eine einfachere Benutzung wurden die "
-"Silben in mehrere Gruppen aufgeteilt und Sie können sich aussuchen, welche "
-"Sie gleichzeitig lernen wollen."
+msgid "Kana no quiz helps you to memorize kana and their associated sound, using transcription systems. For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."
+msgstr "Kana no quiz! hilft Ihnen Kana und ihren zugehörigen Laut (unter Verwendung des Hepburn-Systems) zu lernen. Für eine einfachere Benutzung wurden die Silben in mehrere Gruppen aufgeteilt und Sie können sich aussuchen, welche Sie gleichzeitig lernen wollen."
 
 #: ../py/i18n.py:52
 msgid "Have a good practice ! ^_^"
@@ -188,12 +162,8 @@ msgid "Additional katakana portions"
 msgstr "Zusätzliche Katakana"
 
 #: ../py/i18n.py:78
-msgid ""
-"If you are novice, it may be interesting at the beginning to train yourself "
-"only on portions instead of the full kana set."
-msgstr ""
-"Wenn Sie Anfänger sind, ist es sinnvoll anfangs nur einige Kana zu lernen, "
-"anstatt der ganzen Gruppe auf einmal."
+msgid "If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."
+msgstr "Wenn Sie Anfänger sind, ist es sinnvoll anfangs nur einige Kana zu lernen, anstatt der ganzen Gruppe auf einmal."
 
 #: ../py/i18n.py:79
 msgid "Select the kana portions you want to train yourself upon:"
@@ -278,13 +248,8 @@ msgid "Version %s."
 msgstr "Version %s."
 
 #: ../py/i18n.py:98
-msgid ""
-"Kana no quiz is free software released under the GNU GPL license (see `GPL."
-"txt'). Kana images are released under the Free Art license (see `FAL.txt')."
-msgstr ""
-"Kana no quiz! ist freie Software und unter der \"GNU GPL License\" "
-"veröffentlicht (siehe \"GPL.txt\"). Die Kana-Bilder sind unter der \"Free "
-"Art License\" (siehe \"FAL.txt\") veröffentlicht."
+msgid "Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."
+msgstr "Kana no quiz! ist freie Software und unter der \"GNU GPL License\" veröffentlicht (siehe \"GPL.txt\"). Die Kana-Bilder sind unter der \"Free Art License\" (siehe \"FAL.txt\") veröffentlicht."
 
 #: ../py/i18n.py:99
 msgid "Credits"
@@ -310,11 +275,10 @@ msgstr "Warnung"
 
 #: ../py/i18n.py:103
 msgid "Please select at least one kana portion to start the quiz."
-msgstr ""
-"Sie müssen mindestens eine Kana-Gruppe auswählen um das Quiz zu starten."
+msgstr "Sie müssen mindestens eine Kana-Gruppe auswählen um das Quiz zu starten."
 
 #: ../py/i18n.py:104
-msgid "Romanization system:"
+msgid "Transcription system:"
 msgstr "Romanisierungssystem:"
 
 #: ../py/i18n.py:105
@@ -399,6 +363,6 @@ msgstr " Fragen."
 
 #~ msgid "Parts"
 #~ msgstr "Teile"
-
 #~ msgid "Whole kana list"
 #~ msgstr "Gesamte Kana-Liste"
+
