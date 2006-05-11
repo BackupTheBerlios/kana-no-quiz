@@ -2,13 +2,15 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.5 (2006-XX-XX):
+* Version 1.5 (2006-05-12):
 
 - System-wide installation & per-user configuration.
 - More complete quiz result informations (wrong answer recap).
 - Windows binary installation package.
 - No more learning flow disturbance within a quiz using the
 text-entry answering method.
+- Added possibility to extend random answers selection rangei
+from the same portion to the same kana set or kind.
 - Added Polivanov's kana cyrillization system.
 - New Russian translation (made by Aleksej R. Serdyukov).
 - New German translation (made by Florian Niemann).

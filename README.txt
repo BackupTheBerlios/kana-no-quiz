@@ -1,7 +1,7 @@
 
  Kana no quiz - README
- version 1.5CVS - 2006-0X-XX
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ version 1.5 - 2006-05-12
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
  ============
@@ -16,7 +16,7 @@ system is the Hepburn's (most common world-wide), but it does
 also support Kunrei and Nihon-shiki systems.
 
  This program is cross platform, the same package works both
-on GNU/Linux and Windows.
+on GNU/Linux and Windows, using different default interface.
 
  How does it work?
  -----------------
@@ -89,8 +89,7 @@ specific package but the classic source code, simply enter
  On Windows, simply click on the shortcut created in the
 Start Menu.
 
- On GNU/Linux, run `/usr/local/bin/kana-no-quiz' (or simply
-`kana-no-quiz' if `/usr/local/bin/' is in your `$PATH').
+ On GNU/Linux, simply enter the `kana-no-quiz' command.
 
  Enjoy. ;)
 

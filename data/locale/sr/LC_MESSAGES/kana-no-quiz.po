@@ -7,12 +7,12 @@ msgstr ""
 "Project-Id-Version: kana-no-quiz 1.2c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-05-10 21:23+0200\n"
-"PO-Revision-Date: 2006-04-30 18:49+0100\n"
+"PO-Revision-Date: 2006-05-11 23:18+0200\n"
 "Last-Translator: DANILOVIĆ Dejan <Dejan.Danilovic@gmail.com>\n"
 "Language-Team: srpski <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: data/py/i18n.py:43
 msgid "Kana no quiz!"
@@ -156,37 +156,30 @@ msgid "Portions"
 msgstr "Delovi"
 
 #: data/py/i18n.py:71
-#, fuzzy
 msgid "Basic hiragana portions"
 msgstr "Osnovni hiragana delovi"
 
 #: data/py/i18n.py:72
-#, fuzzy
 msgid "Modified hiragana portions"
 msgstr "Modifikovani hiragana delovi"
 
 #: data/py/i18n.py:73
-#, fuzzy
 msgid "Contracted hiragana portions"
 msgstr "Skupljeni hiragana delovi"
 
 #: data/py/i18n.py:74
-#, fuzzy
 msgid "Basic katakana portions"
 msgstr "Osnovni katakana delovi"
 
 #: data/py/i18n.py:75
-#, fuzzy
 msgid "Modified katakana portions"
 msgstr "Modifikovani katakana delovi"
 
 #: data/py/i18n.py:76
-#, fuzzy
 msgid "Contracted katakana portions"
 msgstr "Skupljeni katakana delovi"
 
 #: data/py/i18n.py:77
-#, fuzzy
 msgid "Additional katakana portions"
 msgstr "Dodatni katakana delovi"
 
@@ -207,7 +200,6 @@ msgid "Select all"
 msgstr "Sve izabrati"
 
 #: data/py/i18n.py:81
-#, fuzzy
 msgid "Answering method:"
 msgstr "Način odgovora:"
 
@@ -229,7 +221,6 @@ msgid "%s choices"
 msgstr "%s izbora"
 
 #: data/py/i18n.py:86
-#, fuzzy
 msgid "Quiz length:"
 msgstr "Dužina:"
 
@@ -314,7 +305,6 @@ msgid "Warning"
 msgstr "Upozorenje"
 
 #: data/py/i18n.py:103
-#, fuzzy
 msgid "Please select at least one kana portion to start the quiz."
 msgstr "Morate izabrati bar jedan skup pitanja!"
 
@@ -323,7 +313,6 @@ msgid "Romanization system:"
 msgstr "Romanizovan sistem:"
 
 #: data/py/i18n.py:105
-#, fuzzy
 msgid "Hepburn (most used)"
 msgstr "Hepburn (savetuje se)"
 
@@ -380,7 +369,6 @@ msgid "Russian"
 msgstr "Ruski"
 
 #: data/py/i18n.py:118
-#, fuzzy
 msgid "Random answer selection range:"
 msgstr "Veličina spiska nasumice odgovora:"
 
