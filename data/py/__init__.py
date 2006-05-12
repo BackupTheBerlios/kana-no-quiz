@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 import sys
 from os import path, chdir, environ
 
-VERSION = "1.5cvs"
+VERSION = 1.5
 
 #Setting Kana no quiz's data root directory's path.
 datarootpath = path.join(sys.prefix,'share','kana-no-quiz')

@@ -8,7 +8,7 @@
 
  This is ``Kana no quiz", a little educational tool, written
 in Python, to memorize Japanese kana (hiragana & katakana)
-pronouncing in an easy way.
+pronounciation in an easy way.
 
  The full list of kana is implemented, including additional
 katakana used in modern language. Default used romanization

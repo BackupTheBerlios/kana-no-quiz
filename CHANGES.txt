@@ -9,12 +9,12 @@
 - Windows binary installation package.
 - No more learning flow disturbance within a quiz using the
 text-entry answering method.
-- Added possibility to extend random answers selection rangei
+- Added possibility to extend random answers selection range
 from the same portion to the same kana set or kind.
 - Added Polivanov's kana cyrillization system.
 - New Russian translation (made by Aleksej R. Serdyukov).
 - New German translation (made by Florian Niemann).
-- A quit button added in the main window.
+- A quit button added to the main window.
 
 
 * Version 1.4b (2006-01-01):
