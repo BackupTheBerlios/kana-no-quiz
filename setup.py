@@ -21,10 +21,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 from distutils.core import setup
 import os, glob, sys
 
-if 'bdist_wininst' in sys.argv:
-	scriptfiles = glob.glob(os.path.join('data','script','*.py*'))
-else: scriptfiles = []
-
 #Common data files.
 datafiles = [
 		#Textual files.
@@ -46,7 +42,7 @@ if 'bdist_wininst' in sys.argv: #Windows Start Menu icon!
 
 setup(
 	name			=	'Kana no quiz',
-	version			=	'1.5cvs',
+	version			=	'1.5',
 	description		=	'A kana memorization tool.',
 	author			=	'Choplair-network',
 	author_email		=	'contact@choplair.org',
@@ -55,7 +51,7 @@ setup(
 	license			=	'GNU General Public License',
 	packages			=	['kana-no-quiz'],
 	package_dir		=	{'kana-no-quiz': 'data/py'},
-	scripts			=	scriptfiles,
+	scripts			=	glob.glob(os.path.join('data','script','*.py*')),
 	data_files			=	datafiles
 	)
 
