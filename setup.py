@@ -21,6 +21,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 from distutils.core import setup
 import os, glob, sys
 
+if 'bdist_wininst' in sys.argv:
+	scriptfiles = glob.glob(os.path.join('data','script','*.py*')) 	 
+else: scriptfiles = [] 	 
+
+
 #Common data files.
 datafiles = [
 		#Textual files.
@@ -51,7 +56,7 @@ setup(
 	license			=	'GNU General Public License',
 	packages			=	['kana-no-quiz'],
 	package_dir		=	{'kana-no-quiz': 'data/py'},
-	scripts			=	glob.glob(os.path.join('data','script','*.py*')),
+	scripts			=	scriptfiles,
 	data_files			=	datafiles
 	)
 
