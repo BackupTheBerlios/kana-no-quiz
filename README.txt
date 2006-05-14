@@ -11,9 +11,9 @@ in Python, to memorize Japanese kana (hiragana & katakana)
 pronounciation in an easy way.
 
  The full list of kana is implemented, including additional
-katakana used in modern language. Default used romanization
+katakana used in modern language. Default used transcription
 system is the Hepburn's (most common world-wide), but it does
-also support Kunrei and Nihon-shiki systems.
+also support Kunrei-shiki, Nihon-shiki and Polivanov systems.
 
  This program is cross platform, the same package works both
 on GNU/Linux and Windows, using different default interface.
@@ -86,7 +86,7 @@ specific package but the classic source code, simply enter
  Launching
  ---------
 
- On Windows, simply click on the shortcut created in the
+ On Windows, just click on the shortcut created in the
 Start Menu.
 
  On GNU/Linux, simply enter the `kana-no-quiz' command.
