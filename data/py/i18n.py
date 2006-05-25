@@ -93,11 +93,13 @@ class I18n:
 			_("Swedish"), #50
 			_("Save"),
 			_("Cancel"),
-			_("Kana no quiz, a kana reminder tool."),
+			_("Kana no quiz, a Japanese kana memorization tool."),
 			_("Version %s."),
 			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."), #55
 			_("Credits"),
-			_("Coding: Choplair & Pachilor.\nKana image: Ms. Marie-Claire.\nLogo image: Choplair."),
+			_("""Coding: Choplair & Pachilor.
+Default kana theme: Ms. Marie-Claire.
+Artworks: Fayanne."""),
 			_("Close"),
 			_("Warning"),
 			_("Please select at least one kana portion to start the quiz."), #60
@@ -120,7 +122,13 @@ class I18n:
 			_("Same kana set"),
 			_("Same kana kind"),
 			_("Polivanov (cyrillic)"),
-			_(" questions.")  #80
+			_(" questions."),  #80
+			_("Translations"),
+			_("""Brazilian: Matheus Villela.
+German: Florian Niemann.
+Russian: Aleksej R. Serdyukov.
+Serbian: Dejan Danilović.
+Swedish: Markus Fellnert.""")
 			)
 
 		return string[num]

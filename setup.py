@@ -47,8 +47,8 @@ if 'bdist_wininst' in sys.argv: #Windows Start Menu icon!
 
 setup(
 	name			=	'Kana no quiz',
-	version			=	'1.5',
-	description		=	'A kana memorization tool.',
+	version			=	'2.0_CVS',
+	description		=	'An efficient tool to memorize Japanese kana prononciation.',
 	author			=	'Choplair-network',
 	author_email		=	'contact@choplair.org',
 	url				=	'http://www.choplair.org/',

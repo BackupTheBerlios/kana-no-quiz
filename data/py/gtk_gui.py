@@ -685,24 +685,31 @@ class Gui:
 			dialog.vbox.pack_start(label)
 
 			frame = gtk.Frame(str(56))
-			box = gtk.HBox()
+			container = gtk.EventBox()
+			container.modify_bg(gtk.STATE_NORMAL,gtk.gdk.color_parse("#c9ddff"))
+			box = gtk.HBox(spacing=6)
+			box.set_border_width(3)
 
+			box2 = gtk.VBox()
 			logo = gtk.Image()
 			logo.set_from_file(os.path.join(self.datarootpath,"img","chprod.png"))
-			box.pack_start(logo,False)
-
-			box2 = gtk.VBox(spacing=4)
-			box2.set_border_width(4)
-			label = gtk.Label(str(57))
-			label.set_justify(gtk.JUSTIFY_CENTER)
-			label.set_line_wrap(True)
-			box2.pack_start(label)
+			box2.pack_start(logo)
 			label = gtk.Label("<i>http://www.choplair.org/</i>")
+			label.set_selectable(True)
 			label.set_use_markup(True)
 			box2.pack_start(label)
-			box.pack_end(box2)
+			box.pack_start(box2,padding=10)
 
-			frame.add(box)
+			buffer = gtk.TextBuffer()
+			buffer.set_text("%s\n\n%s\n%s" % (str(57),str(81),str(82)))
+			buffer.apply_tag(buffer.create_tag(justification=gtk.JUSTIFY_CENTER,editable=False),buffer.get_start_iter(),buffer.get_end_iter())
+			buffer.apply_tag(buffer.create_tag(weight=700),buffer.get_iter_at_line(4),buffer.get_iter_at_line(5))
+			textview = gtk.TextView(buffer)
+			textview.modify_base(gtk.STATE_NORMAL,gtk.gdk.color_parse("#c9ddff"))
+			box.pack_start(textview)
+
+			container.add(box)
+			frame.add(container)
 			dialog.vbox.pack_start(frame)
 
 			#Button at bottom..
