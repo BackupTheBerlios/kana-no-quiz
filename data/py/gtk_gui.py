@@ -18,7 +18,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 import gtk, os.path
-
 import kanaengine, score, i18n
 from pango import FontDescription
 from string import capwords
@@ -670,13 +669,20 @@ class Gui:
 		dialog.set_border_width(5)
 		dialog.vbox.set_spacing(4)
 
+		box = gtk.HBox(spacing=6)
+		image = gtk.Image()
+		image.set_from_file(os.path.join(self.datarootpath,"img","icon.png"))
+		box.pack_start(image)
+		box2 = gtk.VBox()
 		label = gtk.Label("<span color='#008'><b>%s</b>\n%s (GTK+)</span>" % (str(53),str(54) % self.version))
 		label.set_justify(gtk.JUSTIFY_CENTER)
 		label.set_use_markup(True)
-		dialog.vbox.pack_start(label)
-
+		box2.pack_start(label)
 		label = gtk.Label("Copyleft 2003, 2004, 2005, 2006 Choplair-network.")
-		dialog.vbox.pack_start(label)
+		box2.pack_start(label)
+		box.pack_start(box2)
+		dialog.vbox.pack_start(box)
+
 		label = gtk.Label(str(55))
 		label.set_line_wrap(True)
 		label.set_justify(gtk.JUSTIFY_CENTER)
