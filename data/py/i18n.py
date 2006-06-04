@@ -93,7 +93,7 @@ class I18n:
 			_("Swedish"), #50
 			_("Save"),
 			_("Cancel"),
-			_("Kana no quiz, a Japanese kana memorization tool."),
+			_("Kana no quiz: a Japanese kana memorization tool."),
 			_("Version %s."),
 			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."), #55
 			_("Credits"),
@@ -125,10 +125,15 @@ Artworks: Fayanne."""),
 			_(" questions."),  #80
 			_("Translations"),
 			_("""Brazilian: Matheus Villela.
+French: Choplair.
 German: Florian Niemann.
 Russian: Aleksej R. Serdyukov.
 Serbian: Dejan Danilović.
-Swedish: Markus Fellnert.""")
+Swedish: Markus Fellnert."""),
+			_("Kana"),
+			_("Answering"),
+			_("Sound"), #85
+			_("Misc.")
 			)
 
 		return string[num]

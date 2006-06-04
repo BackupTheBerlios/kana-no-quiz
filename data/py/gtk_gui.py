@@ -32,7 +32,6 @@ class Gui:
 		self.window = gtk.Window()
 		self.kanaEngine =  kanaengine.KanaEngine()
 		self.score = score.Score()
-		self.dialogState = {"about":0,"kanaPortionPopup":0}
 
 		#Localization.
 		self.i18n = i18n.I18n(os.path.join(self.datarootpath,"locale"))
@@ -408,53 +407,59 @@ class Gui:
 				kanaPortions[kanaset] = temp_list
 				dialog.destroy()
 
-			if not self.dialogState["kanaPortionPopup"]:
-				self.dialogState["kanaPortionPopup"] = 1
+			dialog = gtk.Dialog(str(28+kanaset),self.window,gtk.DIALOG_MODAL)
+			dialog.vbox.set_spacing(3)
 
-				dialog = gtk.Dialog(str(28+kanaset),self.window)
-				dialog.connect("destroy",self.destroy,"kanaPortionPopup")
-				dialog.vbox.set_spacing(3)
+			label = gtk.Label(str(35))
+			label.set_line_wrap(True)
+			dialog.vbox.pack_start(label)
 
-				label = gtk.Label(str(35))
-				label.set_line_wrap(True)
-				dialog.vbox.pack_start(label)
+			set = self.kanaEngine.getASet(kanaset)
 
-				set = self.kanaEngine.getASet(kanaset)
+			label = gtk.Label(str(36))
+			label.set_line_wrap(True)
+			dialog.vbox.pack_start(label)
+			table = gtk.Table(2,abs(len(set)/2+1))
+			dialog.vbox.pack_start(table)
 
-				label = gtk.Label(str(36))
-				label.set_line_wrap(True)
-				dialog.vbox.pack_start(label)
-				table = gtk.Table(2,abs(len(set)/2+1))
-				dialog.vbox.pack_start(table)
+			j,k = 1,0
+			for i in range(len(set)):
+				string = ""
+				for kana in set[i]: string += "%s " % kana.upper()
+				check = gtk.CheckButton(string[:-1])
+				check.connect("toggled",newValue,i)
+				if temp_list[i]==1: check.set_active(True)
+				if j: table.attach(check,0,1,k,k+1); j=0
+				else: table.attach(check,1,2,k,k+1); j=1; k+=1
 
-				j,k = 1,0
-				for i in range(len(set)):
-					string = ""
-					for kana in set[i]: string += "%s " % kana.upper()
-					check = gtk.CheckButton(string[:-1])
-					check.connect("toggled",newValue,i)
-					if temp_list[i]==1: check.set_active(True)
-					if j: table.attach(check,0,1,k,k+1); j=0
-					else: table.attach(check,1,2,k,k+1); j=1; k+=1
+			button = gtk.Button(str(37))
+			button.connect_object("clicked",selectAll,table)
+			#If nothing selected, select all. :p
+			if not 1 in kanaPortions[kanaset]: button.emit("clicked")
+			dialog.vbox.pack_start(button)
 
-				button = gtk.Button(str(37))
-				button.connect_object("clicked",selectAll,table)
-				#If nothing selected, select all. :p
-				if not 1 in kanaPortions[kanaset]: button.emit("clicked")
-				dialog.vbox.pack_start(button)
+			#Buttons at bottom...
+			button = gtk.Button(stock=gtk.STOCK_OK)
+			button.connect("clicked",validedChanges)
+			dialog.action_area.pack_end(button)
+			button = gtk.Button(stock=gtk.STOCK_CANCEL)
+			button.connect("clicked",lambda *args: dialog.destroy())
+			dialog.action_area.pack_end(button)
 
-				#Buttons at bottom...
-				button = gtk.Button(stock=gtk.STOCK_OK)
-				button.connect("clicked",validedChanges)
-				dialog.action_area.pack_end(button)
-				button = gtk.Button(stock=gtk.STOCK_CANCEL)
-				button.connect_object("clicked",self.destroy,dialog)
-				dialog.action_area.pack_end(button)
-
-				dialog.show_all()
+			dialog.show_all()
 
 		self.window.set_title(str(2)) #Change title of window.
+		da_box = gtk.HBox(spacing=3)
+		toolbar = gtk.Toolbar()
+		toolbar.set_orientation(gtk.ORIENTATION_VERTICAL)
+		toolbar.set_style(gtk.TOOLBAR_BOTH)
+		toolbar.insert_item(str(83), None, None, None, None, None, -1)
+		toolbar.insert_item(str(84), None, None, None, None, None, -1)
+		toolbar.insert_item(str(85), None, None, None, None, None, -1)
+		toolbar.insert_item(str(86), None, None, None, None, None, -1)
+		da_box.pack_start(toolbar)
 		box = gtk.VBox(spacing=3)
+		da_box.pack_start(box)
 
 		label = gtk.Label(str(20))
 		box.pack_start(label,False)
@@ -656,76 +661,61 @@ class Gui:
 
 		#Remove the old box then add the new one.
 		self.window.remove(oldbox)
-		self.window.add(box)
+		self.window.add(da_box)
 
 		self.window.show_all()
 
 	def about(self,widget):
-		#Check whether this dialog window is not opened yet.
-		if not self.dialogState["about"]:
-			self.dialogState["about"] = 1
+		dialog = gtk.Dialog(str(4),self.window,gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_MODAL,(gtk.STOCK_CLOSE,gtk.RESPONSE_CLOSE))
+		dialog.set_border_width(5)
+		dialog.vbox.set_spacing(4)
 
-			dialog = gtk.Dialog(str(4),self.window,gtk.DIALOG_NO_SEPARATOR)
-			dialog.connect("destroy",self.destroy,"about")
+		label = gtk.Label("<span color='#008'><b>%s</b>\n%s (GTK+)</span>" % (str(53),str(54) % self.version))
+		label.set_justify(gtk.JUSTIFY_CENTER)
+		label.set_use_markup(True)
+		dialog.vbox.pack_start(label)
 
-			#Border and spacing...
-			dialog.set_border_width(5)
-			dialog.vbox.set_spacing(4)
+		label = gtk.Label("Copyleft 2003, 2004, 2005, 2006 Choplair-network.")
+		dialog.vbox.pack_start(label)
+		label = gtk.Label(str(55))
+		label.set_line_wrap(True)
+		label.set_justify(gtk.JUSTIFY_CENTER)
+		dialog.vbox.pack_start(label)
 
-			label = gtk.Label("<span color='#008'><b>%s</b>\n%s (GTK+)</span>" % (str(53),str(54) % self.version))
-			label.set_justify(gtk.JUSTIFY_CENTER)
-			label.set_use_markup(True)
-			dialog.vbox.pack_start(label)
+		frame = gtk.Frame(str(56))
+		container = gtk.EventBox()
+		container.modify_bg(gtk.STATE_NORMAL,gtk.gdk.color_parse("#c9ddff"))
+		box = gtk.HBox(spacing=6)
+		box.set_border_width(3)
 
-			label = gtk.Label("Copyleft 2003, 2004, 2005, 2006 Choplair-network.")
-			dialog.vbox.pack_start(label)
-			label = gtk.Label(str(55))
+		box2 = gtk.VBox()
+		logo = gtk.Image()
+		logo.set_from_file(os.path.join(self.datarootpath,"img","chprod.png"))
+		box2.pack_start(logo)
+		label = gtk.Label("<i>http://www.choplair.org/</i>")
+		label.set_selectable(True)
+		label.set_use_markup(True)
+		box2.pack_start(label)
+		box.pack_start(box2,padding=10)
 
-			label.set_line_wrap(True)
-			dialog.vbox.pack_start(label)
+		buffer = gtk.TextBuffer()
+		buffer.set_text("%s\n\n%s\n%s" % (str(57),str(81),str(82)))
+		buffer.apply_tag(buffer.create_tag(justification=gtk.JUSTIFY_CENTER,editable=False),buffer.get_start_iter(),buffer.get_end_iter())
+		buffer.apply_tag(buffer.create_tag(weight=700),buffer.get_iter_at_line(4),buffer.get_iter_at_line(5))
+		textview = gtk.TextView(buffer)
+		textview.modify_base(gtk.STATE_NORMAL,gtk.gdk.color_parse("#c9ddff"))
+		box.pack_start(textview)
 
-			frame = gtk.Frame(str(56))
-			container = gtk.EventBox()
-			container.modify_bg(gtk.STATE_NORMAL,gtk.gdk.color_parse("#c9ddff"))
-			box = gtk.HBox(spacing=6)
-			box.set_border_width(3)
+		container.add(box)
+		frame.add(container)
 
-			box2 = gtk.VBox()
-			logo = gtk.Image()
-			logo.set_from_file(os.path.join(self.datarootpath,"img","chprod.png"))
-			box2.pack_start(logo)
-			label = gtk.Label("<i>http://www.choplair.org/</i>")
-			label.set_selectable(True)
-			label.set_use_markup(True)
-			box2.pack_start(label)
-			box.pack_start(box2,padding=10)
-
-			buffer = gtk.TextBuffer()
-			buffer.set_text("%s\n\n%s\n%s" % (str(57),str(81),str(82)))
-			buffer.apply_tag(buffer.create_tag(justification=gtk.JUSTIFY_CENTER,editable=False),buffer.get_start_iter(),buffer.get_end_iter())
-			buffer.apply_tag(buffer.create_tag(weight=700),buffer.get_iter_at_line(4),buffer.get_iter_at_line(5))
-			textview = gtk.TextView(buffer)
-			textview.modify_base(gtk.STATE_NORMAL,gtk.gdk.color_parse("#c9ddff"))
-			box.pack_start(textview)
-
-			container.add(box)
-			frame.add(container)
-			dialog.vbox.pack_start(frame)
-
-			#Button at bottom..
-			button = gtk.Button(stock=gtk.STOCK_CLOSE)
-			button.connect_object("clicked",self.destroy,dialog)
-			dialog.action_area.pack_end(button)
-
-			dialog.show_all()
+		dialog.vbox.pack_start(frame)
+		dialog.connect('response', lambda dialog, response: dialog.destroy())
+		dialog.show_all()
 
 	def setKanaImage(self,kind,kana):
 		"""Update kana image."""
 		self.kanaImage.set_from_file(os.path.join(self.datarootpath,"img","kana","%s_%s.gif" % (("k","h")[kind],kana)))
-
-	def destroy(self,widget,data=None):
-		widget.destroy() #Emit destroy signal.
-		if data: self.dialogState[data] = 0 #State chagement.
 
 	def quit(self,widget):
 		gtk.main_quit() #Bye~~
