@@ -17,10 +17,11 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
-import gtk, os.path
-import kanaengine, score, i18n
+import gtk
+import os.path
 from pango import FontDescription
 from string import capwords
+import kanaengine, score, i18n
 
 class Gui:
 	def __init__(self,*args):
@@ -44,7 +45,8 @@ class Gui:
 		self.window.set_title(str(0))
 		self.window.connect("destroy",self.quit)
 		self.window.set_border_width(5)
-		gtk.window_set_default_icon_from_file(os.path.join(self.datarootpath,"img","icon.png"))
+		gtk.window_set_default_icon_from_file(os.path.join(
+			self.datarootpath,"img","icon.png"))
 		self.handlerid = {}
 
 	def main(self,oldbox=None):
@@ -152,18 +154,22 @@ class Gui:
 			box2 = gtk.VBox()
 			#Kana image.
 			self.kanaImage = gtk.Image()
-			self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) #Initialy set kana's image.
+			#Initialy setting kana's image.
+			self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) 
 			box2.pack_start(self.kanaImage,False)
 			#Quiz informations.
 			self.quizInfos = {}
-			self.quizInfos['questionNumLabel'] = gtk.Label(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
-			self.quizInfos['systemLabel'] = gtk.Label(str(68) % capwords(self.param.val('transcription_system')))
+			self.quizInfos['questionNumLabel'] = gtk.Label(str(67) % (
+				self.score.getQuestionTotal()+1,self.param.val('length')))
+			self.quizInfos['systemLabel'] = gtk.Label(str(68) % capwords(
+				self.param.val('transcription_system')))
 			box3 = gtk.VBox(spacing=2)
 			box3.pack_start(self.quizInfos['questionNumLabel'])
 			box3.pack_start(self.quizInfos['systemLabel'])
 			box2.pack_start(box3)
 			self.quizInfos['container'] = gtk.EventBox()
-			self.quizInfos['container'].modify_bg(gtk.STATE_NORMAL,gtk.gdk.color_parse("white"))
+			self.quizInfos['container'].modify_bg(gtk.STATE_NORMAL,
+				gtk.gdk.color_parse("white"))
 			self.quizInfos['container'].add(box2)
 			box.pack_start(self.quizInfos['container'],False)
 
@@ -192,40 +198,46 @@ class Gui:
 					#let's convert that answer list (given in the Hepburn internal format)
 					#into the user-selected romanization system.
 					if self.param.val('transcription_system')!="hepburn":
-						x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('transcription_system'))
+						x = kanaengine.HepburnToOtherSysConvert(x,
+							self.param.val('transcription_system'))
 					if x[-2:]=="-2": x = x[:-2]
 					self.answerButt[i] = gtk.Button(x.upper())
 					self.answerButt[i].connect("clicked",self.checkAnswer)
 					box2.pack_start(self.answerButt[i])
 					i+=1
-				self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",self.newQuestion)
+				self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",
+					self.newQuestion)
 			else: 
 				entry = gtk.Entry(3)
 				entry.modify_font(FontDescription("normal 35"))
 				entry.set_alignment(0.5)
 				entry.set_width_chars(3)
-				entry.connect("changed",lambda widget: widget.set_text(widget.get_text().upper()))
+				entry.connect("changed",lambda widget: widget.set_text(
+					widget.get_text().upper()))
 				box2.pack_start(entry)
-				self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object("clicked",self.checkAnswer,entry)
+				self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object(
+					"clicked",self.checkAnswer,entry)
 				entry.connect("activate",lambda widget: self.nextButton.clicked())
 
 			box2.pack_start(self.nextButton)
 			box.pack_end(box2)
 
-			#Forget the old box.
+			#Forgetting the old box.
 			self.window.remove(oldbox)
-			#Then add the new one.
+			#Then addding the new one.
 			self.window.add(box)
 
 			self.window.show_all()
 
-			if self.param.val('answer_mode')=="list": self.nextButton.hide() #Hide the arrow.
-			else: entry.grab_focus() #Give focus to text entry.
+			#Hide the arrow.
+			if self.param.val('answer_mode')=="list": self.nextButton.hide() 
+			else: entry.grab_focus() #Giving focus to text entry.
 
-			self.quizWidget['stop'].hide() #Hide the stop button.
+			self.quizWidget['stop'].hide() #Hiding the stop button.
 
 		else:
-			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(60))
+			dialog = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,
+				gtk.MESSAGE_WARNING,gtk.BUTTONS_OK,str(60))
 			dialog.connect('response', lambda dialog, response: dialog.destroy())
 			dialog.show()
 
@@ -233,47 +245,57 @@ class Gui:
 		"""Check the given answer, update the score
 		and display the result."""
 
-		if self.param.val('answer_mode')=="list": answer = widget.get_label().lower()
+		if self.param.val('answer_mode')=="list":
+			answer = widget.get_label().lower()
 		else: answer = widget.get_text().lower()
 		#If the selected romanization system is *other* than Hepburn (default),
 		#let's convert the good answer (given in the Hepburn internal format)
 		#to the user-selected romanization system, in order to compare with its
 		#chosen answer.
 		if self.param.val('transcription_system')!="hepburn":
-			self.kana = kanaengine.HepburnToOtherSysConvert(self.kana,self.param.val('transcription_system')).lower()
+			self.kana = kanaengine.HepburnToOtherSysConvert(self.kana,
+				self.param.val('transcription_system')).lower()
 		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
 
 		if answer==self.kana: # \o/
-			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" % str(13))
+			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" %
+				str(13))
 			self.score.update(1) #Update the score (add 1 point).
 		else: # /o\
-			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" % (str(14),str(15) % "<big><b>%s</b></big>" % self.kana.upper()))
-			self.score.update(0,self.kana,self.kanaEngine.getKanaKind()) #Update the score (indicate unrecognized kana).
+			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" %
+				(str(14),str(15) % "<big><b>%s</b></big>" % self.kana.upper()))
+			#Updating the score (indicating unrecognized kana).
+			self.score.update(0,self.kana,self.kanaEngine.getKanaKind()) 
 		self.quizLabel.set_use_markup(True)
 
 		if self.param.val('answer_mode')=="list":
-			for butt in self.answerButt.values(): butt.hide() #Hide choices buttons.
+			for butt in self.answerButt.values():
+				butt.hide() #Hide choices buttons.
 			self.nextButton.show() #Show the arrow.
 		else:
 			widget.hide()
 			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
-			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object("clicked",self.newQuestion,widget)
+			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object(
+				"clicked",self.newQuestion,widget)
 
 		self.nextButton.grab_focus() #Give focus to the arrow.
 
 		if self.score.isQuizFinished(self.param.val('length')):
 			#The quiz is finished... Let's show results!
 			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
-			self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",self.results)
+			self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",
+				self.results)
 		else: self.quizWidget['stop'].show()
 
 	def newQuestion(self,widget):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana()
 
-		self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) #Update kana's image.
+		#Update kana's image.
+		self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) 
 
-		self.quizInfos['questionNumLabel'].set_text(str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')))
+		self.quizInfos['questionNumLabel'].set_text(str(67) %
+			(self.score.getQuestionTotal()+1,self.param.val('length')))
 		self.quizLabel.set_text((str(11),str(12))[self.kanaEngine.getKanaKind()])
 
 		if self.param.val('answer_mode')=="list":
@@ -285,7 +307,8 @@ class Gui:
 				#let's convert that answer list (given in the Hepburn internal format)
 				#into the user-selected romanization system.
 				if self.param.val('transcription_system')!="hepburn":
-					x = kanaengine.HepburnToOtherSysConvert(x,self.param.val('transcription_system'))
+					x = kanaengine.HepburnToOtherSysConvert(x,self.param.val(
+						'transcription_system'))
 				if x[-2:]=="-2": x = x[:-2]
 				self.answerButt[i].set_label(x.upper())
 				self.answerButt[i].show()
@@ -296,14 +319,16 @@ class Gui:
 			widget.show()
 			widget.grab_focus() #Give focus to text entry.
 			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
-			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object("clicked",self.checkAnswer,widget)
+			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object(
+				"clicked",self.checkAnswer,widget)
 
 		self.quizWidget['stop'].hide() #Hide the stop button.
 
 	def results(self,data):
 		results = self.score.getResults()
 		#Displaying results.
-		text = "<big>%s</big>\n\n%s\n%s\n%s" % (str(16),str(17) % results[0],str(18) % results[1],str(19) % results[2])
+		text = "<big>%s</big>\n\n%s\n%s\n%s" % (str(16),str(17) % results[0],
+			str(18) % results[1],str(19) % results[2])
 
 		def getUnrecStr(kind):
 			"""Returning a ready-to-display string which indicates the
@@ -335,10 +360,13 @@ class Gui:
 		#Dicts for integrer to string param convertion and vice-versa...
 		opt_conv = {
 			"boolean":{0:'false',1:'true','false':0,'true':1},
-			"transcription_system":{0:'hepburn',1:'kunrei-shiki',2:'nihon-shiki',3:'polivanov','hepburn':0,'kunrei-shiki':1,'nihon-shiki':2,'polivanov':3},
+			"transcription_system":{0:'hepburn',1:'kunrei-shiki',2:'nihon-shiki',
+				3:'polivanov','hepburn':0,'kunrei-shiki':1,'nihon-shiki':2,'polivanov':3},
 			"answer_mode":{0:'list',1:'entry','list':0,'entry':1},
-			"rand_answer_sel_range":{0:'portion',1:'set',2:'kind','portion':0,'set':1,'kind':2},
-			"lang":{0:'en',1:'fr',2:'de',3:'pt_BR',4:'ru',5:'sr',6:'sv','en':0,'fr':1,'de':2,'pt_BR':3,'ru':4,'sr':5,'sv':6}
+			"rand_answer_sel_range":{0:'portion',1:'set',2:'kind','portion':0,
+				'set':1,'kind':2},
+			"lang":{0:'en',1:'fr',2:'de',3:'pt_BR',4:'ru',5:'sr',6:'sv','en':0,'fr':1,
+				'de':2,'pt_BR':3,'ru':4,'sr':5,'sv':6}
 			}
 
 		#Values for kana portion params.
@@ -369,10 +397,12 @@ class Gui:
 				'contracted_katakana_portions':kanaPortions[5],
 				'additional_katakana':opt_conv["boolean"][option7.get_active()],
 				'additional_katakana_portions':kanaPortions[6],
-				'transcription_system':opt_conv["transcription_system"][option8.get_active()],
+				'transcription_system':opt_conv["transcription_system"][
+					option8.get_active()],
 				'answer_mode':opt_conv["answer_mode"][option9.get_active()],
 				'list_size':option10.get_active()+2,
-				'rand_answer_sel_range':opt_conv["rand_answer_sel_range"][option11.get_active()],
+				'rand_answer_sel_range':opt_conv["rand_answer_sel_range"][
+					option11.get_active()],
 				'length':int(option12.get_value()),
 				'kana_no_repeat':opt_conv["boolean"][option13.get_active()],
 				'lang':opt_conv["lang"][option14.get_active()]
@@ -383,14 +413,17 @@ class Gui:
 			temp_list = list(kanaPortions[kanaset]) #Temporary portion list.
 
 			#Callbacks.
-			def newValue(widget,num): temp_list[num] = (0,1)[widget.get_active()] #Update the emporary variable value.
+			def newValue(widget,num):
+				#Update the emporary variable value.
+				temp_list[num] = (0,1)[widget.get_active()] 
 			def selectAll(widget): 
 				for x in widget.get_children(): x.set_active(True)
 			def validedChanges(*args):
 				"""Check for a least one selected kana portion (display of a message
 				if not the case), catch parameters, then close the window."""
 				if not 1 in temp_list:
-					dialog2 = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,gtk.MESSAGE_INFO,gtk.BUTTONS_OK,str(66))
+					dialog2 = gtk.MessageDialog(self.window,gtk.DIALOG_MODAL,
+						gtk.MESSAGE_INFO,gtk.BUTTONS_OK,str(66))
 					dialog2.connect('response', lambda dialog, response: dialog.destroy())
 					dialog2.show()
 
@@ -477,7 +510,8 @@ class Gui:
 
 		#`basic_hiragana'
 		image = gtk.Image()
-		image.set_from_file(os.path.join(self.datarootpath,"img","basic_hiragana.gif"))
+		image.set_from_file(os.path.join(self.datarootpath,"img",
+			"basic_hiragana.gif"))
 		table.attach(image,0,1,0,1)
 		option1 = gtk.CheckButton(str(23))
 		option1.set_active(opt_conv["boolean"][self.param.val('basic_hiragana')])
@@ -485,12 +519,14 @@ class Gui:
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,0)
 		button.set_sensitive(option1.get_active())
-		option1.connect("toggled",lambda *args: args[1].set_sensitive(option1.get_active()),button)
+		option1.connect("toggled",lambda *args: args[1].set_sensitive(
+			option1.get_active()),button)
 		table.attach(button,2,3,0,1)
 
 		#`modified_hiragana'
 		image = gtk.Image()
-		image.set_from_file(os.path.join(self.datarootpath,"img","modified_hiragana.gif"))
+		image.set_from_file(os.path.join(self.datarootpath,"img",
+			"modified_hiragana.gif"))
 		table.attach(image,0,1,1,2)
 		option2 = gtk.CheckButton(str(24))
 		option2.set_active(opt_conv["boolean"][self.param.val('modified_hiragana')])
@@ -499,20 +535,24 @@ class Gui:
 
 		button.connect("clicked",portions_popup,1)
 		button.set_sensitive(option2.get_active())
-		option2.connect("toggled",lambda *args: args[1].set_sensitive(option2.get_active()),button)
+		option2.connect("toggled",lambda *args: args[1].set_sensitive(
+			option2.get_active()),button)
 		table.attach(button,2,3,1,2)
 
 		#`contracted_hiragana'
 		image = gtk.Image()
-		image.set_from_file(os.path.join(self.datarootpath,"img","contracted_hiragana.gif"))
+		image.set_from_file(os.path.join(self.datarootpath,"img",
+			"contracted_hiragana.gif"))
 		table.attach(image,0,1,2,3)
 		option3 = gtk.CheckButton(str(25))
-		option3.set_active(opt_conv["boolean"][self.param.val('contracted_hiragana')])
+		option3.set_active(opt_conv["boolean"][self.param.val(
+			'contracted_hiragana')])
 		table.attach(option3,1,2,2,3)
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,2)
 		button.set_sensitive(option3.get_active())
-		option3.connect("toggled",lambda *args: args[1].set_sensitive(option3.get_active()),button)
+		option3.connect("toggled",lambda *args: args[1].set_sensitive(
+			option3.get_active()),button)
 		table.attach(button,2,3,2,3)
 
 		frame = gtk.Frame(str(22))
@@ -525,7 +565,8 @@ class Gui:
 
 		#`basic_katakana'
 		image = gtk.Image()
-		image.set_from_file(os.path.join(self.datarootpath,"img","basic_katakana.gif"))
+		image.set_from_file(os.path.join(self.datarootpath,"img",
+			"basic_katakana.gif"))
 		table.attach(image,0,1,0,1)
 		option4 = gtk.CheckButton(str(23))
 		option4.set_active(opt_conv["boolean"][self.param.val('basic_katakana')])
@@ -533,12 +574,14 @@ class Gui:
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,3)
 		button.set_sensitive(option4.get_active())
-		option4.connect("toggled",lambda *args: args[1].set_sensitive(option4.get_active()),button)
+		option4.connect("toggled",lambda *args: args[1].set_sensitive(
+			option4.get_active()),button)
 		table.attach(button,2,3,0,1)
 
 		#`modified_katakana'
 		image = gtk.Image()
-		image.set_from_file(os.path.join(self.datarootpath,"img","modified_katakana.gif"))
+		image.set_from_file(os.path.join(self.datarootpath,"img",
+			"modified_katakana.gif"))
 		table.attach(image,0,1,1,2)
 		option5 = gtk.CheckButton(str(24))
 		option5.set_active(opt_conv["boolean"][self.param.val('modified_katakana')])
@@ -546,12 +589,14 @@ class Gui:
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,4)
 		button.set_sensitive(option5.get_active())
-		option5.connect("toggled",lambda *args: args[1].set_sensitive(option5.get_active()),button)
+		option5.connect("toggled",lambda *args: args[1].set_sensitive(
+			option5.get_active()),button)
 		table.attach(button,2,3,1,2)
 
 		#`contracted_katakana'
 		image = gtk.Image()
-		image.set_from_file(os.path.join(self.datarootpath,"img","contracted_katakana.gif"))
+		image.set_from_file(os.path.join(self.datarootpath,"img",
+			"contracted_katakana.gif"))
 		table.attach(image,0,1,2,3)
 		option6 = gtk.CheckButton(str(25))
 		option6.set_active(opt_conv["boolean"][self.param.val('contracted_katakana')])
@@ -559,12 +604,14 @@ class Gui:
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,5)
 		button.set_sensitive(option6.get_active())
-		option6.connect("toggled",lambda *args: args[1].set_sensitive(option6.get_active()),button)
+		option6.connect("toggled",lambda *args: args[1].set_sensitive(
+			option6.get_active()),button)
 		table.attach(button,2,3,2,3)
 
 		#`additional_katakana'
 		image = gtk.Image()
-		image.set_from_file(os.path.join(self.datarootpath,"img","additional_katakana.gif"))
+		image.set_from_file(os.path.join(self.datarootpath,"img",
+			"additional_katakana.gif"))
 		table.attach(image,0,1,3,4)
 		option7 = gtk.CheckButton(str(26))
 		option7.set_active(opt_conv["boolean"][self.param.val('additional_katakana')])
@@ -572,7 +619,8 @@ class Gui:
 		button = gtk.Button(str(27))
 		button.connect("clicked",portions_popup,6)
 		button.set_sensitive(option7.get_active())
-		option7.connect("toggled",lambda *args: args[1].set_sensitive(option7.get_active()),button)
+		option7.connect("toggled",lambda *args: args[1].set_sensitive(
+			option7.get_active()),button)
 		table.attach(button,2,3,3,4)
 
 		box3 = gtk.VBox(spacing=2)
@@ -585,7 +633,8 @@ class Gui:
 		option8 = gtk.combo_box_new_text()
 		for val in (str(62),str(63),str(64),str(79)):
 			option8.append_text(val)
-		option8.set_active(opt_conv["transcription_system"][self.param.val('transcription_system')])
+		option8.set_active(opt_conv["transcription_system"][self.param.val(
+			'transcription_system')])
 		box3.pack_start(option8)
 
 		#`answer_mode'
@@ -612,7 +661,8 @@ class Gui:
 		option11 = gtk.combo_box_new_text()
 		for val in (str(76),str(77),str(78)):
 			option11.append_text(val)
-		option11.set_active(opt_conv["rand_answer_sel_range"][self.param.val('rand_answer_sel_range')])
+		option11.set_active(opt_conv["rand_answer_sel_range"][self.param.val(
+			'rand_answer_sel_range')])
 		box3.pack_start(option11)
 
 		#Bouyaka!
@@ -665,7 +715,8 @@ class Gui:
 		self.window.show_all()
 
 	def about(self,widget):
-		dialog = gtk.Dialog(str(4),self.window,gtk.DIALOG_NO_SEPARATOR|gtk.DIALOG_MODAL,(gtk.STOCK_CLOSE,gtk.RESPONSE_CLOSE))
+		dialog = gtk.Dialog(str(4),self.window,gtk.DIALOG_NO_SEPARATOR|
+			gtk.DIALOG_MODAL,(gtk.STOCK_CLOSE,gtk.RESPONSE_CLOSE))
 		dialog.set_border_width(5)
 		dialog.vbox.set_spacing(4)
 
@@ -674,7 +725,8 @@ class Gui:
 		image.set_from_file(os.path.join(self.datarootpath,"img","icon.png"))
 		box.pack_start(image)
 		box2 = gtk.VBox()
-		label = gtk.Label("<span color='#008'><b>%s</b>\n%s (GTK+)</span>" % (str(53),str(54) % self.version))
+		label = gtk.Label("<span color='#008'><b>%s</b>\n%s (GTK+)</span>" %
+			(str(53),str(54) % self.version))
 		label.set_justify(gtk.JUSTIFY_CENTER)
 		label.set_use_markup(True)
 		box2.pack_start(label)
@@ -706,8 +758,10 @@ class Gui:
 
 		buffer = gtk.TextBuffer()
 		buffer.set_text("%s\n\n%s\n%s" % (str(57),str(81),str(82)))
-		buffer.apply_tag(buffer.create_tag(justification=gtk.JUSTIFY_CENTER,editable=False),buffer.get_start_iter(),buffer.get_end_iter())
-		buffer.apply_tag(buffer.create_tag(weight=700),buffer.get_iter_at_line(4),buffer.get_iter_at_line(5))
+		buffer.apply_tag(buffer.create_tag(justification=gtk.JUSTIFY_CENTER,i
+			editable=False),buffer.get_start_iter(),buffer.get_end_iter())
+		buffer.apply_tag(buffer.create_tag(weight=700),buffer.get_iter_at_line(4),
+			buffer.get_iter_at_line(5))
 		textview = gtk.TextView(buffer)
 		textview.modify_base(gtk.STATE_NORMAL,gtk.gdk.color_parse("#c9ddff"))
 		box.pack_start(textview)
@@ -720,8 +774,10 @@ class Gui:
 		dialog.show_all()
 
 	def setKanaImage(self,kind,kana):
-		"""Update kana image."""
-		self.kanaImage.set_from_file(os.path.join(self.datarootpath,"img","kana","%s_%s.gif" % (("k","h")[kind],kana)))
+		"""Updating kana image."""
+		self.kanaImage.set_from_file(os.path.join(self.datarootpath,"img","kana",
+			"%s_%s.gif" % (("k","h")[kind],kana)))
 
 	def quit(self,widget):
 		gtk.main_quit() #Bye~~
+
