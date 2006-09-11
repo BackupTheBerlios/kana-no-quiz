@@ -1,21 +1,22 @@
-"""
-Kana no quiz!
-Copyleft 2003, 2004, 2005, 2006 Choplair-network.
-$Id$
+# -*- coding: utf-8 -*-
+"""Kana no quiz!
+	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
+	$Id$
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License
+	as published by the Free Software Foundation; either version 2
+	of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
 """
 import gettext
 
@@ -37,9 +38,9 @@ class I18n:
 
 		self.currlang = lang #Update the current language variable.
 
-	def str(self,num):
+	def msg(self,num):
 		# Tuple of commom strings.
-		string = (
+		strings = (
 			_("Kana no quiz!"), #0
 			_("Introduction"),
 			_("Options"),
@@ -97,9 +98,9 @@ class I18n:
 			_("Version %s."),
 			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."), #55
 			_("Credits"),
-			_("""Coding: Choplair & Pachilor.
-Default kana theme: Ms. Marie-Claire.
-Artworks: Fayanne."""),
+			_("Coding: Choplair & Pachilor.\n"
+				"Default kana theme: Ms. Marie-Claire.\n"
+				"Artworks: Fayanne."),
 			_("Close"),
 			_("Warning"),
 			_("Please select at least one kana portion to start the quiz."), #60
@@ -124,16 +125,16 @@ Artworks: Fayanne."""),
 			_("Polivanov (cyrillic)"),
 			_(" questions."),  #80
 			_("Translations"),
-			_("""Brazilian: Matheus Villela.
-French: Choplair.
-German: Florian Niemann.
-Russian: Aleksej R. Serdyukov.
-Serbian: Dejan Danilović.
-Swedish: Markus Fellnert."""),
+			_("Brazilian: Matheus Villela.\n"
+				"French: Choplair.\n"
+				"German: Florian Niemann.\n"
+				"Russian: Aleksej R. Serdyukov.\n"
+				"Serbian: Dejan Danilović.\n"
+				"Swedish: Markus Fellnert."),
 			_("Kana"),
 			_("Answering"),
 			_("Sound"), #85
 			_("Misc.")
 			)
 
-		return string[num]
+		return strings[num]

@@ -1,21 +1,20 @@
-"""
-Kana no quiz!
-Copyleft 2003, 2004, 2005, 2006 Choplair-network.
-$Id$
+"""Kana no quiz!
+	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
+	$Id$
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License
+	as published by the Free Software Foundation; either version 2
+	of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 # This is the Tkinter interface, mainly designed for Windows user.
 
@@ -41,8 +40,8 @@ class Gui:
 		self.i18n = i18n.I18n(os.path.join(self.datarootpath,"locale"))
 		self.currentlang = self.param.val('lang')
 		self.i18n.setlang(self.param.val('lang'))
-		global str
-		str = self.i18n.str
+		global msg
+		msg = self.i18n.msg
 
 		#Initial window attributes.
 		self.window.resizable(0,0)
@@ -55,7 +54,7 @@ class Gui:
 			global str
 			str = self.i18n.str
 
-		self.window.title(str(0))
+		self.window.title(msg(0))
 		frame = tk.Frame(self.window)
 		frame.pack(padx=2,pady=2)
 
@@ -66,15 +65,15 @@ class Gui:
 
 		frame2 = tk.Frame(frame)
 		frame2.pack(fill="both",expand=1)
-		button = tk.Button(frame2,text=str(1),command=self.intro)
+		button = tk.Button(frame2,text=msg(1),command=self.intro)
 		button.pack(fill="both",expand=1)
-		button = tk.Button(frame2,text=str(2),command=self.options)
+		button = tk.Button(frame2,text=msg(2),command=self.options)
 		button.pack(fill="both",expand=1)
-		button = tk.Button(frame2,text=str(3),command=self.quiz)
+		button = tk.Button(frame2,text=msg(3),command=self.quiz)
 		button.pack(fill="both",expand=1)
-		button = tk.Button(frame2,text=str(4),command=self.about)
+		button = tk.Button(frame2,text=msg(4),command=self.about)
 		button.pack(fill="both",expand=1)
-		button = tk.Button(frame2,text=str(71),command=self.quit)
+		button = tk.Button(frame2,text=msg(71),command=self.quit)
 		button.pack(fill="both",expand=1)
 
 		self.window.mainloop()
@@ -85,22 +84,22 @@ class Gui:
 			self.main()
 
 		self.window.slaves()[0].destroy()
-		self.window.title(str(1)) #Changeing window title.
+		self.window.title(msg(1)) #Changeing window title.
 
 		frame = tk.Frame(self.window)
 		frame.pack(padx=2,pady=2)
 
-		label = tk.Label(frame,text=str(5),wraplength=420)
+		label = tk.Label(frame,text=msg(5),wraplength=420)
 		label.pack(side="top")
-		label = tk.Label(frame,text=str(6),wraplength=420)
+		label = tk.Label(frame,text=msg(6),wraplength=420)
 		label.pack(side="top")
-		label = tk.Label(frame,text=str(7),wraplength=420)
+		label = tk.Label(frame,text=msg(7),wraplength=420)
 		label.pack(side="top")
-		label = tk.Label(frame,text=str(8),wraplength=420)
+		label = tk.Label(frame,text=msg(8),wraplength=420)
 		label.pack(side="top")
-		label = tk.Label(frame,text=str(9),wraplength=420)
+		label = tk.Label(frame,text=msg(9),wraplength=420)
 		label.pack(side="top")
-		button = tk.Button(frame,text=str(10),command=goBack)
+		button = tk.Button(frame,text=msg(10),command=goBack)
 		button.pack(side="top",fill="both",expand=1)
 
 	def quiz(self):
@@ -140,9 +139,9 @@ class Gui:
 
 			#Quiz informations.
 			frame3 = tk.Frame(self.quizWidget["left_part"])
-			self.quizWidget['questionNumLabel'] = tk.Label(frame3,bd=0,text=str(67) % (self.score.getQuestionTotal()+1,self.param.val('length')),bg="white")
+			self.quizWidget['questionNumLabel'] = tk.Label(frame3,bd=0,text=msg(67) % (self.score.getQuestionTotal()+1,self.param.val('length')),bg="white")
 			self.quizWidget['questionNumLabel'].pack(expand=1,fill="both")
-			self.quizWidget['systemLabel'] = tk.Label(frame3,bd=0,text=str(68) % capwords(self.param.val('transcription_system')),bg="white")
+			self.quizWidget['systemLabel'] = tk.Label(frame3,bd=0,text=msg(68) % capwords(self.param.val('transcription_system')),bg="white")
 			self.quizWidget['systemLabel'].pack(expand=1,fill="both")
 			frame3.pack(side="top",expand=1,fill="both")
 			self.quizWidget["left_part"].pack(side="left",expand=1,fill="both")
@@ -153,9 +152,9 @@ class Gui:
 			#Stop button.
 			self.quizWidget['stopframe'] = tk.Frame(self.quizWidget["right_part"])
 			self.quizWidget['stopframe'].pack(fill="x",side="top")
-			self.quizWidget['stop'] = tk.Button(self.quizWidget['stopframe'],text=str(69),command=self.results)
+			self.quizWidget['stop'] = tk.Button(self.quizWidget['stopframe'],text=msg(69),command=self.results)
 			#Question label.
-			self.quizWidget['quiz_label']= tk.Label(self.quizWidget["right_part"],text=(str(11),str(12))[self.kanaEngine.getKanaKind()],wraplength=150,width=24)
+			self.quizWidget['quiz_label']= tk.Label(self.quizWidget["right_part"],text=(msg(11),msg(12))[self.kanaEngine.getKanaKind()],wraplength=150,width=24)
 			self.quizWidget['quiz_label'].pack(pady=3,fill="both",expand=1)
 
 			#The arrow.
@@ -184,7 +183,7 @@ class Gui:
 				self.nextButton['command'] = self.checkAnswer
 				self.nextButton.pack(fill="both",pady=1,expand=1)
 
-		else:	tkMessageBox.showwarning(str(59),str(60))
+		else:	tkMessageBox.showwarning(msg(59),msg(60))
 
 	def checkAnswer(self,event=None):
 		"""Checking the given answer, updating the score
@@ -201,12 +200,12 @@ class Gui:
 		if self.kana[-2:]=="-2": self.kana = self.kana[:-2]
 
 		if answer==self.kana: # \o/
-			self.quizWidget['quiz_label']["text"] = str(13)
+			self.quizWidget['quiz_label']["text"] = msg(13)
 			self.quizWidget['quiz_label']["fg"] = "darkgreen"
 			self.score.update(1) #Updating the score (adding 1 point).
 
 		else: # /o\
-			self.quizWidget['quiz_label']["text"] = "%s\n%s" % (str(14), str(15) % self.kana.upper())
+			self.quizWidget['quiz_label']["text"] = "%s\n%s" % (msg(14), msg(15) % self.kana.upper())
 			self.quizWidget['quiz_label']["fg"] = "red"
 			self.score.update(0,self.kana,self.kanaEngine.getKanaKind()) #Updating the score (indicating unrecognized kana).
 
@@ -226,8 +225,8 @@ class Gui:
 		self.kana = self.kanaEngine.randomKana() #Randomly get a kana.
 		self.setKanaImage(self.kanaEngine.getKanaKind(),self.kana) #Update kana's image.
 
-		self.quizWidget['questionNumLabel']["text"] = str(67) % (self.score.getQuestionTotal()+1,self.param.val('length'))
-		self.quizWidget['quiz_label']["text"] = (str(11),str(12))[self.kanaEngine.getKanaKind()]
+		self.quizWidget['questionNumLabel']["text"] = msg(67) % (self.score.getQuestionTotal()+1,self.param.val('length'))
+		self.quizWidget['quiz_label']["text"] = (msg(11),msg(12))[self.kanaEngine.getKanaKind()]
 		self.quizWidget['quiz_label']["fg"] = "black"
 
 		if self.param.val('answer_mode')=="list":
@@ -264,9 +263,9 @@ class Gui:
 		self.quizWidget["left_part"].pack_forget() #Removing left part (kana image...).
 
 		#Displaying results.
-		text = "\n%s\n\n%s\n%s\n%s" % (str(16),str(17) % results[0],str(18) % results[1],str(19) % results[2])
+		text = "\n%s\n\n%s\n%s\n%s" % (msg(16),msg(17) % results[0],msg(18) % results[1],msg(19) % results[2])
 
-		def getUnrecStr(kind):
+		def getUnrecmsg(kind):
 			"""Returning a ready-to-display string which indicates the
 			unrecognized kana (by kind) during the quiz."""
 			plop = ""
@@ -274,10 +273,10 @@ class Gui:
 				for x in val: 
 					if key!=1: plop += "%s (%s), " % (x.upper(),key)
 					else: plop += "%s, " % x.upper()
-			return "\n%s" % str(72+kind) % plop[:-2]
+			return "\n%s" % msg(72+kind) % plop[:-2]
 
-		if len(results[3][0])>0: text += getUnrecStr(0)
-		if len(results[3][1])>0: text += getUnrecStr(1)
+		if len(results[3][0])>0: text += getUnrecmsg(0)
+		if len(results[3][1])>0: text += getUnrecmsg(1)
 		
 		self.quizWidget['quiz_label']["text"] = "%s\n" % text
 		self.quizWidget['quiz_label']["fg"] = "black"
@@ -294,11 +293,11 @@ class Gui:
 		#Dicts for integrer to string param convertion and vice-versa...
 		opt_conv = {
 			"boolean":{0:'false',1:'true','false':0,'true':1},
-			"transcription_system":{str(62):"hepburn",str(63):"kunrei-shiki",str(64):"nihon-shiki",str(79):'polivanov','hepburn':str(62),'kunrei-shiki':str(63),'nihon-shiki':str(64),'polivanov':str(79)},
-			"answer_mode":{str(39):'list',str(40):'entry','list':str(39),'entry':str(40)},
-			"list_size":{str(42) % 2:2,str(42) % 3:3,str(42) % 4:4,str(42) % 5:5,2:str(42) % 2,3:str(42) % 3,4:str(42) % 4,5:str(42) % 5},
-			"rand_answer_sel_range":{str(76):'portion',str(77):'set',str(78):'kind','portion':str(76),'set':str(77),'kind':str(78)},
-			"lang":{str(46):'en',str(47):'fr',str(70):'de',str(48):'pt_BR',str(74):'ru',str(49):'sr',str(50):'sv','en':str(46),'fr':str(47),'de':str(70),'pt_BR':str(48),'ru':str(74),'sr':str(49),'sv':str(50)}
+			"transcription_system":{msg(62):"hepburn",msg(63):"kunrei-shiki",msg(64):"nihon-shiki",msg(79):'polivanov','hepburn':msg(62),'kunrei-shiki':msg(63),'nihon-shiki':msg(64),'polivanov':msg(79)},
+			"answer_mode":{msg(39):'list',msg(40):'entry','list':msg(39),'entry':msg(40)},
+			"list_size":{msg(42) % 2:2,msg(42) % 3:3,msg(42) % 4:4,msg(42) % 5:5,2:msg(42) % 2,3:msg(42) % 3,4:msg(42) % 4,5:msg(42) % 5},
+			"rand_answer_sel_range":{msg(76):'portion',msg(77):'set',msg(78):'kind','portion':msg(76),'set':msg(77),'kind':msg(78)},
+			"lang":{msg(46):'en',msg(47):'fr',msg(70):'de',msg(48):'pt_BR',msg(74):'ru',msg(49):'sr',msg(50):'sv','en':msg(46),'fr':msg(47),'de':msg(70),'pt_BR':msg(48),'ru':msg(74),'sr':msg(49),'sv':msg(50)}
 			}
 
 		#Values for kana portion params.
@@ -366,7 +365,7 @@ class Gui:
 				"""Check for a least one selected kana portion (display of a message
 				if not the case), catch parameters, then close the window."""
 				if not 1 in temp_list:
-					tkMessageBox.showinfo(str(65),str(66))
+					tkMessageBox.showinfo(msg(65),msg(66))
 
 					if kanaset==0: widget = option1
 					elif kanaset==1: widget = option2
@@ -386,14 +385,14 @@ class Gui:
 
 				dialog = tk.Toplevel()
 				dialog.resizable(0,0)
-				dialog.title(str(28+kanaset))
+				dialog.title(msg(28+kanaset))
 				dialog.protocol("WM_DELETE_WINDOW",close)
 
-				label = tk.Label(dialog,text=str(35),wraplength=350)
+				label = tk.Label(dialog,text=msg(35),wraplength=350)
 				label.pack()
 
 				set = self.kanaEngine.getASet(kanaset)
-				label = tk.Label(dialog,text=str(36),wraplength=350)
+				label = tk.Label(dialog,text=msg(36),wraplength=350)
 				label.pack()
 				table = tk.Frame(dialog)
 				table.pack()
@@ -409,23 +408,23 @@ class Gui:
 					if j: c.grid(column=0,row=k); j=0
 					else: c.grid(column=1,row=k); j=1; k+=1
 
-				button =  tk.Button(dialog,text=str(37),command=selectAll(vars).plop)
+				button =  tk.Button(dialog,text=msg(37),command=selectAll(vars).plop)
 				#If nothing selected, select all. :p
 				if not 1 in kanaPortions[kanaset]: button.invoke()
 				button.pack()
 
 				#Buttons at bottom..
-				button = tk.Button(dialog,text=str(52),command=close)
+				button = tk.Button(dialog,text=msg(52),command=close)
 				button.pack(side="right")
-				button = tk.Button(dialog,text=str(51),command=validedChanges)
+				button = tk.Button(dialog,text=msg(51),command=validedChanges)
 				button.pack(side="right")
 
 		self.window.slaves()[0].destroy()
-		self.window.title(str(2)) #Change title of window.
+		self.window.title(msg(2)) #Change title of window.
 
 		frame = tk.Frame(self.window)
 		frame.pack(padx=2,pady=2)
-		label = tk.Label(frame,text=str(20))
+		label = tk.Label(frame,text=msg(20))
 		label.pack()
 
 		option_frame = tk.Frame(frame)
@@ -437,7 +436,7 @@ class Gui:
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
 		frame2.pack(fill="both",expand=1,pady=4)
 
-		label = tk.Label(frame2,text=str(21))
+		label = tk.Label(frame2,text=msg(21))
 		label.pack(fill="both",expand=1)
 		table = tk.Frame(frame2)
 		table.pack(fill="both",expand=1,padx=4)
@@ -448,9 +447,9 @@ class Gui:
 		label.grid(column=0,row=0)
 		option1 = tk.IntVar()
 		option1.set(opt_conv["boolean"][self.param.val('basic_hiragana')])
-		c = tk.Checkbutton(table,text=str(23),variable=option1)
+		c = tk.Checkbutton(table,text=msg(23),variable=option1)
 		c.grid(column=1,row=0,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: portions_popup(0))
+		button = tk.Button(table,text=msg(27),command=lambda: portions_popup(0))
 		button.grid(column=2,row=0)
 
 		#`modified_hiragana'
@@ -459,9 +458,9 @@ class Gui:
 		label.grid(column=0,row=1)
 		option2 = tk.IntVar()
 		option2.set(opt_conv["boolean"][self.param.val('modified_hiragana')])
-		c = tk.Checkbutton(table,text=str(24),variable=option2)
+		c = tk.Checkbutton(table,text=msg(24),variable=option2)
 		c.grid(column=1,row=1,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: portions_popup(1))
+		button = tk.Button(table,text=msg(27),command=lambda: portions_popup(1))
 		button.grid(column=2,row=1)
 
 		#`contracted_hiragana'
@@ -470,15 +469,15 @@ class Gui:
 		label.grid(column=0,row=2)
 		option3 = tk.IntVar()
 		option3.set(opt_conv["boolean"][self.param.val('contracted_hiragana')])
-		c = tk.Checkbutton(table,text=str(25),variable=option3)
+		c = tk.Checkbutton(table,text=msg(25),variable=option3)
 		c.grid(column=1,row=2,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: portions_popup(2))
+		button = tk.Button(table,text=msg(27),command=lambda: portions_popup(2))
 		button.grid(column=2,row=2)
 
 		frame2 = tk.Frame(left_frame,relief="ridge",borderwidth=1)
 		frame2.pack(fill="both",expand=1,pady=6)
 
-		label = tk.Label(frame2,text=str(22))
+		label = tk.Label(frame2,text=msg(22))
 		label.pack(fill="both",expand=1)
 		table = tk.Frame(frame2)
 		table.pack(fill="both",expand=1,padx=4)
@@ -489,9 +488,9 @@ class Gui:
 		label.grid(column=0,row=0)
 		option4 = tk.IntVar()
 		option4.set(opt_conv["boolean"][self.param.val('basic_katakana')])
-		c = tk.Checkbutton(table,text=str(23),variable=option4)
+		c = tk.Checkbutton(table,text=msg(23),variable=option4)
 		c.grid(column=1,row=0,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: portions_popup(3))
+		button = tk.Button(table,text=msg(27),command=lambda: portions_popup(3))
 		button.grid(column=2,row=0)
 
 		#`modified_katakana'
@@ -500,9 +499,9 @@ class Gui:
 		label.grid(column=0,row=1)
 		option5 = tk.IntVar()
 		option5.set(opt_conv["boolean"][self.param.val('modified_katakana')])
-		c = tk.Checkbutton(table,text=str(24),variable=option5)
+		c = tk.Checkbutton(table,text=msg(24),variable=option5)
 		c.grid(column=1,row=1,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: portions_popup(4))
+		button = tk.Button(table,text=msg(27),command=lambda: portions_popup(4))
 		button.grid(column=2,row=1)
 
 		#`contracted_katakana'
@@ -511,9 +510,9 @@ class Gui:
 		label.grid(column=0,row=2)
 		option6 = tk.IntVar()
 		option6.set(opt_conv["boolean"][self.param.val('contracted_katakana')])
-		c = tk.Checkbutton(table,text=str(25),variable=option6)
+		c = tk.Checkbutton(table,text=msg(25),variable=option6)
 		c.grid(column=1,row=2,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: portions_popup(5))
+		button = tk.Button(table,text=msg(27),command=lambda: portions_popup(5))
 		button.grid(column=2,row=2)
 
 		#`additional_katakana'
@@ -522,70 +521,70 @@ class Gui:
 		label.grid(column=0,row=3)
 		option7 = tk.IntVar()
 		option7.set(opt_conv["boolean"][self.param.val('additional_katakana')])
-		c = tk.Checkbutton(table,text=str(26),variable=option7)
+		c = tk.Checkbutton(table,text=msg(26),variable=option7)
 		c.grid(column=1,row=3,sticky='W')
-		button = tk.Button(table,text=str(27),command=lambda: portions_popup(6))
+		button = tk.Button(table,text=msg(27),command=lambda: portions_popup(6))
 		button.grid(column=2,row=3)
 
 		right_frame = tk.Frame(option_frame)
 		right_frame.pack(fill="both",expand=1,padx=4)
 
 		#`transcription_system'
-		label = tk.Label(right_frame,text=str(61))
+		label = tk.Label(right_frame,text=msg(61))
 		label.pack(fill="both",expand=1)
 		option8 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option8,str(62),str(63),str(64),str(79))
+		o = tk.OptionMenu(right_frame,option8,msg(62),msg(63),msg(64),msg(79))
 		option8.set(opt_conv["transcription_system"][self.param.val('transcription_system')])
 		o.pack(fill="both",expand=1)
 
 		#`answer_mode'
-		label = tk.Label(right_frame,text=str(38))
+		label = tk.Label(right_frame,text=msg(38))
 		label.pack(fill="both",expand=1)
 		option9 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option9,str(39),str(40))
+		o = tk.OptionMenu(right_frame,option9,msg(39),msg(40))
 		option9.set(opt_conv["answer_mode"][self.param.val('answer_mode')])
 		o.pack(fill="both",expand=1)
 
 		#`list_size'
-		label = tk.Label(right_frame,text=str(41))
+		label = tk.Label(right_frame,text=msg(41))
 		label.pack(fill="both",expand=1)
 		option10 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option10,str(42) % 2,str(42) % 3,str(42) % 4,str(42) % 5)
+		o = tk.OptionMenu(right_frame,option10,msg(42) % 2,msg(42) % 3,msg(42) % 4,msg(42) % 5)
 		option10.set(opt_conv["list_size"][self.param.val('list_size')])
 		o.pack(fill="both",expand=1)
 		
 		#`rand_answer_sel_range'
-		label = tk.Label(right_frame,text=str(75))
+		label = tk.Label(right_frame,text=msg(75))
 		label.pack(fill="both",expand=1)
 		option11 = tk.StringVar()
-		o = tk.OptionMenu(right_frame,option11,str(76),str(77),str(78))
+		o = tk.OptionMenu(right_frame,option11,msg(76),msg(77),msg(78))
 		option11.set(opt_conv["rand_answer_sel_range"][self.param.val('rand_answer_sel_range')])
 		o.pack(fill="both",expand=1)		
 
 		#`length'
 		frame2 = tk.Frame(right_frame)
-		label = tk.Label(frame2,text=str(43))
+		label = tk.Label(frame2,text=msg(43))
 		label.pack(side="left",expand=1)
 		option12 = tk.StringVar()
 		o = tk.OptionMenu(frame2,option12,"10","20","30","40","50")
 		option12.set(self.param.val('length'))
 		o.pack(side="left",expand=1)
-		label = tk.Label(frame2,text=str(80))
+		label = tk.Label(frame2,text=msg(80))
 		label.pack(expand=1)
 		frame2.pack(fill="both",expand=1)
 
 		#`kana_no_repeat'
 		option13 = tk.IntVar()
 		option13.set(opt_conv["boolean"][self.param.val('kana_no_repeat')])
-		c = tk.Checkbutton(right_frame,text=str(44),variable=option13)
+		c = tk.Checkbutton(right_frame,text=msg(44),variable=option13)
 		c.pack(fill="both",expand=1)
 
 		#`lang'
 		frame2 = tk.Frame(right_frame)
-		label = tk.Label(frame2,text=str(45))
+		label = tk.Label(frame2,text=msg(45))
 		label.pack(side="left",expand=1)
 		option14 = tk.StringVar()
-		o = tk.OptionMenu(frame2,option14,str(46),str(47),str(70),str(48),str(74),str(49),str(50))
+		o = tk.OptionMenu(frame2,option14,msg(46),msg(47),msg(70),msg(48),msg(74),msg(49),msg(50))
 		option14.set(opt_conv["lang"][self.param.val('lang')])
 		o.pack(side="left",expand=1)
 		frame2.pack(fill="both",expand=1)
@@ -593,9 +592,9 @@ class Gui:
 		#Buttons at bottom...
 		frame2 = tk.Frame(frame)
 		frame2.pack(fill="both")
-		button = tk.Button(frame2,text=str(51),command=save)
+		button = tk.Button(frame2,text=msg(51),command=save)
 		button.pack(side="left",fill="both",expand=1)
-		button = tk.Button(frame2,text=str(52),command=goBack)
+		button = tk.Button(frame2,text=msg(52),command=goBack)
 		button.pack(side="right",fill="both",expand=1)
 
 		self.window.mainloop() #Without that images aren't displayed! O_o;
@@ -611,34 +610,34 @@ class Gui:
 
 			dialog = tk.Toplevel()
 			dialog.resizable(0,0)
-			dialog.title(str(4))
+			dialog.title(msg(4))
 			dialog.protocol("WM_DELETE_WINDOW",close)
 
 			frame = tk.Frame(dialog)
 			frame.pack(padx=4,pady=4)
 
-			label = tk.Label(frame,text="%s\n %s (Tkinter)\nCopyleft 2003, 2004, 2005, 2006 Choplair-network." % (str(53),str(54) % self.version),fg="#008")
+			label = tk.Label(frame,text="%s\n %s (Tkinter)\nCopyleft 2003, 2004, 2005, 2006 Choplair-network." % (msg(53),msg(54) % self.version),fg="#008")
 			label.pack()
 
-			label = tk.Label(frame,text=str(55),wraplength=320,justify="left")
+			label = tk.Label(frame,text=msg(55),wraplength=320,justify="left")
 			label.pack()
 
 			frame2 = tk.Frame(frame,relief="ridge",borderwidth=1)
 			frame2.pack(expand=1,fill="both",pady=4)
 
-			label = tk.Label(frame2,text=str(56),justify="left",anchor="w")
+			label = tk.Label(frame2,text=msg(56),justify="left",anchor="w")
 			label.pack(fill="x")
 
 			img = tk.PhotoImage(file=os.path.join(self.datarootpath,"img","chprod.gif"))
 			label = tk.Label(frame2,image=img)
 			label.pack(side="left")
 
-			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % str(57))
+			label = tk.Label(frame2,text="%s\n\nhttp://www.choplair.org/" % msg(57))
 			label.pack(side="left",expand=1,fill="x")
 
 
 			#Button at bottom..
-			button = tk.Button(frame,text=str(58),command=close)
+			button = tk.Button(frame,text=msg(58),command=close)
 			button.pack(side="right")
 
 			self.window.wait_window(dialog)

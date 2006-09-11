@@ -36,7 +36,7 @@ datafiles = [
 			glob.glob(os.path.join("data","img","*.xbm"))),
 		(os.path.join('share','kana-no-quiz','img','kana'),glob.glob(os.path.join("data","img","kana","*.gif"))),
 		#Localisation.
-		(os.path.join('share','kana-no-quiz','locale','de','LC_MESSAGES'),[os.path.join("data","locale","de","LC_MESSAGES","kana-no-quiz.mo")]), #French
+		(os.path.join('share','kana-no-quiz','locale','de','LC_MESSAGES'),[os.path.join("data","locale","de","LC_MESSAGES","kana-no-quiz.mo")]), #German
 		(os.path.join('share','kana-no-quiz','locale','fr','LC_MESSAGES'),[os.path.join("data","locale","fr","LC_MESSAGES","kana-no-quiz.mo")]), #French
 		(os.path.join('share','kana-no-quiz','locale','pt_BR','LC_MESSAGES'),[os.path.join("data","locale","pt_BR","LC_MESSAGES","kana-no-quiz.mo")]), #Portuguese of Brazil
 		(os.path.join('share','kana-no-quiz','locale','ru','LC_MESSAGES'),[os.path.join("data","locale","ru","LC_MESSAGES","kana-no-quiz.mo")]), #Russian
@@ -51,13 +51,13 @@ setup(
 	description		=	'An efficient tool to memorize Japanese kana prononciation.',
 	author			=	'Choplair-network',
 	author_email		=	'contact@choplair.org',
-	url				=	'http://www.choplair.org/',
+	url			=	'http://www.choplair.org/',
 	download_url		=	'http://developer.berlios.de/project/filelist.php?group_id=1783',
 	license			=	'GNU General Public License',
-	packages			=	['kana-no-quiz'],
+	packages		=	['kana-no-quiz'],
 	package_dir		=	{'kana-no-quiz': 'data/py'},
 	scripts			=	scriptfiles,
-	data_files			=	datafiles
+	data_files		=	datafiles
 	)
 
 if "install" in sys.argv:
