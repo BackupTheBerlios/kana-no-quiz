@@ -2,6 +2,12 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* CVS version (2006-XX-XX):
+
+- Removing the Tkinter GUI to keep back the GTK as the unique
+interface for Kana no quiz.
+
+
 * Version 1.5 (2006-05-12):
 
 - System-wide installation & per-user configuration.

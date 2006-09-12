@@ -1,6 +1,6 @@
 
  Kana no quiz - README
- version 1.5 - 2006-05-12
+ version 2.0 - 2006-XX-XX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
@@ -8,15 +8,17 @@
 
  This is ``Kana no quiz", a little educational tool, written
 in Python, to memorize Japanese kana (hiragana & katakana)
-pronounciation in an easy way.
+pronounciation in an easy way, and thus accomplish the first
+step in learning the language.
 
  The full list of kana is implemented, including additional
 katakana used in modern language. Default used transcription
 system is the Hepburn's (most common world-wide), but it does
 also support Kunrei-shiki, Nihon-shiki and Polivanov systems.
 
- This program is cross platform, the same package works both
-on GNU/Linux and Windows, using different default interface.
+ This program is cross platform, the same package works on
+GNU/Linux, FreeBSD, MacOSX and Windows, using the same GTK+
+interface on every platform.
 
  How does it work?
  -----------------
@@ -66,10 +68,9 @@ with Kana no quiz!
 to be priorly installed on your computer:
 
 * Python - `http://www.python.org/'.
-* For the GTK+ interface (not mandatory but recommanded):
+* For the GTK+ interface:
   * The Gimp Tool Kit - `http://www.gtk.org/'.
   * PyGTK - `http://www.pygtk.org/'.
-
 
  Program installation
  --------------------
@@ -104,35 +105,6 @@ translated into English, French, German (by Florian Niemann),
 Portuguese of Brazil (by Matheus Villela), Russian (by Aleksej
 R. Serdyukov), Serbian (by Dejan Danilović) and Swedish (by
 Markus Fellnert). Feel free to help that list growing up!
-
- Multiple interfaces
- -------------------
-
- Kana-no-quiz may be displayed using two different interface
-types, GTK+ or the Python native GUI: Tkinter. The second one
-has been introduced to reduce the chore of installing many
-dependencies, especialy for Windows users who may already feel
-borred by installing Python.
-
- Although there is not huge differences, the GTK+ interface is
-still the most evolved (and the nicest!) and is recommended to
-use, but requires some more dependencies (see bellow).
-
- If possible (satisfated dependencies), the GTK+ interface is
-choosen by default. Anyway, you can force the use of an
-interface by passing either `-tk' (for Tkinter) or `-gtk' (for
-GTK+) as an argument when launching the program.
-
- The interface type used by Kana no quiz is indicated in the
-``About" window, after the version number.
-
- GIF choice
- ----------
-
- Why do we use images in the GIF format to render kana?
-GIF is evil! Ok, but the Tkinter interface doesn't accept
-either PNG or JPG. Thus we must use GIF for the sake of compa-
-tibility...
 
  Kana image sources
  ------------------

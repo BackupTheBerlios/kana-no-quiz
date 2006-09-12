@@ -32,12 +32,13 @@ else:
 import sys
 from os import path, chdir, environ
 import options
+import gtk_gui as gui
 
 # Global variables.
 VERSION = 2.0
 
 # Setting Kana no quiz's data root directory's path.
-datarootpath = path.join(sys.prefix,'share','kana-no-quiz')
+datarootpath = path.join(sys.prefix, 'share', 'kana-no-quiz')
 
 options = options.Options()
 options.read()
@@ -45,19 +46,6 @@ options.read()
 # Setting the `$LANG' as it is set in the configuration file.
 environ['LANG'] = options.val('lang')
 
-#
-# Choice of the interface.
-#
-try: arg = sys.argv[1]
-except: arg = str()
-
-if arg=="-tk": import tkinter_gui as gui
-elif arg=="-gtk": import gtk_gui as gui
-else:
-	try: 	import gtk_gui as gui
-	except: import tkinter_gui as gui
-
-#Let's go!
-gui = gui.Gui(options,VERSION, datarootpath)
+# Let's go!
+gui = gui.Gui(options, VERSION, datarootpath)
 gui.main()
-

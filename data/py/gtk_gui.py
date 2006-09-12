@@ -72,6 +72,7 @@ class Gui:
 		box.pack_start(image,False)
 
 		box2 = gtk.VBox()
+		
 		button = gtk.Button(msg(1))
 		button.connect_object("clicked",self.intro,box)
 		box2.pack_start(button)
@@ -101,27 +102,13 @@ class Gui:
 		self.window.set_title(msg(1)) #Change title of window.
 		box = gtk.VBox(spacing=5)
 
-		label = gtk.Label(msg(5))
-		label.set_line_wrap(True)
-		box.pack_start(label)
-
-		label = gtk.Label(msg(6))
-		label.set_line_wrap(True)
-		box.pack_start(label)
-
-		label = gtk.Label(msg(7))
-		label.set_line_wrap(True)
-		box.pack_start(label)
-
-		label = gtk.Label(msg(8))
-		label.set_line_wrap(True)
-		box.pack_start(label)
-
-		label = gtk.Label(msg(9))
-		box.pack_start(label)
+		for i in range(5, 10):
+			label = gtk.Label(msg(i))
+			label.set_line_wrap(True)
+			box.pack_start(label)
 
 		button = gtk.Button(stock=gtk.STOCK_OK)
-		button.connect_object("clicked",self.main,box)
+		button.connect_object("clicked", self.main,box)
 		box.pack_end(button)
 
 		#Forget the old box
@@ -251,7 +238,7 @@ class Gui:
 			
 		"""
 
-		if self.param.val('answer_mode')=="list":
+		if self.param.val('answer_mode') == "list":
 			answer = widget.get_label().lower()
 		else: answer = widget.get_text().lower()
 		#If the selected romanization system is *other* than Hepburn (default),
@@ -293,7 +280,7 @@ class Gui:
 				self.results)
 		else: self.quizWidget['stop'].show()
 
-	def newQuestion(self,widget):
+	def newQuestion(self, widget):
 		#Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana()
 
@@ -304,7 +291,7 @@ class Gui:
 			(self.score.getQuestionTotal()+1,self.param.val('length')))
 		self.quizLabel.set_text((msg(11),msg(12))[self.kanaEngine.getKanaKind()])
 
-		if self.param.val('answer_mode')=="list":
+		if self.param.val('answer_mode') == "list":
 			self.nextButton.hide() #Hide the arrow.
 			#Display the random list.
 			i=0
@@ -312,7 +299,7 @@ class Gui:
 				#If the selected romanization system is *other* than Hepburn (default),
 				#let's convert that answer list (given in the Hepburn internal format)
 				#into the user-selected romanization system.
-				if self.param.val('transcription_system')!="hepburn":
+				if self.param.val('transcription_system') != "hepburn":
 					x = kanaengine.HepburnToOtherSysConvert(x,self.param.val(
 						'transcription_system'))
 				if x[-2:]=="-2": x = x[:-2]
