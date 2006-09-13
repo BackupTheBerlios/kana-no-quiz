@@ -34,6 +34,7 @@ class Gui:
 		self.datarootpath = args[2]
 
 		self.window = gtk.Window()
+		self.window.connect('key-press-event', self.keypress)
 		self.kanaEngine =  kanaengine.KanaEngine()
 		self.score = score.Score()
 
@@ -52,6 +53,13 @@ class Gui:
 		gtk.window_set_default_icon_from_file(os.path.join(
 			self.datarootpath,"img","icon.png"))
 		self.handlerid = {}
+
+	def keypress(self, source, event):
+		widgetNumber = event.keyval - 49
+		if ((widgetNumber >= 0 and widgetNumber <= self.param.val('list_size')) and
+			self.__dict__.has_key('answerButt') and
+			self.answerButt[widgetNumber]):
+			self.checkAnswer(self.answerButt[event.keyval-49])
 
 	def main(self,oldbox=None):
 		if self.currentlang!=self.param.val('lang'):
@@ -192,7 +200,7 @@ class Gui:
 						x = kanaengine.HepburnToOtherSysConvert(x,
 							self.param.val('transcription_system'))
 					if x[-2:]=="-2": x = x[:-2]
-					self.answerButt[i] = gtk.Button(x.upper())
+					self.answerButt[i] = gtk.Button(str(i+1) + ": " + x.upper())
 					self.answerButt[i].connect("clicked",self.checkAnswer)
 					box2.pack_start(self.answerButt[i])
 					i+=1
@@ -239,7 +247,7 @@ class Gui:
 		"""
 
 		if self.param.val('answer_mode') == "list":
-			answer = widget.get_label().lower()
+			answer = widget.get_label().lower()[3:]
 		else: answer = widget.get_text().lower()
 		#If the selected romanization system is *other* than Hepburn (default),
 		#let's convert the good answer (given in the Hepburn internal format)
@@ -303,7 +311,7 @@ class Gui:
 					x = kanaengine.HepburnToOtherSysConvert(x,self.param.val(
 						'transcription_system'))
 				if x[-2:]=="-2": x = x[:-2]
-				self.answerButt[i].set_label(x.upper())
+				self.answerButt[i].set_label(str(i+1) + ": " + x.upper())
 				self.answerButt[i].show()
 				i+=1
 
