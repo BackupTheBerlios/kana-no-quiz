@@ -35,7 +35,7 @@ class Gui:
 
 		self.window = gtk.Window()
 		self.window.connect('key-press-event', self.keypress)
-		self.kanaEngine =  kanaengine.KanaEngine()
+		self.kanaEngine =  kanaengine.KanaEngine(self.param)
 		self.score = score.Score()
 
 		#Localization.
@@ -126,24 +126,6 @@ class Gui:
 		self.window.show_all()
 
 	def quiz(self,oldbox):
-		#Defining kana selection parameters.
-		self.kanaEngine.kanaSelectParams(
-			(self.param['basic_hiragana'],
-			self.param['modified_hiragana'],
-			self.param['contracted_hiragana'],
-			self.param['basic_katakana'],
-			self.param['modified_katakana'],
-			self.param['contracted_katakana'],
-			self.param['additional_katakana']),
-			(self.param['basic_hiragana_portions'],
-			self.param['modified_hiragana_portions'],
-			self.param['contracted_hiragana_portions'],
-			self.param['basic_katakana_portions'],
-			self.param['modified_katakana_portions'],
-			self.param['contracted_katakana_portions'],
-			self.param['additional_katakana_portions']),
-			self.param['kana_no_repeat'],
-			self.param['rand_answer_sel_range'])
 		# Randomly getting a kana (respecting bellow conditions).
 		self.kana = self.kanaEngine.randomKana()
 

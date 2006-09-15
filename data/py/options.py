@@ -57,6 +57,7 @@ class Options:
 		'modified_katakana':('true','false'),
 		'contracted_katakana':('true','false'),
 		'additional_katakana':('true','false'),
+		'allow_repetition':('true', 'false'),
 		'transcription_system':kanaengine.transcriptions,
 		'answer_mode':('list','entry'),
 		'list_size':(2,3,4,5),
@@ -64,7 +65,7 @@ class Options:
 		'kana_no_repeat':('true','false'),
 		'lang':('de','en','fr','pt_BR','ru','sr','sv')
 		}
-
+		self.setDefaultValues()
 
 	# This is separated so I can test it independently
 	def setDefaultValues(self):
@@ -85,6 +86,7 @@ class Options:
 		'additional_katakana':'false',
 		'additional_katakana_portions':(1,1,1,1,1),
 		'transcription_system':'hepburn',
+		'allow_repetition': 'false',
 		'length':20,
 		'kana_no_repeat':'false',
 		'answer_mode':'list',

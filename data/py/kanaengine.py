@@ -87,8 +87,9 @@ def HepburnToOtherSysConvert(kana,outputsys):
 	return kana
 
 class KanaEngine:
-	def __init__(self):
+	def __init__(self, options):
 		self.reset()
+		self.options = options
 		
 	def reset(self):
 		"""Reset main variable values (i.e. when quiz	is finished,
@@ -104,15 +105,6 @@ class KanaEngine:
 		portions	of 5/6 kana."""
 		return kanaList
 
-	def kanaSelectParams(self,*args):
-		"""Kana will be choosed respecting these
-		parameters."""
-		self.select_params = {
-			# "set_states":args[0], # now set up elsewhere
-			# "portion_states":args[1], also set up elsewhere
-			"allow_repetition":args[2],
-			"rand_answer_sel_range":args[3]}
-
 	def randomKana(self):
 		"""Randomly choose a kana which will be
 		considered as the right answer."""
@@ -126,7 +118,7 @@ class KanaEngine:
 			possibleKanaSet.remove(self.previous_kana)
 
 		# Isn't the sense of this clause backwards?
-		blockRepetition = self.select_params['allow_repetition'] == 'true'
+		blockRepetition = self.options['allow_repetition'] == 'true'
 
 		# If we're not allowing repeats...
 		if blockRepetition:
@@ -167,7 +159,7 @@ class KanaEngine:
 			answer = self.kana
 		answers = set()
 
-		selectionRange = self.select_params['rand_answer_sel_range']
+		selectionRange = self.options['rand_answer_sel_range']
 
 		possibleAnswers = set()
 
