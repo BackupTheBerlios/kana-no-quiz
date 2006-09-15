@@ -44,7 +44,7 @@ options = options.Options()
 options.read()
 
 # Setting the `$LANG' as it is set in the configuration file.
-environ['LANG'] = options.val('lang')
+environ['LANG'] = options['lang']
 
 # Let's go!
 gui = gui.Gui(options, VERSION, datarootpath)

@@ -19,14 +19,57 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 """
 from string import split
 import os, locale
+import kanaengine
+import re
+
+# Later, we'll want to eliminate these functions by matching the names
+# in both places
+def optionToKindName(optionName):
+	"""This converts the option name ('basic_hiragana_portion') into
+	the name of the kana kind ('Basic Hiragana'), so we can retrieve
+	the correct Kind from kanaengine."""
+
+	# Peel off the "_portion" if we have it
+	if optionName[-9:] == "_portions":
+		optionName = optionName[:-9]
+	optionName = optionName.split("_")
+
+	optionName = [x[0].upper() + x[1:] for x in optionName]
+	return " ".join(optionName)
+
+def kindNameToOption(kindName):
+	pieces = kindName.split(" ")
+	pieces = [x.lower() for x in pieces]
+	return "_".join(pieces)
 
 class Options:
-	def __init__(self):
-		self.conf_dir = os.path.expanduser("~/.kana-no-quiz") #Kana no quiz local configuration directory.
+	def __init__(self, conf_dir = "~/.kana-no-quiz"):
+		self.conf_dir = os.path.expanduser(conf_dir) #Kana no quiz local configuration directory.
 		self.conf_file = os.path.join(self.conf_dir,"option.conf")  #Set path to the configuration file.
 
+		self.params = {}
+		#Valid values for each option contained as a tuple into a dictionnary.
+		self.validValues = {
+		'basic_hiragana':('true','false'),
+		'modified_hiragana':('true','false'),
+		'contracted_hiragana':('true','false'),
+		'basic_katakana':('true','false'),
+		'modified_katakana':('true','false'),
+		'contracted_katakana':('true','false'),
+		'additional_katakana':('true','false'),
+		'transcription_system':kanaengine.transcriptions,
+		'answer_mode':('list','entry'),
+		'list_size':(2,3,4,5),
+		'rand_answer_sel_range':('portion','set','kind'),
+		'kana_no_repeat':('true','false'),
+		'lang':('de','en','fr','pt_BR','ru','sr','sv')
+		}
+
+
+	# This is separated so I can test it independently
+	def setDefaultValues(self):
 		#Default options & values.
-		self.params  = {
+		defaults = {
 		'basic_hiragana':'true',
 		'basic_hiragana_portions':(1,1,1,1,1,1,1,1,1),
 		'modified_hiragana':'false',
@@ -50,22 +93,8 @@ class Options:
 		if locale.getlocale() in ("de","fr","pt_BR","ru","sr","sv"): self.params['lang'] = locale.getlocale()
 		else: self.params['lang'] = "en"
 
-		#Valid values for each option contained as a tuple into a dictionnary.
-		self.validValues = {
-		'basic_hiragana':('true','false'),
-		'modified_hiragana':('true','false'),
-		'contracted_hiragana':('true','false'),
-		'basic_katakana':('true','false'),
-		'modified_katakana':('true','false'),
-		'contracted_katakana':('true','false'),
-		'additional_katakana':('true','false'),
-		'transcription_system':('hepburn','kunrei-shiki','nihon-shiki','polivanov'),
-		'answer_mode':('list','entry'),
-		'list_size':(2,3,4,5),
-		'rand_answer_sel_range':('portion','set','kind'),
-		'kana_no_repeat':('true','false'),
-		'lang':('de','en','fr','pt_BR','ru','sr','sv')
-		}
+		for key, value in defaults.iteritems():
+			self[key] = value
 
 	def read(self):
 		#Check whether the option file exists...
@@ -86,9 +115,10 @@ class Options:
 						for x in val.split(","): plop.append(int(x))
 						val = plop
 
-					self.check(key,val)
+					self[key] = val
 
-	def check(self,key,val):
+    # This integrates setting and checking into one move
+	def __setitem__(self,key,val):
 		"""Here we check whether the option value, which has been read,
 		is valid. In that case, the option value is modified. Otherwise, we
 		keep the default value."""
@@ -103,25 +133,63 @@ class Options:
 					if int(val) in self.validValues[key]:
 						#As an integrer, the value is valid, so update the param.
 						self.params[key] = int(val)
-				except: pass
+					else:
+						raise ValueError("Illegal value for %s: %s"
+										 %(key, val))
+				except:
+					raise ValueError("Illegal value for %s: %s."
+									 %(key, val))
 		else:
-			#We use it, although it seems to be an unknow option.
+			#We use it, although it seems to be an unknown option.
 			self.params[key] = val
 
-	def val(self,name):
-		if self.params.has_key(name): return self.params[name]
-		else: return None
+		# Special processing: Is this a 'portion'?
+		if key[-9:] == '_portions':
+			self.setPortion(key, val)
+			return
+
+		# Special processing: Is this the name of a kind?
+		kanaKind = optionToKindName(key)
+		try:
+			kanaSet = kanaengine.kanaSetByName[kanaKind]
+			kanaSet.active = val == "true"
+		except KeyError:
+			pass
+
+	def setPortion(self, key, value):
+		"""self.setPortion('basic_hiragana_portion', [1, 1, 0, ...]
+
+		Sets the .active on the appropriate Kana portions."""
+		portionName = optionToKindName(key)
+		kanaSet = kanaengine.kanaSetByName[portionName]
+		for portion, value in zip(kanaSet.portions, value):
+			portion.active = value
+            
+	def __getitem__(self,name):
+		# Generally it's better to pass the KeyError along.
+		return self.params[name]
+
+	def __iter__(self):
+		return iter(self.params)
+	def iterkeys(self):
+		return iter(self.params)
+	def iteritems(self):
+		return self.params.iteritems()
 
 	def write(self,paramdict):
 		#Configuration file header.
 		content = "# Kana no quiz configuration file.\n\n"
 
+		for key, val in paramdict.iteritems():
+			self[key] = val
+
 		#
 		# Use of the amazing WAGLAMOT (tm) technology!
 		#
-		for key,val in paramdict.items():
+		for key,val in self.iteritems():
 			#The param values written to the configuration files may slightly differ from their interal format.
 			#So there is a second variable just for configuration file output.
+		
 			written_val = val
 
 			#List to string convertion (kana portions).
@@ -131,7 +199,6 @@ class Options:
 				written_val = string[:-1]
 
 			content += "%s %s\n" % (key,written_val) #Add to the output file content.
-			self.params[key] = val #Update param dictionnary value.
 
 		if not os.path.isdir(self.conf_dir): os.mkdir(self.conf_dir)  #Create user config directory if doesn't exist.
 		file = open(self.conf_file,"wb") #Open (create if doesn't exist)
