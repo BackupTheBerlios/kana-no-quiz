@@ -20,27 +20,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 from string import split
 import os, locale
 import kanaengine
-import re
-
-# Later, we'll want to eliminate these functions by matching the names
-# in both places
-def optionToKindName(optionName):
-	"""This converts the option name ('basic_hiragana_portion') into
-	the name of the kana kind ('Basic Hiragana'), so we can retrieve
-	the correct Kind from kanaengine."""
-
-	# Peel off the "_portion" if we have it
-	if optionName[-9:] == "_portions":
-		optionName = optionName[:-9]
-	optionName = optionName.split("_")
-
-	optionName = [x[0].upper() + x[1:] for x in optionName]
-	return " ".join(optionName)
-
-def kindNameToOption(kindName):
-	pieces = kindName.split(" ")
-	pieces = [x.lower() for x in pieces]
-	return "_".join(pieces)
 
 class Options:
 	def __init__(self, conf_dir = "~/.kana-no-quiz"):
@@ -98,26 +77,29 @@ class Options:
 		for key, value in defaults.iteritems():
 			self[key] = value
 
-	def read(self):
+	def readFromFile(self):
 		#Check whether the option file exists...
 		if os.path.isfile(self.conf_file):
 			file = open(self.conf_file,"r") #Open.
 			content = file.readlines() #Read the content.
 			file.close() #And close. :p
 
-			for line in content:
-				line.strip()
-				if line[0]!="#" and line!="\n":
-					key,val = split(line)[:2]
-					key,val = key.strip(),val.strip()
+		self.parseOptions(contentLines)
 
-					#String to integrer list convertion (kana portions).
-					if key[-8:]=="portions":
-						plop = list()
-						for x in val.split(","): plop.append(int(x))
-						val = plop
+	def parseOptions(self, contentLines):
+		for line in content:
+			line.strip()
+			if line[0]!="#" and line!="\n":
+				key,val = split(line)[:2]
+				key,val = key.strip(),val.strip()
+				
+				#String to integrer list convertion (kana portions).
+				if key[-8:]=="portions":
+					plop = list()
+					for x in val.split(","): plop.append(int(x))
+					val = plop
 
-					self[key] = val
+				self[key] = val
 
     # This integrates setting and checking into one move
 	def __setitem__(self,key,val):
@@ -151,9 +133,8 @@ class Options:
 			return
 
 		# Special processing: Is this the name of a kind?
-		kanaKind = optionToKindName(key)
 		try:
-			kanaSet = kanaengine.kanaSetByName[kanaKind]
+			kanaSet = kanaengine.kanaSetByOptionKey[key]
 			kanaSet.active = val == "true"
 		except KeyError:
 			pass
@@ -162,14 +143,19 @@ class Options:
 		"""self.setPortion('basic_hiragana_portion', [1, 1, 0, ...]
 
 		Sets the .active on the appropriate Kana portions."""
-		portionName = optionToKindName(key)
-		kanaSet = kanaengine.kanaSetByName[portionName]
+		kanaSet = kanaengine.kanaSetByOptionKey[key[:-9]]
 		for portion, value in zip(kanaSet.portions, value):
 			portion.active = value
             
-	def __getitem__(self,name):
-		# Generally it's better to pass the KeyError along.
-		return self.params[name]
+	def __getitem__(self,key):
+		# This guarantees the .active flag and the config will be
+		# in sync.
+		if key[-9:] == "_portions":
+			# Extract it from the live kana data
+			kanaSet = kanaengine.kanaSetByOptionKey[key[:-9]]
+			return tuple([x.active + 0 for x in kanaSet.portions])
+		
+		return self.params[key]
 
 	def __iter__(self):
 		return iter(self.params)

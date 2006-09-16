@@ -319,6 +319,7 @@ kanaKinds = {'hiragana': hiragana,
 # away from that, we'll get to just kanaSetByName
 kanaSets = []
 kanaSetByName = {}
+kanaSetByOptionKey = {}
 
 # This should not be needed
 setNameToMsg = {
@@ -342,6 +343,8 @@ class KanaSet(object):
 		self.optionKey = setName.lower() + "_" + kind.kind
 		self.imageName = self.optionKey + ".gif"
 		self.msgNum = setNameToMsg[setName]
+
+		kanaSetByOptionKey[self.optionKey] = self
 		
 	def addKana(self, kana):
 		self.kana.add(kana)

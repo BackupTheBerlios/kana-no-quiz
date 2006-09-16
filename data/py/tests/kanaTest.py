@@ -42,25 +42,9 @@ def setitem(obj, key, value):
 # This may later get pulled out into its own 'optionsTest.py' file.
 class OptionsTest(unittest.TestCase):
 	"""Does the options stuff work as expected?"""
-	def testOptionToKindName(self):
-		"""optionToKindName seems to work"""
-
-		optionToKindName = options.optionToKindName
-		kindNameToOption = options.kindNameToOption
-
-		self.assertEquals(optionToKindName('basic_hiragana_portions'),
-					 'Basic Hiragana')
-		self.assertEquals(optionToKindName('basic_hiragana'),
-					 'Basic Hiragana')
-		self.assertEquals(kindNameToOption("Basic Hiragana"),
-						  'basic_hiragana')
-
 	def testOptionSetting(self):
 		"""options works as a python dict"""
 		opts = options.Options()
-
-		# Initially, options start out empty
-		self.assertEquals(len(opts.params), 0)
 
 		opts['answer_mode'] = 'list'
 		self.assertEquals(opts['answer_mode'], 'list')
@@ -81,19 +65,36 @@ class OptionsTest(unittest.TestCase):
 
         # Verify that when setting the names of sections, the active
         # flag is set correctly
-		for setName, kanaSet in kanaengine.kanaSetByName.iteritems():
-			optionName = options.kindNameToOption(setName)
+		for optionName, kanaSet in kanaengine.kanaSetByOptionKey.iteritems():
 			opts[optionName] = 'true'
 			self.assert_(kanaSet.active)
 			opts[optionName] = 'false'
 			self.assert_(not kanaSet.active)
+
+	def testLiveActiveFlags(self):
+		"""KanaPortion.active flags are directly reflected in the options"""
+		opts = options.Options()
+		vowels = kanaengine.kanaSetByName['Basic Hiragana'].portions[0]
+
+		self.assertEquals(opts['basic_hiragana_portions'][0] + 0,
+						  vowels.active)
+		vowels.active = True
+		self.assertEquals(opts['basic_hiragana_portions'][0] + 0,
+						  vowels.active)
+		vowels.active = False
+		self.assertEquals(opts['basic_hiragana_portions'][0] + 0,
+						  vowels.active)
+		opts['basic_hiragana_portions'] = (0,0,0,0,0,0,0,0,0)
+		self.assertEquals(vowels.active, False)
+		opts['basic_hiragana_portions'] = (1,0,0,0,0,0,0,0,0)
+		self.assertEquals(vowels.active, True)
 
 class AnswersTest(unittest.TestCase):
 	"""Does the answers portion of the engine work as expected?"""
 
 	def testRandomAnswers(self):
 		"""random wrong answers engine seems to work correctly"""
-		engine = kanaengine.KanaEngine()
+		engine = kanaengine.KanaEngine(options.Options())
 
 		hiragana = kanaengine.hiragana
 		shi = hiragana['shi']
@@ -108,15 +109,16 @@ class AnswersTest(unittest.TestCase):
 		self.assertEquals(str(shiPortion), 'SA SHI SU SE SO')
 		sa, shi, su, se, so = shiPortion.members
 
-		engine.kanaSelectParams(0, 0, 'false', 'portion')
+		opts['allow_repetition'] = 'false'
+		opts['rand_answer_sel_range'] = 'portion'
 
-		answers = engine.randomAnswers(5, shi)
+		answers = engine.randomAnswers(4, shi)
 		self.assertEquals(len(answers), 4)
-		self.assert_(shi not in answers)
+		self.assert_(shi in answers)
 		
-		answers = engine.randomAnswers(3, shi)
+		answers = engine.randomAnswers(2, shi)
 		self.assertEquals(len(answers), 2)
-		self.assert_(shi not in answers)
+		self.assert_(shi in answers)
 
 	def testRandomKana(self):
 		"""random answer engine seems to work correctly"""
@@ -124,8 +126,8 @@ class AnswersTest(unittest.TestCase):
 		# There is a lot of repetition in this test,
 		# but I currently do not yet have the tools to
 		# cut it down
-                
-		engine = kanaengine.KanaEngine()
+		opts = options.Options()        
+		engine = kanaengine.KanaEngine(opts)
 
 		hiragana = kanaengine.hiragana
 		shi = hiragana['shi']
@@ -139,6 +141,9 @@ class AnswersTest(unittest.TestCase):
 		# Now, turn on just Basic Hiragana and the s line
 		opts = options.Options()
 
+		for kanaSet in kanaengine.kanaSetByOptionKey.keys():
+			opts[kanaSet] = 'false'
+			
 		opts['basic_hiragana'] = 'true'
 		opts['basic_hiragana_portions'] = (0,0,1,0,0,0,0,0,0)
 
@@ -150,7 +155,8 @@ class AnswersTest(unittest.TestCase):
 		# The hiragana starting with "S"
 		sKana = sPortion.members
 
-		engine.kanaSelectParams(0, 0, 'true', 'portion')
+		opts['allow_repetition'] = 'true'
+		opts['rand_answer_sel_range'] = 'portion'
 
 		answer = engine.randomKana()
 		self.assert_(answer in sKana)
@@ -166,8 +172,8 @@ class AnswersTest(unittest.TestCase):
 		opts['basic_hiragana_portions'] = (1,1,1,1,1,1,1,1,1)
 		opts['basic_hiragana'] = 'true'
 
-		engine = kanaengine.KanaEngine()
-		engine.kanaSelectParams(0, 0, 'true', 'set')
+		engine = kanaengine.KanaEngine(opts)
+		opts['rand_answer_sel_range'] = 'set'
 		basicHiraganaSet = basicHiragana.getActiveKana()
 		answer = engine.randomKana()
 		self.assert_(answer in basicHiraganaSet)
@@ -192,8 +198,10 @@ class AnswersTest(unittest.TestCase):
 		opts['contracted_hiragana_portions'] = (1,1,1,1,1)
 		opts['contracted_hiragana'] = 'true'
 		
-		engine = kanaengine.KanaEngine()
-		engine.kanaSelectParams(0, 0, 'true', 'set')
+		engine = kanaengine.KanaEngine(opts)
+		opts['allow_repetition'] = 'true'
+		opts['rand_answer_sel_range'] = 'set'
+
 		hiraganaKana = hiragana.getActiveKana()
 		
 		answer = engine.randomKana()
