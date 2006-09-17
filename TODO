@@ -1,6 +1,9 @@
- Kana no quiz - TODO list
+
+	Kana no quiz - TODO list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+- Different kana image themes. [IN PROGRESS]
+- Kana image scaling ability. [IN PROGRESS]
 - Implementing optional automatic quiz proceeding (answer result shortly
 displayed but no more need to click on the arrow to process to the next
 question).
@@ -11,5 +14,3 @@ making Kana no quiz more game like.
 - Better introduction to kana (with nice presenting, image & full kana table).
 - A repeat wrongly-answered questions some time after option.
 - One per one kana choosing.
-- Different kana image themes.
-

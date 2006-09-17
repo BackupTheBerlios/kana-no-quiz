@@ -1,6 +1,6 @@
 
- Kana no quiz - Changelog
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Kana no quiz - Changelog
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * CVS version (2006-XX-XX):
 
@@ -177,5 +177,5 @@ using different interfaces.
 Fills a rivers of tears through the night
 Memory, you never let me cry
 And you, you never said goodbye"
- -- Tears, X Japan
+-- Tears, X Japan
 

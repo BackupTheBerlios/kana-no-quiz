@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """ Kana no quiz!
+
 	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 	$Id$
 
@@ -41,7 +42,7 @@ VERSION = 2.0
 datarootpath = path.join(sys.prefix, 'share', 'kana-no-quiz')
 
 options = options.Options()
-options.read()
+#options.read()
 
 # Setting the `$LANG' as it is set in the configuration file.
 environ['LANG'] = options['lang']

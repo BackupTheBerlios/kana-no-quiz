@@ -1,4 +1,5 @@
 """Kana no quiz!
+
 	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 	$Id$
 
@@ -18,6 +19,7 @@
 	
 """
 # Imports.
+import sys
 import gtk
 import os.path
 from pango import FontDescription
@@ -59,7 +61,7 @@ class Gui:
 		if ((widgetNumber >= 0 and widgetNumber <= self.param['list_size']) and
 			self.__dict__.has_key('answerButt') and
 			self.answerButt[widgetNumber]):
-			self.check_answer(self.answerButt[event.keyval-49])
+			self.check_answer(self.answerButt[event.keyval - 49])
 
 	def main(self, oldbox=None):
 		if self.currentlang != self.param['lang']:
@@ -125,7 +127,7 @@ class Gui:
 		self.window.add(box)
 		self.window.show_all()
 
-	def quiz(self,oldbox):
+	def quiz(self, oldbox):
 		# Randomly getting a kana (respecting bellow conditions).
 		self.kana = self.kanaEngine.randomKana()
 
@@ -137,13 +139,13 @@ class Gui:
 			self.kanaImage = gtk.Image()
 			#Initialy setting kana's image.
 			kanaKindIndex = self.kana.kind.kindIndex
-			self.set_kana_image(self.kana) 
-
-			box2.pack_start(self.kanaImage,False)
+			self.set_kana_image(self.kana)
+			box2.pack_start(self.kanaImage, False)
+			
 			# Quiz informations.
 			self.quizInfos = {}
 			self.quizInfos['questionNumLabel'] = gtk.Label(msg(67) % (
-				self.score.getQuestionTotal()+1, self.param['length']))
+				self.score.getQuestionTotal() + 1, self.param['length']))
 			self.quizInfos['systemLabel'] = gtk.Label(msg(68) % capwords(
 				self.param['transcription_system']))
 			box3 = gtk.VBox(spacing=2)
@@ -172,7 +174,7 @@ class Gui:
 			self.nextButton = gtk.Button()
 			self.nextButton.add(arrow)
 
-			if self.param['answer_mode']=="list":
+			if self.param['answer_mode'] == "list":
 				#Choice buttons generation.
 				self.answerButt = {};
 				for i in range(self.param['list_size']):
@@ -182,7 +184,7 @@ class Gui:
 					button.show()
 					self.answerButt[i] = button
 
-				self.displayRandomList()
+				self.display_random_list()
 
 				self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",
 					self.new_question)
@@ -209,7 +211,8 @@ class Gui:
 			self.window.show_all()
 
 			# Hide the arrow.
-			if self.param['answer_mode'] == "list": self.nextButton.hide() 
+			if self.param['answer_mode'] == "list":
+				self.nextButton.hide()
 			else: entry.grab_focus() # Giving focus to text entry.
 
 			self.quizWidget['stop'].hide() # Hiding the stop button.
@@ -220,13 +223,13 @@ class Gui:
 			dialog.connect('response', lambda dialog, response: dialog.destroy())
 			dialog.show()
 
-	def displayRandomList(self):
+	def display_random_list(self):
 		i = 0
 		possibleAnswers = self.kanaEngine.randomAnswers(self.param['list_size'])
 		for answerKana in possibleAnswers:
 			x = answerKana.transcriptions[self.param['transcription_system']]
-			if x[-2:]=="-2": x = x[:-2]
-			self.answerButt[i].set_label(str(i+1) + ": " + x.upper())
+			if x[-2:] == "-2": x = x[:-2]
+			self.answerButt[i].set_label("%s: %s" % (str(i + 1), x.upper()))
 			self.answerButt[i].show()
 			i += 1
 
@@ -287,7 +290,7 @@ class Gui:
 
 		if self.param['answer_mode'] == "list":
 			self.nextButton.hide() #Hide the arrow.
-			self.displayRandomList()
+			self.display_random_list()
 
 		else:  # Display the text entry.
 			widget.set_text("")
@@ -323,10 +326,10 @@ class Gui:
 		self.quizLabel.set_text(text)
 		self.quizLabel.set_use_markup(True)
 
-		self.score.reset() # Reseting the score.
-		self.kanaEngine.reset() # Reseting kana engine's variables.
-		self.kanaImage.hide() # Hidding kana image.
-		self.quizInfos['container'].hide() # Hidding quiz stop & informations.
+		self.score.reset()  # Reseting the score.
+		self.kanaEngine.reset()  # Reseting kana engine's variables.
+		self.kanaImage.hide()  # Hidding kana image.
+		self.quizInfos['container'].hide()  # Hidding quiz stop & informations.
 
 		# Connecting the arrow to the ``main".
 		self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
@@ -357,27 +360,30 @@ class Gui:
 				'modified_katakana': opt_conv["boolean"][kanaOption[5].get_active()],
 				'contracted_katakana': opt_conv["boolean"][kanaOption[6].get_active()],
 				'additional_katakana': opt_conv["boolean"][kanaOption[7].get_active()],
-				'transcription_system':opt_conv["transcription_system"][
+				'transcription_system': opt_conv["transcription_system"][
 					option8.get_active()],
-				'answer_mode':opt_conv["answer_mode"][option9.get_active()],
-				'list_size':option10.get_active()+2,
-				'rand_answer_sel_range':opt_conv["rand_answer_sel_range"][
+				'answer_mode': opt_conv["answer_mode"][option9.get_active()],
+				'list_size': option10.get_active()+2,
+				'rand_answer_sel_range': opt_conv["rand_answer_sel_range"][
 					option11.get_active()],
-				'length':int(option12.get_value()),
-				'kana_no_repeat':opt_conv["boolean"][option13.get_active()],
-				'lang':opt_conv["lang"][option14.get_active()]
+				'length': int(option12.get_value()),
+				'kana_no_repeat': opt_conv["boolean"][option13.get_active()],
+				'lang': opt_conv["lang"][option14.get_active()]
 				})
 			self.main(da_box) # Go back to the ``main".
 
 		def portions_popup(widget, kanaset):
 			portions = kanaset.portions
+			
 			# Callbacks.
-
 			def new_value(widget, portion):
 				"""Update the emporary variable value."""
 				portion.active = (0, 1)[widget.get_active()] 
+
 			def select_all(widget): 
-				for x in widget.get_children(): x.set_active(True)
+				for x in widget.get_children():
+					x.set_active(True)
+
 			def valided_changes(*args):
 				"""Check for a least one selected kana portion (display of a message
 					if not the case), catch parameters, then close the window.
@@ -400,8 +406,8 @@ class Gui:
 					elif kanaset == 6: widget = option7
 					widget.set_active(False)
 
-				activity = [x.active+0 for x in portions]
-				self.param[kanaset.optionKey+"_portions"] = tuple(activity)
+				activity = [x.active + 0 for x in portions]
+				self.param[kanaset.optionKey + "_portions"] = tuple(activity)
 				dialog.destroy()
 
 			dialog = gtk.Dialog(msg(28 + kanaset.msgNum),
@@ -415,7 +421,7 @@ class Gui:
 			label = gtk.Label(msg(36))
 			label.set_line_wrap(True)
 			dialog.vbox.pack_start(label)
-			table = gtk.Table(2,abs(len(portions)/2+1))
+			table = gtk.Table(2, abs(len(portions) / 2 + 1))
 			dialog.vbox.pack_start(table)
 
 			j, k = 1, 0
@@ -441,7 +447,7 @@ class Gui:
 			dialog.vbox.pack_start(button)
 
 			# Buttons at bottom...
-			button = gtk.Button(stock = gtk.STOCK_OK)
+			button = gtk.Button(stock=gtk.STOCK_OK)
 			button.connect("clicked", valided_changes)
 			dialog.action_area.pack_end(button)
 			button = gtk.Button(stock=gtk.STOCK_CANCEL)
@@ -461,7 +467,7 @@ class Gui:
 			item.add(button)
 			item.set_expand(True)
 			item.set_homogeneous(True)
-			toolbar.insert(item,i - 83)
+			toolbar.insert(item, i - 83)
 		da_box.pack_start(toolbar)
 		box = gtk.VBox(spacing=3)
 		da_box.pack_start(box)
@@ -488,18 +494,19 @@ class Gui:
 			for kanaSet in kanaSets:
 				image = gtk.Image()
 				image.set_from_file(os.path.join(self.datarootpath, "img",
-												 kanaSet.imageName))
+					kanaSet.imageName))
 				table.attach(image, 0, 1, i, i + 1)
 				option = gtk.CheckButton(msg(kanaSet.msgNum))
-				option.set_active(opt_conv["boolean"][self.param[kanaSet.optionKey]])
+				option.set_active(opt_conv["boolean"][self.param[
+					kanaSet.optionKey]])
 				table.attach(option, 1, 2, i, i + 1)
 				button = gtk.Button(msg(27))
 				button.connect("clicked", portions_popup, kanaSet)
 				button.set_sensitive(option.get_active())
 				option.connect("toggled",
-							   lambda *args:
-						       args[1].set_sensitive(option.get_active()),
-							   button)
+							lambda *args:
+							args[1].set_sensitive(option.get_active()),
+							button)
 				table.attach(button, 2, 3, i, i + 1)
 				kanaOption.append(option)
 				i += 1
@@ -525,18 +532,18 @@ class Gui:
 		label = gtk.Label(msg(61))
 		box3.pack_start(label)
 		option8 = gtk.combo_box_new_text()
-		for val in (msg(62), msg(63), msg(64), msg(79)):
-			option8.append_text(val)
+		for x in (62, 63, 64, 79):
+			option8.append_text(msg(x))
 		option8.set_active(opt_conv["transcription_system"][self.param
-                                                                    ['transcription_system']])
+			['transcription_system']])
 		box3.pack_start(option8)
 
 		#`answer_mode'
 		label = gtk.Label(msg(38))
 		box3.pack_start(label)
 		option9 = gtk.combo_box_new_text()
-		for val in (msg(39), msg(40)):
-			option9.append_text(val)
+		for x in (39, 40):
+			option9.append_text(msg(x))
 		option9.set_active(opt_conv["answer_mode"][self.param['answer_mode']])
 		box3.pack_start(option9)
 
@@ -544,9 +551,9 @@ class Gui:
 		label = gtk.Label(msg(41))
 		box3.pack_start(label)
 		option10 = gtk.combo_box_new_text()
-		for val in (2, 3, 4, 5):
-			option10.append_text(msg(42) % val)
-		option10.set_active(self.param['list_size']-2)
+		for x in (2, 3, 4, 5):
+			option10.append_text(msg(42) % x)
+		option10.set_active(self.param['list_size'] - 2)
 		box3.pack_start(option10)
 
 		#`rand_answer_sel_range'
@@ -556,7 +563,7 @@ class Gui:
 		for x in (76, 77, 78):
 			option11.append_text(msg(x))
 		option11.set_active(opt_conv["rand_answer_sel_range"][self.param
-															  ['rand_answer_sel_range']])
+			['rand_answer_sel_range']])
 		box3.pack_start(option11)
 
 		#Bouyaka!
@@ -576,7 +583,7 @@ class Gui:
 		label = gtk.Label(msg(43))
 		box4.pack_start(label)
 		adjustment = gtk.Adjustment(float(self.param['length']), 1,
-									200, 1, 10)
+			200, 1, 10)
 		option12 = gtk.SpinButton(adjustment)
 		option12.set_alignment(0.5)
 		box4.pack_start(option12)
@@ -677,8 +684,23 @@ class Gui:
 		"""Updating kana image."""
 		kind = kana.kind.kindIndex
 		kana = kana.kana # the string
-		self.kanaImage.set_from_file(os.path.join(self.datarootpath,"img","kana",
-			"%s_%s.gif" % (("k","h")[kind],kana)))
+		
+		# Loading bitmap (for Windows which doesn't like SVG) or vector (which
+		# is better for resizing) kana image.
+		pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(self.datarootpath,
+			"img", "kana", self.param['kana_image_theme'], "%s_%s.%s" %
+			(("k", "h")[kind], kana, ("svg", "png")[sys.platform == 'win32'])))
+
+		# Scaling image buffer according to user size preference.
+		if self.param["kana_image_scale"] == "small":	width = 150
+		elif self.param["kana_image_scale"] == "medium": width = 250
+		else: width = 350
+		# Corresponding height.
+		height = pixbuf.get_height() * width / pixbuf.get_width()
+		scaled_buf = pixbuf.scale_simple(width, int(height), gtk.gdk.INTERP_BILINEAR)
+
+		# Updating kana image widget.
+		self.kanaImage.set_from_pixbuf(scaled_buf)
 
 	def quit(self,widget):
 		gtk.main_quit() #Bye~~

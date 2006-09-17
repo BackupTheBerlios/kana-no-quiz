@@ -32,13 +32,13 @@ else: scriptfiles = []
 datafiles = [
 		#Textual files.
 		(os.path.join('share', 'kana-no-quiz'), glob.glob("*.txt")),
-		#Images (per extention adding).
+		#Images (per extention addition).
 		(os.path.join('share', 'kana-no-quiz', 'img'),
 			glob.glob(os.path.join("data", "img", "*.png"))+
-			glob.glob(os.path.join("data", "img", "*.gif"))+
 			glob.glob(os.path.join("data", "img", "*.xbm"))),
 		(os.path.join('share', 'kana-no-quiz', 'img', 'kana'),
-			glob.glob(os.path.join("data", "img", "kana", "*.gif"))),
+			glob.glob(os.path.join("data", "img", "kana", "default", "*.png"))+
+			glob.glob(os.path.join("data", "img", "kana", "default", "*.svg"))),
 		#Localisation.
 		(os.path.join('share', 'kana-no-quiz', 'locale', 'de', 'LC_MESSAGES'),
 			[os.path.join("data", "locale", "de", "LC_MESSAGES", "kana-no-quiz.mo")]), #German

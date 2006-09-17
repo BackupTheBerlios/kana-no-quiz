@@ -1,29 +1,30 @@
 # -*- coding: utf8 -*-
-"""
-Kana no quiz!
-Copyleft 2003, 2004, 2005, 2006 Choplair-network.
-$Id$
+"""Kana no quiz!
 
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
+	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
+	$Id$
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License
+	as published by the Free Software Foundation; either version 2
+	of the License, or (at your option) any later version.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
 """
 import random
 from sets import Set
 
-transcriptions = ('hepburn','kunrei-shiki','nihon-shiki','polivanov')
+transcriptions = ('hepburn', 'kunrei-shiki', 'nihon-shiki', 'polivanov')
 
-def HepburnToOtherSysConvert(kana,outputsys):
+def hepburn_to_other_sys_convert(kana, outputsys):
 	#Kunrei-shiki/Nihon-shiki common kana values.
 	if outputsys in ("kunrei-shiki","nihon-shiki"):
 		convert = {
@@ -34,12 +35,12 @@ def HepburnToOtherSysConvert(kana,outputsys):
 		if convert.has_key(kana): return convert[kana]
 
 		#Kunrei-shiki specific kana values.
-		if outputsys=="kunrei-shiki":
-			if kana=="ji-2": return "zi" 
+		if outputsys == "kunrei-shiki":
+			if kana == "ji-2": return "zi" 
 		#Nihon-shiki specific kana values.
-		elif outputsys=="nihon-shiki":
-			if kana=="ji-2": return "di"
-			elif kana=="zu-2": return "du"
+		elif outputsys == "nihon-shiki":
+			if kana == "ji-2": return "di"
+			elif kana == "zu-2": return "du"
 
 	#Convertion to Polivanov.	
 	if outputsys=="polivanov":
@@ -93,22 +94,27 @@ class KanaEngine:
 		
 	def reset(self):
 		"""Reset main variable values (i.e. when quiz	is finished,
-		to permit starting one another	in a safe mode)."""
+			to permit starting one another	in a safe mode).
+			
+		"""
 		self.previous_kana = None
 		self.default_kana_list = self.getKanaList()
 		self.used_kana_set = set()
 
 	def getKanaList(self):
 		"""This function returns the kana full list (using default/
-	            content = [x for x in content if 	Hepburn	trascription), divided in sets (the 3 firsts are
-		hiragana, the 4 nexts are katakana) then splited into small
-		portions	of 5/6 kana."""
+			Hepburn	trascription), divided in sets (the 3 firsts are
+			hiragana, the 4 nexts are katakana) then splited into small
+			portions	of 5/6 kana.
+		
+		"""
 		return kanaList
 
 	def randomKana(self):
 		"""Randomly choose a kana which will be
-		considered as the right answer."""
-
+			considered as the right answer.
+		
+		"""
 		possibleKanaSet = set()
 		hiragana.getActiveKana(possibleKanaSet)
 		katakana.getActiveKana(possibleKanaSet)
@@ -149,9 +155,10 @@ class KanaEngine:
 
 	def randomAnswers(self, list_size, kana = None):
 		"""Selection of random wrong anwsers from a certain range, mixed
-		with the previously selected ("right") kana into a list which gets shuffled
-		and is returned at the end of this function."""
-
+			with the previously selected ("right") kana into a list which gets shuffled
+			and is returned at the end of this function.
+			
+		"""
 		# The answers that will be returned
 		if kana is not None:
 			answer = kana
@@ -172,7 +179,7 @@ class KanaEngine:
 		# duplication
 		possibleAnswers.discard(answer)
 
-		for x in range(int(list_size)-1):
+		for x in range(int(list_size) - 1):
 			wrongAnswer = random.choice(list(possibleAnswers))
 
 			# Don't pick it again
@@ -268,8 +275,8 @@ kanaList = {'Basic hiragana': [
 		["va",	"vi",	"vu",	"ve",	"vo"]]}
 
 order = ('Basic hiragana', 'Modified hiragana', 'Contracted hiragana',
-		 'Basic katakana', 'Modified katakana', 'Contracted katakana',
-		 'Additional katakana')
+		'Basic katakana', 'Modified katakana', 'Contracted katakana',
+		'Additional katakana')
 
 class KanaKind(object):
 	"""Represents a kind of Kana, one of the alphabets."""
@@ -313,7 +320,7 @@ class KanaKind(object):
 hiragana = KanaKind('hiragana', 1)
 katakana = KanaKind('katakana', 0)
 kanaKinds = {'hiragana': hiragana,
-			 'katakana': katakana}
+			'katakana': katakana}
 
 # Currently, the order matches the set specifications; as we move
 # away from that, we'll get to just kanaSetByName
@@ -332,7 +339,9 @@ setNameToMsg = {
 
 class KanaSet(object):
 	"""Represents a question set of kana (basic, modified, contracted,
-	etc."""
+		etc.
+
+	"""
 	def __init__(self, setName, kind):
 		self.setName = setName
 		self.kana = Set()
@@ -356,7 +365,7 @@ class KanaSet(object):
 	def getActiveKana(self, answerSet = None):
 		if answerSet is None:
 			answerSet = set()
-                        
+						
 		if not self.active:
 			return answerSet
 
@@ -411,7 +420,7 @@ class Kana(object):
 		
 		for transcription in transcriptions:
 			self.transcriptions[transcription] = \
-		        HepburnToOtherSysConvert(kana, transcription)
+				hepburn_to_other_sys_convert(kana, transcription)
 
 	# Theoretically, we probably "ought" to stringify these as their
 	# Unicode representations. Realistically, the romaji are probably
