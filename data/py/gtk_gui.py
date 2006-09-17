@@ -137,7 +137,6 @@ class Gui:
 			box2 = gtk.VBox()
 			# Kana image.
 			self.kanaImage = gtk.Image()
-			#Initialy setting kana's image.
 			kanaKindIndex = self.kana.kind.kindIndex
 			self.set_kana_image(self.kana)
 			box2.pack_start(self.kanaImage, False)
@@ -159,6 +158,11 @@ class Gui:
 			box.pack_start(self.quizInfos['container'], False)
 
 			box2 = gtk.VBox(spacing=4)
+			if self.param["kana_image_scale"] == "small": width = 100
+			elif self.param["kana_image_scale"] == "medium": width = 175
+			else: width = 250
+			box2.set_size_request(width,-1)
+			
 			# Stop button.
 			self.quizWidget['stop'] = gtk.Button(stock=gtk.STOCK_STOP)
 			self.quizWidget['stop'].connect("clicked", self.results)
@@ -179,7 +183,7 @@ class Gui:
 				self.answerButt = {};
 				for i in range(self.param['list_size']):
 					button = gtk.Button('')
-					button.connect("clicked",self.check_answer)
+					button.connect("clicked", self.check_answer)
 					box2.pack_start(button)
 					button.show()
 					self.answerButt[i] = button
@@ -255,7 +259,7 @@ class Gui:
 		else: # /o\
 			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" %
 				(msg(14), msg(15) % "<big><b>%s</b></big>" % correctAnswer.upper()))
-			self.score.update(0,correctAnswer,self.kana.kind.kindIndex) 
+			self.score.update(0, correctAnswer, self.kana.kind.kindIndex) 
 		self.quizLabel.set_use_markup(True)
 
 		if self.param['answer_mode'] == "list":
@@ -285,7 +289,7 @@ class Gui:
 		self.set_kana_image(self.kana) 
 
 		self.quizInfos['questionNumLabel'].set_text(msg(67) %
-			(self.score.getQuestionTotal()+1,self.param['length']))
+			(self.score.getQuestionTotal() + 1, self.param['length']))
 		self.quizLabel.set_text((msg(11), msg(12))[self.kana.kind.kindIndex])
 
 		if self.param['answer_mode'] == "list":
@@ -340,13 +344,15 @@ class Gui:
 		# Dicts for integrer to string param convertion and vice-versa...
 		opt_conv = {
 			"boolean": {0: 'false', 1: 'true', 'false': 0, 'true': 1},
-			"transcription_system": {0:'hepburn',1:'kunrei-shiki',2:'nihon-shiki',
-				3:'polivanov','hepburn':0,'kunrei-shiki':1,'nihon-shiki':2,'polivanov':3},
-			"answer_mode": {0:'list',1:'entry','list':0,'entry':1},
-			"rand_answer_sel_range": {0:'portion',1:'set',2:'kind','portion':0,
-				'set':1,'kind':2},
-			"lang": {0:'en',1:'fr',2:'de',3:'pt_BR',4:'ru',5:'sr',6:'sv','en':0,'fr':1,
-				'de':2,'pt_BR':3,'ru':4,'sr':5,'sv':6}
+			"transcription_system":  {0: 'hepburn', 1: 'kunrei-shiki',
+				2: 'nihon-shiki', 3: 'polivanov', 'hepburn': 0, 'kunrei-shiki':
+				1, 'nihon-shiki': 2, 'polivanov': 3},
+			"answer_mode": {0: 'list', 1: 'entry', 'list': 0, 'entry': 1},
+			"rand_answer_sel_range": {0: 'portion', 1: 'set', 2: 'kind',
+			'portion': 0, 'set': 1, 'kind': 2},
+			"lang": {0: 'en', 1:' fr', 2: 'de', 3: 'pt_BR', 4: 'ru', 5: 'sr',
+				6: 'sv', 'en': 0, 'fr': 1, 'de': 2,' pt_BR': 3, 'ru': 4,
+				'sr': 5, 'sv': 6}
 			}
 
 		def callback(widget, special=None):
@@ -685,11 +691,10 @@ class Gui:
 		kind = kana.kind.kindIndex
 		kana = kana.kana # the string
 		
-		# Loading bitmap (for Windows which doesn't like SVG) or vector (which
-		# is better for resizing) kana image.
+		# Loading kana PNG image.
 		pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(self.datarootpath,
-			"img", "kana", self.param['kana_image_theme'], "%s_%s.%s" %
-			(("k", "h")[kind], kana, ("svg", "png")[sys.platform == 'win32'])))
+			"img", "kana", self.param['kana_image_theme'], "%s_%s.png" %
+			(("k", "h")[kind], kana)))
 
 		# Scaling image buffer according to user size preference.
 		if self.param["kana_image_scale"] == "small":	width = 150

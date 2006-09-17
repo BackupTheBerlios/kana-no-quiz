@@ -77,7 +77,7 @@ class Options:
 		'list_size': 3,
 		'rand_answer_sel_range': 'portion',
 		'kana_image_theme': 'default',
-		'kana_image_scale': 'medium'
+		'kana_image_scale': 'large'
 		}
 		if locale.getlocale() in ("de", "fr", "pt_BR", "ru", "sr", "sv"):
 			self.params['lang'] = locale.getlocale()
