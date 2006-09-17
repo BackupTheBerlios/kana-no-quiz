@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg548"
+   sodipodi:version="0.34"
+   width="86.27000mm"
+   height="95.15000mm"
+   sodipodi:docbase="/home/choplair/MyBordel/Apps/ChoppyProg/kana-no-quiz/devel/data/img/kana/src/"
+   sodipodi:docname="/home/choplair/MyBordel/Apps/ChoppyProg/kana-no-quiz/devel/data/img/kana/src/h_za.svg">
+  <defs
+     id="defs550">
+    <linearGradient
+       id="linearGradient567">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.000000"
+         id="stop568" />
+      <stop
+         style="stop-color:#ffba95;stop-opacity:1;"
+         offset="1.000000"
+         id="stop569" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient561">
+      <stop
+         style="stop-color:#ffc9ff;stop-opacity:1;"
+         offset="0.000000"
+         id="stop562" />
+      <stop
+         style="stop-color:#00f3ff;stop-opacity:1;"
+         offset="1.000000"
+         id="stop563" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient567"
+       id="linearGradient564"
+       x1="0.49152541"
+       y1="0.60156250"
+       x2="0.49152541"
+       y2="0.32031247"
+       gradientUnits="objectBoundingBox"
+       spreadMethod="pad" />
+    <radialGradient
+       xlink:href="#linearGradient567"
+       id="radialGradient565"
+       cx="0.55172408"
+       cy="0.50781268"
+       fx="0.55172408"
+       fy="0.50781268"
+       r="0.61206889"
+       gradientUnits="objectBoundingBox"
+       spreadMethod="pad" />
+    <linearGradient
+       xlink:href="#linearGradient561"
+       id="linearGradient566" />
+  </defs>
+  <sodipodi:namedview
+     id="base" />
+  <rect
+     style="font-size:12;fill:url(#linearGradient564);fill-rule:evenodd;stroke:none;stroke-width:0.375;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0;stroke-dasharray:none;stroke-opacity:1;"
+     id="rect571"
+     width="305.6812"
+     height="337.1457"
+     x="-7.275958e-12"
+     y="-6.103516e-5" />
+  <path
+     style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:22.50043;stroke-linecap:round;"
+     d="M 200.8783 287.406 C 182.4437 294.8561 22.67232 313.1574 27.71692 222.8786 C 33.23013 129.5724 216.5479 184.4856 207.7036 179.0412 C 181.3615 160.1461 142.3025 129.4709 133.8432 39.99302 "
+     id="path554"
+     sodipodi:nodetypes="csss" />
+  <path
+     style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:22.50043;stroke-linecap:round;"
+     d="M 228.4509 83.80747 C 208.2055 86.42036 160.9095 98.39519 42.36666 93.19548 "
+     id="path563"
+     sodipodi:nodetypes="cs" />
+  <g
+     id="g675">
+    <path
+       style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:18.75036;"
+       d="M 271.9315 26.03252 C 272.1092 26.60292 286.2676 52.16192 288.0751 54.95502 "
+       id="path711"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:18.75036;"
+       d="M 240.6551 42.51182 C 240.8328 43.08232 255.6641 69.98722 257.4717 72.78022 "
+       id="path602"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>

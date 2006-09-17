@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   id="svg548"
+   sodipodi:version="0.32"
+   width="86.27000mm"
+   height="95.15000mm"
+   sodipodi:docbase="/mnt/sda1/ChoppyProg/kana-no-quiz/devel/data/img/kana/src/"
+   sodipodi:docname="/mnt/sda1/ChoppyProg/kana-no-quiz/devel/data/img/kana/src/h_ge.svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs
+     id="defs550">
+    <linearGradient
+       id="linearGradient567">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.000000"
+         id="stop568" />
+      <stop
+         style="stop-color:#ffba95;stop-opacity:1;"
+         offset="1.000000"
+         id="stop569" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient561">
+      <stop
+         style="stop-color:#ffc9ff;stop-opacity:1;"
+         offset="0.000000"
+         id="stop562" />
+      <stop
+         style="stop-color:#00f3ff;stop-opacity:1;"
+         offset="1.000000"
+         id="stop563" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient567"
+       id="linearGradient564"
+       x1="0.49152541"
+       y1="0.60156250"
+       x2="0.49152541"
+       y2="0.32031247"
+       gradientUnits="objectBoundingBox"
+       spreadMethod="pad" />
+    <radialGradient
+       xlink:href="#linearGradient567"
+       id="radialGradient565"
+       cx="0.55172408"
+       cy="0.50781268"
+       fx="0.55172408"
+       fy="0.50781268"
+       r="0.61206889"
+       gradientUnits="objectBoundingBox"
+       spreadMethod="pad" />
+    <linearGradient
+       xlink:href="#linearGradient561"
+       id="linearGradient566" />
+  </defs>
+  <sodipodi:namedview
+     id="base" />
+  <rect
+     style="font-size:12;fill:url(#linearGradient564);fill-rule:evenodd;stroke:none;stroke-width:0.375;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0;stroke-dasharray:none;stroke-opacity:1;"
+     id="rect571"
+     width="305.6812"
+     height="337.1457"
+     x="3.051758e-5"
+     y="-6.103516e-5" />
+  <g
+     id="g642"
+     transform="translate(10.29306,-2.573387)">
+    <path
+       style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:18.75036;"
+       d="M 255.1797 28.97604 C 255.3574 29.54654 269.5159 55.10554 271.3233 57.89864 "
+       id="path580"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:18.75036;"
+       d="M 223.9033 45.45544 C 224.0810 46.02584 238.9123 72.93084 240.7199 75.72384 "
+       id="path570"
+       sodipodi:nodetypes="cc" />
+  </g>
+  <g
+     id="g740">
+    <path
+       style="font-size:12;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:21.753;stroke-linecap:round;"
+       d="M 80.3309 259.884 C 59.3583 305.5 53.682 275.274 53.6251 234.203 C 53.9051 198.044 53.5701 81.775 53.5455 78.3338 "
+       id="path564"
+       sodipodi:nodetypes="css"
+       transform="matrix(1.022616,0.000000,0.000000,1.046201,-2.970221,-15.27125)" />
+    <g
+       id="g737">
+      <path
+         style="font-size:12;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:21.753;stroke-linecap:round;"
+         d="M 139.6665 295.6214 C 142.0775 293.1377 181.2129 270.4478 180.2742 208.2355 C 179.9825 189.1522 181.4725 68.68257 181.3631 66.14418 "
+         id="path554"
+         sodipodi:nodetypes="css"
+         transform="matrix(1.022616,0.000000,0.000000,1.046201,-2.970221,-15.27125)" />
+      <path
+         style="font-size:12;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:21.753;stroke-linecap:round;"
+         d="M 241.0617 125.2287 C 239.1293 125.4795 124.0345 125.9688 118.0214 125.6382 "
+         id="path563"
+         sodipodi:nodetypes="cs"
+         transform="matrix(1.022616,0.000000,0.000000,1.046201,-2.970221,-15.27125)" />
+    </g>
+  </g>
+</svg>

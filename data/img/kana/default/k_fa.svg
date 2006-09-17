@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   id="svg548"
+   sodipodi:version="0.34"
+   width="86.27000mm"
+   height="95.15000mm"
+   sodipodi:docbase="/mnt/usb_bar/kana_image_sources"
+   sodipodi:docname="/mnt/usb_bar/kana_image_sources/k_fa.svg">
+  <defs
+     id="defs550">
+    <linearGradient
+       id="linearGradient717">
+      <stop
+         style="stop-color:#00a7ff;stop-opacity:1;"
+         offset="0.000000"
+         id="stop718" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="1.000000"
+         id="stop719" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient700">
+      <stop
+         style="stop-color:#0dad77;stop-opacity:1;"
+         offset="0.000000"
+         id="stop701" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="1.000000"
+         id="stop702" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient567">
+      <stop
+         style="stop-color:#00aaff;stop-opacity:1;"
+         offset="0.000000"
+         id="stop568" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="1.000000"
+         id="stop569" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient561">
+      <stop
+         style="stop-color:#ffc9ff;stop-opacity:1;"
+         offset="0.000000"
+         id="stop562" />
+      <stop
+         style="stop-color:#00f3ff;stop-opacity:1;"
+         offset="1.000000"
+         id="stop563" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient717"
+       id="linearGradient564"
+       x1="0.47457626"
+       y1="0.03906224"
+       x2="0.47457626"
+       y2="0.60937500"
+       gradientUnits="objectBoundingBox"
+       spreadMethod="pad" />
+    <radialGradient
+       xlink:href="#linearGradient567"
+       id="radialGradient565"
+       cx="0.50000000"
+       cy="0.53906250"
+       fx="0.50000000"
+       fy="0.53906250"
+       r="0.67796612"
+       gradientUnits="objectBoundingBox"
+       spreadMethod="pad" />
+    <linearGradient
+       xlink:href="#linearGradient561"
+       id="linearGradient566" />
+  </defs>
+  <sodipodi:namedview
+     id="base">
+    <sodipodi:guide
+       orientation="vertical"
+       position="539.758606"
+       id="guide680" />
+  </sodipodi:namedview>
+  <rect
+     style="font-size:12;fill:url(#linearGradient564);fill-rule:evenodd;stroke:none;stroke-width:0.25;stroke-linecap:square;stroke-linejoin:round;stroke-dashoffset:0;stroke-dasharray:none;fill-opacity:1;stroke-opacity:1;"
+     id="rect571"
+     width="305.6812"
+     height="337.1457"
+     x="-3.051760e-5"
+     y="-1.525879e-5" />
+  <path
+     style="font-size:12;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:21.97706;stroke-linecap:round;"
+     d="M 28.55514 254.6457 C 118.7119 242.8861 192.7972 164.2615 193.3809 93.07887 C 193.9895 85.14201 185.8054 86.62011 166.8343 86.64661 C 132.4041 86.69201 16.83911 86.55991 16 86.54771 "
+     id="path620"
+     sodipodi:nodetypes="csss" />
+  <g
+     id="g827"
+     transform="matrix(0.438889,0,0,0.478054,182.2514,121.621)">
+    <path
+       style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:22.50043;stroke-linecap:round;"
+       d="M 49.09818 64.05579 C 55.20498 63.25949 248.5969 53.24648 260.5109 62.56958 C 275.3475 75.61428 211.7283 131.9135 167.0721 150.5166 "
+       id="path554"
+       sodipodi:nodetypes="css" />
+    <path
+       style="font-size:12.000;fill:none;fill-rule:evenodd;stroke:#2e4898;stroke-width:22.50043;stroke-linecap:round;"
+       d="M 135.9827 92.02025 C 142.0044 248.701 109.9599 276.4343 90.11427 293.9515 "
+       id="path852"
+       sodipodi:nodetypes="cs" />
+  </g>
+</svg>
