@@ -160,8 +160,8 @@ class Gui:
 			box2 = gtk.VBox(spacing=4)
 			if self.param["kana_image_scale"] == "small": width = 100
 			elif self.param["kana_image_scale"] == "medium": width = 175
-			else: width = 250
-			box2.set_size_request(width,-1)
+			else: width = 250,
+			box2.set_size_request(width, -1)
 			
 			# Stop button.
 			self.quizWidget['stop'] = gtk.Button(stock=gtk.STOCK_STOP)
@@ -697,12 +697,15 @@ class Gui:
 			(("k", "h")[kind], kana)))
 
 		# Scaling image buffer according to user size preference.
-		if self.param["kana_image_scale"] == "small":	width = 150
-		elif self.param["kana_image_scale"] == "medium": width = 250
-		else: width = 350
+		if self.param["kana_image_scale"] == "small":
+			width = (150, 225)[self.param['kana_image_theme'] == "kanatest"]
+		elif self.param["kana_image_scale"] == "medium":
+			width = (242, 360)[self.param['kana_image_theme'] == "kanatest"]
+		else:
+			width = (350, 520)[self.param['kana_image_theme'] == "kanatest"]
 		# Corresponding height.
 		height = pixbuf.get_height() * width / pixbuf.get_width()
-		scaled_buf = pixbuf.scale_simple(width, int(height), gtk.gdk.INTERP_BILINEAR)
+		scaled_buf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
 
 		# Updating kana image widget.
 		self.kanaImage.set_from_pixbuf(scaled_buf)
