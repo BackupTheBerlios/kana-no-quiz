@@ -134,7 +134,9 @@ class I18n:
 			_("Kana"),
 			_("Answering"),
 			_("Sound"), #85
-			_("Misc.")
+			_("Misc."),
+			_("Kana tables"),
+			_("Welcome to Kana no quiz version %s.")
 			)
 
 		return strings[num]

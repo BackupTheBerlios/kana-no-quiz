@@ -75,29 +75,34 @@ class Gui:
 			self.window.set_title(msg(0))
 			self.window.resize(1, 1) #Properly resize the window.
 
-		box = gtk.HBox()
+		box = gtk.VBox()
 
 		image = gtk.Image()
 		image.set_from_file(os.path.join(self.datarootpath, "img", "logo.gif"))
 		box.pack_start(image,False)
+		
+		box.pack_start(gtk.Label(msg(88) % self.version), False, padding=4)
 
-		box2 = gtk.VBox()
+		table = gtk.Table(2, 3, True)
 		button = gtk.Button(msg(1))
-		button.connect_object("clicked", self.intro,box)
-		box2.pack_start(button)
+		button.connect_object("clicked", self.intro, box)
+		table.attach(button, 0, 1, 0, 1)
+		button = gtk.Button(msg(87))
+		button.connect("clicked", self.kana_tables)
+		table.attach(button, 0, 1, 1, 2)
 		button = gtk.Button(msg(2))
-		button.connect_object("clicked", self.options,box)
-		box2.pack_start(button)
+		button.connect_object("clicked", self.options, box)
+		table.attach(button, 1, 2, 0, 1)
 		button = gtk.Button(msg(3))
-		button.connect_object("clicked", self.quiz,box)
-		box2.pack_start(button)
+		button.connect_object("clicked", self.quiz, box)
+		table.attach(button, 1, 2, 1, 2)
 		button = gtk.Button(msg(4))
 		button.connect("clicked", self.about)
-		box2.pack_start(button)
+		table.attach(button, 2, 3, 0, 1)
 		button = gtk.Button(msg(71))
 		button.connect("clicked", self.quit)
-		box2.pack_start(button)
-		box.pack_start(box2)
+		table.attach(button, 2, 3, 1, 2)
+		box.pack_start(table)
 
 		if oldbox:
 			self.window.remove(oldbox)
@@ -126,6 +131,32 @@ class Gui:
 		#Then add the new one
 		self.window.add(box)
 		self.window.show_all()
+
+	def kana_tables(self, *args):
+		"""Display the Kana table dialog dialog."""		
+		dialog = gtk.Dialog(msg(87), self.window, gtk.DIALOG_NO_SEPARATOR|
+			gtk.DIALOG_MODAL, (gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
+		dialog.set_border_width(5)
+		dialog.vbox.set_spacing(4)
+		
+		# Basic hiragana table
+		i = 1
+		table = gtk.Table(12, 6)
+		for portion in kanaengine.kanaList['Basic hiragana'][:-1]:
+			j = 1
+			for kana in portion:
+				table.attach(gtk.Label(kana), i, i + 1, j, j + 1)
+				j += 1
+			i += 1
+		for kana in kanaengine.kanaList['Basic hiragana'][-1]:
+			# The last, particular portion.
+			coord = {"ya": (10, 1), "yu": (10, 3 ), "yo": (10, 5),
+				"wa": (11, 1), "o-2": (11, 5), "n": (12, 1)}
+			table.attach(gtk.Label(kana), coord[kana][0], coord[kana][0] + 1,
+				coord[kana][1], coord[kana][1] + 1)
+		
+		dialog.vbox.pack_start(table)
+		dialog.show_all()
 
 	def quiz(self, oldbox):
 		# Randomly getting a kana (respecting bellow conditions).
@@ -700,9 +731,9 @@ class Gui:
 		if self.param["kana_image_scale"] == "small":
 			width = (150, 225)[self.param['kana_image_theme'] == "kanatest"]
 		elif self.param["kana_image_scale"] == "medium":
-			width = (242, 360)[self.param['kana_image_theme'] == "kanatest"]
+			width = (210, 325)[self.param['kana_image_theme'] == "kanatest"]
 		else:
-			width = (350, 520)[self.param['kana_image_theme'] == "kanatest"]
+			width = (330, 495)[self.param['kana_image_theme'] == "kanatest"]
 		# Corresponding height.
 		height = pixbuf.get_height() * width / pixbuf.get_width()
 		scaled_buf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
