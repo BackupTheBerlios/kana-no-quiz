@@ -93,8 +93,8 @@ class KanaEngine:
 		self.options = options
 		
 	def reset(self):
-		"""Reset main variable values (i.e. when quiz	is finished,
-			to permit starting one another	in a safe mode).
+		"""Reset main variable values (i.e. when quiz is finished,
+			to permit starting one another in a safe mode).
 			
 		"""
 		self.previous_kana = None
@@ -196,48 +196,48 @@ class KanaEngine:
 		return answerList
 
 kanaList = {'Basic hiragana': [
-		["a",	"i",	"u",	"e",	"o"],
-		["ka",	"ki",	"ku",	"ke",	"ko"],
-		["sa",	"shi",	"su",	"se",	"so"],
-		["ta",	"chi",	"tsu",	"te",	"to"],
-		["na",	"ni",	"nu",	"ne",	"no"],
-		["ha",	"hi",	"fu",	"he",	"ho"],
-		["ma",	"mi",	"mu",	"me",	"mo"],
-		["ra",	"ri",	"ru",	"re",	"ro"],
-		["ya",		"yu",		"yo",
-		"wa",				"o-2",
+		["a",		"i",		"u",		"e",		"o"],
+		["ka",	"ki",		"ku",		"ke",		"ko"],
+		["sa",	"shi",	"su",		"se",		"so"],
+		["ta",	"chi",	"tsu",	"te",		"to"],
+		["na",	"ni",		"nu",		"ne",		"no"],
+		["ha",	"hi",		"fu",		"he",		"ho"],
+		["ma",	"mi",		"mu",	"me",	"mo"],
+		["ra",	"ri",		"ru",		"re",		"ro"],
+		["ya",				"yu",					"yo",
+		"wa",										"o-2",
 		"n"]],
 		'Modified hiragana':
 		[
-		["ga",	"gi",	"gu",	"ge",	"go"],
-		["za",	"ji",	"zu",	"ze",	"zo"],
-		["da",	"ji-2","zu-2",	"de",	"do"],
-		["ba",	"bi",	"bu",	"be",	"bo"],
-		["pa",	"pi",	"pu",	"pe",	"po"]],
+		["ga",	"gi",		"gu",		"ge",	"go"],
+		["za",	"ji",		"zu",		"ze",	"zo"],
+		["da",	"ji-2",	"zu-2",	"de",	"do"],
+		["ba",	"bi",		"bu",		"be",	"bo"],
+		["pa",	"pi",		"pu",		"pe",	"po"]],
 		'Contracted hiragana':
 		[
-		["kya",		"kyu",		"kyo",
-		"gya",		"gyu",		"gyo"],
-		["sha",		"shu",		"sho",
-		"ja",		"ju",		"jo"],
-		["cha",		"chu",		"cho",
-		"nya",		"nyu",		"nyo"],
-		["rya",		"ryu",		"ryo",
-		"hya",		"hyu",		"hyo"],
-		["bya",		"byu",		"byo",
-		"pya",		"pyu",		"pyo"]],
+		["kya",			"kyu",			"kyo",
+		"gya",			"gyu",			"gyo"],
+		["sha",			"shu",			"sho",
+		"ja",				"ju",				"jo"],
+		["cha",			"chu",			"cho",
+		"nya",			"nyu",			"nyo"],
+		["rya",			"ryu",			"ryo",
+		"hya",			"hyu",			"hyo"],
+		["bya",			"byu",			"byo",
+		"pya",			"pyu",			"pyo"]],
 		'Basic katakana':
 		[
-		["a",	"i",	"u",	"e",	"o"],
-		["ka",	"ki",	"ku",	"ke",	"ko"],
-		["sa",	"shi",	"su",	"se",	"so"],
-		["ta",	"chi",	"tsu",	"te",	"to"],
-		["na",	"ni",	"nu",	"ne",	"no"],
-		["ha",	"hi",	"fu",	"he",	"ho"],
-		["ma",	"mi",	"mu",	"me",	"mo"],
-		["ra",	"ri",	"ru",	"re",	"ro"],
-		["ya",		"yu",		"yo",
-		"wa",				"o-2",
+		["a",		"i",		"u",		"e",		"o"],
+		["ka",	"ki",		"ku",		"ke",		"ko"],
+		["sa",	"shi",	"su",		"se",		"so"],
+		["ta",	"chi",	"tsu",	"te",		"to"],
+		["na",	"ni",		"nu",		"ne",		"no"],
+		["ha",	"hi",		"fu",		"he",		"ho"],
+		["ma",	"mi",		"mu",	"me", 	"mo"],
+		["ra",	"ri",		"ru",		"re",		"ro"],
+		["ya",				"yu",					"yo",
+		"wa",										"o-2",
 		"n"]],
 		'Modified katakana':	
 		[
@@ -251,7 +251,7 @@ kanaList = {'Basic hiragana': [
 		["kya",		"kyu",		"kyo",
 		"gya",		"gyu",		"gyo"],
 		["sha",		"shu",		"sho",
-		"ja",		"ju",		"jo"],
+		"ja",			"ju",			"jo"],
 		["cha",		"chu",		"cho",
 		"nya",		"nyu",		"nyo"],
 		["rya",		"ryu",		"ryo",
@@ -260,18 +260,18 @@ kanaList = {'Basic hiragana': [
 		"pya",		"pyu",		"pyo"]],
 		'Additional katakana':
 		[
-		[	"wi",		"we",	"wo",
-		"kwa",				"kwo",
-		"gwa"],
-		[			"she",
-					"je",
-					"che",
-		"tsa",			"tse",	"tso"],
-		[	"ti",	"tu",
-			"di",	"du",
-			"tyu",	"dyu"],
-		[			"ye",
-		"fa",	"fi",		"fe",	"fo"],
+		[			"wi",			"we",	"wo",
+		"kwa",							"kwo",
+		"gwa"],	
+		[							"she",
+									"je",
+									"che",
+		"tsa",					"tse",	"tso"],
+		[			"ti",	"tu",
+					"di",	"du",
+					"tyu","dyu"],
+		[							"ye",
+		"fa",		"fi",			"fe",	"fo"],
 		["va",	"vi",	"vu",	"ve",	"vo"]]}
 
 order = ('Basic hiragana', 'Modified hiragana', 'Contracted hiragana',
@@ -339,7 +339,7 @@ setNameToMsg = {
 
 class KanaSet(object):
 	"""Represents a question set of kana (basic, modified, contracted,
-		etc.
+		etc.)
 
 	"""
 	def __init__(self, setName, kind):
@@ -361,7 +361,7 @@ class KanaSet(object):
 	def addPortion(self, portion):
 		self.portions.append(portion)
 
-	# add all active kana to the given list
+	# Add all active kana to the given list
 	def getActiveKana(self, answerSet = None):
 		if answerSet is None:
 			answerSet = set()

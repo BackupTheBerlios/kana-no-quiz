@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Kana no quiz!
+
 	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 	$Id$
 

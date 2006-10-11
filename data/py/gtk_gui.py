@@ -40,7 +40,7 @@ class Gui:
 		self.kanaEngine =  kanaengine.KanaEngine(self.param)
 		self.score = score.Score()
 
-		#Localization.
+		# Localization.
 		self.i18n = i18n.I18n(os.path.join(self.datarootpath, "locale"))
 		self.currentlang = self.param['lang']
 		self.i18n.setlang(self.param['lang'])
@@ -48,7 +48,7 @@ class Gui:
 		global msg
 		msg = self.i18n.msg
 
-		#Initial window attributes.
+		# Initial window attributes.
 		self.window.set_title(msg(0))
 		self.window.connect("destroy", self.quit)
 		self.window.set_border_width(5)
@@ -65,7 +65,7 @@ class Gui:
 
 	def main(self, oldbox=None):
 		if self.currentlang != self.param['lang']:
-			#Change localization...
+			# Change localization...
 			self.currentlang = self.param['lang']
 			self.i18n.setlang(self.param['lang'])
 			global str
@@ -73,7 +73,7 @@ class Gui:
 
 		if oldbox: 
 			self.window.set_title(msg(0))
-			self.window.resize(1, 1) #Properly resize the window.
+			self.window.resize(1, 1) # Properly resize the window.
 
 		box = gtk.VBox()
 
@@ -134,28 +134,88 @@ class Gui:
 
 	def kana_tables(self, *args):
 		"""Display the Kana table dialog dialog."""		
+		def item(kind, kana):
+			"""Return a frame with a small kana image widget associated with its
+				transcription label, to put in the kana tables.
+
+			"""
+			image = gtk.Image()
+			
+			# Loading kana PNG image.
+			pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(self.datarootpath,
+				"img", "kana", self.param['kana_image_theme'], "%s_%s.png" %
+				(("k", "h")[kind], kana)))
+
+			# Resizing.
+			height = 26
+			width = pixbuf.get_width() * height / pixbuf.get_height()
+			scaled_buf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
+
+			# Updating kana image widget.
+			image.set_from_pixbuf(scaled_buf)
+			box = gtk.VBox()
+			box.pack_start(image)
+			
+			# Transcription label.
+			transcription = (kana, kanaengine.hepburn_to_other_sys_convert(
+				kana, self.param['transcription_system']))[[self.param\
+				['transcription_system']] != "hepburn"]
+			if transcription[-2:] == "-2": transcription = transcription[:-2]
+			label = gtk.Label(transcription)
+			container = gtk.EventBox()
+			container.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("white"))
+			container.add(label)
+			box.pack_start(container)
+
+			frame = gtk.Frame()
+			frame.add(box)
+
+			return frame
+		
 		dialog = gtk.Dialog(msg(87), self.window, gtk.DIALOG_NO_SEPARATOR|
 			gtk.DIALOG_MODAL, (gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
 		dialog.set_border_width(5)
 		dialog.vbox.set_spacing(4)
-		
-		# Basic hiragana table
-		i = 1
-		table = gtk.Table(12, 6)
-		for portion in kanaengine.kanaList['Basic hiragana'][:-1]:
-			j = 1
-			for kana in portion:
-				table.attach(gtk.Label(kana), i, i + 1, j, j + 1)
-				j += 1
-			i += 1
-		for kana in kanaengine.kanaList['Basic hiragana'][-1]:
-			# The last, particular portion.
-			coord = {"ya": (10, 1), "yu": (10, 3 ), "yo": (10, 5),
-				"wa": (11, 1), "o-2": (11, 5), "n": (12, 1)}
-			table.attach(gtk.Label(kana), coord[kana][0], coord[kana][0] + 1,
-				coord[kana][1], coord[kana][1] + 1)
-		
-		dialog.vbox.pack_start(table)
+
+		# Generating kana tables (one per set).
+		n = 0
+		size = ((5, 11), (5, 5), (3, 10), (5, 11), (5, 5), (3, 10), (5, 12))
+		for set_name in kanaengine.order:
+			set = kanaengine.kanaList[set_name]
+
+			table = gtk.Table(size[n][0], size[n][1], True)
+			table.set_col_spacings(3)
+
+			i = 0
+			for portion in set:
+				j = 0
+				for kana in portion:
+					if n == 0 or n == 3:
+						if i < 8: x, y = i, j
+						else:
+							coord = {"ya": (i, 0), "yu": (i, 2), "yo": (i, 4),
+								"wa": (i + 1, 0), "o-2": (i + 1, 2),
+								"n": (i + 1, 4)}
+							x, y = coord[kana]
+					elif n == 1 or n == 4: x, y = i, j
+					elif n == 2 or n == 5:
+						if j == 3: i += 1; j = 0
+						x, y = i, j
+					elif n == 6:
+						x = i
+						if kana in ("wo", "kwo", "she", "je", "che", "tu",
+							"du", "ye"):
+							i += 1
+						dict = {"a": 0, "i": 1, "u": 2, "e": 3, "o": 4}
+						y = dict[kana[-1]]
+						
+					table.attach(item((0, 1)[n < 3], kana), x, x + 1, y, y + 1)
+					j += 1
+				i += 1
+
+			dialog.vbox.pack_start(table)
+			n += 1
+
 		dialog.show_all()
 
 	def quiz(self, oldbox):

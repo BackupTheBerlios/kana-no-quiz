@@ -203,6 +203,6 @@ class Options:
 			#Set path to the configuration file.
 			os.mkdir(self.conf_dir)
 
-		file = open(self.conf_file, "wb")  # Opening (creating if doesn't exist)
+		file = open(self.conf_file, "wb")  # Opening (creating if doesn't exist).
 		file.write(content)  # Writing
 		file.close()  # And closing
