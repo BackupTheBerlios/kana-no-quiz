@@ -147,7 +147,7 @@ class Gui:
 				(("k", "h")[kind], kana)))
 
 			# Resizing.
-			height = 26
+			height = 22
 			width = pixbuf.get_width() * height / pixbuf.get_height()
 			scaled_buf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
 
@@ -162,15 +162,18 @@ class Gui:
 				['transcription_system']] != "hepburn"]
 			if transcription[-2:] == "-2": transcription = transcription[:-2]
 			label = gtk.Label(transcription)
+			box.pack_start(label)
+			
 			container = gtk.EventBox()
 			container.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("white"))
-			container.add(label)
-			box.pack_start(container)
+			container.modify_bg(gtk.STATE_PRELIGHT, gtk.gdk.color_parse("white"))
+			container.modify_bg(gtk.STATE_ACTIVE, gtk.gdk.color_parse("white"))
+			container.add(box)
+			
+			button = gtk.Button()
+			button.add(container)
 
-			frame = gtk.Frame()
-			frame.add(box)
-
-			return frame
+			return button
 		
 		dialog = gtk.Dialog(msg(87), self.window, gtk.DIALOG_NO_SEPARATOR|
 			gtk.DIALOG_MODAL, (gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
@@ -183,39 +186,40 @@ class Gui:
 		dialog.vbox.pack_start(da_table)
 
 		# Generating kana tables (one per set).
-		n = 0
-		size = ((5, 10), (5, 5), (3, 10), (5, 10), (5, 5), (3, 10), (5, 12))
+		size = ((5, 10), (5, 5), (3, 10), (5, 10), (5, 5), (3, 10), (6, 5))
 		table_coord = {0: (0, 0), 1: (0, 1), 2: (0, 2), 3: (1, 0), 4: (1, 1),
 			5: (1, 2), 6: (2, 1)}
+		special_coord = {
+			# Basic hiragana / katakana.
+			"ya": (8, 0), "yu": (8, 2), "yo": (8, 4), "wa": (9, 0), "o-2":
+			(9, 2), "n": (9, 4),
+			# Additional katakana.
+			"wi": (0, 1), "we": (0, 3), "wo": (0, 4), "kwa": (0, 5), "kwo":
+			(0, 6), "gwa": (0, 7), "she": (1, 5), "je": (1, 6), "che": (1, 7),
+			"tsa": (1, 0), "tse": (1, 3), "tso": (1, 4), "ti": (2, 1), "tu":
+			(2, 2), "tyu": (2, 4), "di": (3, 1), "du": (3, 2), "dyu":
+			(3, 4), "ye": (4, 5), "fa": (4, 0), "fi":	(4, 1), "fe": (4, 3),
+			"fo": (4, 4), "va": (5, 0), "vi": (5, 1), "vu": (5, 2), "ve":
+			(5, 3), "vo": (5, 4)}
+		n = 0
 		for set_name in kanaengine.order:
 			set = kanaengine.kanaList[set_name]
 
 			table = gtk.Table(size[n][0], size[n][1], True)
 			table.set_col_spacings(3)
-
 			i = 0
 			for portion in set:
 				j = 0
 				for kana in portion:
 					if n == 0 or n == 3:
 						if i < 8: x, y = i, j
-						else:
-							coord = {"ya": (i, 0), "yu": (i, 2), "yo": (i, 4),
-								"wa": (i + 1, 0), "o-2": (i + 1, 2),
-								"n": (i + 1, 4)}
-							x, y = coord[kana]
+						else: x, y = special_coord[kana]
 					elif n == 1 or n == 4: x, y = i, j
 					elif n == 2 or n == 5:
 						if j == 3: i += 1; j = 0
 						x, y = i, j
-					elif n == 6:
-						x = i
-						if kana in ("wo", "kwo", "she", "je", "che", "tu",
-							"du", "ye"):
-							i += 1
-						dict = {"a": 0, "i": 1, "u": 2, "e": 3, "o": 4}
-						y = dict[kana[-1]]
-						
+					elif n == 6: x, y = special_coord[kana]
+
 					table.attach(item((0, 1)[n < 3], kana), x, x + 1, y, y + 1)
 					j += 1
 				i += 1
@@ -225,8 +229,10 @@ class Gui:
 			label.set_use_markup(True)
 			box.pack_start(label, False)
 			box.pack_start(table, False)
+			if n == 6: table.set_row_spacing(4, 6)
 			da_table.attach(box, table_coord[n][0], table_coord[n][0] + 1,
-				table_coord[n][1], table_coord[n][1] + 1, xoptions = gtk.SHRINK)
+				table_coord[n][1], table_coord[n][1] + (1, 2)[n == 6],
+				xoptions = gtk.SHRINK)
 			
 			n += 1
 
