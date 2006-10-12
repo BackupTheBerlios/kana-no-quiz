@@ -70,13 +70,13 @@ class I18n:
 			_("Contracted"), #25
 			_("Additional"),
 			_("Portions"),
-			_("Basic hiragana portions"),
-			_("Modified hiragana portions"),
-			_("Contracted hiragana portions"), #30
-			_("Basic katakana portions"),
-			_("Modified katakana portions"),
-			_("Contracted katakana portions"),
-			_("Additional katakana portions"),
+			_("Basic hiragana"),
+			_("Modified hiragana"),
+			_("Contracted hiragana"), #30
+			_("Basic katakana"),
+			_("Modified katakana"),
+			_("Contracted katakana"),
+			_("Additional katakana"),
 			_("If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."), #35
 			_("Select the kana portions you want to train yourself upon:"),
 			_("Select all"),

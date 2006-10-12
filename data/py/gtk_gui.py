@@ -53,7 +53,7 @@ class Gui:
 		self.window.connect("destroy", self.quit)
 		self.window.set_border_width(5)
 		gtk.window_set_default_icon_from_file(os.path.join(
-			self.datarootpath,"img","icon.png"))
+			self.datarootpath, "img", "icon.png"))
 		self.handlerid = {}
 
 	def keypress(self, source, event):
@@ -109,11 +109,11 @@ class Gui:
 		self.window.add(box)
 		self.window.show_all()
 
-		#Initialize pyGTK if it haven't been done yet.
+		# Initialize pyGTK if it haven't been done yet.
 		if not oldbox : gtk.main()
 
 	def intro(self, oldbox):
-		#Here comes the marvelous introduction...
+		# Here comes the marvelous introduction...
 		self.window.set_title(msg(1)) #Change title of window.
 		box = gtk.VBox(spacing=5)
 
@@ -126,9 +126,9 @@ class Gui:
 		button.connect_object("clicked", self.main,box)
 		box.pack_end(button)
 
-		#Forget the old box
+		# Forget the old box
 		self.window.remove(oldbox)
-		#Then add the new one
+		# Then add the new one
 		self.window.add(box)
 		self.window.show_all()
 
@@ -177,9 +177,16 @@ class Gui:
 		dialog.set_border_width(5)
 		dialog.vbox.set_spacing(4)
 
+		da_table = gtk.Table(3, 2, False)
+		da_table.set_col_spacings(8)
+		da_table.set_row_spacings(4)
+		dialog.vbox.pack_start(da_table)
+
 		# Generating kana tables (one per set).
 		n = 0
-		size = ((5, 11), (5, 5), (3, 10), (5, 11), (5, 5), (3, 10), (5, 12))
+		size = ((5, 10), (5, 5), (3, 10), (5, 10), (5, 5), (3, 10), (5, 12))
+		table_coord = {0: (0, 0), 1: (0, 1), 2: (0, 2), 3: (1, 0), 4: (1, 1),
+			5: (1, 2), 6: (2, 1)}
 		for set_name in kanaengine.order:
 			set = kanaengine.kanaList[set_name]
 
@@ -213,7 +220,14 @@ class Gui:
 					j += 1
 				i += 1
 
-			dialog.vbox.pack_start(table)
+			box = gtk.VBox()
+			label = gtk.Label("<b>%s</b>" % msg(28 + n))
+			label.set_use_markup(True)
+			box.pack_start(label, False)
+			box.pack_start(table, False)
+			da_table.attach(box, table_coord[n][0], table_coord[n][0] + 1,
+				table_coord[n][1], table_coord[n][1] + 1, xoptions = gtk.SHRINK)
+			
 			n += 1
 
 		dialog.show_all()
