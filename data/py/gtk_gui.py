@@ -142,9 +142,10 @@ class Gui:
 			image = gtk.Image()
 			
 			# Loading kana PNG image.
-			pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(self.datarootpath,
-				"img", "kana", self.param['kana_image_theme'], "%s_%s.png" %
-				(("k", "h")[kind], kana)))
+			image_path = os.path.join(self.datarootpath, "img", "kana",
+				self.param['kana_image_theme'], "%s_%s.png" % (("k", "h")\
+				[kind], kana))
+			pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
 
 			# Resizing.
 			height = 22
@@ -171,6 +172,8 @@ class Gui:
 			container.add(box)
 			
 			button = gtk.Button()
+			button.connect("clicked", lambda *args: kana_image.set_from_file(
+				image_path))
 			button.add(container)
 
 			return button
@@ -185,38 +188,58 @@ class Gui:
 		da_table.set_row_spacings(4)
 		dialog.vbox.pack_start(da_table)
 
+		# High-size kana.
+		kana_image = gtk.Image()
+		da_table.attach(kana_image, 2, 3, 0, 1)
+
 		# Generating kana tables (one per set).
-		size = ((5, 10), (5, 5), (3, 10), (5, 10), (5, 5), (3, 10), (6, 5))
+		size = ((6, 10), (6, 5), (4, 10), (6, 10), (6, 5), (4, 10), (6, 5))
 		table_coord = {0: (0, 0), 1: (0, 1), 2: (0, 2), 3: (1, 0), 4: (1, 1),
 			5: (1, 2), 6: (2, 1)}
 		special_coord = {
 			# Basic hiragana / katakana.
-			"ya": (8, 0), "yu": (8, 2), "yo": (8, 4), "wa": (9, 0), "o-2":
-			(9, 2), "n": (9, 4),
+			"ya": (8, 1), "yu": (8, 3), "yo": (8, 5), "wa": (9, 1), "o-2":
+			(9, 3), "n": (9, 5),
 			# Additional katakana.
-			"wi": (0, 1), "we": (0, 3), "wo": (0, 4), "kwa": (0, 5), "kwo":
-			(0, 6), "gwa": (0, 7), "she": (1, 5), "je": (1, 6), "che": (1, 7),
-			"tsa": (1, 0), "tse": (1, 3), "tso": (1, 4), "ti": (2, 1), "tu":
-			(2, 2), "tyu": (2, 4), "di": (3, 1), "du": (3, 2), "dyu":
-			(3, 4), "ye": (4, 5), "fa": (4, 0), "fi":	(4, 1), "fe": (4, 3),
-			"fo": (4, 4), "va": (5, 0), "vi": (5, 1), "vu": (5, 2), "ve":
-			(5, 3), "vo": (5, 4)}
+			"wi": (0, 2), "we": (0, 4), "wo": (0, 5), "kwa": (0, 6), "kwo":
+			(0, 7), "gwa": (0, 8), "she": (1, 6), "je": (1, 7), "che": (1, 8),
+			"tsa": (1, 1), "tse": (1, 4), "tso": (1, 5), "ti": (2, 2), "tu":
+			(2, 3), "tyu": (2, 5), "di": (3, 2), "du": (3, 3), "dyu":
+			(3, 5), "ye": (4, 6), "fa": (4, 1), "fi": (4, 2), "fe": (4, 4),
+			"fo": (4, 5), "va": (5, 1), "vi": (5, 2), "vu": (5, 3), "ve":
+			(5, 4), "vo": (5, 5)}
 		n = 0
 		for set_name in kanaengine.order:
 			set = kanaengine.kanaList[set_name]
 
-			table = gtk.Table(size[n][0], size[n][1], True)
+			table = gtk.Table(size[n][0], size[n][1])
 			table.set_col_spacings(3)
 			i = 0
 			for portion in set:
-				j = 0
+				# Portion selection checkbutton.	
+				frame = gtk.Frame()
+				checkbutt = gtk.CheckButton()
+				frame.add(checkbutt)
+				x = i
+				x_end = x + 1
+				if (n in (0,3) and i == 8) or (n in (2, 5)):
+					x_end = x + 2
+				elif n == 6 and i >= 2:
+					if i == 2: x_end = x + 2
+					else:
+						x = i + 1
+						x_end = x + 1
+				table.attach(frame, x, x_end, 0, 1)
+				
+				# Portion's kana.
+				j = 1
 				for kana in portion:
 					if n == 0 or n == 3:
 						if i < 8: x, y = i, j
 						else: x, y = special_coord[kana]
 					elif n == 1 or n == 4: x, y = i, j
 					elif n == 2 or n == 5:
-						if j == 3: i += 1; j = 0
+						if j == 4: i += 1; j = 1
 						x, y = i, j
 					elif n == 6: x, y = special_coord[kana]
 
@@ -229,7 +252,7 @@ class Gui:
 			label.set_use_markup(True)
 			box.pack_start(label, False)
 			box.pack_start(table, False)
-			if n == 6: table.set_row_spacing(4, 6)
+			if n == 6: table.set_row_spacing(4, 12)
 			da_table.attach(box, table_coord[n][0], table_coord[n][0] + 1,
 				table_coord[n][1], table_coord[n][1] + (1, 2)[n == 6],
 				xoptions = gtk.SHRINK)
