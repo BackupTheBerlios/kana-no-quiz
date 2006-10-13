@@ -156,9 +156,7 @@ class Gui:
 			pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
 
 			# Resizing.
-			height = 26
-			width = pixbuf.get_width() * height / pixbuf.get_height()
-			scaled_buf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
+			scaled_buf = pixbuf.scale_simple(26, 23, gtk.gdk.INTERP_BILINEAR)
 
 			# Updating kana image widget.
 			image.set_from_pixbuf(scaled_buf)
@@ -218,7 +216,7 @@ class Gui:
 
 			table = gtk.Table(size[n][0], size[n][1])
 			table.set_col_spacings(2)
-			table.set_row_spacings(2)
+			table.set_row_spacings(1)
 			i = 0
 			for portion in set:
 				# Portion selection checkbutton.	
@@ -252,13 +250,14 @@ class Gui:
 					j += 1
 				i += 1
 
-			box = gtk.VBox()
 			label = gtk.Label("<b>%s</b>" % msg(28 + n))
 			label.set_use_markup(True)
-			box.pack_start(label, False)
-			box.pack_start(table, False)
+			expander = gtk.Expander()
+			expander.set_label_widget(label)
+			expander.set_expanded(n in (0,3 ))
+			expander.add(table)
 			if n == 6: table.set_row_spacing(4, 12)
-			da_table.attach(box, table_coord[n][0], table_coord[n][0] + 1,
+			da_table.attach(expander, table_coord[n][0], table_coord[n][0] + 1,
 				table_coord[n][1], table_coord[n][1] + (1, 2)[n == 6],
 				xoptions = gtk.SHRINK)
 			
