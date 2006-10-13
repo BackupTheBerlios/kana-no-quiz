@@ -252,14 +252,21 @@ class Gui:
 
 			label = gtk.Label("<b>%s</b>" % msg(28 + n))
 			label.set_use_markup(True)
-			expander = gtk.Expander()
-			expander.set_label_widget(label)
-			expander.set_expanded(n in (0,3 ))
-			expander.add(table)
+			
+			if n in (0, 3):
+				container = gtk.VBox()
+				container.pack_start(label)
+				container.pack_start(table)
+			else:
+				container = gtk.Expander()
+				container.set_label_widget(label)
+			        container.set_expanded(False)
+			        container.add(table)
+
 			if n == 6: table.set_row_spacing(4, 12)
-			da_table.attach(expander, table_coord[n][0], table_coord[n][0] + 1,
+			da_table.attach(container, table_coord[n][0], table_coord[n][0] + 1,
 				table_coord[n][1], table_coord[n][1] + (1, 2)[n == 6],
-				xoptions = gtk.SHRINK)
+				xoptions = gtk.SHRINK, yoptions = gtk.SHRINK)
 			
 			n += 1
 
