@@ -133,9 +133,17 @@ class Gui:
 		self.window.show_all()
 
 	def kana_tables(self, *args):
-		"""Display the Kana table dialog dialog."""		
+		"""Display the Kana table dialog dialog."""	
+		def button_pressed(widget, event, image_path):
+			"""Update displayed high size kana image when a new one is
+				pressed.
+
+			"""
+			if event.type == gtk.gdk.BUTTON_PRESS and event.button == 1:
+				kana_image.set_from_file(image_path)
+
 		def item(kind, kana):
-			"""Return a frame with a small kana image widget associated with its
+			"""Return a contaier with a small kana image widget associated with its
 				transcription label, to put in the kana tables.
 
 			"""
@@ -148,7 +156,7 @@ class Gui:
 			pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
 
 			# Resizing.
-			height = 22
+			height = 26
 			width = pixbuf.get_width() * height / pixbuf.get_height()
 			scaled_buf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
 
@@ -169,14 +177,10 @@ class Gui:
 			container.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("white"))
 			container.modify_bg(gtk.STATE_PRELIGHT, gtk.gdk.color_parse("white"))
 			container.modify_bg(gtk.STATE_ACTIVE, gtk.gdk.color_parse("white"))
+			container.connect("button_press_event", button_pressed, image_path)
 			container.add(box)
-			
-			button = gtk.Button()
-			button.connect("clicked", lambda *args: kana_image.set_from_file(
-				image_path))
-			button.add(container)
 
-			return button
+			return container
 		
 		dialog = gtk.Dialog(msg(87), self.window, gtk.DIALOG_NO_SEPARATOR|
 			gtk.DIALOG_MODAL, (gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
@@ -213,7 +217,8 @@ class Gui:
 			set = kanaengine.kanaList[set_name]
 
 			table = gtk.Table(size[n][0], size[n][1])
-			table.set_col_spacings(3)
+			table.set_col_spacings(2)
+			table.set_row_spacings(2)
 			i = 0
 			for portion in set:
 				# Portion selection checkbutton.	
