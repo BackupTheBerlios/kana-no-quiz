@@ -53,10 +53,14 @@ class Gui:
 		# Initial window attributes.
 		self.window.set_title(msg(0))
 		self.window.connect("destroy", self.quit)
-		self.window.set_border_width(5)
 		gtk.window_set_default_icon_from_file(os.path.join(
 			self.datarootpath, "img", "icon.png"))
 		self.handlerid = {}
+		
+		self.win_container = gtk.EventBox()
+		self.win_container.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse(
+			"#f3eddd"))
+		self.window.add(self.win_container)
 
 	def keypress(self, source, event):
 		widgetNumber = event.keyval - 49
@@ -74,11 +78,12 @@ class Gui:
 			str = self.i18n.str
 
 		if oldbox: self.window.set_title(msg(0))
-
 		box = gtk.VBox()
+		box.set_border_width(5)
 
 		image = gtk.Image()
-		image.set_from_file(os.path.join(self.datarootpath, "img", "logo.gif"))
+		image.set_from_file(os.path.join(self.datarootpath, "img",
+			"main_image.png"))
 		box.pack_start(image,False)
 		
 		box.pack_start(gtk.Label(msg(88) % self.version), False, padding=4)
@@ -97,7 +102,7 @@ class Gui:
 		button.connect_object("clicked", self.quiz, box)
 		table.attach(button, 1, 2, 1, 2)
 		button = gtk.Button(msg(4))
-		button.connect("clicked", self.about)
+		button.connect_object("clicked", self.about, box)
 		table.attach(button, 2, 3, 0, 1)
 		button = gtk.Button(msg(71))
 		button.connect("clicked", self.quit)
@@ -105,8 +110,8 @@ class Gui:
 		box.pack_start(table)
 
 		if oldbox:
-			self.window.remove(oldbox)
-		self.window.add(box)
+			self.win_container.remove(oldbox)
+		self.win_container.add(box)
 		self.window.show_all()
 
 		# Initialize pyGTK if it haven't been done yet.
@@ -116,26 +121,31 @@ class Gui:
 		"""Rendering the marvelous introduction..."""
 		self.window.set_title(msg(1)) # Changing window title.
 		box = gtk.VBox(spacing=5)
+		box.set_border_width(5)
 
 		for i in range(5, 10):
 			label = gtk.Label(msg(i))
 			label.set_line_wrap(True)
 			box.pack_start(label)
 
+		# Bottom's button.
+		box2 = gtk.HBox()
 		button = gtk.Button(stock=gtk.STOCK_OK)
 		button.connect_object("clicked", self.main,box)
-		box.pack_end(button)
+		box2.pack_end(button, False)
+		box.pack_start(box2, False)
 
 		# Forget the old box
-		self.window.remove(oldbox)
+		self.win_container.remove(oldbox)
 		# Then add the new one
-		self.window.add(box)
-		self.window.show_all()
+		self.win_container.add(box)
+		self.win_container.show_all()
 
 	def kana_tables(self, oldbox):
 		"""Display the full kana tables."""	
 		self.window.set_title(msg(83)) # Changing window title.
 		da_box = gtk.VBox(spacing=4)
+		da_box.set_border_width(5)
 		
 		def button_pressed(widget, event, image_path):
 			"""Update displayed high size kana image when a new one is
@@ -291,6 +301,7 @@ class Gui:
 
 			n += 1
 
+		# Bottom's buttons.
 		box = gtk.HBox(spacing=4)
 		button = gtk.Button(stock = gtk.STOCK_CANCEL)
 		button.connect("clicked", lambda *args: self.main(da_box))
@@ -301,10 +312,10 @@ class Gui:
 		da_box.pack_start(box, False)
 
 		# Forgeting the old box
-		self.window.remove(oldbox)
+		self.win_container.remove(oldbox)
 		# Then adding the new one
-		self.window.add(da_box)
-		self.window.show_all()
+		self.win_container.add(da_box)
+		self.win_container.show_all()
 
 	def quiz(self, oldbox):
 		# Randomly getting a kana (respecting bellow conditions).
@@ -313,7 +324,10 @@ class Gui:
 		if self.kana:
 			self.quizWidget = {}
 			box = gtk.HBox(spacing=4)
+			box.set_border_width(5)
+
 			box2 = gtk.VBox()
+			
 			# Kana image.
 			self.kanaImage = gtk.Image()
 			kanaKindIndex = self.kana.kind.kindIndex
@@ -358,7 +372,7 @@ class Gui:
 			self.nextButton.add(arrow)
 
 			if self.param['answer_mode'] == "list":
-				#Choice buttons generation.
+				# Choice buttons generation.
 				self.answerButt = {};
 				for i in range(self.param['list_size']):
 					button = gtk.Button('')
@@ -387,11 +401,10 @@ class Gui:
 			box.pack_end(box2)
 
 			# Forgetting the old box.
-			self.window.remove(oldbox)
+			self.win_container.remove(oldbox)
 			# Then addding the new one.
-			self.window.add(box)
-
-			self.window.show_all()
+			self.win_container.add(box)
+			self.win_container.show_all()
 
 			# Hidding the arrow.
 			if self.param['answer_mode'] == "list":
@@ -464,7 +477,7 @@ class Gui:
 		# Randomly get a kana.
 		self.kana = self.kanaEngine.randomKana()
 
-		#Update kana's image.
+		# Updating kana's image.
 		self.set_kana_image(self.kana) 
 
 		self.quizInfos['questionNumLabel'].set_text(msg(67) %
@@ -557,92 +570,10 @@ class Gui:
 				self.param.write()
 			self.main(da_box) # Go back to the ``main".
 
-		def portions_popup(widget, kanaset):
-			portions = kanaset.portions
-			
-			# Callbacks.
-			def new_value(widget, portion):
-				"""Update the emporary variable value."""
-				portion.active = (0, 1)[widget.get_active()] 
-
-			def select_all(widget): 
-				for x in widget.get_children():
-					x.set_active(True)
-
-			def valided_changes(*args):
-				"""Check for a least one selected kana portion (display of a message
-					if not the case), catch parameters, then close the window.
-
-				"""
-				if not 1 in [x.active for x in portions]:
-					dialog2 = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL,
-						gtk.MESSAGE_INFO, gtk.BUTTONS_OK, msg(66))
-					dialog2.connect('response', lambda dialog, response: dialog.destroy())
-					dialog2.show()
-
-					# This can't possibly work...?
-
-					if kanaset == 0: widget = option1
-					elif kanaset == 1: widget = option2
-					elif kanaset == 2: widget = option3
-					elif kanaset == 3: widget = option4
-					elif kanaset == 4: widget = option5
-					elif kanaset == 5: widget = option6
-					elif kanaset == 6: widget = option7
-					widget.set_active(False)
-
-				activity = [x.active + 0 for x in portions]
-				self.param[kanaset.optionKey + "_portions"] = tuple(activity)
-				dialog.destroy()
-
-			dialog = gtk.Dialog(msg(28 + kanaset.msgNum),
-								self.window, gtk.DIALOG_MODAL)
-			dialog.vbox.set_spacing(3)
-
-			label = gtk.Label(msg(35))
-			label.set_line_wrap(True)
-			dialog.vbox.pack_start(label)
-
-			label = gtk.Label(msg(36))
-			label.set_line_wrap(True)
-			dialog.vbox.pack_start(label)
-			table = gtk.Table(2, abs(len(portions) / 2 + 1))
-			dialog.vbox.pack_start(table)
-
-			j, k = 1, 0
-			for i in range(len(portions)):
-				portion = portions[i]
-				string = str(portion)
-				check = gtk.CheckButton(string)
-				check.connect("toggled", new_value, portion)
-				if portion.active:
-					check.set_active(True)
-				if j:
-					table.attach(check, 0, 1, k, k + 1)
-					j=0
-				else:
-					table.attach(check, 1, 2, k, k + 1)
-					j=1
-					k+=1
-
-			button = gtk.Button(msg(37))
-			button.connect_object("clicked", select_all,table)
-			# If nothing selected, select all. :p
-			if not 1 in [x.active for x in portions]: select_all(button)
-			dialog.vbox.pack_start(button)
-
-			# Buttons at bottom...
-			button = gtk.Button(stock=gtk.STOCK_OK)
-			button.connect("clicked", valided_changes)
-			dialog.action_area.pack_end(button)
-			button = gtk.Button(stock=gtk.STOCK_CANCEL)
-			button.connect("clicked", lambda *args: dialog.destroy())
-			dialog.action_area.pack_end(button)
-
-			dialog.show_all()
-
 		self.window.set_title(msg(2)) #Change title of window.
 		da_box = gtk.HBox(spacing=3)
+		da_box.set_border_width(5)
+
 		toolbar = gtk.Toolbar()
 		toolbar.set_orientation(gtk.ORIENTATION_VERTICAL)
 		toolbar.set_style(gtk.TOOLBAR_BOTH)
@@ -661,53 +592,6 @@ class Gui:
 		box.pack_start(label, False)
 		box2 = gtk.HBox()
 		box.pack_start(box2)
-		box3 = gtk.VBox()
-		box2.pack_start(box3)
-
-		frame = gtk.Frame(msg(21))
-		box3.pack_start(frame)
-		table = gtk.Table(3, 3)
-		table.set_row_spacings(2)
-		table.set_col_spacing(0, 2)
-		table.set_border_width(2)
-		frame.add(table)
-
-		# Shouldn't need padding...
-		kanaOption = [None]
-		def layout_kana_set(kanaSets):
-			i = 0
-			for kanaSet in kanaSets:
-				image = gtk.Image()
-				image.set_from_file(os.path.join(self.datarootpath, "img",
-					kanaSet.imageName))
-				table.attach(image, 0, 1, i, i + 1)
-				option = gtk.CheckButton(msg(kanaSet.msgNum))
-				option.set_active(opt_conv["boolean"][self.param[
-					kanaSet.optionKey]])
-				table.attach(option, 1, 2, i, i + 1)
-				button = gtk.Button(msg(27))
-				button.connect("clicked", portions_popup, kanaSet)
-				button.set_sensitive(option.get_active())
-				option.connect("toggled",
-							lambda *args:
-							args[1].set_sensitive(option.get_active()),
-							button)
-				table.attach(button, 2, 3, i, i + 1)
-				kanaOption.append(option)
-				i += 1
-
-		layout_kana_set(kanaengine.hiragana.setsInOrder())
-
-		frame = gtk.Frame(msg(22))
-		box3.pack_start(frame)
-		
-		table = gtk.Table(3, 4)
-		table.set_row_spacings(2)
-		table.set_col_spacing(0, 2)
-		table.set_border_width(2)
-		frame.add(table)
-
-		layout_kana_set(kanaengine.katakana.setsInOrder())
 
 		box3 = gtk.VBox(spacing=2)
 		box3.set_border_width(6)
@@ -789,28 +673,26 @@ class Gui:
 		option14.set_active(opt_conv["lang"][self.param['lang']])
 		box3.pack_start(option14)
 
-		# Buttons at bottom...
+		# Bottom's buttons.
 		box2 = gtk.HBox()
-		button = gtk.Button(stock=gtk.STOCK_SAVE)
-		button.connect("clicked", callback, "save")
-		box2.pack_start(button)
 		button = gtk.Button(stock=gtk.STOCK_CANCEL)
 		button.connect("clicked", callback)
-		box2.pack_start(button)
+		box2.pack_end(button, False)
+		button = gtk.Button(stock=gtk.STOCK_SAVE)
+		button.connect("clicked", callback, "save")
+		box2.pack_end(button, False)
 		box.pack_end(box2,False)
 
 		# Remove the old box then add the new one.
-		self.window.remove(oldbox)
-		self.window.add(da_box)
+		self.win_container.remove(oldbox)
+		self.win_container.add(da_box)
+		self.win_container.show_all()
 
-		self.window.show_all()
-
-	def about(self,widget):
-		"""Display the About dialog."""		
-		dialog = gtk.Dialog(msg(4), self.window, gtk.DIALOG_NO_SEPARATOR|
-			gtk.DIALOG_MODAL, (gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
-		dialog.set_border_width(5)
-		dialog.vbox.set_spacing(4)
+	def about(self, oldbox):
+		"""Display the About dialog."""	
+		self.window.set_title(msg(4)) # Changing window title.
+		da_box = gtk.VBox(spacing=4)
+		da_box.set_border_width(5)
 
 		box = gtk.HBox(spacing=6)
 		image = gtk.Image()
@@ -825,12 +707,12 @@ class Gui:
 		label = gtk.Label("Copyleft 2003, 2004, 2005, 2006 Choplair-network.")
 		box2.pack_start(label)
 		box.pack_start(box2)
-		dialog.vbox.pack_start(box)
+		da_box.pack_start(box)
 
 		label = gtk.Label(msg(55))
 		label.set_line_wrap(True)
 		label.set_justify(gtk.JUSTIFY_CENTER)
-		dialog.vbox.pack_start(label)
+		da_box.pack_start(label)
 
 		frame = gtk.Frame(msg(56))
 		container = gtk.EventBox()
@@ -861,9 +743,20 @@ class Gui:
 		container.add(box)
 		frame.add(container)
 
-		dialog.vbox.pack_start(frame)
-		dialog.connect('response', lambda dialog, response: dialog.destroy())
-		dialog.show_all()
+		da_box.pack_start(frame)
+
+		# Bottom's buttons.
+		box = gtk.HBox()
+		button = gtk.Button(stock = gtk.STOCK_CLOSE)
+		button.connect("clicked", lambda *args: self.main(da_box))
+		box.pack_end(button, False)
+		da_box.pack_start(box, False)
+
+		# Forgeting the old box
+		self.win_container.remove(oldbox)
+		# Then adding the new one
+		self.win_container.add(da_box)
+		self.win_container.show_all()
 
 	def set_kana_image(self, kana):
 		"""Updating kana image."""
