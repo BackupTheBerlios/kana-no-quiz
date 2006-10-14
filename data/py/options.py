@@ -86,16 +86,16 @@ class Options:
 		for key, value in defaults.iteritems():
 			self[key] = value
 
-	def readFromFile(self):
+	def read_from_file(self):
 		# Checking whether the option file exists...
 		if os.path.isfile(self.conf_file):
 			file = open(self.conf_file, "r") #Open.
 			content = file.readlines() #Read the content.
 			file.close() #And close. :p
 
-		self.parseOptions(contentLines)
+		self.parseOptions(content)
 
-	def parseOptions(self, contentLines):
+	def parseOptions(self, content):
 		for line in content:
 			line.strip()
 			if line[0] != "#" and line != "\n":
@@ -175,11 +175,11 @@ class Options:
 	def iteritems(self):
 		return self.params.iteritems()
 
-	def write(self,paramdict):
+	def write(self):
 		# Configuration file header.
 		content = "# Kana no quiz configuration file.\n\n"
 
-		for key, val in paramdict.iteritems():
+		for key, val in self.iteritems():
 			self[key] = val
 
 		#

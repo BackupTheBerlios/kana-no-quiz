@@ -37,6 +37,8 @@ class Gui:
 
 		self.window = gtk.Window()
 		self.window.connect('key-press-event', self.keypress)
+		self.window.set_resizable(False)
+		self.window.set_position(gtk.WIN_POS_CENTER)
 		self.kanaEngine =  kanaengine.KanaEngine(self.param)
 		self.score = score.Score()
 
@@ -71,9 +73,7 @@ class Gui:
 			global str
 			str = self.i18n.str
 
-		if oldbox: 
-			self.window.set_title(msg(0))
-			self.window.resize(1, 1) # Properly resize the window.
+		if oldbox: self.window.set_title(msg(0))
 
 		box = gtk.VBox()
 
@@ -88,7 +88,7 @@ class Gui:
 		button.connect_object("clicked", self.intro, box)
 		table.attach(button, 0, 1, 0, 1)
 		button = gtk.Button(msg(87))
-		button.connect("clicked", self.kana_tables)
+		button.connect_object("clicked", self.kana_tables, box)
 		table.attach(button, 0, 1, 1, 2)
 		button = gtk.Button(msg(2))
 		button.connect_object("clicked", self.options, box)
@@ -113,8 +113,8 @@ class Gui:
 		if not oldbox : gtk.main()
 
 	def intro(self, oldbox):
-		# Here comes the marvelous introduction...
-		self.window.set_title(msg(1)) #Change title of window.
+		"""Rendering the marvelous introduction..."""
+		self.window.set_title(msg(1)) # Changing window title.
 		box = gtk.VBox(spacing=5)
 
 		for i in range(5, 10):
@@ -132,8 +132,11 @@ class Gui:
 		self.window.add(box)
 		self.window.show_all()
 
-	def kana_tables(self, *args):
-		"""Display the Kana table dialog dialog."""	
+	def kana_tables(self, oldbox):
+		"""Display the full kana tables."""	
+		self.window.set_title(msg(83)) # Changing window title.
+		da_box = gtk.VBox(spacing=4)
+		
 		def button_pressed(widget, event, image_path):
 			"""Update displayed high size kana image when a new one is
 				pressed.
@@ -143,8 +146,8 @@ class Gui:
 				kana_image.set_from_file(image_path)
 
 		def item(kind, kana):
-			"""Return a contaier with a small kana image widget associated with its
-				transcription label, to put in the kana tables.
+			"""Return a contaier with a small kana image widget associated with
+				its transcription label, to put in the kana tables.
 
 			"""
 			image = gtk.Image()
@@ -180,15 +183,26 @@ class Gui:
 
 			return container
 		
-		dialog = gtk.Dialog(msg(87), self.window, gtk.DIALOG_NO_SEPARATOR|
-			gtk.DIALOG_MODAL, (gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
-		dialog.set_border_width(5)
-		dialog.vbox.set_spacing(4)
+		def portion_selection(widget, portion):
+			"""Update the portion selection temporary variable value."""
+			portion.active = (0, 1)[widget.get_active()]
+
+		def valided_changes(*args):
+			for set in kanaengine.hiragana.setsInOrder() +\
+				kanaengine.katakana.setsInOrder():
+				activity = [x.active + 0 for x in set.portions]
+				self.param[set.optionKey] = ('false', 'true')[1 in activity]
+				self.param[set.optionKey + "_portions"] = tuple(activity)
+
+			# Updating the whole configuration.
+			self.param.write()
+
+			self.main(da_box) # Going back to the main window.
 
 		da_table = gtk.Table(3, 2, False)
 		da_table.set_col_spacings(8)
 		da_table.set_row_spacings(4)
-		dialog.vbox.pack_start(da_table)
+		da_box.pack_start(da_table)
 
 		# High-size kana.
 		kana_image = gtk.Image()
@@ -226,6 +240,7 @@ class Gui:
 				checkbutt = gtk.CheckButton()
 				if portion.active:
 					checkbutt.set_active(True)
+				checkbutt.connect("toggled", portion_selection, portion)
 				frame.add(checkbutt)
 				x = i
 				x_end = x + 1
@@ -273,10 +288,23 @@ class Gui:
 			da_table.attach(container, table_coord[n][0], table_coord[n][0] + 1,
 				table_coord[n][1], table_coord[n][1] + (1, 2)[n == 6],
 				xoptions = gtk.SHRINK, yoptions = gtk.SHRINK)
-			
+
 			n += 1
 
-		dialog.show_all()
+		box = gtk.HBox(spacing=4)
+		button = gtk.Button(stock = gtk.STOCK_CANCEL)
+		button.connect("clicked", lambda *args: self.main(da_box))
+		box.pack_end(button, False)
+		button = gtk.Button(stock = gtk.STOCK_SAVE)
+		button.connect("clicked", valided_changes)
+		box.pack_end(button, False)
+		da_box.pack_start(box, False)
+
+		# Forgeting the old box
+		self.window.remove(oldbox)
+		# Then adding the new one
+		self.window.add(da_box)
+		self.window.show_all()
 
 	def quiz(self, oldbox):
 		# Randomly getting a kana (respecting bellow conditions).
@@ -365,12 +393,12 @@ class Gui:
 
 			self.window.show_all()
 
-			# Hide the arrow.
+			# Hidding the arrow.
 			if self.param['answer_mode'] == "list":
 				self.nextButton.hide()
 			else: entry.grab_focus() # Giving focus to text entry.
 
-			self.quizWidget['stop'].hide() # Hiding the stop button.
+			self.quizWidget['stop'].hide() # Hidding the stop button.
 
 		else:
 			dialog = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL,
@@ -406,7 +434,7 @@ class Gui:
 		if answer == correctAnswer: # \o/
 			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" %
 				msg(13))
-			self.score.update(1) # Update the score (add 1 point).
+			self.score.update(1) # Updating the score (add 1 point).
 		else: # /o\
 			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" %
 				(msg(14), msg(15) % "<big><b>%s</b></big>" % correctAnswer.upper()))
@@ -450,12 +478,12 @@ class Gui:
 		else:  # Display the text entry.
 			widget.set_text("")
 			widget.show()
-			widget.grab_focus() # Give focus to text entry.
+			widget.grab_focus() # Giving focus to text entry.
 			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
 			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object(
 				"clicked", self.check_answer, widget)
 
-		self.quizWidget['stop'].hide() # Hide the stop button.
+		self.quizWidget['stop'].hide() # Hiding the stop button.
 
 	def results(self,data):
 		"""End-time quiz results display."""
@@ -508,25 +536,25 @@ class Gui:
 
 		def callback(widget, special=None):
 			if special == "save":
-				# Update the configuration.
-				self.param.write({
-				'basic_hiragana': opt_conv["boolean"][kanaOption[1].get_active()],
-				'modified_hiragana': opt_conv["boolean"][kanaOption[2].get_active()],
-				'contracted_hiragana': opt_conv["boolean"][kanaOption[3].get_active()],
-				'basic_katakana': opt_conv["boolean"][kanaOption[4].get_active()],
-				'modified_katakana': opt_conv["boolean"][kanaOption[5].get_active()],
-				'contracted_katakana': opt_conv["boolean"][kanaOption[6].get_active()],
-				'additional_katakana': opt_conv["boolean"][kanaOption[7].get_active()],
-				'transcription_system': opt_conv["transcription_system"][
-					option8.get_active()],
-				'answer_mode': opt_conv["answer_mode"][option9.get_active()],
-				'list_size': option10.get_active()+2,
-				'rand_answer_sel_range': opt_conv["rand_answer_sel_range"][
-					option11.get_active()],
-				'length': int(option12.get_value()),
-				'kana_no_repeat': opt_conv["boolean"][option13.get_active()],
-				'lang': opt_conv["lang"][option14.get_active()]
-				})
+				self.param['basic_hiragana'] = opt_conv["boolean"][kanaOption[1].get_active()]
+				self.param['modified_hiragana'] = opt_conv["boolean"][kanaOption[2].get_active()]
+				self.param['contracted_hiragana'] = opt_conv["boolean"][kanaOption[3].get_active()]
+				self.param['basic_katakana'] = opt_conv["boolean"][kanaOption[4].get_active()]
+				self.param['modified_katakana'] = opt_conv["boolean"][kanaOption[5].get_active()]
+				self.param['contracted_katakana'] = opt_conv["boolean"][kanaOption[6].get_active()]
+				self.param['additional_katakana'] = opt_conv["boolean"][kanaOption[7].get_active()]
+				self.param['transcription_system'] = opt_conv["transcription_system"][
+					option8.get_active()]
+				self.param['answer_mode'] = opt_conv["answer_mode"][option9.get_active()]
+				self.param['list_size'] = option10.get_active() + 2,
+				self.param['rand_answer_sel_range'] = opt_conv["rand_answer_sel_range"][
+					option11.get_active()]
+				self.param['length'] = int(option12.get_value())
+				self.param['kana_no_repeat'] = opt_conv["boolean"][option13.get_active()]
+				self.param['lang'] = opt_conv["lang"][option14.get_active()]
+				
+				# Updating the whole configuration.
+				self.param.write()
 			self.main(da_box) # Go back to the ``main".
 
 		def portions_popup(widget, kanaset):

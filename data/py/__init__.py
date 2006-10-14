@@ -42,7 +42,7 @@ VERSION = 2.0
 datarootpath = path.join(sys.prefix, 'share', 'kana-no-quiz')
 
 options = options.Options()
-#options.read()
+options.read_from_file()
 
 # Setting the `$LANG' as it is set in the configuration file.
 environ['LANG'] = options['lang']
