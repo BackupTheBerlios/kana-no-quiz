@@ -210,18 +210,22 @@ class Gui:
 			(3, 5), "ye": (4, 6), "fa": (4, 1), "fi": (4, 2), "fe": (4, 4),
 			"fo": (4, 5), "va": (5, 1), "vi": (5, 2), "vu": (5, 3), "ve":
 			(5, 4), "vo": (5, 5)}
+
 		n = 0
-		for set_name in kanaengine.order:
-			set = kanaengine.kanaList[set_name]
+		for set in kanaengine.hiragana.setsInOrder() +\
+			kanaengine.katakana.setsInOrder():
 
 			table = gtk.Table(size[n][0], size[n][1])
 			table.set_col_spacings(2)
 			table.set_row_spacings(1)
 			i = 0
-			for portion in set:
+			
+			for portion in set.portions:
 				# Portion selection checkbutton.	
 				frame = gtk.Frame()
 				checkbutt = gtk.CheckButton()
+				if portion.active:
+					checkbutt.set_active(True)
 				frame.add(checkbutt)
 				x = i
 				x_end = x + 1
@@ -236,7 +240,9 @@ class Gui:
 				
 				# Portion's kana.
 				j = 1
-				for kana in portion:
+				for member in portion.members:
+					kana = member.kana
+					
 					if n == 0 or n == 3:
 						if i < 8: x, y = i, j
 						else: x, y = special_coord[kana]
@@ -260,8 +266,8 @@ class Gui:
 			else:
 				container = gtk.Expander()
 				container.set_label_widget(label)
-			        container.set_expanded(False)
-			        container.add(table)
+				container.set_expanded(False)
+				container.add(table)
 
 			if n == 6: table.set_row_spacing(4, 12)
 			da_table.attach(container, table_coord[n][0], table_coord[n][0] + 1,
@@ -390,10 +396,10 @@ class Gui:
 		if self.param['answer_mode'] == "list":
 			answer = widget.get_label().lower()[3:]
 		else: answer = widget.get_text().lower()
-		#If the selected romanization system is *other* than Hepburn (default),
-		#let's convert the good answer (given in the Hepburn internal format)
-		#to the user-selected romanization system, in order to compare with its
-		#chosen answer.
+		# If the selected romanization system is *other* than Hepburn (default),
+		# let's convert the good answer (given in the Hepburn internal format)
+		# to the user-selected romanization system, in order to compare with its
+		# chosen answer.
 		correctAnswer = self.kana.transcriptions[self.param['transcription_system']]
 		if correctAnswer[-2:]=="-2": correctAnswer = correctAnswer[:-2]
 
