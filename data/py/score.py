@@ -21,20 +21,22 @@ class Score:
 	def __init__(self):
 		self.total = 0 #Total question number.
 		self.score = 0 #The score value.
-		self.unrecKana = [{},{}] #Unrecognized kana dicts (katakana or hiragana, with repetition number).
+		#Unrecognized kana dicts (katakana or hiragana, with repetition number).
+		self.unrecKana = [{},{}]
 
-	def update(self,point,kana=None,kind=0):
+	def update(self, point, kana=None, kind=0):
 		self.total += 1 #Increment the total question number.
 		self.score += point #Update the score.
 
-		if point==0: #If wrong answer, taking note of the unrecognized kana.
-			if self.unrecKana[kind].has_key(kana): #This kana has yet been unrecognized: incrementing value.
+		if point == 0: #If wrong answer, taking note of the unrecognized kana.
+			#This kana has yet been unrecognized: incrementing value.
+			if self.unrecKana[kind].has_key(kana):
 				self.unrecKana[kind][kana] += 1
 			else: #Setting value 1 to this kana in the wrong answer list.
 				self.unrecKana[kind][kana] = 1
 
 	def is_quiz_finished(self,length):
-		if self.total>=int(length): return True
+		if self.total >= int(length): return True
 		else: return False
 
 	def get_question_total(self): return self.total

@@ -31,11 +31,12 @@ class I18n:
 			global _
 			def _(msg): return msg
 		else: 
-			try:	#Remove the global _ if the current language is english.
+			try:	#Removing the global _ if the current language is english.
 				if self.currlang == "en": del _
 			except: pass
 
 			gettext.translation("kana-no-quiz", self.localepath, [lang]).install()
+
 
 		self.currlang = lang #Update the current language variable.
 
@@ -113,7 +114,8 @@ class I18n:
 				"license (see `GPL.txt'). Kana images are released under the "
 				"Free Art license (see `FAL.txt')."), #55
 			_("Credits"),
-			_("Coding: Choplair & Pachilor.\n"
+			_("Main programming: Choplair.\n"
+				"Code contribution: Jeremy Bowers\n"
 				"Default kana theme: Ms. Marie-Claire.\n"
 				"Artworks: Fayanne."),
 			_("Close"),
@@ -159,9 +161,13 @@ class I18n:
 			_("Here comes the complete kana tables, sorted respecting the "
 				"Japanese traditional order (except for additional katakana "
 				"that haven't been standardized)."),
-			_("You may enjoy a entire kana list overview, visually select the "
-				"portions you want to be trained upon, and see full size kana "
-				"when clicking on the thumbnails.")
+			_("You may enjoy full kana list overview (with transcription), "
+				"select the portions you want to be trained upon, and see larger "
+				"image when clicking on a thumbnail."),
+			_("Kana image scale:"), #95
+			_("Small"),
+			_("Medium"),
+			_("Large")
 			)
 
 		return strings[num]

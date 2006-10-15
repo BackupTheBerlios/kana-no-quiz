@@ -1,6 +1,6 @@
 
  Kana no quiz - README
- version 2.0 - 2006-XX-XX
+ version 1.7 - 2006-10-15
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
@@ -71,6 +71,8 @@ to be priorly installed on your computer:
 * For the GTK+ interface:
   * The Gimp Tool Kit - `http://www.gtk.org/'.
   * PyGTK - `http://www.pygtk.org/'.
+
+Optional: Psyco module, to increase speed performance.
 
  Program installation
  --------------------
