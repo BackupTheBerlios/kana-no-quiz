@@ -157,7 +157,7 @@ class I18n:
 			_("Crappy!"),
 			_("Average"), #90
 			_("Good"),
-			_("Excelent!"),
+			_("Excellent!"),
 			_("Here comes the complete kana tables, sorted respecting the "
 				"Japanese traditional order (except for additional katakana "
 				"that haven't been standardized)."),

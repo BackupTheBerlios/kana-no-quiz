@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kana no quiz 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-15 07:14+0200\n"
+"POT-Creation-Date: 2006-10-15 08:07+0200\n"
 "PO-Revision-Date: 2005-03-16 20:09+0100\n"
 "Last-Translator: Choplair <chopinou-NOSPAM-choplair.org>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -462,7 +462,7 @@ msgid "Good"
 msgstr ""
 
 #: data/py/i18n.py:160
-msgid "Excelent!"
+msgid "Excellent!"
 msgstr ""
 
 #: data/py/i18n.py:161

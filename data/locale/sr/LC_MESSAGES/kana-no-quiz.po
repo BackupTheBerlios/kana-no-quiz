@@ -1,12 +1,8 @@
-# Kana no quiz: a kana reminder tool.
-# Copyleft 2004 Choplair-network
-# This file is distributed under the same license as the Kana no quiz package.
-# Choplair <choplair@fr.st>, 2004
 msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz 1.2c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-15 07:14+0200\n"
+"POT-Creation-Date: 2006-10-15 08:07+0200\n"
 "PO-Revision-Date: 2006-05-11 23:18+0200\n"
 "Last-Translator: DANILOVIĆ Dejan <Dejan.Danilovic@gmail.com>\n"
 "Language-Team: srpski <sr@li.org>\n"
@@ -453,7 +449,7 @@ msgid "Good"
 msgstr ""
 
 #: data/py/i18n.py:160
-msgid "Excelent!"
+msgid "Excellent!"
 msgstr ""
 
 #: data/py/i18n.py:161
@@ -495,15 +491,3 @@ msgstr ""
 #~ "Kana slike: Gospođica Marie-Claire\n"
 #~ "Logo slika: Choplair\n"
 #~ "Prevod na srpski: Dejan Danilović"
-
-#~ msgid "Parts"
-#~ msgstr "Delovi"
-
-#~ msgid "All"
-#~ msgstr "Sve"
-
-#~ msgid "2 choices"
-#~ msgstr "2 izbora"
-
-#~ msgid "3 choices"
-#~ msgstr "3 izbora"

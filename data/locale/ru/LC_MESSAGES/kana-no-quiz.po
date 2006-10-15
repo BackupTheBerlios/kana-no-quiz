@@ -9,13 +9,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kana-no-quiz 1.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-15 07:14+0200\n"
+"POT-Creation-Date: 2006-10-15 08:07+0200\n"
 "PO-Revision-Date: 2006-10-15 07:36+0200\n"
 "Last-Translator: Aleksej R. Serdyukov <deletesoftware@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: data/py/i18n.py:46
 msgid "Kana no quiz!"
@@ -456,7 +456,7 @@ msgid "Good"
 msgstr ""
 
 #: data/py/i18n.py:160
-msgid "Excelent!"
+msgid "Excellent!"
 msgstr ""
 
 #: data/py/i18n.py:161

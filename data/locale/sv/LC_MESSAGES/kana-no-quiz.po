@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-15 07:14+0200\n"
+"POT-Creation-Date: 2006-10-15 08:07+0200\n"
 "PO-Revision-Date: 2006-05-10 22:17+0100\n"
 "Last-Translator: Markus <markus_fellnert@hotmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -449,7 +449,7 @@ msgid "Good"
 msgstr ""
 
 #: data/py/i18n.py:160
-msgid "Excelent!"
+msgid "Excellent!"
 msgstr ""
 
 #: data/py/i18n.py:161
