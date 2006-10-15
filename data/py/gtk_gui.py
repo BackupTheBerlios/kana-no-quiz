@@ -505,7 +505,6 @@ class Gui:
 		if self.param['answer_mode'] == "list":
 			self.nextButton.hide() # Hidding the arrow.
 			self.display_random_list()
-
 		else:  # Displaying the text entry.
 			widget.set_text("")
 			widget.show()
@@ -519,7 +518,7 @@ class Gui:
 	def results(self, data):
 		"""End-time quiz results display."""
 		results = self.score.get_results()
-		text = "<big>%s</big>\n\n%s\n%s\n%s" % (msg(16), msg(17) % results[0],
+		text = u"<big>%s</big>\n\n%s\n%s\n%s" % (msg(16), msg(17) % results[0],
 			msg(18) % results[1], msg(19) % results[2])
 
 		def get_unrec_msg(kind):
@@ -531,8 +530,8 @@ class Gui:
 			for key, val in results[3][kind].items():
 				for x in val: 
 					if key != 1: plop += "%s (%s), " % (x.upper(), key)
-					else: plop += "%s, " % x.upper()
-			return "\n%s" % msg(72+kind) % plop[:-2]
+					else: plop += u"%s, " % x.upper()
+			return "\n%s" % (msg(72 + kind) % plop[:-2])
 
 		if len(results[3][0]) > 0: text += get_unrec_msg(0)
 		if len(results[3][1]) > 0: text += get_unrec_msg(1)

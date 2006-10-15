@@ -93,7 +93,7 @@ class Options:
 			content = file.readlines() #Read the content.
 			file.close() #And close. :p
 
-		self.parseOptions(content)
+			self.parseOptions(content)
 
 	def parseOptions(self, content):
 		for line in content:

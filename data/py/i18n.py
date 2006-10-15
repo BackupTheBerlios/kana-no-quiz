@@ -115,7 +115,7 @@ class I18n:
 				"Free Art license (see `FAL.txt')."), #55
 			_("Credits"),
 			_("Main programming: Choplair.\n"
-				"Code contribution: Jeremy Bowers\n"
+				"Code contribution: Jeremy Bowers.\n"
 				"Default kana theme: Ms. Marie-Claire.\n"
 				"Artworks: Fayanne."),
 			_("Close"),
