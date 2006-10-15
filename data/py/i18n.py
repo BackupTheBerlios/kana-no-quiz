@@ -22,20 +22,20 @@
 import gettext
 
 class I18n:
-	def __init__(self,path):
+	def __init__(self, path):
 		self.currlang = str()
 		self.localepath = path
 
-	def setlang(self,lang):
-		if lang=="en":
+	def setlang(self, lang):
+		if lang == "en":
 			global _
 			def _(msg): return msg
 		else: 
 			try:	#Remove the global _ if the current language is english.
-				if self.currlang=="en": del _
+				if self.currlang == "en": del _
 			except: pass
 
-			gettext.translation("kana-no-quiz",self.localepath,[lang]).install()
+			gettext.translation("kana-no-quiz", self.localepath, [lang]).install()
 
 		self.currlang = lang #Update the current language variable.
 
@@ -47,10 +47,21 @@ class I18n:
 			_("Options"),
 			_("Start the quiz"),
 			_("About"),
-			_("Two different writing systems are commonly used by Japaneses: kanji & kana."), #5
-			_("Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."),
-			_("There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."),
-			_("Kana no quiz helps you to memorize kana and their associated sound, using transcription systems. For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."),
+			_("Two different writing systems are commonly used by Japaneses: "
+				"kanji & kana."), #5
+			_("Kanji are complex ideograms retranscribing words whereas kana "
+				"are simple symbols used as syllables which have to be "
+				"combined to make words. Any word in Japanese can be written "
+				"using kana, it is like an alphabet."),
+			_("There are two kinds of kana: hiragana & katakana. Hiragana is "
+				"the most-used traditional syllabary used to write Japanese "
+				"words. Katakana is a larger syllabary, with more sounds, "
+				"mostly used to write proper nouns and loanwords of foreign "
+				"origin."),
+			_("Kana no quiz helps you to memorize kana and their associated "
+				"sound, using transcription systems. For more simplicity, "
+				"syllables have been split in multiple sets, and you can even "
+				"choose to learn only a portion of kana at a time."),
 			_("Have a good practice ! ^_^"),
 			_("OK"), #10
 			_("What is this katakana?"),
@@ -77,7 +88,8 @@ class I18n:
 			_("Modified katakana"),
 			_("Contracted katakana"),
 			_("Additional katakana"),
-			_("If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."), #35
+			_("If you are novice, it may be interesting at the beginning to "
+				"train yourself only on portions instead of the full kana set."), #35
 			_("Select the kana portions you want to train yourself upon:"),
 			_("Select all"),
 			_("Answering method:"),
@@ -97,7 +109,9 @@ class I18n:
 			_("Cancel"),
 			_("Kana no quiz: a Japanese kana memorization tool."),
 			_("Version %s."),
-			_("Kana no quiz is free software released under the GNU GPL license (see `GPL.txt'). Kana images are released under the Free Art license (see `FAL.txt')."), #55
+			_("Kana no quiz is free software released under the GNU GPL "
+				"license (see `GPL.txt'). Kana images are released under the "
+				"Free Art license (see `FAL.txt')."), #55
 			_("Credits"),
 			_("Coding: Choplair & Pachilor.\n"
 				"Default kana theme: Ms. Marie-Claire.\n"
@@ -137,7 +151,17 @@ class I18n:
 			_("Sound"), #85
 			_("Misc."),
 			_("Kana tables"),
-			_("Welcome to Kana no quiz version %s.")
+			_("Welcome to Kana no quiz version %s."),
+			_("Crappy!"),
+			_("Average"), #90
+			_("Good"),
+			_("Excelent!"),
+			_("Here comes the complete kana tables, sorted respecting the "
+				"Japanese traditional order (except for additional katakana "
+				"that haven't been standardized)."),
+			_("You may enjoy a entire kana list overview, visually select the "
+				"portions you want to be trained upon, and see full size kana "
+				"when clicking on the thumbnails.")
 			)
 
 		return strings[num]

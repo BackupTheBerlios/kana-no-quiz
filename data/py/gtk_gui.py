@@ -1,4 +1,4 @@
-"""Kana no quiz!
+"""Kana no quiz!99
 
 	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 	$Id$
@@ -35,28 +35,27 @@ class Gui:
 		self.version = args[1]
 		self.datarootpath = args[2]
 
-		self.window = gtk.Window()
-		self.window.connect('key-press-event', self.keypress)
-		self.window.set_resizable(False)
-		self.window.set_position(gtk.WIN_POS_CENTER)
 		self.kanaEngine =  kanaengine.KanaEngine(self.param)
 		self.score = score.Score()
+		self.handlerid = {}
+		self.widgets = {}
 
 		# Localization.
 		self.i18n = i18n.I18n(os.path.join(self.datarootpath, "locale"))
 		self.currentlang = self.param['lang']
 		self.i18n.setlang(self.param['lang'])
-
 		global msg
 		msg = self.i18n.msg
 
 		# Initial window attributes.
+		self.window = gtk.Window()
+		self.window.connect('key-press-event', self.keypress)
+		self.window.set_resizable(False)
+		self.window.set_position(gtk.WIN_POS_CENTER)
 		self.window.set_title(msg(0))
 		self.window.connect("destroy", self.quit)
 		gtk.window_set_default_icon_from_file(os.path.join(
 			self.datarootpath, "img", "icon.png"))
-		self.handlerid = {}
-		
 		self.win_container = gtk.EventBox()
 		self.win_container.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse(
 			"#f3eddd"))
@@ -66,16 +65,16 @@ class Gui:
 		widgetNumber = event.keyval - 49
 		if ((widgetNumber >= 0 and widgetNumber <= self.param['list_size']) and
 			self.__dict__.has_key('answerButt') and
-			self.answerButt[widgetNumber]):
-			self.check_answer(self.answerButt[event.keyval - 49])
+			self.wigets['random_ans_butt'][widgetNumber]):
+			self.check_answer(self.wigets['random_ans_butt'][event.keyval - 49])
 
 	def main(self, oldbox=None):
 		if self.currentlang != self.param['lang']:
 			# Change localization...
 			self.currentlang = self.param['lang']
 			self.i18n.setlang(self.param['lang'])
-			global str
-			str = self.i18n.str
+			global msg
+			msg = self.i18n.msg
 
 		if oldbox: self.window.set_title(msg(0))
 		box = gtk.VBox()
@@ -109,13 +108,18 @@ class Gui:
 		table.attach(button, 2, 3, 1, 2)
 		box.pack_start(table)
 
-		if oldbox:
+		if not oldbox:
+			self.win_container.add(box)
+			self.window.show_all()
+		else:
 			self.win_container.remove(oldbox)
-		self.win_container.add(box)
-		self.window.show_all()
+			self.win_container.add(box)
+			self.window.show_all()
+			self.win_container.show_all()
 
-		# Initialize pyGTK if it haven't been done yet.
-		if not oldbox : gtk.main()
+		if not oldbox:
+			# Initializing pyGTK if it haven't been done yet.
+			gtk.main()
 
 	def intro(self, oldbox):
 		"""Rendering the marvelous introduction..."""
@@ -146,6 +150,10 @@ class Gui:
 		self.window.set_title(msg(83)) # Changing window title.
 		da_box = gtk.VBox(spacing=4)
 		da_box.set_border_width(5)
+		
+		label = gtk.Label("%s\n%s" % (msg(93), msg(94)))
+		label.set_justify(gtk.JUSTIFY_CENTER)
+		da_box.pack_start(label)
 		
 		def button_pressed(widget, event, image_path):
 			"""Update displayed high size kana image when a new one is
@@ -216,6 +224,8 @@ class Gui:
 
 		# High-size kana.
 		kana_image = gtk.Image()
+		kana_image.set_from_file(os.path.join(self.datarootpath, "img",
+			"kana_teacher.png"))
 		da_table.attach(kana_image, 2, 3, 0, 1)
 
 		# Generating kana tables (one per set).
@@ -329,42 +339,42 @@ class Gui:
 			box2 = gtk.VBox()
 			
 			# Kana image.
-			self.kanaImage = gtk.Image()
+			self.widgets['kanaImage'] = gtk.Image()
 			kanaKindIndex = self.kana.kind.kindIndex
 			self.set_kana_image(self.kana)
-			box2.pack_start(self.kanaImage, False)
+			box2.pack_start(self.widgets['kanaImage'], False)
 			
 			# Quiz informations.
-			self.quizInfos = {}
-			self.quizInfos['questionNumLabel'] = gtk.Label(msg(67) % (
-				self.score.getQuestionTotal() + 1, self.param['length']))
-			self.quizInfos['systemLabel'] = gtk.Label(msg(68) % capwords(
+			self.widgets['quizInfos'] = {}
+			self.widgets['quizInfos']['questionNumLabel'] = gtk.Label(msg(67) % (
+				self.score.get_question_total() + 1, self.param['length']))
+			self.widgets['quizInfos']['systemLabel'] = gtk.Label(msg(68) % capwords(
 				self.param['transcription_system']))
 			box3 = gtk.VBox(spacing=2)
-			box3.pack_start(self.quizInfos['questionNumLabel'])
-			box3.pack_start(self.quizInfos['systemLabel'])
+			box3.pack_start(self.widgets['quizInfos']['questionNumLabel'])
+			box3.pack_start(self.widgets['quizInfos']['systemLabel'])
 			box2.pack_start(box3)
-			self.quizInfos['container'] = gtk.EventBox()
-			self.quizInfos['container'].modify_bg(gtk.STATE_NORMAL,
+			self.widgets['quizInfos']['container'] = gtk.EventBox()
+			self.widgets['quizInfos']['container'].modify_bg(gtk.STATE_NORMAL,
 				gtk.gdk.color_parse("white"))
-			self.quizInfos['container'].add(box2)
-			box.pack_start(self.quizInfos['container'], False)
+			self.widgets['quizInfos']['container'].add(box2)
+			box.pack_start(self.widgets['quizInfos']['container'], False)
 
-			box2 = gtk.VBox(spacing=4)
+			self.widgets['quizRightBox'] = gtk.VBox(spacing=4)
 			if self.param["kana_image_scale"] == "small": width = 100
 			elif self.param["kana_image_scale"] == "medium": width = 175
 			else: width = 250,
-			box2.set_size_request(width, -1)
+			self.widgets['quizRightBox'].set_size_request(width, -1)
 			
 			# Stop button.
 			self.quizWidget['stop'] = gtk.Button(stock=gtk.STOCK_STOP)
 			self.quizWidget['stop'].connect("clicked", self.results)
-			box2.pack_start(self.quizWidget['stop'], False)
+			self.widgets['quizRightBox'].pack_start(self.quizWidget['stop'], False)
 			# Question label.
-			self.quizLabel = gtk.Label((msg(11), msg(12))[self.kana.kind.kindIndex])
-			self.quizLabel.set_justify(gtk.JUSTIFY_CENTER)
-			self.quizLabel.set_line_wrap(True)
-			box2.pack_start(self.quizLabel)
+			self.widgets['quizLabel'] = gtk.Label((msg(11), msg(12))[self.kana.kind.kindIndex])
+			self.widgets['quizLabel'].set_justify(gtk.JUSTIFY_CENTER)
+			self.widgets['quizLabel'].set_line_wrap(True)
+			self.widgets['quizRightBox'].pack_start(self.widgets['quizLabel'])
 
 			# Arrow.
 			arrow = gtk.Arrow(gtk.ARROW_RIGHT, gtk.SHADOW_IN)
@@ -373,13 +383,19 @@ class Gui:
 
 			if self.param['answer_mode'] == "list":
 				# Choice buttons generation.
-				self.answerButt = {};
+				self.widgets['random_ans_butt'] = []
+				self.widgets['random_ans_kana_label'] = []
 				for i in range(self.param['list_size']):
-					button = gtk.Button('')
-					button.connect("clicked", self.check_answer)
-					box2.pack_start(button)
-					button.show()
-					self.answerButt[i] = button
+					self.widgets['random_ans_butt'].append(gtk.Button())
+					butt_box = gtk.HBox()
+					label = gtk.Label(str(i + 1))
+					butt_box.pack_start(label, False)
+					self.widgets['random_ans_kana_label'].append(gtk.Label())
+					self.widgets['random_ans_kana_label'][i].modify_font(FontDescription("normal 19"))
+					butt_box.pack_start(self.widgets['random_ans_kana_label'][i])
+					self.widgets['random_ans_butt'][i].add(butt_box)
+					self.widgets['random_ans_butt'][i].connect("clicked", self.check_answer, i)
+					self.widgets['quizRightBox'].pack_start(self.widgets['random_ans_butt'][i])
 
 				self.display_random_list()
 
@@ -392,13 +408,13 @@ class Gui:
 				entry.set_width_chars(3)
 				entry.connect("changed", lambda widget: widget.set_text(
 					widget.get_text().upper()))
-				box2.pack_start(entry)
+				self.widgets['quizRightBox'].pack_start(entry)
 				self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object(
-					"clicked", self.check_answer,entry)
+					"clicked", self.check_answer, entry)
 				entry.connect("activate", lambda widget: self.nextButton.clicked())
 
-			box2.pack_start(self.nextButton)
-			box.pack_end(box2)
+			self.widgets['quizRightBox'].pack_start(self.nextButton)
+			box.pack_end(self.widgets['quizRightBox'])
 
 			# Forgetting the old box.
 			self.win_container.remove(oldbox)
@@ -425,37 +441,37 @@ class Gui:
 		for answerKana in possibleAnswers:
 			x = answerKana.transcriptions[self.param['transcription_system']]
 			if x[-2:] == "-2": x = x[:-2]
-			self.answerButt[i].set_label("%s: %s" % (str(i + 1), x.upper()))
-			self.answerButt[i].show()
+			self.widgets['random_ans_kana_label'][i].set_text(x.upper())
+			self.widgets['random_ans_butt'][i].show()
 			i += 1
 
-	def check_answer(self,widget):
+	def check_answer(self, widget, num):
 		"""Check the given answer, update the score
 			and display the result.
 			
 		"""
 		if self.param['answer_mode'] == "list":
-			answer = widget.get_label().lower()[3:]
+			answer = self.widgets['random_ans_kana_label'][num].get_text().lower()
 		else: answer = widget.get_text().lower()
 		# If the selected romanization system is *other* than Hepburn (default),
 		# let's convert the good answer (given in the Hepburn internal format)
 		# to the user-selected romanization system, in order to compare with its
 		# chosen answer.
 		correctAnswer = self.kana.transcriptions[self.param['transcription_system']]
-		if correctAnswer[-2:]=="-2": correctAnswer = correctAnswer[:-2]
+		if correctAnswer[-2:] == "-2": correctAnswer = correctAnswer[:-2]
 
 		if answer == correctAnswer: # \o/
-			self.quizLabel.set_text("<span color='darkgreen'><b>%s</b></span>" %
+			self.widgets['quizLabel'].set_text("<span color='darkgreen'><b>%s</b></span>" %
 				msg(13))
 			self.score.update(1) # Updating the score (add 1 point).
 		else: # /o\
-			self.quizLabel.set_text("<span color='red'><b>%s</b></span>\n%s" %
+			self.widgets['quizLabel'].set_text("<span color='red'><b>%s</b></span>\n%s" %
 				(msg(14), msg(15) % "<big><b>%s</b></big>" % correctAnswer.upper()))
 			self.score.update(0, correctAnswer, self.kana.kind.kindIndex) 
-		self.quizLabel.set_use_markup(True)
+		self.widgets['quizLabel'].set_use_markup(True)
 
 		if self.param['answer_mode'] == "list":
-			for butt in self.answerButt.values():
+			for butt in self.widgets['random_ans_butt']:
 				butt.hide() #Hide choices buttons.
 			self.nextButton.show() #Show the arrow.
 		else:
@@ -466,7 +482,7 @@ class Gui:
 
 		self.nextButton.grab_focus() # Give focus to the arrow.
 
-		if self.score.isQuizFinished(self.param['length']):
+		if self.score.is_quiz_finished(self.param['length']):
 			# The quiz is finished... Let's show results!
 			self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
 			self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",
@@ -480,15 +496,15 @@ class Gui:
 		# Updating kana's image.
 		self.set_kana_image(self.kana) 
 
-		self.quizInfos['questionNumLabel'].set_text(msg(67) %
-			(self.score.getQuestionTotal() + 1, self.param['length']))
-		self.quizLabel.set_text((msg(11), msg(12))[self.kana.kind.kindIndex])
+		self.widgets['quizInfos']['questionNumLabel'].set_text(msg(67) %
+			(self.score.get_question_total() + 1, self.param['length']))
+		self.widgets['quizLabel'].set_text((msg(11), msg(12))[self.kana.kind.kindIndex])
 
 		if self.param['answer_mode'] == "list":
-			self.nextButton.hide() #Hide the arrow.
+			self.nextButton.hide() # Hidding the arrow.
 			self.display_random_list()
 
-		else:  # Display the text entry.
+		else:  # Displaying the text entry.
 			widget.set_text("")
 			widget.show()
 			widget.grab_focus() # Giving focus to text entry.
@@ -496,11 +512,11 @@ class Gui:
 			self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object(
 				"clicked", self.check_answer, widget)
 
-		self.quizWidget['stop'].hide() # Hiding the stop button.
+		self.quizWidget['stop'].hide() # Hidding the stop button.
 
-	def results(self,data):
+	def results(self, data):
 		"""End-time quiz results display."""
-		results = self.score.getResults()
+		results = self.score.get_results()
 		text = "<big>%s</big>\n\n%s\n%s\n%s" % (msg(16), msg(17) % results[0],
 			msg(18) % results[1], msg(19) % results[2])
 
@@ -519,17 +535,36 @@ class Gui:
 		if len(results[3][0]) > 0: text += get_unrec_msg(0)
 		if len(results[3][1]) > 0: text += get_unrec_msg(1)
 
-		self.quizLabel.set_text(text)
-		self.quizLabel.set_use_markup(True)
+		self.widgets['quizLabel'].set_text(text)
+		self.widgets['quizLabel'].modify_font(FontDescription("normal 15"))
+		self.widgets['quizLabel'].set_use_markup(True)
+		self.widgets['quizLabel'].set_line_wrap(True)
+		self.widgets['quizLabel'].set_padding(2, 6)
+
+		self.widgets['quizRightBox'].set_size_request(-1, -1)
+
+		# Reusing kana image & quiz information widgets to display a result
+		# image and comment.
+		if results[2] <= 40: lvl =0
+		elif results[2] <= 60: lvl = 1
+		elif results[2] <= 80: lvl = 2
+		else: lvl = 3
+		self.widgets['kanaImage'].set_from_file(os.path.join(self.datarootpath, "img",
+			"results_%s.png" % ("crappy", "average", "good", "excelent")[lvl]))
+			
+		self.widgets['quizInfos']['container'].modify_bg(gtk.STATE_NORMAL,
+			gtk.gdk.color_parse("#f3eddd"))
+		self.widgets['quizInfos']['questionNumLabel'].set_text(msg(89 + lvl))
+		self.widgets['quizInfos']['questionNumLabel'].modify_font(FontDescription("normal 19"))
+		self.widgets['quizInfos']['systemLabel'].hide()
 
 		self.score.reset()  # Reseting the score.
 		self.kanaEngine.reset()  # Reseting kana engine's variables.
-		self.kanaImage.hide()  # Hidding kana image.
-		self.quizInfos['container'].hide()  # Hidding quiz stop & informations.
 
+		self.nextButton.set_size_request(-1, 80)
 		# Connecting the arrow to the ``main".
 		self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
-		self.nextButton.connect_object("clicked", self.main, self.window.get_child())
+		self.nextButton.connect_object("clicked", self.main, self.win_container.get_child())
 		self.quizWidget['stop'].hide() # Hidding the stop button.
 
 	def options(self, oldbox):
@@ -542,24 +577,17 @@ class Gui:
 			"answer_mode": {0: 'list', 1: 'entry', 'list': 0, 'entry': 1},
 			"rand_answer_sel_range": {0: 'portion', 1: 'set', 2: 'kind',
 			'portion': 0, 'set': 1, 'kind': 2},
-			"lang": {0: 'en', 1:' fr', 2: 'de', 3: 'pt_BR', 4: 'ru', 5: 'sr',
-				6: 'sv', 'en': 0, 'fr': 1, 'de': 2,' pt_BR': 3, 'ru': 4,
+			"lang": {0: 'en', 1: 'fr', 2: 'de', 3: 'pt_BR', 4: 'ru', 5: 'sr',
+				6: 'sv', 'en': 0, 'fr': 1, 'de': 2, 'pt_BR': 3, 'ru': 4,
 				'sr': 5, 'sv': 6}
 			}
 
 		def callback(widget, special=None):
 			if special == "save":
-				self.param['basic_hiragana'] = opt_conv["boolean"][kanaOption[1].get_active()]
-				self.param['modified_hiragana'] = opt_conv["boolean"][kanaOption[2].get_active()]
-				self.param['contracted_hiragana'] = opt_conv["boolean"][kanaOption[3].get_active()]
-				self.param['basic_katakana'] = opt_conv["boolean"][kanaOption[4].get_active()]
-				self.param['modified_katakana'] = opt_conv["boolean"][kanaOption[5].get_active()]
-				self.param['contracted_katakana'] = opt_conv["boolean"][kanaOption[6].get_active()]
-				self.param['additional_katakana'] = opt_conv["boolean"][kanaOption[7].get_active()]
 				self.param['transcription_system'] = opt_conv["transcription_system"][
 					option8.get_active()]
 				self.param['answer_mode'] = opt_conv["answer_mode"][option9.get_active()]
-				self.param['list_size'] = option10.get_active() + 2,
+				self.param['list_size'] = option10.get_active() + 2
 				self.param['rand_answer_sel_range'] = opt_conv["rand_answer_sel_range"][
 					option11.get_active()]
 				self.param['length'] = int(option12.get_value())
@@ -574,17 +602,17 @@ class Gui:
 		da_box = gtk.HBox(spacing=3)
 		da_box.set_border_width(5)
 
-		toolbar = gtk.Toolbar()
-		toolbar.set_orientation(gtk.ORIENTATION_VERTICAL)
-		toolbar.set_style(gtk.TOOLBAR_BOTH)
-		for i in range(83, 87):
-			button = gtk.Button(msg(i))
-			item = gtk.ToolItem()
-			item.add(button)
-			item.set_expand(True)
-			item.set_homogeneous(True)
-			toolbar.insert(item, i - 83)
-		da_box.pack_start(toolbar)
+	#	toolbar = gtk.Toolbar()
+	#	toolbar.set_orientation(gtk.ORIENTATION_VERTICAL)
+	#	toolbar.set_style(gtk.TOOLBAR_BOTH)
+	#	for i in range(83, 87):
+	#		button = gtk.Button(msg(i))
+	#		item = gtk.ToolItem()
+	#		item.add(button)
+	#		item.set_expand(True)
+	#		item.set_homogeneous(True)
+	#		toolbar.insert(item, i - 83)
+	#	da_box.pack_start(toolbar)
 		box = gtk.VBox(spacing=3)
 		da_box.pack_start(box)
 
@@ -780,7 +808,7 @@ class Gui:
 		scaled_buf = pixbuf.scale_simple(width, height, gtk.gdk.INTERP_BILINEAR)
 
 		# Updating kana image widget.
-		self.kanaImage.set_from_pixbuf(scaled_buf)
+		self.widgets['kanaImage'].set_from_pixbuf(scaled_buf)
 
 	def quit(self,widget):
 		gtk.main_quit() #Bye~~

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-""" Kana no quiz!
+"""Kana no quiz!
 
 	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 	$Id$

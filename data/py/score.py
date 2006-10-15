@@ -33,13 +33,13 @@ class Score:
 			else: #Setting value 1 to this kana in the wrong answer list.
 				self.unrecKana[kind][kana] = 1
 
-	def isQuizFinished(self,length):
+	def is_quiz_finished(self,length):
 		if self.total>=int(length): return True
 		else: return False
 
-	def getQuestionTotal(self): return self.total
+	def get_question_total(self): return self.total
 
-	def getResults(self):
+	def get_results(self):
 		#Compute the success rate (percent).
 		if self.total: successrate = self.score * 100 / self.total
 		else: successrate = 0
