@@ -2,8 +2,8 @@
 	Kana no quiz - TODO list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Different kana image themes. [IN PROGRESS]
-- Kana image scaling ability. [IN PROGRESS]
+- Different kana image themes. [DONE]
+- Kana image scaling ability. [DONE]
 - Better introduction to kana (with nice presenting, image & full kana table).
 [IN PROGRESS]
 - Implementing optional automatic quiz proceeding (answer result shortly
@@ -15,3 +15,4 @@ making Kana no quiz more game like.
 - Audio pronouncing of all kana, with male and female voices.
 - A repeat wrongly-answered questions some time after option.
 - One per one kana choosing.
+

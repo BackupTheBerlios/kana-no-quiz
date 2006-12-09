@@ -1,6 +1,12 @@
 
-	Kana no quiz - Changelog
-~~~~~~~~~~~~~~~~~~~~~~~~~
+ Kana no quiz - Changelog
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Version 2.0 (in development):
+
+- Switchable kana image theme (with the addition of a second
+theme, taken from the GPL program "Kana Test").
+
 
 * Version 1.7 (2006-10-15):
 

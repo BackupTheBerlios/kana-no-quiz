@@ -1,24 +1,25 @@
 
  Kana no quiz - README
- version 1.7 - 2006-10-15
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+ version 2.0 - in development 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  Introduction
  ============
 
- This is ``Kana no quiz", a little educational tool, written
-in Python, to memorize Japanese kana (hiragana & katakana)
+ This is ``Kana no quiz", a little educational tool, simple
+yet efficient, to memorize Japanese kana (hiragana & katakana)
 pronounciation in an easy way, and thus accomplish the first
 step in learning the language.
 
  The full list of kana is implemented, including additional
 katakana used in modern language. Default used transcription
 system is the Hepburn's (most common world-wide), but it does
-also support Kunrei-shiki, Nihon-shiki and Polivanov systems.
+also support Kunrei-shiki, Nihon-shiki and Polivanov
+(cyrillic) systems.
 
- This program is cross platform, the same package works on
-GNU/Linux, FreeBSD, MacOSX and Windows, using the same GTK+
-interface on every platform.
+ Written in Python, this program is cross platform: the same
+package works on GNU/Linux, FreeBSD, MacOSX and Windows, using
+the same GTK+ interface on every platform.
 
  How does it work?
  -----------------
