@@ -150,6 +150,9 @@ class Gui:
 		label = gtk.Label("%s\n%s" % (msg(93), msg(94)))
 		label.set_justify(gtk.JUSTIFY_CENTER)
 		da_box.pack_start(label)
+
+		thumb_size = ((26, 23),(32, 20))[self.param['kana_image_theme'] ==
+			"kanatest"]
 		
 		def button_pressed(widget, event, image_path):
 			"""Update displayed high size kana image when a new one is
@@ -173,7 +176,8 @@ class Gui:
 			pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
 
 			# Resizing.
-			scaled_buf = pixbuf.scale_simple(26, 23, gtk.gdk.INTERP_TILES)
+			scaled_buf = pixbuf.scale_simple(thumb_size[0], thumb_size[1],
+				gtk.gdk.INTERP_TILES)
 
 			# Updating kana image widget.
 			image.set_from_pixbuf(scaled_buf)
@@ -580,8 +584,8 @@ class Gui:
 				'portion': 0, 'set': 1, 'kind': 2},
 			"kana_image_scale": {0: 'small', 1: 'medium', 2: 'large',
 				'small': 0, 'medium': 1, 'large': 2},
-			"kana_image_theme": {0: 'choplair-network', 1: 'kanatest',
-				'choplair-network': 0, 'kanatest': 1}
+			"kana_image_theme": {0: 'choplair', 1: 'kanatest',
+				'choplair': 0, 'kanatest': 1},
 			"lang": {0: 'en', 1: 'fr', 2: 'de', 3: 'pt_BR', 4: 'ru', 5: 'sr',
 				6: 'sv', 'en': 0, 'fr': 1, 'de': 2, 'pt_BR': 3, 'ru': 4,
 				'sr': 5, 'sv': 6}
@@ -726,16 +730,14 @@ class Gui:
 		box3.pack_start(box4)
 
 		#`kana_image_theme'
-		box4 = gtk.HBox()
 		label = gtk.Label(msg(99))
-		box4.pack_start(label)
+		box3.pack_start(label)
 		opt_widget['kana_image_theme'] = gtk.combo_box_new_text()
 		for x in (100, 101):
 			opt_widget['kana_image_theme'].append_text(msg(x))
 		opt_widget['kana_image_theme'].set_active(opt_conv["kana_image_theme"]\
 			[self.param['kana_image_theme']])
-		box4.pack_start(opt_widget['kana_image_theme'])
-		box3.pack_start(box4)
+		box3.pack_start(opt_widget['kana_image_theme'])
 
 		#`lang'
 		box4 = gtk.HBox()

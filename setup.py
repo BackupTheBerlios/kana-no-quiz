@@ -36,10 +36,10 @@ datafiles = [
 		(os.path.join('share', 'kana-no-quiz', 'img'),
 			glob.glob(os.path.join("data", "img", "*.png"))+
 			glob.glob(os.path.join("data", "img", "*.xbm"))),
-		(os.path.join('share', 'kana-no-quiz', 'img', 'kana', 'default'),
-			glob.glob(os.path.join("data", "img", "kana", "default", "*.png"))),
-		#(os.path.join('share', 'kana-no-quiz', 'img', 'kana', 'kanatest'),
-		#	glob.glob(os.path.join("data", "img", "kana", "kanatest", "*.png"))),
+		(os.path.join('share', 'kana-no-quiz', 'img', 'kana', 'choplair'),
+			glob.glob(os.path.join("data", "img", "kana", "choplair", "*.png"))),
+		(os.path.join('share', 'kana-no-quiz', 'img', 'kana', 'kanatest'),
+			glob.glob(os.path.join("data", "img", "kana", "kanatest", "*.png"))),
 		#Localisation.
 		(os.path.join('share', 'kana-no-quiz', 'locale', 'de', 'LC_MESSAGES'),
 			[os.path.join("data", "locale", "de", "LC_MESSAGES", "kana-no-quiz.mo")]), #German
