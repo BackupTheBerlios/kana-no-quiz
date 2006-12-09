@@ -44,3 +44,4 @@ if sys.argv[1]=="-install":
     file_created(programs_shortcut)
 
     print "Created Kana no quiz shortcut in the Start menu.\nYou're done!"
+

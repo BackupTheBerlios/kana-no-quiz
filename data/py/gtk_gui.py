@@ -1,4 +1,4 @@
-"""Kana no quiz!99
+"""Kana no quiz!
 
 	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
 	$Id$
@@ -580,6 +580,8 @@ class Gui:
 				'portion': 0, 'set': 1, 'kind': 2},
 			"kana_image_scale": {0: 'small', 1: 'medium', 2: 'large',
 				'small': 0, 'medium': 1, 'large': 2},
+			"kana_image_theme": {0: 'choplair-network', 1: 'kanatest',
+				'choplair-network': 0, 'kanatest': 1}
 			"lang": {0: 'en', 1: 'fr', 2: 'de', 3: 'pt_BR', 4: 'ru', 5: 'sr',
 				6: 'sv', 'en': 0, 'fr': 1, 'de': 2, 'pt_BR': 3, 'ru': 4,
 				'sr': 5, 'sv': 6}
@@ -602,6 +604,8 @@ class Gui:
 					['kana_no_repeat'].get_active()]
 				self.param['kana_image_scale'] = opt_conv["kana_image_scale"]\
 					[opt_widget["kana_image_scale"].get_active()]
+				self.param['kana_image_theme'] = opt_conv["kana_image_theme"]\
+					[opt_widget["kana_image_theme"].get_active()]
 				self.param['lang'] = opt_conv["lang"][opt_widget['lang']\
 					.get_active()]
 				
@@ -719,6 +723,18 @@ class Gui:
 		opt_widget['kana_image_scale'].set_active(opt_conv["kana_image_scale"]\
 			[self.param['kana_image_scale']])
 		box4.pack_start(opt_widget['kana_image_scale'])
+		box3.pack_start(box4)
+
+		#`kana_image_theme'
+		box4 = gtk.HBox()
+		label = gtk.Label(msg(99))
+		box4.pack_start(label)
+		opt_widget['kana_image_theme'] = gtk.combo_box_new_text()
+		for x in (100, 101):
+			opt_widget['kana_image_theme'].append_text(msg(x))
+		opt_widget['kana_image_theme'].set_active(opt_conv["kana_image_theme"]\
+			[self.param['kana_image_theme']])
+		box4.pack_start(opt_widget['kana_image_theme'])
 		box3.pack_start(box4)
 
 		#`lang'

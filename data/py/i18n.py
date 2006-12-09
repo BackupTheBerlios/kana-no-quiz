@@ -167,7 +167,10 @@ class I18n:
 			_("Kana image scale:"), #95
 			_("Small"),
 			_("Medium"),
-			_("Large")
+			_("Large"),
+			_("Kana image theme:"),
+			_("Choplair-network's graphics (colored)"), #100
+			_("KanaTest's graphics (black & white)")
 			)
 
 		return strings[num]
