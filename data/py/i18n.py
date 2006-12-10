@@ -82,12 +82,12 @@ class I18n:
 			_("Contracted"), #25
 			_("Additional"),
 			_("Portions"),
-			_("Basic hiragana"),
-			_("Modified hiragana"),
-			_("Contracted hiragana"), #30
-			_("Basic katakana"),
-			_("Modified katakana"),
-			_("Contracted katakana"),
+			_("Hiragana"),
+			_("Katakana"),
+			_("Basic set"), #30
+			_("Modified set"),
+			_("Contracted set"),
+			_("Additional set"),
 			_("Additional katakana"),
 			_("If you are novice, it may be interesting at the beginning to "
 				"train yourself only on portions instead of the full kana set."), #35
@@ -116,7 +116,7 @@ class I18n:
 			_("Credits"),
 			_("Main programming: Choplair.\n"
 				"Code contribution: Jeremy Bowers.\n"
-				"Default kana theme: Ms. Marie-Claire.\n"
+				"Choplair-network's kana theme: Ms. Marie-Claire.\n"
 				"Artworks: Fayanne."),
 			_("Close"),
 			_("Warning"),

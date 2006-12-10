@@ -217,21 +217,23 @@ class Gui:
 
 			self.main(da_box) # Going back to the main window.
 
-		da_table = gtk.Table(3, 2, False)
+		da_table = gtk.Table(3, 3, False)
 		da_table.set_col_spacings(8)
 		da_table.set_row_spacings(4)
 		da_box.pack_start(da_table)
 
-		# High-size kana.
+		# Vertical separation bar between Hiragana / Katakana.
+		da_table.attach(gtk.VSeparator(), 1, 2, 0, 3)
+		# High-size kana display.
 		kana_image = gtk.Image()
 		kana_image.set_from_file(os.path.join(self.datarootpath, "img",
 			"kana_teacher.png"))
-		da_table.attach(kana_image, 2, 3, 0, 1)
+		da_table.attach(kana_image, 3, 4, 0, 1)
 
 		# Generating kana tables (one per set).
 		size = ((6, 10), (6, 5), (4, 10), (6, 10), (6, 5), (4, 10), (6, 5))
-		table_coord = {0: (0, 0), 1: (0, 1), 2: (0, 2), 3: (1, 0), 4: (1, 1),
-			5: (1, 2), 6: (2, 1)}
+		table_coord = {0: (0, 0), 1: (0, 1), 2: (0, 2), 3: (2, 0), 4: (2, 1),
+			5: (2, 2), 6: (3, 1)}
 		special_coord = {
 			# Basic hiragana / katakana.
 			"ya": (8, 1), "yu": (8, 3), "yo": (8, 5), "wa": (9, 1), "o-2":
@@ -291,11 +293,16 @@ class Gui:
 					j += 1
 				i += 1
 
-			label = gtk.Label("<b>%s</b>" % msg(28 + n))
+			label = gtk.Label("<b>%s</b>" % msg(30 + (n, n - 3)[n > 2]))
 			label.set_use_markup(True)
-			
+	
 			if n in (0, 3):
 				container = gtk.VBox()
+				kana_kind_label = gtk.Label(msg((28,29)[n == 3]))
+				kana_kind_label.modify_font(FontDescription("bold 14"))
+				kana_kind_label.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse(("#cc432b", "#2e4898")[n == 3]))
+
+				container.pack_start(kana_kind_label, padding=2)
 				container.pack_start(label)
 				container.pack_start(table)
 			else:

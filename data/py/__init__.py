@@ -36,7 +36,7 @@ import options
 import gtk_gui as gui
 
 # Global variables.
-VERSION = 1.7
+VERSION = "2.0 CVS"
 
 # Setting Kana no quiz's data root directory's path.
 datarootpath = path.join(sys.prefix, 'share', 'kana-no-quiz')
