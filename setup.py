@@ -60,8 +60,24 @@ if 'bdist_wininst' in sys.argv: #Windows Start Menu icon!
 
 setup(
 	name			=	'Kana no quiz',
-	version			=	'1.7',
-	description		=	'An efficient tool to memorize Japanese kana pronounciation.',
+	version			=	'2.0 CVS',
+	description		=	'A tool to memorize Japanese kana pronounciation.',
+	long_description	=	"""
+					Kana no quiz is a little educational tool, simple yet
+					efficient, to memorize the pronunciation of Japanese
+					kana (hiragana & katakana) in an quick, easy, and
+					flexible fashion.
+					
+					This program features several ways and many options to
+					either teach the complete beginner or test the wizard
+					skill on kana recognition and pronouncing.
+					
+					Progressively, a great part of the Japanese writing
+					(excepted Kanji) becomes phoneticaly readable to the
+					foreign student, representing a first step into the
+					learning of the language.
+
+					""",
 	author			=	'Choplair-network',
 	author_email		=	'contact@choplair.org',
 	url			=	'http://www.choplair.org/',
@@ -82,3 +98,4 @@ if "install" in sys.argv:
 		shutil.copy("./data/script/kana-no-quiz_startup.pyw", startup_script)
 		print "Kana no quiz start-up script put into `%s'." % os.path.dirname(
 			startup_script)
+
