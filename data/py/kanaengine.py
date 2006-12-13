@@ -45,7 +45,7 @@ def hepburn_to_other_sys_convert(kana, outputsys):
 	#Convertion to Polivanov.	
 	if outputsys=="polivanov":
 		convert = {
-			#Basic/modified kana.
+			#Basic / modified kana.
 			"a":"а", "i":"и", "u":"у", "e":"э", "o":"о",
 			"ka":"ка", "ki":"ки", "ku":"ку","ke":"кэ", "ko":"ко",
 			"ga":"га", "gi":"ги", "gu":"гу", "ge":"гэ", "go":"го",
@@ -60,7 +60,7 @@ def hepburn_to_other_sys_convert(kana, outputsys):
 			"ma":"ма", "mi":"ми", "mu":"му", "me":"мэ", "mo":"мо",
 			"ya":"я", "yu":"ю", "yo":"ё",
 			"ra":"ра", "ri":"ри", "ru":"ру", "re":"рэ", "ro":"ро",
-			"wa":"ва", "o-2":"о", "n":"н", 
+			"wa":"ва", "o-2":"о", "n":"н", "ji-2":"дзи-2",
 			#Contracted kana.
 			"kya":"кя", "kyu":"кю", "kyo":"кё",
 			"gya":"гя", "gyu":"гю", "gyo":"гё",
@@ -75,13 +75,13 @@ def hepburn_to_other_sys_convert(kana, outputsys):
 			"rya":"ря", "ryu":"рю", "ryo":"рё",
 			#Additionnal katakana.
 			"wi":"ви", "we":"вэ", "wo":"во",
-			"kwa":"ква", "kwo":"кво",
+			"kwa":"ква", "kwo":"кво", "gwa":"гва",
 			"she":"се", "je":"дзэ", "che":"тэ",
 			"tsa":"ца", "tse":"цэ", "tso":"цо",
 			"ti":"ти", "tu":"ту", "di":"ди", "du":"ду",
 			"tyu":"тю", "dyu":"дю", "ye":"е",
 			"fa":"фа", "fi":"фи", "fe":"фэ", "fo":"фо",
-			"va":"ва","vi":"ви","ve":"вэ","vo":"во"}
+			"va":"ва","vi":"ви","vu":"ву", "ve":"вэ","vo":"во"}
 		if convert.has_key(kana): return convert[kana]
 
 	#Return the same value if no modification of the kana beetween the systems.

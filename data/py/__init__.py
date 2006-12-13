@@ -50,3 +50,4 @@ environ['LANG'] = options['lang']
 # Let's go!
 gui = gui.Gui(options, VERSION, datarootpath)
 gui.main()
+
