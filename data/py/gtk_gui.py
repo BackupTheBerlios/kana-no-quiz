@@ -51,7 +51,7 @@ class Gui:
 		self.window = gtk.Window()
 		self.window.connect('key-press-event', self.keypress)
 		self.window.set_resizable(False)
-		self.window.set_position(gtk.WIN_POS_CENTER)
+		self.window.set_position(gtk.WIN_POS_CENTER_ALWAYS)
 		self.window.connect("destroy", self.quit)
 		gtk.window_set_default_icon_from_file(os.path.join(
 			self.datarootpath, "img", "icon.png"))

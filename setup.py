@@ -23,6 +23,8 @@ import os
 import glob
 import sys
 from distutils.core import setup
+try: import py2exe
+except: pass
 
 if 'bdist_wininst' in sys.argv:
 	scriptfiles = glob.glob(os.path.join('data', 'script', '*.py*'))	 
@@ -30,69 +32,93 @@ else: scriptfiles = []
 
 #Common data files.
 datafiles = [
-		#Textual files.
+		# Textual files.
 		(os.path.join('share', 'kana-no-quiz'), glob.glob("*.txt")),
-		#Images (per extention addition).
+		# Images (per extention addition).
 		(os.path.join('share', 'kana-no-quiz', 'img'),
 			glob.glob(os.path.join("data", "img", "*.png"))+
 			glob.glob(os.path.join("data", "img", "*.xbm"))),
 		(os.path.join('share', 'kana-no-quiz', 'img', 'kana', 'choplair'),
-			glob.glob(os.path.join("data", "img", "kana", "choplair", "*.png"))),
+			glob.glob(os.path.join("data", "img", "kana", "choplair",
+			"*.png"))),
 		(os.path.join('share', 'kana-no-quiz', 'img', 'kana', 'kanatest'),
-			glob.glob(os.path.join("data", "img", "kana", "kanatest", "*.png"))),
-		#Localisation.
+			glob.glob(os.path.join("data", "img", "kana", "kanatest",
+			"*.png"))),
+		# Localization.
 		(os.path.join('share', 'kana-no-quiz', 'locale', 'de', 'LC_MESSAGES'),
-			[os.path.join("data", "locale", "de", "LC_MESSAGES", "kana-no-quiz.mo")]), #German
+			[os.path.join("data", "locale", "de", "LC_MESSAGES",
+			"kana-no-quiz.mo")]),  # German
 		(os.path.join('share', 'kana-no-quiz','locale', 'fr', 'LC_MESSAGES'),
-			[os.path.join("data", "locale", "fr", "LC_MESSAGES", "kana-no-quiz.mo")]), #French
+			[os.path.join("data", "locale", "fr", "LC_MESSAGES",
+			"kana-no-quiz.mo")]),  # French
 		(os.path.join('share', 'kana-no-quiz','locale', 'pt_BR', 'LC_MESSAGES'),
-			[os.path.join("data", "locale", "pt_BR", "LC_MESSAGES", "kana-no-quiz.mo")]), #Portuguese of Brazil
+			[os.path.join("data", "locale", "pt_BR", "LC_MESSAGES",
+			"kana-no-quiz.mo")]),  # Portuguese of Brazil
 		(os.path.join('share', 'kana-no-quiz','locale','ru','LC_MESSAGES'),
-			[os.path.join("data", "locale", "ru", "LC_MESSAGES", "kana-no-quiz.mo")]), #Russian
+			[os.path.join("data", "locale", "ru", "LC_MESSAGES",
+			"kana-no-quiz.mo")]),  # Russian
 		(os.path.join('share', 'kana-no-quiz','locale', 'sr', 'LC_MESSAGES'),
-			[os.path.join("data", "locale", "sr", "LC_MESSAGES", "kana-no-quiz.mo")]), #Serbian
+			[os.path.join("data", "locale", "sr", "LC_MESSAGES",
+			"kana-no-quiz.mo")]),  # Serbian
 		(os.path.join('share', 'kana-no-quiz', 'locale', 'sv', 'LC_MESSAGES'),
-			[os.path.join("data", "locale", "sv", "LC_MESSAGES", "kana-no-quiz.mo")])] #Swedish
+			[os.path.join("data", "locale", "sv", "LC_MESSAGES",
+			"kana-no-quiz.mo")])]  # Swedish
 
-if 'bdist_wininst' in sys.argv: #Windows Start Menu icon!
+if 'bdist_wininst' in sys.argv or 'py2exe' in sys.argv:
+	# Windows Start Menu icon!
 	datafiles.append((os.path.join("share", "kana-no-quiz", "img"),
 		[os.path.join("data", "img", "icon.ico")]))
 
 setup(
-	name			=	'Kana no quiz',
-	version			=	'2.0 CVS',
-	description		=	'A tool to memorize Japanese kana pronounciation.',
-	long_description	=	"""
-					Kana no quiz is a little educational tool, simple yet
-					efficient, to memorize the pronunciation of Japanese
-					kana (hiragana & katakana) in an quick, easy, and
-					flexible fashion.
-					
-					This program features several ways and many options to
-					either teach the complete beginner or test the wizard
-					skill on kana recognition and pronouncing.
-					
-					Progressively, a great part of the Japanese writing
-					(excepted Kanji) becomes phoneticaly readable to the
-					foreign student, representing a first step into the
-					learning of the language.
+	name		=	'Kana no quiz',
+	version		=	'2.0 CVS',
+	description	=	'A tool to memorize Japanese kana pronounciation.',
+	long_description =	"""
+				Kana no quiz is a little educational tool, simple yet
+				efficient, to memorize the pronunciation of Japanese
+				kana (hiragana & katakana) in an quick, easy, and
+				flexible fashion.
+				
+				This program features several ways and many options to
+				either teach the complete beginner or test the wizard
+				skill on kana recognition and pronouncing.
+				
+				Progressively, a great part of the Japanese writing
+				(excepted Kanji) becomes phoneticaly readable to the
+				foreign student, representing a first step into the
+				learning of the language.
 
-					""",
-	author			=	'Choplair-network',
-	author_email		=	'contact@choplair.org',
-	url			=	'http://www.choplair.org/',
-	download_url		=	'http://developer.berlios.de/project/filelist.php?group_id=1783',
-	license			=	'GNU General Public License',
-	packages		=	['kana-no-quiz'],
-	package_dir		=	{'kana-no-quiz': 'data/py'},
-	scripts			=	scriptfiles,
-	data_files		=	datafiles
+				""",
+	author		=	'Choplair-network',
+	author_email	=	'contact@choplair.org',
+	url		=	'http://www.choplair.org/',
+	download_url	=	'http://developer.berlios.de/project/filelist.php?group_id=1783',
+	license		=	'GNU General Public License',
+	packages	=	['kana-no-quiz'],
+	package_dir	=	{'kana-no-quiz': 'data/py'},
+	scripts		=	scriptfiles,
+	data_files	=	datafiles,
+	# The following is for py2exe...
+	windows 	=	[{
+				'script': os.path.join("data", "script",
+					"kana-no-quiz_startup.pyw"),
+				'icon_resources': [(1, os.path.join("data", "img",
+					"icon.ico"))]
+				}],
+	options		=	{
+				'py2exe': {
+					'packages':'encodings',
+					'includes': 'cairo, pango, pangocairo, atk, '\
+						'gobject, psyco, random, sets, gettext',
+					"compressed": 1, "optimize": 1
+				}}
 	)
 
 if "install" in sys.argv:
-	#Post-install stuffs (Unix).
+	# Post-installing stuffs (Unix).
 	if os.name == "posix":
-		startup_script = os.path.join(sys.prefix, "bin", "kana-no-quiz") #Startup script path.
+		# Startup script patch.
+		startup_script = os.path.join(sys.prefix, "bin", "kana-no-quiz")
 
 		import shutil
 		shutil.copy("./data/script/kana-no-quiz_startup.pyw", startup_script)
