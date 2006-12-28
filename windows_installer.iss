@@ -1,6 +1,7 @@
-; This is the ``Inno setup" script for generating Kana no quiz's Windows
-; installer for the program and all its dependencies (Python interpreter with
-; required modules, and the Windows port of the GTK+ library as well).
+; This is the ``Inno setup" script for generating Kana no quiz's all-in-one
+; Windows installer which thus provides  the program and all its dependencies
+; (Python interpreter with required modules, and the Windows port of the GTK+
+; library as well).
 
 [Setup]
 AppName=Kana no quiz

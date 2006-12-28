@@ -117,7 +117,7 @@ class I18n:
 			_("Main programming: Choplair.\n"
 				"Code contribution: Jeremy Bowers.\n"
 				"Choplair-network's kana theme: Ms. Marie-Claire.\n"
-				"Artworks: Fayanne."),
+				"Artworks: Fayane."),
 			_("Close"),
 			_("Warning"),
 			_("Please select at least one kana portion to start the quiz."), #60

@@ -94,8 +94,8 @@ setup(
 	url		=	'http://www.choplair.org/',
 	download_url	=	'http://developer.berlios.de/project/filelist.php?group_id=1783',
 	license		=	'GNU General Public License',
-	packages	=	['kana-no-quiz'],
-	package_dir	=	{'kana-no-quiz': 'data/py'},
+	packages	=	['kananoquiz'],
+	package_dir	=	{'kananoquiz': 'data/py'},
 	scripts		=	scriptfiles,
 	data_files	=	datafiles,
 	# The following is for py2exe...
