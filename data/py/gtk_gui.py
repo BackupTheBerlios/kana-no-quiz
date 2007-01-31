@@ -247,7 +247,11 @@ class Gui:
          "fo": (4, 5), "va": (5, 1), "vi": (5, 2), "vu": (5, 3), "ve":
          (5, 4), "vo": (5, 5)}
 
-      def gen_kana_set_table(set_num):
+      def gen_kana_set_table(widget=None, set_num=0):
+         if not set_num in (0,3) and not set_container[set_num]\
+            .get_child() == None:
+            return True 
+
          set = (kanaengine.hiragana.setsInOrder() +\
             kanaengine.katakana.setsInOrder())[set_num]
 
@@ -297,7 +301,9 @@ class Gui:
 
          # Packing the table.
          if set_num in (0, 3): set_container[set_num].pack_start(table)
-         else: setcontainer[set_num].add(table)
+         else:
+            set_container[set_num].add(table)
+            set_container[set_num].show_all()
 
       set_container = []
       for i in range(7):
@@ -317,12 +323,13 @@ class Gui:
             set_container.append(gtk.Expander())
             set_container[i].set_label_widget(label)
             set_container[i].set_expanded(False)
+            set_container[i].connect("activate", gen_kana_set_table, i)
 
          da_table.attach(set_container[i], table_coord[i][0],
             table_coord[i][0] + 1, table_coord[i][1], table_coord[i][1] +\
             (1, 2)[i == 6], xoptions = gtk.SHRINK, yoptions = gtk.SHRINK)
 
-      for x in (0, 3): gen_kana_set_table(x)
+      for i in (0, 3): gen_kana_set_table(set_num=i)
 
       # Bottom's buttons.
       box = gtk.HBox(spacing=4)
@@ -476,16 +483,18 @@ class Gui:
       # let's convert the good answer (given in the Hepburn internal format)
       # to the user-selected romanization system, in order to compare with its
       # chosen answer.
-      correctAnswer = self.kana.transcriptions[self.param['transcription_system']]
+      correctAnswer = self.kana.transcriptions[self.param[\
+         'transcription_system']]
       if correctAnswer[-2:] == "-2": correctAnswer = correctAnswer[:-2]
 
       if answer == correctAnswer: # \o/
-         self.widgets['quizLabel'].set_text("<span color='darkgreen'><b>%s</b></span>" %
-            msg(13))
+         self.widgets['quizLabel'].set_text("<span color='darkgreen'><b>"\
+            "%s</b></span>" % msg(13))
          self.score.update(1) # Updating the score (add 1 point).
       else: # /o\
-         self.widgets['quizLabel'].set_text("<span color='red'><b>%s</b></span>\n%s" %
-            (msg(14), msg(15) % "<big><b>%s</b></big>" % correctAnswer.upper()))
+         self.widgets['quizLabel'].set_text("<span color='red'><b>%s</b>"\
+            "</span>\n%s" % (msg(14), msg(15) % "<big><b>%s</b></big>"\
+            % correctAnswer.upper()))
          self.score.update(0, correctAnswer, self.kana.kind.kindIndex) 
       self.widgets['quizLabel'].set_use_markup(True)
 
@@ -504,7 +513,8 @@ class Gui:
       if self.score.is_quiz_finished(self.param['length']):
          # The quiz is finished... Let's show results!
          self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
-         self.handlerid['nextbutton_clicked'] = self.nextButton.connect("clicked",
+         self.handlerid['nextbutton_clicked'] = self.nextButton.connect(
+            "clicked",
             self.results)
       else: self.quizWidget['stop'].show()
 
@@ -517,7 +527,8 @@ class Gui:
 
       self.widgets['quizInfos']['questionNumLabel'].set_text(msg(67) %
          (self.score.get_question_total() + 1, self.param['length']))
-      self.widgets['quizLabel'].set_text((msg(11), msg(12))[self.kana.kind.kindIndex])
+      self.widgets['quizLabel'].set_text((msg(11), msg(12))\
+         [self.kana.kind.kindIndex])
 
       if self.param['answer_mode'] == "list":
          self.nextButton.hide() # Hidding the arrow.
@@ -567,13 +578,15 @@ class Gui:
       elif results[2] <= 60: lvl = 1
       elif results[2] <= 80: lvl = 2
       else: lvl = 3
-      self.widgets['kanaImage'].set_from_file(os.path.join(self.datarootpath, "img",
-         "results_%s.png" % ("crappy", "average", "good", "excelent")[lvl]))
+      self.widgets['kanaImage'].set_from_file(os.path.join(self.datarootpath,
+         "img", "results_%s.png" % ("crappy", "average", "good", "excelent")\
+         [lvl]))
          
       self.widgets['quizInfos']['container'].modify_bg(gtk.STATE_NORMAL,
          gtk.gdk.color_parse("#f3eddd"))
       self.widgets['quizInfos']['questionNumLabel'].set_text(msg(89 + lvl))
-      self.widgets['quizInfos']['questionNumLabel'].modify_font(FontDescription("normal 19"))
+      self.widgets['quizInfos']['questionNumLabel'].modify_font(
+         FontDescription("normal 19"))
       self.widgets['quizInfos']['systemLabel'].hide()
 
       self.score.reset()  # Reseting the score.
@@ -582,7 +595,8 @@ class Gui:
       self.nextButton.set_size_request(-1, 80)
       # Directing the arrow towards the main window.
       self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
-      self.nextButton.connect_object("clicked", self.main, self.win_container.get_child())
+      self.nextButton.connect_object("clicked", self.main,
+         self.win_container.get_child())
       self.quizWidget['stop'].hide() # Hidding the stop button.
 
    def options(self, oldbox):
@@ -780,7 +794,7 @@ class Gui:
 
    def about(self, oldbox):
       """Display the About dialog."""   
-      self.window.set_title(msg(4)) # Changing window title.
+      self.window.set_title(msg(4))  # Changing window title.
       da_box = gtk.VBox(spacing=4)
       da_box.set_border_width(5)
 
@@ -874,3 +888,4 @@ class Gui:
 
    def quit(self,widget):
       gtk.main_quit() #Bye~~
+
