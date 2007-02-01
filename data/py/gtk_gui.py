@@ -154,13 +154,29 @@ class Gui:
       thumb_size = ((26, 23),(32, 20))[self.param['kana_image_theme'] ==
          "kanatest"]
       
-      def button_pressed(widget, event, image_path):
-         """Update displayed high size kana image when a new one is
+      def button_pressed(widget, event, kind, kana):
+         """Update displayed high size kana image and information when a new one is
             pressed.
 
          """
          if event.type == gtk.gdk.BUTTON_PRESS and event.button == 1:
+            # High size kana image.
+            image_path = os.path.join(self.datarootpath, "img", "kana",
+               self.param['kana_image_theme'], "%s_%s.png" % (("k", "h")\
+               [kind], kana))
             kana_image.set_from_file(image_path)
+
+            # Kana transcription.
+            transcription = (kana, kanaengine.hepburn_to_other_sys_convert(
+               kana, self.param['transcription_system']))[[self.param\
+               ['transcription_system']] != "hepburn"]
+            if transcription[-2:] == "-2": transcription = transcription[:-2]
+            kana_transcription_label.set_text(transcription.upper())
+
+            # Packing box with kana transcription / pronoucing, if not yet performed.
+            if len(kana_info_box.get_children()) < 2:
+               kana_info_box.pack_start(kana_info_event_box)
+               kana_info_box.show_all()
 
       def item(kind, kana):
          """Return a contaier with a small kana image widget associated with
@@ -196,7 +212,7 @@ class Gui:
          container.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("white"))
          container.modify_bg(gtk.STATE_PRELIGHT, gtk.gdk.color_parse("white"))
          container.modify_bg(gtk.STATE_ACTIVE, gtk.gdk.color_parse("white"))
-         container.connect("button_press_event", button_pressed, image_path)
+         container.connect("button_press_event", button_pressed, kind, kana)
          container.add(box)
 
          return container
@@ -224,11 +240,20 @@ class Gui:
 
       # Vertical separation bar between Hiragana / Katakana.
       da_table.attach(gtk.VSeparator(), 1, 2, 0, 3)
+      kana_info_box = gtk.VBox()
       # High-size kana display.
       kana_image = gtk.Image()
       kana_image.set_from_file(os.path.join(self.datarootpath, "img",
          "kana_teacher.png"))
-      da_table.attach(kana_image, 3, 4, 0, 1)
+      kana_info_box.pack_start(kana_image, False)
+      box2 = gtk.HBox()
+      kana_transcription_label = gtk.Label()
+      kana_transcription_label.modify_font(FontDescription("normal 22"))
+      box2.pack_start(kana_transcription_label)
+      kana_info_event_box = gtk.EventBox()
+      kana_info_event_box.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("white"))
+      kana_info_event_box.add(box2)
+      da_table.attach(kana_info_box, 3, 4, 0, 1)
 
       # Generating kana tables (one per set).
       size = ((6, 10), (6, 5), (4, 10), (6, 10), (6, 5), (4, 10), (6, 5))
