@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Kana no quiz!
 
-	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
+	Copyleft 2003, 2004, 2005, 2006, 2007 Choplair-network.
 	$Id$
 
 	This program is free software; you can redistribute it and/or
@@ -44,6 +44,9 @@ datafiles = [
 		(os.path.join('share', 'kana-no-quiz', 'img', 'kana', 'kanatest'),
 			glob.glob(os.path.join("data", "img", "kana", "kanatest",
 			"*.png"))),
+      # Sounds.
+      (os.path.join('share', 'kana-no-quiz', 'sound', 'kana_female'),
+         glob.glob(os.path.join("data", "sound", "kana_female", "*.wav"))),
 		# Localization.
 		(os.path.join('share', 'kana-no-quiz', 'locale', 'de', 'LC_MESSAGES'),
 			[os.path.join("data", "locale", "de", "LC_MESSAGES",

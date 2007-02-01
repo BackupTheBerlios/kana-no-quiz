@@ -22,6 +22,7 @@
 import sys
 import gtk
 import os.path
+import alsaaudio
 from pango import FontDescription
 from string import capwords
 # Internal modules.
@@ -69,7 +70,7 @@ class Gui:
 
    def main(self, oldbox=None):
       if self.currentlang != self.param['lang']:
-         # Change localization...
+         # Changing localization...
          self.currentlang = self.param['lang']
          self.i18n.setlang(self.param['lang'])
          global msg
@@ -142,8 +143,15 @@ class Gui:
       self.win_container.show_all()
 
    def kana_tables(self, oldbox):
-      """Display the full kana tables."""   
-      self.window.set_title(msg(83)) # Changing window title.
+      """Display the full kana tables."""
+      # Alsa audio output of kana pronouncing.
+      out = alsaaudio.PCM(alsaaudio.PCM_PLAYBACK)
+      out.setchannels(1)
+      out.setrate(48000)
+      out.setformat(alsaaudio.PCM_FORMAT_S16_LE)
+      out.setperiodsize(160) 
+
+      self.window.set_title(msg(83))  # Changing window title.
       da_box = gtk.VBox(spacing=4)
       da_box.set_border_width(5)
       
@@ -173,8 +181,19 @@ class Gui:
             if transcription[-2:] == "-2": transcription = transcription[:-2]
             kana_transcription_label.set_text(transcription.upper())
 
-            # Packing box with kana transcription / pronoucing, if not yet
-            # performed.
+            # Playing kana proununciation.
+            if kana[-2:] == "-2": kana = kana[:-2]
+            sound_path = os.path.join(self.datarootpath, "sound", "kana_female",
+               "%s.wav" % kana)
+            file = open(sound_path, "r")
+            i = 0
+            while i < 100:
+               data = file.read(320)
+               out.write(data)
+               i += 1
+
+            # Packing box with kana transcription and pronoucing button, if not
+            # yet performed.
             if len(kana_info_box.get_children()) < 2:
                kana_info_box.pack_start(kana_info_event_box)
                kana_info_box.show_all()
@@ -232,7 +251,7 @@ class Gui:
          # Updating the whole configuration.
          self.param.write()
 
-         self.main(da_box) # Going back to the main window.
+         self.main(da_box)  # Going back to the main window.
 
       da_table = gtk.Table(3, 3, False)
       da_table.set_col_spacings(8)
@@ -835,7 +854,7 @@ class Gui:
       label.set_justify(gtk.JUSTIFY_CENTER)
       label.set_use_markup(True)
       box2.pack_start(label)
-      label = gtk.Label("Copyleft 2003, 2004, 2005, 2006, 2007"\
+      label = gtk.Label("Copyleft 2003, 2004, 2005, 2006, 2007 "\
          "Choplair-network.")
       box2.pack_start(label)
       box.pack_start(box2)
