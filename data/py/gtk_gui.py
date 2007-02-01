@@ -155,8 +155,8 @@ class Gui:
          "kanatest"]
       
       def button_pressed(widget, event, kind, kana):
-         """Update displayed high size kana image and information when a new one is
-            pressed.
+         """Update displayed high size kana image and information when a new
+            one is pressed.
 
          """
          if event.type == gtk.gdk.BUTTON_PRESS and event.button == 1:
@@ -173,7 +173,8 @@ class Gui:
             if transcription[-2:] == "-2": transcription = transcription[:-2]
             kana_transcription_label.set_text(transcription.upper())
 
-            # Packing box with kana transcription / pronoucing, if not yet performed.
+            # Packing box with kana transcription / pronoucing, if not yet
+            # performed.
             if len(kana_info_box.get_children()) < 2:
                kana_info_box.pack_start(kana_info_event_box)
                kana_info_box.show_all()
@@ -251,7 +252,8 @@ class Gui:
       kana_transcription_label.modify_font(FontDescription("normal 22"))
       box2.pack_start(kana_transcription_label)
       kana_info_event_box = gtk.EventBox()
-      kana_info_event_box.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("white"))
+      kana_info_event_box.modify_bg(gtk.STATE_NORMAL,
+         gtk.gdk.color_parse("white"))
       kana_info_event_box.add(box2)
       da_table.attach(kana_info_box, 3, 4, 0, 1)
 
@@ -833,7 +835,8 @@ class Gui:
       label.set_justify(gtk.JUSTIFY_CENTER)
       label.set_use_markup(True)
       box2.pack_start(label)
-      label = gtk.Label("Copyleft 2003, 2004, 2005, 2006 Choplair-network.")
+      label = gtk.Label("Copyleft 2003, 2004, 2005, 2006, 2007"\
+         "Choplair-network.")
       box2.pack_start(label)
       box.pack_start(box2)
       da_box.pack_start(box)
