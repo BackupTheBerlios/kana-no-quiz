@@ -1,6 +1,6 @@
 """Kana no quiz!
 
-	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
+	Copyleft 2003, 2004, 2005, 2006, 2007 Choplair-network.
 	$Id$
 
 	This program is free software; you can redistribute it and/or
@@ -30,7 +30,8 @@ class Options:
 		self.conf_file = os.path.join(self.conf_dir, "option.conf") 
 
 		self.params = {}
-		# Valid values for each option contained as a tuple into a dictionnary.
+		# Valid values for each restricted option, contained as a tuple into a
+      # dictionnary.
 		self.validValues = {
 		'basic_hiragana': ('true','false'),
 		'modified_hiragana': ('true','false'),
@@ -49,10 +50,10 @@ class Options:
 		'kana_image_theme': ('choplair', 'kanatest'),
 		'kana_image_scale': ('small', 'medium', 'large')
 		}
-		self.setDefaultValues()
+		self.set_default_values()
 
 	# This is separated so I can test it independently
-	def setDefaultValues(self):
+	def set_default_values(self):
 		# Default options & values.
 		defaults = {
 		'basic_hiragana': 'true',
@@ -77,7 +78,8 @@ class Options:
 		'list_size': 3,
 		'rand_answer_sel_range': 'portion',
 		'kana_image_theme': 'choplair',
-		'kana_image_scale': 'medium'
+		'kana_image_scale': 'medium',
+      'alsa_sound_card': 'default'
 		}
 		if locale.getlocale() in ("de", "fr", "pt_BR", "ru", "sr", "sv"):
 			self.params['lang'] = locale.getlocale()
@@ -89,20 +91,21 @@ class Options:
 	def read_from_file(self):
 		# Checking whether the option file exists...
 		if os.path.isfile(self.conf_file):
-			file = open(self.conf_file, "r") #Open.
-			content = file.readlines() #Read the content.
-			file.close() #And close. :p
+			file = open(self.conf_file, "r") #Opening.
+			content = file.readlines() #Reading the content.
+			file.close() #And closing. :p
 
-			self.parseOptions(content)
+			self.parse_options(content)
 
-	def parseOptions(self, content):
+	def parse_options(self, content):
 		for line in content:
 			line.strip()
+         # Comments and blank lines are skipped.
 			if line[0] != "#" and line != "\n":
 				key, val = split(line)[:2]
 				key, val = key.strip(), val.strip()
 				
-				#String to integrer list convertion (kana portions).
+				# String to integrer list convertion (kana portions).
 				if key[-8:] == "portions":
 					plop = list()
 					for x in val.split(","): plop.append(int(x))
@@ -117,7 +120,7 @@ class Options:
 			keep the default value.
 		
 		"""
-		# Do valid values for this option have been referenced?
+		# Is it an option with restricted values?
 		if self.validValues.has_key(key):
 			if val in self.validValues[key]:
 				# The value is valid, so update the param.
@@ -133,12 +136,12 @@ class Options:
 				except:
 					raise ValueError("Illegal value for %s: %s." % (key, val))
 		else:
-			#We use it, although it seems to be an unknown option.
+			# Not taking care of the value since it is not a restricted option.
 			self.params[key] = val
 
 		# Special processing: Is this a 'portion'?
 		if key[-9:] == '_portions':
-			self.setPortion(key, val)
+			self.set_portion(key, val)
 			return
 
 		# Special processing: Is this the name of a kind?
@@ -148,8 +151,8 @@ class Options:
 		except KeyError:
 			pass
 
-	def setPortion(self, key, value):
-		"""self.setPortion('basic_hiragana_portion', [1, 1, 0, ...]
+	def set_portion(self, key, value):
+		"""self.set_portion('basic_hiragana_portion', [1, 1, 0, ...]
 
 			Sets the .active on the appropriate Kana portions.
 
@@ -200,9 +203,11 @@ class Options:
 			content += "%s %s\n" % (key, written_val)  # Adding to the output file content.
 
 		if not os.path.isdir(self.conf_dir):
-			#Set path to the configuration file.
+			# Creating Kana no quiz configuration directory.
 			os.mkdir(self.conf_dir)
 
-		file = open(self.conf_file, "wb")  # Opening (creating if doesn't exist).
-		file.write(content)  # Writing
-		file.close()  # And closing
+      # Writing configuration file...
+		file = open(self.conf_file, "wb") 
+		file.write(content) 
+		file.close() 
+ 

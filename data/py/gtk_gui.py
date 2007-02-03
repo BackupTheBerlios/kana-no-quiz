@@ -22,13 +22,13 @@
 import sys
 import gtk
 import os.path
-import alsaaudio
 from pango import FontDescription
 from string import capwords
 # Internal modules.
-import kanaengine
-import score
 import i18n
+import kanaengine
+import playsound
+import score
 
 class Gui:
    def __init__(self, *args):
@@ -36,7 +36,9 @@ class Gui:
       self.version = args[1]
       self.datarootpath = args[2]
 
-      self.kanaEngine =  kanaengine.KanaEngine(self.param)
+      self.kana_engine =  kanaengine.KanaEngine(self.param)
+      self.playsound = playsound.PlaySound(self.datarootpath,
+         self.param["alsa_sound_card"]) 
       self.score = score.Score()
       self.handlerid = {}
       self.widgets = {}
@@ -119,7 +121,7 @@ class Gui:
          gtk.main()
 
    def intro(self, oldbox):
-      """Rendering the marvelous introduction..."""
+      """Render the marvelous introduction..."""
       self.window.set_title(msg(1)) # Changing window title.
       box = gtk.VBox(spacing=5)
       box.set_border_width(5)
@@ -144,13 +146,6 @@ class Gui:
 
    def kana_tables(self, oldbox):
       """Display the full kana tables."""
-      # Alsa audio output of kana pronouncing.
-      out = alsaaudio.PCM(alsaaudio.PCM_PLAYBACK)
-      out.setchannels(1)
-      out.setrate(48000)
-      out.setformat(alsaaudio.PCM_FORMAT_S16_LE)
-      out.setperiodsize(160) 
-
       self.window.set_title(msg(83))  # Changing window title.
       da_box = gtk.VBox(spacing=4)
       da_box.set_border_width(5)
@@ -180,17 +175,10 @@ class Gui:
                ['transcription_system']] != "hepburn"]
             if transcription[-2:] == "-2": transcription = transcription[:-2]
             kana_transcription_label.set_text(transcription.upper())
-
+            
             # Playing kana proununciation.
             if kana[-2:] == "-2": kana = kana[:-2]
-            sound_path = os.path.join(self.datarootpath, "sound", "kana_female",
-               "%s.wav" % kana)
-            file = open(sound_path, "r")
-            i = 0
-            while i < 100:
-               data = file.read(320)
-               out.write(data)
-               i += 1
+            self.playsound.play_kana(kana, "female")
 
             # Packing box with kana transcription and pronoucing button, if not
             # yet performed.
@@ -395,7 +383,7 @@ class Gui:
 
    def quiz(self, oldbox):
       # Randomly getting a kana (respecting bellow conditions).
-      self.kana = self.kanaEngine.randomKana()
+      self.kana = self.kana_engine.randomKana()
 
       if self.kana:
          self.quizWidget = {}
@@ -497,9 +485,9 @@ class Gui:
          # Hidding the arrow.
          if self.param['answer_mode'] == "list":
             self.nextButton.hide()
-         else: entry.grab_focus() # Giving focus to text entry.
+         else: entry.grab_focus()  # Bringing focus to text entry.
 
-         self.quizWidget['stop'].hide() # Hidding the stop button.
+         self.quizWidget['stop'].hide()  # Hidding the stop button.
 
       else:
          dialog = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL,
@@ -509,7 +497,7 @@ class Gui:
 
    def display_random_list(self):
       i = 0
-      possibleAnswers = self.kanaEngine.randomAnswers(self.param['list_size'])
+      possibleAnswers = self.kana_engine.randomAnswers(self.param['list_size'])
       for answerKana in possibleAnswers:
          x = answerKana.transcriptions[self.param['transcription_system']]
          if x[-2:] == "-2": x = x[:-2]
@@ -533,11 +521,11 @@ class Gui:
          'transcription_system']]
       if correctAnswer[-2:] == "-2": correctAnswer = correctAnswer[:-2]
 
-      if answer == correctAnswer: # \o/
+      if answer == correctAnswer:  # \o/
          self.widgets['quizLabel'].set_text("<span color='darkgreen'><b>"\
             "%s</b></span>" % msg(13))
-         self.score.update(1) # Updating the score (add 1 point).
-      else: # /o\
+         self.score.update(1)  # Updating the score (add 1 point).
+      else:  # /o\
          self.widgets['quizLabel'].set_text("<span color='red'><b>%s</b>"\
             "</span>\n%s" % (msg(14), msg(15) % "<big><b>%s</b></big>"\
             % correctAnswer.upper()))
@@ -546,15 +534,15 @@ class Gui:
 
       if self.param['answer_mode'] == "list":
          for butt in self.widgets['random_ans_butt']:
-            butt.hide() #Hide choices buttons.
-         self.nextButton.show() #Show the arrow.
+            butt.hide()  # Hidding choices buttons.
+         self.nextButton.show()  # Showing the arrow.
       else:
          widget.hide()
          self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
          self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object(
             "clicked", self.new_question,widget)
 
-      self.nextButton.grab_focus() # Give focus to the arrow.
+      self.nextButton.grab_focus()  # Bringing focus to the arrow.
 
       if self.score.is_quiz_finished(self.param['length']):
          # The quiz is finished... Let's show results!
@@ -566,7 +554,7 @@ class Gui:
 
    def new_question(self, widget):
       # Randomly get a kana.
-      self.kana = self.kanaEngine.randomKana()
+      self.kana = self.kana_engine.randomKana()
 
       # Updating kana's image.
       self.set_kana_image(self.kana) 
@@ -577,7 +565,7 @@ class Gui:
          [self.kana.kind.kindIndex])
 
       if self.param['answer_mode'] == "list":
-         self.nextButton.hide() # Hidding the arrow.
+         self.nextButton.hide()  # Hidding the arrow.
          self.display_random_list()
       else:  # Displaying the text entry.
          widget.set_text("")
@@ -636,14 +624,14 @@ class Gui:
       self.widgets['quizInfos']['systemLabel'].hide()
 
       self.score.reset()  # Reseting the score.
-      self.kanaEngine.reset()  # Reseting kana engine's variables.
+      self.kana_engine.reset()  # Reseting kana engine's variables.
 
       self.nextButton.set_size_request(-1, 80)
       # Directing the arrow towards the main window.
       self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
       self.nextButton.connect_object("clicked", self.main,
          self.win_container.get_child())
-      self.quizWidget['stop'].hide() # Hidding the stop button.
+      self.quizWidget['stop'].hide()  # Hidding the stop button.
 
    def options(self, oldbox):
       # Dicts for integrer to string param convertion and vice-versa...
@@ -688,9 +676,9 @@ class Gui:
             
             # Updating the whole configuration.
             self.param.write()
-         self.main(da_box) # Go back to the ``main".
+         self.main(da_box)  # Going back to the ``main".
 
-      self.window.set_title(msg(2)) #Change title of window.
+      self.window.set_title(msg(2))  # Changing window's title.
       da_box = gtk.HBox(spacing=3)
       da_box.set_border_width(5)
 
@@ -934,5 +922,5 @@ class Gui:
       self.widgets['kanaImage'].set_from_pixbuf(scaled_buf)
 
    def quit(self,widget):
-      gtk.main_quit() #Bye~~
+      gtk.main_quit()  # Ja mata~~
 
