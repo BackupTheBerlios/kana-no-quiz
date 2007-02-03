@@ -37,8 +37,7 @@ class Gui:
       self.datarootpath = args[2]
 
       self.kana_engine =  kanaengine.KanaEngine(self.param)
-      self.playsound = playsound.PlaySound(self.datarootpath,
-         self.param["alsa_sound_card"]) 
+      self.playsound = playsound.PlaySound(self.datarootpath) 
       self.score = score.Score()
       self.handlerid = {}
       self.widgets = {}
@@ -178,7 +177,9 @@ class Gui:
             
             # Playing kana proununciation.
             if kana[-2:] == "-2": kana = kana[:-2]
+            gtk.gdk.threads_enter()
             self.playsound.play_kana(kana, "female")
+            gtk.gdk.threads_leave()
 
             # Packing box with kana transcription and pronoucing button, if not
             # yet performed.
@@ -293,8 +294,8 @@ class Gui:
          table.set_col_spacings(2)
          table.set_row_spacings(1)
          if set_num == 6: table.set_row_spacing(4, 12)
+  
          i = 0
-
          for portion in set.portions:
             # Portion selection checkbutton.   
             frame = gtk.Frame()
@@ -305,8 +306,10 @@ class Gui:
             frame.add(checkbutt)
             x = i
             x_end = x + 1
-            if (set_num in (0, 3) and i == 8) or (set_num in (2, 5)):
+            if set_num in (0, 3) and i == 8:
                x_end = x + 2
+            elif set_num in (2, 5):
+               x_end = x + (2, 3)[i == 8]
             elif set_num == 6 and i >= 2:
                if i == 2: x_end = x + 2
                else:

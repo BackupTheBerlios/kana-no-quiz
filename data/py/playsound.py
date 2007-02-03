@@ -18,49 +18,20 @@
    
    """
 import os
+from pygame import mixer
 
 class PlaySound:
-   def __init__(self, datarootpath, alsacardname):
+   """Cross platform Kana sound playing, using the PyGame library."""
+   def __init__(self, datarootpath):
       self.datarootpath = datarootpath
-      self.alsacardname = alsacardname
-      self.system = os.name
-
-      # Using specific module for Unix / Windows platforms
-      # (no Mac OS X support yet).
-      if self.system == "posix":
-         # Alsa audio output (using additional module).
-         import alsaaudio
-         try:
-            self.out = alsaaudio.PCM(alsaaudio.PCM_PLAYBACK,
-               cardname="default")
-         except alsaaudio.ALSAAudioError:
-            print "Warning: unable to access ALSA playback device. "\
-               "No sound will be heard."
-            self.out = open(os.devnull, "w")
-         else:
-            self.out.setchannels(1)
-            self.out.setrate(48000)
-            self.out.setformat(alsaaudio.PCM_FORMAT_S16_LE)
-            self.out.setperiodsize(160)
-
-      elif self.system == "nt":
-         # Windows simple WAVE output (using Python built-in module)
-         import winsound
+      mixer.init(48000)  # Initializing mixer, at 48kHz.
 
    def play_kana(self, kana, gender):
       sound_path = os.path.join(self.datarootpath, "sound", "kana_%s"\
          % gender, "%s.wav" % kana)
 
       if os.path.isfile(sound_path):
-         if self.system == "posix":
-            file = open(sound_path, "r")
-            i = 0
-            while i < 42:
-               data = file.read(320)
-               self.out.write(data)
-               i += 1
-            file.close()
-            return True
-
+        mixer.Sound(sound_path).play()
+        return True
       else: return False
 
