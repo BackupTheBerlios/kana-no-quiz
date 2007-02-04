@@ -108,7 +108,7 @@ class I18n:
 			_("Swedish"), #50
 			_("Save"),
 			_("Cancel"),
-			_("Kana no quiz: a Japanese kana memorization tool."),
+			_("A Japanese kana memorization tool."),
 			_("Version %s."),
 			_("Kana no quiz is free software with its source code released under the "
             "terms of the GNU General Public License (see `GPL.txt').\nThe "
@@ -173,11 +173,10 @@ class I18n:
 			_("Morden colorful"), #100
 			_("Traditionnal black & white"),
          _("Kana vocal pronouncing"),
-         _("Female: Myrtille Chouar.\n"
-           "Male: Pachilor.")
+         _("Female: Myrtille Chouard.\n"
+           "Male: Pachilor."),
          _("Kana image themes"),
-         _("Modern colorful:\n"
-           "Ms. Marie-Claire for the Choplair-network.\n"
+         _("Modern colorful: Ms. Marie-Claire.\n"
            "Traditional black & white:\n"
            "adapted from \"Kana Test\"."), #105
          _("Artworks"),
