@@ -110,12 +110,12 @@ class I18n:
 			_("Cancel"),
 			_("A Japanese kana memorization tool."),
 			_("Version %s."),
-			_("Kana no quiz is free software with its source code released under the "
-            "terms of the GNU General Public License (see `GPL.txt').\nThe "
+			_("Kana no quiz is free software with its source code released under "
+            "the terms of the GNU General Public License (see `GPL.txt').\nThe "
             "whole multimedia content is released under the terms of the Free "
             "Art license (see `FAL.txt') with the exception of the kana image "
-            "theme that was adapted from KanaTest, released under the GNU GPL "
-            "as well."), #55
+            "theme that was adapted from \"Kana Test\", released under the "
+            "GNU GPL as well."), #55
 			_("Credits"),
 			_("Main development: Choplair.\n"
 				"Code contribution: Jeremy Bowers."),

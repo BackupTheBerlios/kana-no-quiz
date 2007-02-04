@@ -880,7 +880,7 @@ class Gui:
             msg(104), msg(105), msg(106), msg(107)))[i])
          buffer.apply_tag(buffer.create_tag(justification=gtk.JUSTIFY_CENTER,
             editable=False), buffer.get_start_iter(), buffer.get_end_iter())
-         for x in ((0, 4), (0,))[i]:
+         for x in ((0, 4), (0, 4, 9))[i]:
             buffer.apply_tag(buffer.create_tag(weight=700),
                buffer.get_iter_at_line(x), buffer.get_iter_at_line(x + 1))
          textview = gtk.TextView(buffer)
