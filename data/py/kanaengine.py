@@ -455,3 +455,4 @@ for kanaKindName in order:
          portion.addKana(kana)
          kanaSet.addKana(kana)
          kanaKind[kana.kana] = kana
+

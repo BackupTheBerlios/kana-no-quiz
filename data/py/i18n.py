@@ -110,14 +110,15 @@ class I18n:
 			_("Cancel"),
 			_("Kana no quiz: a Japanese kana memorization tool."),
 			_("Version %s."),
-			_("Kana no quiz is free software released under the GNU GPL "
-				"license (see `GPL.txt'). Kana images are released under the "
-				"Free Art license (see `FAL.txt')."), #55
+			_("Kana no quiz is free software with its source code released under the "
+            "terms of the GNU General Public License (see `GPL.txt').\nThe "
+            "whole multimedia content is released under the terms of the Free "
+            "Art license (see `FAL.txt') with the exception of the kana image "
+            "theme that was adapted from KanaTest, released under the GNU GPL "
+            "as well."), #55
 			_("Credits"),
-			_("Main programming: Choplair.\n"
-				"Code contribution: Jeremy Bowers.\n"
-				"Choplair-network's kana theme: Ms. Marie-Claire.\n"
-				"Artworks: Fayane."),
+			_("Main development: Choplair.\n"
+				"Code contribution: Jeremy Bowers."),
 			_("Close"),
 			_("Warning"),
 			_("Please select at least one kana portion to start the quiz."), #60
@@ -126,7 +127,7 @@ class I18n:
 			_("Kunrei-shiki"),
 			_("Nihon-shiki"),
 			_("Information"), #65
-			_("No portion selected: that question set is disabled. :p"),
+			_("Programming"),
 			_("Question %s of %s."),
 			_("%s system."),
 			_("Stop"),
@@ -169,8 +170,18 @@ class I18n:
 			_("Medium"),
 			_("Large"),
 			_("Kana image theme:"),
-			_("Choplair-network's graphics (colored)"), #100
-			_("KanaTest's graphics (black & white)")
+			_("Morden colorful"), #100
+			_("Traditionnal black & white"),
+         _("Kana vocal pronouncing"),
+         _("Female: Myrtille Chouar.\n"
+           "Male: Pachilor.")
+         _("Kana image themes"),
+         _("Modern colorful:\n"
+           "Ms. Marie-Claire for the Choplair-network.\n"
+           "Traditional black & white:\n"
+           "adapted from \"Kana Test\"."), #105
+         _("Artworks"),
+         _("Fayanne & Choplair.")
 			)
 
 		return strings[num]

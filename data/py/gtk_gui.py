@@ -573,12 +573,12 @@ class Gui:
       else:  # Displaying the text entry.
          widget.set_text("")
          widget.show()
-         widget.grab_focus() # Giving focus to text entry.
+         widget.grab_focus()  # Giving focus to text entry.
          self.nextButton.disconnect(self.handlerid['nextbutton_clicked'])
          self.handlerid['nextbutton_clicked'] = self.nextButton.connect_object(
             "clicked", self.check_answer, widget)
 
-      self.quizWidget['stop'].hide() # Hidding the stop button.
+      self.quizWidget['stop'].hide()  # Hidding the stop button.
 
    def results(self, data):
       """End-time quiz results display."""
@@ -851,15 +851,16 @@ class Gui:
       box.pack_start(box2)
       da_box.pack_start(box)
 
-      label = gtk.Label(msg(55))
-      label.set_line_wrap(True)
-      label.set_justify(gtk.JUSTIFY_CENTER)
-      da_box.pack_start(label)
+      licence_label = gtk.Label(msg(55))
+      licence_label.set_justify(gtk.JUSTIFY_CENTER)
+      licence_label.set_size_request(480, -1)
+      licence_label.set_line_wrap(True)
+      da_box.pack_start(licence_label)
 
       frame = gtk.Frame(msg(56))
       container = gtk.EventBox()
       container.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#c9ddff"))
-      box = gtk.HBox(spacing=6)
+      box = gtk.HBox(spacing=2)
       box.set_border_width(3)
 
       box2 = gtk.VBox()
@@ -870,17 +871,21 @@ class Gui:
       label.set_selectable(True)
       label.set_use_markup(True)
       box2.pack_start(label)
-      box.pack_start(box2,padding=10)
+      box.pack_start(box2, padding=4)
 
-      buffer = gtk.TextBuffer()
-      buffer.set_text("%s\n\n%s\n%s" % (msg(57), msg(81), msg(82)))
-      buffer.apply_tag(buffer.create_tag(justification=gtk.JUSTIFY_CENTER,
-         editable=False), buffer.get_start_iter(), buffer.get_end_iter())
-      buffer.apply_tag(buffer.create_tag(weight=700),
-         buffer.get_iter_at_line(5), buffer.get_iter_at_line(6))
-      textview = gtk.TextView(buffer)
-      textview.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#c9ddff"))
-      box.pack_start(textview)
+      for i in (0, 1):
+         buffer = gtk.TextBuffer()
+         buffer.set_text(("%s\n%s\n\n%s\n%s" % (msg(66), msg(57), msg(81),
+            msg(82)), "%s\n%s\n\n%s\n%s\n\n%s\n%s" % (msg(102), msg(103),
+            msg(104), msg(105), msg(106), msg(107)))[i])
+         buffer.apply_tag(buffer.create_tag(justification=gtk.JUSTIFY_CENTER,
+            editable=False), buffer.get_start_iter(), buffer.get_end_iter())
+         for x in ((0, 4), (0,))[i]:
+            buffer.apply_tag(buffer.create_tag(weight=700),
+               buffer.get_iter_at_line(x), buffer.get_iter_at_line(x + 1))
+         textview = gtk.TextView(buffer)
+         textview.modify_base(gtk.STATE_NORMAL, gtk.gdk.color_parse("#c9ddff"))
+         box.pack_start(textview)
 
       container.add(box)
       frame.add(container)
