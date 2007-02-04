@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Kana no Quiz 1.7\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-15 08:07+0200\n"
-"PO-Revision-Date: 2007-01-29 16:02+0100\n"
+"PO-Revision-Date: 2007-02-04 16:34+0100\n"
 "Last-Translator: Choplair <chopinou-NOSP@M-choplair.org>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: data/py/i18n.py:66
 msgid "Have a good practice ! ^_^"
-msgstr "Bon chance dans votre apprentissage ! ^_^"
+msgstr "Bonne chance dans votre apprentissage ! ^_^"
 
 #: data/py/i18n.py:67
 msgid "OK"
