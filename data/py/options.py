@@ -42,13 +42,14 @@ class Options:
       'additional_katakana': ('true','false'),
       'allow_repetition': ('true', 'false'),
       'transcription_system': kanaengine.transcriptions,
-      'answer_mode': ('list','entry'),
-      'list_size': (2, 3, 4, 5),
+      'answering_mode': ('list','entry'),
+      'list_size': range(2, 6),
       'rand_answer_sel_range': ('portion','set','kind'),
       'kana_no_repeat': ('true','false'),
       'lang': ('de', 'en', 'fr', 'pt_BR', 'ru', 'sr', 'sv'),
       'kana_image_theme': ('choplair', 'kanatest'),
-      'kana_image_scale': ('small', 'medium', 'large')
+      'kana_image_scale': ('small', 'medium', 'large'),
+      'answer_display_timeout': range(4)
       }
       self.set_default_values()
 
@@ -74,11 +75,12 @@ class Options:
       'allow_repetition': 'false',
       'length': 20,
       'kana_no_repeat': 'false',
-      'answer_mode': 'list',
+      'answering_mode': 'list',
       'list_size': 3,
       'rand_answer_sel_range': 'portion',
       'kana_image_theme': 'choplair',
-      'kana_image_scale': 'medium'
+      'kana_image_scale': 'medium',
+      'answer_display_timeout': 0
       }
       if locale.getlocale() in ("de", "fr", "pt_BR", "ru", "sr", "sv"):
          self.params['lang'] = locale.getlocale()
@@ -205,7 +207,8 @@ class Options:
             for x in written_val: string += "%s," % x
             written_val = string[:-1]
 
-         content += "%s %s\n" % (key, written_val)  # Adding to the output file content.
+         # Adding to the output file content.
+         content += "%s %s\n" % (key, written_val)
 
       if not os.path.isdir(self.conf_dir):
          # Creating Kana no quiz configuration directory.
