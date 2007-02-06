@@ -21,6 +21,8 @@
 # Imports.
 import sys
 import gtk
+import time
+import threading
 import os.path
 from pango import FontDescription
 from string import capwords
@@ -117,6 +119,7 @@ class Gui:
 
       if not oldbox:
          # Initializing pyGTK if it haven't been done yet.
+         gtk.gdk.threads_init()
          gtk.main()
 
    def intro(self, oldbox):
@@ -435,8 +438,10 @@ class Gui:
          self.widgets['quiz_label'].set_line_wrap(True)
          self.widgets['quiz_right_box'].pack_start(self.widgets['quiz_label'])
 
-         # ``Go next" button.
+         # The ``next" button.
          self.widgets['next_button'] = gtk.Button()
+         self.widgets['next_button'].add(gtk.Arrow(gtk.ARROW_RIGHT,
+            gtk.SHADOW_IN))
 
          if self.param['answering_mode'] == "list":
             # Choice buttons generation.
@@ -460,9 +465,6 @@ class Gui:
 
             self.display_random_list()
 
-            if self.param['answer_display_timeout'] == 0:
-               self.widgets['next_button'].add(gtk.Arrow(gtk.ARROW_RIGHT,
-                  gtk.SHADOW_IN))
             self.handlerid['nextbutton_clicked'] = self.widgets['next_button']\
                .connect("clicked", self.new_question)
          else: 
@@ -474,8 +476,6 @@ class Gui:
                widget.get_text().upper()))
             self.widgets['quiz_right_box'].pack_start(entry)
 
-            self.widgets['next_button'].add(gtk.Arrow(gtk.ARROW_RIGHT,
-               gtk.SHADOW_IN))
             self.handlerid['nextbutton_clicked'] = self.widgets['next_button'].\
                connect_object("clicked", self.check_answer, entry)
             entry.connect("activate", lambda widget:
@@ -530,14 +530,14 @@ class Gui:
       # chosen answer.
       correct_answer = self.kana.transcriptions[self.param[\
          'transcription_system']]
-      if correct_answer[-2:] == "-2": correctAnswer = correctAnswer[:-2]
+      if correct_answer[-2:] == "-2": correct_answer = correct_answer[:-2]
 
       if user_answer == correct_answer:  # \o/
-         self.widgets['quiz_label'].set_text("<span color='darkgreen'><b>"\
+         self.widgets['quiz_label'].set_text("<span color='darkgreen'><b>"
             "%s</b></span>" % msg(13))
          self.score.update(1)  # Updating the score (add 1 point).
       else:  # /o\
-         self.widgets['quiz_label'].set_text("<span color='red'><b>%s</b>"\
+         self.widgets['quiz_label'].set_text("<span color='red'><b>%s</b>"
             "</span>\n%s" % (msg(14), msg(15) % "<big><b>%s</b></big>"\
             % correct_answer.upper()))
          self.score.update(0, correct_answer, self.kana.kind.kindIndex) 
@@ -546,7 +546,7 @@ class Gui:
       if self.param['answering_mode'] == "list":
          for butt in self.widgets['random_ans_butt']:
             butt.hide()  # Hidding choices buttons.
-         self.widgets['next_button'].show()  # Showing the arrow.
+         self.widgets['next_button'].show()  # Showing the ``next" button.
       else:
          widget.hide()
          self.widgets['next_button'].disconnect(
@@ -554,7 +554,24 @@ class Gui:
          self.handlerid['nextbutton_clicked'] = self.widgets['next_button']\
             .connect_object("clicked", self.new_question,widget)
 
-      self.widgets['next_button'].grab_focus()  # Bringing focus to the arrow.
+      # Bringing focus to the ``next" button.
+      self.widgets['next_button'].grab_focus()
+      
+      if self.param['answer_display_timeout'] > 0:
+         # Automatic Quiz Proceeding (AQP®)feature.
+         def countdown():
+            i = self.param['answer_display_timeout']
+            while i > 0:
+               self.widgets['next_button'].remove(self.widgets['next_button']\
+                  .get_child())
+               self.widgets['next_button'].add(gtk.Label(i))
+               self.widgets['next_button'].show_all()
+               time.sleep(1)
+               i = i - 1
+            self.widgets['next_button'].clicked()
+
+         t = threading.Thread(target=countdown)
+         t.start()
 
       if self.score.is_quiz_finished(self.param['length']):
          # The quiz is finished... Let's show results!
@@ -577,7 +594,7 @@ class Gui:
          [self.kana.kind.kindIndex])
 
       if self.param['answering_mode'] == "list":
-         self.widgets['next_button'].hide()  # Hidding the arrow.
+         self.widgets['next_button'].hide()  # Hidding the ``next" button.
          self.display_random_list()
       else:  # Displaying the text entry.
          widget.set_text("")
@@ -638,9 +655,16 @@ class Gui:
 
       self.score.reset()  # Reseting the score.
       self.kana_engine.reset()  # Reseting kana engine's variables.
+      
+      if self.param['answer_display_timeout'] > 0:
+         self.widgets['next_button'].remove(self.widgets['next_button']\
+            .get_child())
+         self.widgets['next_button'].add(gtk.Arrow(gtk.ARROW_RIGHT,
+            gtk.SHADOW_IN))
+         self.widgets['next_button'].show_all()
 
       self.widgets['next_button'].set_size_request(-1, 80)
-      # Directing the arrow towards the main window.
+      # Directing the ``next" button toward the main window.
       self.widgets['next_button'].disconnect(
          self.handlerid['nextbutton_clicked'])
       self.widgets['next_button'].connect_object("clicked", self.main,
