@@ -125,5 +125,5 @@ if "install" in sys.argv:
    # Post-installing stuffs (Unix).
    if os.name == "posix":
       print "Kana no quiz v%s has been successfully installed!\n"\
-         "You may now use the 'kana-no-quiz' command to run the program." %
+         "You may now use the 'kana-no-quiz' command to run the program." %\
          VERSION
