@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+
+Name=Kana no quiz
+
+Comment=Memorize Japanese kana.
+Comment[fr]=Mémoriser les kana japonais.
+
+
+Type=Application
+Categories=Education;Languages;
+
+Icon=/usr/share/kana-no-quiz/img/icon.png
+Exec=kana-no-quiz
+Terminal=false
+StartupNotify=false

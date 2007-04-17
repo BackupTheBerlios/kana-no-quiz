@@ -49,6 +49,9 @@ datafiles = [
       # Sounds.
       (os.path.join('share', 'kana-no-quiz', 'sound', 'kana_female'),
          glob.glob(os.path.join("data", "sound", "kana_female", "*.wav"))),
+      # *.desktop (menu entry)
+      (os.path.join("share", "applications"),
+         [os.path.join("data", "misc", "kana-no-quiz.desktop")]),
       # Localization.
       (os.path.join('share', 'kana-no-quiz', 'locale', 'de', 'LC_MESSAGES'),
          [os.path.join("data", "locale", "de", "LC_MESSAGES",
