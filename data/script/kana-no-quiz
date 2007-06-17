@@ -22,4 +22,3 @@
 
 # Launching Kana no quiz.
 from kananoquiz import *
-

@@ -558,7 +558,7 @@ class Gui:
       self.widgets['next_button'].grab_focus()
       
       if self.param['answer_display_timeout'] > 0:
-         # Automatic Quiz Proceeding (AQP®)feature.
+         # Automatic Quiz Proceeding (AQP)feature.
          def countdown():
             i = self.param['answer_display_timeout']
             while i > 0:

@@ -110,8 +110,7 @@ setup(
    data_files   =   datafiles,
    # The following is for py2exe...
    windows    =   [{
-            'script': os.path.join("data", "script",
-               "kana-no-quiz_startup.pyw"),
+            'script': os.path.join("data", "script", "kana-no-quiz"),
             'icon_resources': [(1, os.path.join("data", "img",
                "icon.ico"))]
             }],
@@ -119,7 +118,8 @@ setup(
             'py2exe': {
                'packages':'encodings',
                'includes': 'cairo, pango, pangocairo, atk, '\
-                  'gobject, psyco, random, sets, gettext',
+                  'gobject, psyco, random, sets, gettext, '\
+                  'pygame',
                "compressed": 1, "optimize": 1
             }}
    )
