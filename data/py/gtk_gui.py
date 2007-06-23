@@ -119,7 +119,7 @@ class Gui:
 
       if not oldbox:
          # Initializing pyGTK if it haven't been done yet.
-         gtk.gdk.threads_init()
+         #gtk.gdk.threads_init()
          gtk.main()
 
    def intro(self, oldbox):
