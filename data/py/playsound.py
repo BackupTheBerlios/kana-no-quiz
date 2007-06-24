@@ -18,20 +18,33 @@
    
    """
 import os
-from pygame import mixer
+
+if os.name == "nt": # Using Python built-in module for Windows.
+   import winsound
+else: # Using Pygame for other OSs.
+   from pygame import mixer
 
 class PlaySound:
-   """Cross platform Kana sound playing, using the PyGame library."""
+   """Cross platform Kana sound playing, using the PyGame library (and
+   the Winsound one for Windows)."""
    def __init__(self, datarootpath):
       self.datarootpath = datarootpath
-      mixer.init(48000)  # Initializing mixer, at 48kHz.
+    
+      if not os.name == "nt":
+         mixer.init(48000)  # Initializing Pygame mixer, at 48kHz.
 
    def play_kana(self, kana, gender):
       sound_path = os.path.join(self.datarootpath, "sound", "kana_%s"\
          % gender, "%s.wav" % kana)
 
-      if os.path.isfile(sound_path):
-        mixer.Sound(sound_path).play()
-        return True
-      else: return False
+      if not os.path.isfile(sound_path):
+        return False
+      elif os.name == "nt": # Using Python built-in module for Windows.
+         winsound.PlaySound(sound_path, winsound.SND_FILENAME | \
+            winsound.SND_ASYNC)
+      else: # Using Pygame for other OSs.
+         if os.path.isfile(sound_path):
+           mixer.Sound(sound_path).play()
+           return True
+
 

@@ -118,8 +118,7 @@ setup(
             'py2exe': {
                'packages':'encodings',
                'includes': 'cairo, pango, pangocairo, atk, '\
-                  'gobject, psyco, random, sets, gettext, '\
-                  'pygame',
+                  'gobject, psyco, random, sets, gettext',
                "compressed": 1, "optimize": 1
             }}
    )

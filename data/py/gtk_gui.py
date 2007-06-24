@@ -260,7 +260,7 @@ class Gui:
       kana_info_box.pack_start(kana_image, False)
       box2 = gtk.HBox()
       kana_transcription_label = gtk.Label()
-      kana_transcription_label.modify_font(FontDescription("normal 22"))
+      kana_transcription_label.modify_font(FontDescription("sans 22"))
       box2.pack_start(kana_transcription_label)
       kana_info_event_box = gtk.EventBox()
       kana_info_event_box.modify_bg(gtk.STATE_NORMAL,
