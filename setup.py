@@ -27,7 +27,7 @@ try: import py2exe
 except: pass
 
 if 'bdist_wininst' in sys.argv:
-   scriptfiles = glob.glob(os.path.join('data', 'script', '*'))    
+   scriptfiles = glob.glob(os.path.join('data', 'script', '*.py*'))    
 elif "install" in sys.argv:
    scriptfiles = [os.path.join("data", "script", "kana-no-quiz")]
 else: scriptfiles = []

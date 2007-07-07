@@ -454,7 +454,7 @@ class Gui:
                butt_box.pack_start(label, False)
                self.widgets['random_ans_kana_label'].append(gtk.Label())
                self.widgets['random_ans_kana_label'][i].modify_font(
-                  FontDescription("normal 19"))
+                  FontDescription("sans 19"))
                butt_box.pack_start(self.widgets['random_ans_kana_label']\
                   [i])
                self.widgets['random_ans_butt'][i].add(butt_box)
@@ -469,7 +469,7 @@ class Gui:
                .connect("clicked", self.new_question)
          else: 
             entry = gtk.Entry(3)
-            entry.modify_font(FontDescription("normal 35"))
+            entry.modify_font(FontDescription("sans 35"))
             entry.set_alignment(0.5)
             entry.set_width_chars(3)
             entry.connect("changed", lambda widget: widget.set_text(
@@ -556,6 +556,13 @@ class Gui:
 
       # Bringing focus to the ``next" button.
       self.widgets['next_button'].grab_focus()
+    
+      # Playing kana proununciation.
+      kana = self.kana.kana
+      if kana[-2:] == "-2": kana = kana[:-2]
+      gtk.gdk.threads_enter()
+      self.playsound.play_kana(kana, "female")
+      gtk.gdk.threads_leave()
       
       if self.param['answer_display_timeout'] > 0:
          # Automatic Quiz Proceeding (AQP)feature.
@@ -629,7 +636,7 @@ class Gui:
       if len(results[3][1]) > 0: text += get_unrec_msg(1)
 
       self.widgets['quiz_label'].set_text(text)
-      self.widgets['quiz_label'].modify_font(FontDescription("normal 14"))
+      self.widgets['quiz_label'].modify_font(FontDescription("sans 14"))
       self.widgets['quiz_label'].set_use_markup(True)
       self.widgets['quiz_label'].set_line_wrap(True)
       self.widgets['quiz_label'].set_padding(2, 6)
@@ -650,7 +657,7 @@ class Gui:
          gtk.gdk.color_parse("#f3eddd"))
       self.widgets['quiz_infos']['questionNumLabel'].set_text(msg(89 + lvl))
       self.widgets['quiz_infos']['questionNumLabel'].modify_font(
-         FontDescription("normal 19"))
+         FontDescription("sans 19"))
       self.widgets['quiz_infos']['systemLabel'].hide()
 
       self.score.reset()  # Reseting the score.
