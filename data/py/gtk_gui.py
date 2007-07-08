@@ -181,7 +181,7 @@ class Gui:
             # Playing kana proununciation.
             if kana[-2:] == "-2": kana = kana[:-2]
             gtk.gdk.threads_enter()
-            self.playsound.play_kana(kana, "female")
+            self.playsound.play_kana(kana, self.param['kana_pronouncing'])
             gtk.gdk.threads_leave()
 
             # Packing box with kana transcription and pronoucing button, if not
@@ -561,7 +561,7 @@ class Gui:
       kana = self.kana.kana
       if kana[-2:] == "-2": kana = kana[:-2]
       gtk.gdk.threads_enter()
-      self.playsound.play_kana(kana, "female")
+      self.playsound.play_kana(kana, self.param['kana_pronouncing'])
       gtk.gdk.threads_leave()
       
       if self.param['answer_display_timeout'] > 0:

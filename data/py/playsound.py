@@ -18,6 +18,7 @@
    
    """
 import os
+import random
 
 if os.name == "nt": # Using Python built-in module for Windows.
    import winsound
@@ -29,11 +30,18 @@ class PlaySound:
    the Winsound one for Windows)."""
    def __init__(self, datarootpath):
       self.datarootpath = datarootpath
+      self.past_gender = "male"  # Ladies first.
     
       if not os.name == "nt":
          mixer.init(48000)  # Initializing Pygame mixer, at 48kHz.
 
    def play_kana(self, kana, gender):
+      if gender == "alternate":
+         if self.past_gender == "female":
+            self.past_gender, gender = "male", "male"
+         else:
+            self.past_gender, gender = "female", "female"
+
       sound_path = os.path.join(self.datarootpath, "sound", "kana_%s"\
          % gender, "%s.wav" % kana)
 

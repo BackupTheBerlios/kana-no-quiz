@@ -49,7 +49,8 @@ class Options:
       'lang': ('de', 'en', 'fr', 'pt_BR', 'ru', 'sr', 'sv'),
       'kana_image_theme': ('choplair', 'kanatest'),
       'kana_image_scale': ('small', 'medium', 'large'),
-      'answer_display_timeout': range(4)
+      'answer_display_timeout': range(4),
+      'kana_pronouncing': ('female', 'male', 'alternate')
       }
       self.set_default_values()
 
@@ -80,7 +81,8 @@ class Options:
       'rand_answer_sel_range': 'portion',
       'kana_image_theme': 'choplair',
       'kana_image_scale': 'medium',
-      'answer_display_timeout': 0
+      'answer_display_timeout': 0,
+      'kana_pronouncing': 'alternate'
       }
       if locale.getlocale() in ("de", "fr", "pt_BR", "ru", "sr", "sv"):
          self.params['lang'] = locale.getlocale()
