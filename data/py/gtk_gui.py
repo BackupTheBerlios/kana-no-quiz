@@ -692,6 +692,8 @@ class Gui:
             'small': 0, 'medium': 1, 'large': 2},
          "kana_image_theme": {0: 'choplair', 1: 'kanatest',
             'choplair': 0, 'kanatest': 1},
+         "kana_pronouncing": {0: 'female', 1: 'male', 2: 'alternate',
+            'female': 0, 'male': 1, 'alternate': 2},
          "lang": {0: 'en', 1: 'fr', 2: 'de', 3: 'pt_BR', 4: 'ru', 5: 'sr',
             6: 'sv', 'en': 0, 'fr': 1, 'de': 2, 'pt_BR': 3, 'ru': 4,
             'sr': 5, 'sv': 6}
@@ -716,6 +718,8 @@ class Gui:
                [opt_widget["kana_image_scale"].get_active()]
             self.param['kana_image_theme'] = opt_conv["kana_image_theme"]\
                [opt_widget["kana_image_theme"].get_active()]
+            self.param['kana_pronouncing'] = opt_conv["kana_pronouncing"]\
+               [opt_widget["kana_pronouncing"].get_active()]
             self.param['lang'] = opt_conv["lang"][opt_widget['lang']\
                .get_active()]
             
@@ -791,7 +795,7 @@ class Gui:
          "rand_answer_sel_range"][self.param['rand_answer_sel_range']])
       box3.pack_start(opt_widget['rand_answer_sel_range'])
 
-      #Bouyaka!
+      # Bouyaka!
       def bouyaka(widget,targets):
          """Set list size widgets sensitive state according
             to answer mode widget selected param.
@@ -844,6 +848,16 @@ class Gui:
       opt_widget['kana_image_theme'].set_active(opt_conv["kana_image_theme"]\
          [self.param['kana_image_theme']])
       box3.pack_start(opt_widget['kana_image_theme'])
+
+      # `kana_pronouncing'
+      label = gtk.Label(msg(108))
+      box3.pack_start(label)
+      opt_widget['kana_pronouncing'] = gtk.combo_box_new_text()
+      for x in (109, 110, 111):
+         opt_widget['kana_pronouncing'].append_text(msg(x))
+      opt_widget['kana_pronouncing'].set_active(opt_conv["kana_pronouncing"]\
+         [self.param['kana_pronouncing']])
+      box3.pack_start(opt_widget['kana_pronouncing'])
 
       # `lang'
       box4 = gtk.HBox()
