@@ -2,10 +2,9 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 2.0 (in development):
+* Version 1.9 (in development):
 
 - Vocal pronouncing of all kana (w/ male & female voices).
-[IN PROGRESS]
 - Switchable kana image theme (with the addition of a second
 theme, taken from the GPL program "Kana Test").
 - Faster loading and enhanced design of the big kana table
