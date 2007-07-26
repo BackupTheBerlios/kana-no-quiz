@@ -79,7 +79,7 @@ if 'bdist_wininst' in sys.argv or 'py2exe' in sys.argv:
    datafiles.append((os.path.join("share", "kana-no-quiz", "img"),
       [os.path.join("data", "img", "icon.ico")]))
 
-VERSION = '2.0 CVS'
+VERSION = '1.9'
 
 setup(
    name      =   'Kana no quiz',

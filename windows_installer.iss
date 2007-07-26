@@ -12,7 +12,7 @@
 
 AppName=Kana no quiz
 
-AppVerName=Kana no quiz v2.0 (CVS)
+AppVerName=Kana no quiz v1.9
 
 AppPublisher=Choplair-network
 
@@ -32,7 +32,7 @@ SolidCompression=true
 
 AllowUNCPath=false
 
-VersionInfoVersion=2.0
+VersionInfoVersion=1.9
 
 VersionInfoCompany=Choplair-network
 
@@ -72,9 +72,9 @@ Source: dist\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsub
 
 [Icons]
 
-Name: {group}\Kana no quiz v2.0; Filename: {app}\kana-no-quiz.exe; WorkingDir: {app}; IconFilename: "{app}\share\kana-no-quiz\img\icon.ico"
+Name: {group}\Kana no quiz v1.9; Filename: {app}\kana-no-quiz.exe; WorkingDir: {app}; IconFilename: "{app}\share\kana-no-quiz\img\icon.ico"
 
-Name: "{group}\Uninstall Kana no quiz v2.0"; Filename: "{uninstallexe}"
+Name: "{group}\Uninstall Kana no quiz v1.9"; Filename: "{uninstallexe}"
 
 
 
