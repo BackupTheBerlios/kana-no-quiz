@@ -38,7 +38,7 @@ msgstr "Sobre"
 
 #: i18n.py:50
 msgid ""
-"Two different writing systems are commonly used by Japaneses: kanji & kana."
+"Two different writing systems are commonly used by the Japanese: kanji & kana."
 msgstr ""
 "Dois sistemas de escrita diferente são comumente usados pelos japoneses: "
 "kanji e kana"
@@ -492,7 +492,7 @@ msgid "Kana image theme:"
 msgstr ""
 
 #: i18n.py:172
-msgid "Morden colorful"
+msgid "Modern colorful"
 msgstr ""
 
 #: i18n.py:173

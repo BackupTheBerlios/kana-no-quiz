@@ -47,7 +47,7 @@ class I18n:
          _("Options"),
          _("Start the quiz"),
          _("About"),
-         _("Two different writing systems are commonly used by Japaneses: "
+         _("Two different writing systems are commonly used by the Japanese: "
             "kanji & kana."),  # 5
          _("Kanji are complex ideograms retranscribing words whereas kana "
             "are simple symbols used as syllables which have to be "
@@ -169,7 +169,7 @@ class I18n:
          _("Medium"),
          _("Large"),
          _("Kana image theme:"),
-         _("Morden colorful"),  # 100
+         _("Modern colorful"),  # 100
          _("Traditionnal black & white"),
          _("Kana vocal pronouncing"),
          _("Female: Myrtille Chouard.\n"

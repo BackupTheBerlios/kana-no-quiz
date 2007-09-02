@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz\n"
 "POT-Creation-Date: 2007-07-26 14:17+0200\n"
-"PO-Revision-Date: 2006-05-10 22:17+0100\n"
-"Last-Translator: Markus <markus_fellnert@hotmail.com>\n"
+"PO-Revision-Date: 2007-08-31 19:10+0100\n"
+"Last-Translator: Markus <Markus_fellnert@hotmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,43 +32,20 @@ msgid "About"
 msgstr "Om"
 
 #: i18n.py:50
-msgid ""
-"Two different writing systems are commonly used by Japaneses: kanji & kana."
+msgid "Two different writing systems are commonly used by the Japanese: kanji & kana."
 msgstr "Två olika skriftsystem är vanliga i Japanskan; kanji & kana."
 
 #: i18n.py:52
-msgid ""
-"Kanji are complex ideograms retranscribing words whereas kana are simple "
-"symbols used as syllables which have to be combined to make words. Any word "
-"in Japanese can be written using kana, it is like an alphabet."
-msgstr ""
-"Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla "
-"symboler som används som stavelser, som kombineras för att skapa ord. Alla "
-"japanska ord kan skrivas med kana, ungefär som ett alfabet."
+msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
+msgstr "Kanji är komplexa ideogram som retranskriberar ord, medan kana är enkla symboler som används som stavelser, som kombineras för att skapa ord. Alla japanska ord kan skrivas med kana, ungefär som ett alfabet."
 
 #: i18n.py:56
-msgid ""
-"There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
-"traditional syllabary used to write Japanese words. Katakana is a larger "
-"syllabary, with more sounds, mostly used to write proper nouns and loanwords "
-"of foreign origin."
-msgstr ""
-"Det finns två typer av kana; hiragana och katakana. Hiragana är mest "
-"använda och den traditionella kanauppsättningen för att skriva japanska "
-"ord. Katakana har en större teckenuppsättning, med fler ljud, oftast "
-"använd för att skriva låneord och utländska egennamn."
+msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
+msgstr "Det finns två typer av kana; hiragana och katakana. Hiragana är mest använda och den traditionella kanauppsättningen för att skriva japanska ord. Katakana har en större teckenuppsättning, med fler ljud, oftast använd för att skriva låneord och utländska egennamn."
 
 #: i18n.py:61
-msgid ""
-"Kana no quiz helps you to memorize kana and their associated sound, using "
-"transcription systems. For more simplicity, syllables have been split in "
-"multiple sets, and you can even choose to learn only a portion of kana at a "
-"time."
-msgstr ""
-"Kana no quiz hjälper dig att memorera kana och deras associerade "
-"ljud/transkriberingar enligt hepburnsystemet. För ökad enkelhet har "
-"stavelserna blivit uppdelade över flera set, och du kan t.o.m välja att "
-"bara öva en del kana åt gången."
+msgid "Kana no quiz helps you to memorize kana and their associated sound, using transcription systems. For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."
+msgstr "Kana no quiz hjälper dig att memorera kana och deras associerade ljud/transkriberingar enligt hepburnsystemet. För ökad enkelhet har stavelserna blivit uppdelade över flera set, och du kan t.o.m välja att bara öva en del kana åt gången."
 
 #: i18n.py:65
 msgid "Have a good practice ! ^_^"
@@ -149,47 +126,36 @@ msgid "Portions"
 msgstr "Uppdelningar"
 
 #: i18n.py:84
-#, fuzzy
 msgid "Hiragana"
-msgstr "Grundläggande hiraganadelar"
+msgstr "Hiragana"
 
 #: i18n.py:85
-#, fuzzy
 msgid "Katakana"
-msgstr "Sammandragna katakanadelar"
+msgstr "Katakana"
 
 #: i18n.py:86
-#, fuzzy
 msgid "Basic set"
-msgstr "Grundtecken"
+msgstr "Vanligt set"
 
 #: i18n.py:87
-#, fuzzy
 msgid "Modified set"
-msgstr "Modifierade"
+msgstr "Modifierat set"
 
 #: i18n.py:88
-#, fuzzy
 msgid "Contracted set"
-msgstr "Sammandragna"
+msgstr "Utstakat set"
 
 #: i18n.py:89
-#, fuzzy
 msgid "Additional set"
-msgstr "Övriga"
+msgstr "Utökat set"
 
 #: i18n.py:90
-#, fuzzy
 msgid "Additional katakana"
-msgstr "Övriga katakanadelar"
+msgstr "Utökad Katakana"
 
 #: i18n.py:91
-msgid ""
-"If you are novice, it may be interesting at the beginning to train yourself "
-"only on portions instead of the full kana set."
-msgstr ""
-"Om du är nybörjare kan det vara intressant att börja med att bara öva "
-"på en del kana, i stället för alla samtidigt."
+msgid "If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."
+msgstr "Om du är nybörjare kan det vara intressant att börja med att bara öva på en del kana, i stället för alla samtidigt."
 
 #: i18n.py:93
 msgid "Select the kana portions you want to train yourself upon:"
@@ -264,9 +230,8 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #: i18n.py:110
-#, fuzzy
 msgid "A Japanese kana memorization tool."
-msgstr "Kana no quiz, ett minnesverktyg för kana."
+msgstr "Ett Japanskt memoreringsverktyg för kana."
 
 #: i18n.py:111
 msgid "Version %s."
@@ -274,12 +239,11 @@ msgstr "Version %s."
 
 #: i18n.py:112
 msgid ""
-"Kana no quiz is free software with its source code released under the terms "
-"of the GNU General Public License (see `GPL.txt').\n"
-"The whole multimedia content is released under the terms of the Free Art "
-"license (see `FAL.txt') with the exception of the kana image theme that was "
-"adapted from \"Kana Test\", released under the GNU GPL as well."
+"Kana no quiz is free software with its source code released under the terms of the GNU General Public License (see `GPL.txt').\n"
+"The whole multimedia content is released under the terms of the Free Art license (see `FAL.txt') with the exception of the kana image theme that was adapted from \"Kana Test\", released under the GNU GPL as well."
 msgstr ""
+"Kana no quiz är ett gratis-program med källkod släppt under reglerna för GNU General Public License (se `GPL.txt').\n"
+"Hela multimedia-innehållet är släppt under reglerna för Free art license (see `FAL.txt') with undantag för kana-bildtemat som var intagen från \"Kana Test\", släppt under GNU GPL också."
 
 #: i18n.py:118
 msgid "Credits"
@@ -290,6 +254,8 @@ msgid ""
 "Main development: Choplair.\n"
 "Code contribution: Jeremy Bowers."
 msgstr ""
+"Huvudutvecklare: Choplair.\n"
+"Kod-bidragare: Jeremy Bowers."
 
 #: i18n.py:121
 msgid "Close"
@@ -326,7 +292,7 @@ msgstr "Information"
 
 #: i18n.py:129
 msgid "Programming"
-msgstr ""
+msgstr "Programering"
 
 #: i18n.py:130
 msgid "Question %s of %s."
@@ -378,16 +344,15 @@ msgstr "Samma kana-sort"
 
 #: i18n.py:142
 msgid "Polivanov (cyrillic)"
-msgstr ""
+msgstr "Polivanov (Kyrylliska)"
 
 #: i18n.py:143
 msgid " questions."
 msgstr "frågor%s."
 
 #: i18n.py:144
-#, fuzzy
 msgid "Translations"
-msgstr "Romaniseringssystem:"
+msgstr "Översättningar"
 
 #: i18n.py:145
 msgid ""
@@ -398,103 +363,104 @@ msgid ""
 "Serbian: Dejan DaniloviÄ.\n"
 "Swedish: Markus Fellnert."
 msgstr ""
+"Braziliansk: Matheus Villela.\n"
+"Fransk: Choplair.\n"
+"Tysk: Florian Niemann.\n"
+"Rysk: Aleksej R. Serdyukov.\n"
+"Serbisk: Dejan DaniloviÄ.\n"
+"Svensk: Markus Fellnert."
 
 #: i18n.py:151
 msgid "Kana"
-msgstr ""
+msgstr "Kana"
 
 #: i18n.py:152
-#, fuzzy
 msgid "Answering"
-msgstr "Svarssätt:"
+msgstr "Svar"
 
 #: i18n.py:153
 msgid "Sound"
-msgstr ""
+msgstr "Ljud"
 
 #: i18n.py:154
 msgid "Misc."
-msgstr ""
+msgstr "Blandad"
 
 #: i18n.py:155
 msgid "Kana tables"
-msgstr ""
+msgstr "Kana-uppställningar"
 
 #: i18n.py:156
 msgid "Welcome to Kana no quiz version %s."
-msgstr ""
+msgstr "Välkommen till Kana no quiz version  %s."
 
 #: i18n.py:157
 msgid "Crappy!"
-msgstr ""
+msgstr "Sämst!"
 
 #: i18n.py:158
 msgid "Average"
-msgstr ""
+msgstr "Medel"
 
 #: i18n.py:159
 msgid "Good"
-msgstr ""
+msgstr "Bra"
 
 #: i18n.py:160
 msgid "Excellent!"
-msgstr ""
+msgstr "Utmärkt!"
 
 #: i18n.py:161
-msgid ""
-"Here comes the complete kana tables, sorted respecting the Japanese "
-"traditional order (except for additional katakana that haven't been "
-"standardized)."
-msgstr ""
+msgid "Here comes the complete kana tables, sorted respecting the Japanese traditional order (except for additional katakana that haven't been standardized)."
+msgstr "Här kommer den kompletta uppställningen av kana, sorterad efter den Japanska traditionella ordningen  (utom för ytterligare katakana som inte har blivit standard ännu)."
 
 #: i18n.py:164
-msgid ""
-"You may enjoy full kana list overview (with transcription), select the "
-"portions you want to be trained upon, and see larger image when clicking on "
-"a thumbnail."
-msgstr ""
+msgid "You may enjoy full kana list overview (with transcription), select the portions you want to be trained upon, and see larger image when clicking on a thumbnail."
+msgstr "Du kan ånjuta hela listan av kana (med överföring), välj delarna du vill bli tränad i, och se helheten när du klickar på en thumbnail."
 
 #: i18n.py:167
 msgid "Kana image scale:"
-msgstr ""
+msgstr "Kana bild-skala:"
 
 #: i18n.py:168
 msgid "Small"
-msgstr ""
+msgstr "Liten"
 
 #: i18n.py:169
 msgid "Medium"
-msgstr ""
+msgstr "Mellan"
 
 #: i18n.py:170
 msgid "Large"
-msgstr ""
+msgstr "Stor"
 
 #: i18n.py:171
 msgid "Kana image theme:"
-msgstr ""
+msgstr "Kana bild-tema"
 
 #: i18n.py:172
-msgid "Morden colorful"
-msgstr ""
+msgid "Modern colorful"
+msgstr "Modern färglyster"
 
 #: i18n.py:173
 msgid "Traditionnal black & white"
-msgstr ""
+msgstr "Traditionell svart och vit"
 
 #: i18n.py:174
 msgid "Kana vocal pronouncing"
-msgstr ""
+msgstr "Kana röst-uttal"
 
 #: i18n.py:175
 msgid ""
 "Female: Myrtille Chouard.\n"
 "Male: Pachilor."
 msgstr ""
+"Kvinna: Myrtille Chouard.\n"
+"Man: Pachilor."
 
 #: i18n.py:177
 msgid "Kana image themes"
-msgstr ""
+msgstr "Kana bild-temor"
 
 #: i18n.py:178
 msgid ""
@@ -502,30 +468,33 @@ msgid ""
 "Traditional black & white:\n"
 "adapted from \"Kana Test\"."
 msgstr ""
+"Modern färglyster: Ms. Marie-Claire.\n"
+"Traditionell svart och vit:\n"
+"hämtat från \"Kana Test\"."
 
 #: i18n.py:181
 msgid "Artworks"
-msgstr ""
+msgstr "Konstverk"
 
 #: i18n.py:182
 msgid "Fayanne & Choplair."
-msgstr ""
+msgstr "Fayanne & Choplair."
 
 #: i18n.py:183
 msgid "Kana vocal pronouncing:"
-msgstr ""
+msgstr "Kana röst-uttal:"
 
 #: i18n.py:184
 msgid "Female"
-msgstr ""
+msgstr "Kvinna"
 
 #: i18n.py:185
 msgid "Male"
-msgstr ""
+msgstr "Man"
 
 #: i18n.py:186
 msgid "Both alternately"
-msgstr ""
+msgstr "Båda alternativen"
 
 #, fuzzy
 #~ msgid "Modified hiragana"
@@ -542,7 +511,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Contracted katakana"
 #~ msgstr "Sammandragna katakanadelar"
-
 #~ msgid ""
 #~ "Kana no quiz is free software released under the GNU GPL license (see "
 #~ "`GPL.txt'). Kana images are released under the Free Art license (see "
@@ -550,10 +518,8 @@ msgstr ""
 #~ msgstr ""
 #~ "Kana no quiz är en gratis-mjukvara utgiven under GNU GPL licens (se "
 #~ "`GPL.txt'). Kanabilder är utgivna under Free Art licens (se `FAL.txt')."
-
 #~ msgid "No portion selected: that question set is disabled. :p"
 #~ msgstr "Ingen del vald: Den frågeinställningen är avstängd. :P"
-
 #~ msgid ""
 #~ "Coding: Choplair & Pachilor.\n"
 #~ "Kana image: Ms. Marie-Claire.\n"
@@ -563,15 +529,12 @@ msgstr ""
 #~ "Kanabilder: Ms. Marie-Claire.\n"
 #~ "Logga: Choplair.\n"
 #~ "Svensk översättning: Markus Fellnert."
-
 #~ msgid "Parts"
 #~ msgstr "Delar"
-
 #~ msgid "All"
 #~ msgstr "Alla"
-
 #~ msgid "2 choices"
 #~ msgstr "2 val"
-
 #~ msgid "3 choices"
 #~ msgstr "3 val"
+
