@@ -146,7 +146,7 @@ class I18n:
             "French: Choplair.\n"
             "German: Florian Niemann.\n"
             "Russian: Aleksej R. Serdyukov.\n"
-            "Serbian: Dejan Danilović.\n"
+            "Serbian: Dejan Danilovic.\n"
             "Swedish: Markus Fellnert."),
          _("Kana"),
          _("Answering"),
