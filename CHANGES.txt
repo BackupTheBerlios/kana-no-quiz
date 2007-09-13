@@ -2,7 +2,7 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.9 (in development):
+* Version 1.9 (2007-09-13):
 
 - Vocal pronouncing of all kana (w/ male & female voices).
 - Switchable kana image theme (with the addition of a second
