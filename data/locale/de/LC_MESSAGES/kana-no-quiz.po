@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kana-no-quiz 1.2c\n"
 "POT-Creation-Date: 2007-07-26 14:17+0200\n"
-"PO-Revision-Date: 2006-05-11 23:18+0200\n"
-"Last-Translator: DANILOVIĆ Dejan <Dejan.Danilovic@gmail.com>\n"
+"PO-Revision-Date: 2007-09-09 19:43+0100\n"
+"Last-Translator: Florian Niemann <mail@florian-niemann.de>\n"
 "Language-Team: srpski <sr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,302 +20,261 @@ msgstr "Kana no quiz!"
 
 #: i18n.py:46
 msgid "Introduction"
-msgstr "Uvod"
+msgstr "Einführung"
 
 #: i18n.py:47
 msgid "Options"
-msgstr "Opcije"
+msgstr "Optionen"
 
 #: i18n.py:48
 msgid "Start the quiz"
-msgstr "Početi kviz"
+msgstr "Quiz starten"
 
 #: i18n.py:49
 msgid "About"
-msgstr "O čemu je reč..."
+msgstr "Über"
 
 #: i18n.py:50
-msgid ""
-"Two different writing systems are commonly used by Japaneses: kanji & kana."
-msgstr ""
-"U Japanu se uobičajeno koriste dva različita načina pisanja: kandži i "
-"kana."
+msgid "Two different writing systems are commonly used by the Japaneses: kanji & kana."
+msgstr "Üblicherweise werden in Japan zwei verschiedene Schriftsysteme verwendet: Kanji & Kana"
 
 #: i18n.py:52
-msgid ""
-"Kanji are complex ideograms retranscribing words whereas kana are simple "
-"symbols used as syllables which have to be combined to make words. Any word "
-"in Japanese can be written using kana, it is like an alphabet."
-msgstr ""
-"Kandži su kompleksni ideogrami koji tumače reči dok su kana jednostavni "
-"simboli korišćeni kao slogovi koji, kombinovani, stvaraju reči. Na "
-"japanskom, bilo koja reč može se napisati koristeći kana, to je kao jedna "
-"vrsta azbuke."
+msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
+msgstr "Kanji sind komplexe Ideogramme, die Worte beschreiben. Kana hingegen sind einfache Symbole, die für Silben stehen und zusammengesetzt Worte ergeben. Jedes Wort im Japanischen kann in Kana geschrieben werden. Es ist mit einem Alphabet vergleichbar."
 
 #: i18n.py:56
-msgid ""
-"There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
-"traditional syllabary used to write Japanese words. Katakana is a larger "
-"syllabary, with more sounds, mostly used to write proper nouns and loanwords "
-"of foreign origin."
-msgstr ""
-"Postoje dve vrste kana: hiragana i katakana. Hiragana su najkorišćeniji "
-"tradicijonalni slog upotrebljivan za stvaranje japanskih reči. Katakana je "
-"veći slog sa više zvukova obično korišćen u prepisu osobnih imena i "
-"reči pozajmljenih stranim jezicima."
+msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
+msgstr "Es gibt zwei Arten von Kana: Hiragana & Katakana. Hiragana ist die gebräuchliche traditionelle Silbenschrift, zum Schreiben japanischer Worte. Katakana ist eine umfangreichere Silbenschrift, mit mehr Lauten, die dazu verwendet wird um Lehnworte zu schreiben.."
 
 #: i18n.py:61
-#, fuzzy
-msgid ""
-"Kana no quiz helps you to memorize kana and their associated sound, using "
-"transcription systems. For more simplicity, syllables have been split in "
-"multiple sets, and you can even choose to learn only a portion of kana at a "
-"time."
-msgstr ""
-"\"Kana no quiz\" vam pomaže de memorišete kana i njihove asocirane izraze "
-"(koristeći Hepburn-ov romanski prevodni sistem). Da bih učenje bilo "
-"lakše, slogovi su podeljeni na više skupova pa može se čak i učiti samo "
-"deo jednog kana skupa."
+msgid "Kana no quiz helps you to memorize kana and their associated sound, using transcription systems. For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."
+msgstr "Kana no quiz hilft Ihnen Kana und ihren zugehörigen Laut (unter Verwendung eines Romanisierungssystems) zu lernen. Für eine einfachere Benutzung wurden die Silben in mehrere Gruppen aufgeteilt, damit Sie sich aussuchen können, welche Sie gleichzeitig lernen wollen."
 
 #: i18n.py:65
 msgid "Have a good practice ! ^_^"
-msgstr "Lepo se izvežbajte ! ^_^"
+msgstr "Viel Spaß beim Lernen! ^_^"
 
 #: i18n.py:66
 msgid "OK"
-msgstr "Okej"
+msgstr "OK"
 
 #: i18n.py:67
 msgid "What is this katakana?"
-msgstr "Šta znači ovaj katakana?"
+msgstr "Welches Katakana ist das?"
 
 #: i18n.py:68
 msgid "What is this hiragana?"
-msgstr "Šta znači ovaj hiragana?"
+msgstr "Welches Hiragana ist das?"
 
 #: i18n.py:69
 msgid "Right! ^^"
-msgstr "Tačno! ^^"
+msgstr "Richtig! ^^"
 
 #: i18n.py:70
 msgid "Wrong!"
-msgstr "Pogrešno!"
+msgstr "Falsch!"
 
 #: i18n.py:71
 msgid "The answer was %s."
-msgstr "Odgovor je %s."
+msgstr "Die Antwort war %s."
 
 #: i18n.py:72
 msgid "Quiz results"
-msgstr "Rezultati kviza"
+msgstr "Quiz-Ergebnisse"
 
 #: i18n.py:73
 msgid "Question total: %i."
-msgstr "Ukupno postavljenih pitanja: %i."
+msgstr "Fragen gesamt: %i."
 
 #: i18n.py:74
 msgid "Good answers: %i."
-msgstr "Tačnih odgovora: %i."
+msgstr "Richtige Antworten: %i."
 
 #: i18n.py:75
 msgid "Success rate: %i%%."
-msgstr "Procenat uspeha: %i%%"
+msgstr "Erfolgsquote: %i%%."
 
 #: i18n.py:76
 msgid "Here you can modify some quiz options."
-msgstr "Ovde mogu da se podese opcije kviza."
+msgstr "Hier können Sie die Quiz-Optionen verändern."
 
 #: i18n.py:77
 msgid "Hiragana question sets"
-msgstr "Skupovi hiragana pitanja"
+msgstr "Hiragana Gruppen"
 
 #: i18n.py:78
 msgid "Katakana question sets"
-msgstr "Skupovi katakana pitanja"
+msgstr "Katakana Gruppen"
 
 #: i18n.py:79
 msgid "Basic"
-msgstr "Osnovni"
+msgstr "Grundlegende"
 
 #: i18n.py:80
 msgid "Modified"
-msgstr "Modifikovani"
+msgstr "Modifizierte"
 
 #: i18n.py:81
 msgid "Contracted"
-msgstr "Skupljeni"
+msgstr "Verknüpfte"
 
 #: i18n.py:82
 msgid "Additional"
-msgstr "Dodatni"
+msgstr "Zusätzliche"
 
 #: i18n.py:83
 msgid "Portions"
-msgstr "Delovi"
+msgstr "Bereiche"
 
 #: i18n.py:84
-#, fuzzy
 msgid "Hiragana"
-msgstr "Osnovni hiragana delovi"
+msgstr "Hiragana"
 
 #: i18n.py:85
-#, fuzzy
 msgid "Katakana"
-msgstr "Osnovni katakana delovi"
+msgstr "Katakana"
 
 #: i18n.py:86
-#, fuzzy
 msgid "Basic set"
-msgstr "Osnovni"
+msgstr "Grundgruppen"
 
 #: i18n.py:87
-#, fuzzy
 msgid "Modified set"
-msgstr "Modifikovani"
+msgstr "Veränderte Gruppen"
 
 #: i18n.py:88
-#, fuzzy
 msgid "Contracted set"
-msgstr "Skupljeni"
+msgstr "Kombinierte Gruppen"
 
 #: i18n.py:89
-#, fuzzy
 msgid "Additional set"
-msgstr "Dodatni"
+msgstr "Zusätzliche Gruppen"
 
 #: i18n.py:90
-#, fuzzy
 msgid "Additional katakana"
-msgstr "Dodatni katakana delovi"
+msgstr "Zusätzliche Katakana"
 
 #: i18n.py:91
-msgid ""
-"If you are novice, it may be interesting at the beginning to train yourself "
-"only on portions instead of the full kana set."
-msgstr ""
-"Ako ste početnik, interesantnije je krenuti treniranje samo na nekoliko "
-"kana umesto celim skupom."
+msgid "If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."
+msgstr "Wenn Sie Anfänger sind, ist es sinnvoll anfangs nur einige Kana zu lernen, anstatt der ganzen Gruppe auf einmal."
 
 #: i18n.py:93
 msgid "Select the kana portions you want to train yourself upon:"
-msgstr "Izaberi delove kana kojim hoćeš da se vežbaš"
+msgstr "Wählen Sie die Teilbereiche, die Sie trainieren wollen:"
 
 #: i18n.py:94
 msgid "Select all"
-msgstr "Sve izabrati"
+msgstr "Alle auswählen"
 
 #: i18n.py:95
 msgid "Answering method:"
-msgstr "Način odgovora:"
+msgstr "Art der Antwort:"
 
 #: i18n.py:96
 msgid "A random list"
-msgstr "Nasumice spisak"
+msgstr "Zufallsliste"
 
 #: i18n.py:97
 msgid "A text entry"
-msgstr "tekstualni ispis"
+msgstr "Texteingabe"
 
 #: i18n.py:98
 msgid "Random answer list size:"
-msgstr "Veličina spiska nasumice odgovora:"
+msgstr "Länge der Zufallsliste:"
 
 #: i18n.py:99
 msgid "%s choices"
-msgstr "%s izbora"
+msgstr "%s Auswahlmöglichkeiten"
 
 #: i18n.py:100
 msgid "Quiz length:"
-msgstr "Dužina:"
+msgstr "Quiz-Länge:"
 
 #: i18n.py:101
 msgid ""
 "Don't repeat the same kana\n"
 "(as much as possible)."
 msgstr ""
-"Ne ponavljati isti kana\n"
-"(po mogućnosti)"
+"Gleiche Kana nicht wiederholen\n"
+"(so weit wie möglich)."
 
 #: i18n.py:102
 msgid "Language:"
-msgstr "Jezik:"
+msgstr "Sprache:"
 
 #: i18n.py:103
 msgid "English"
-msgstr "Engleski"
+msgstr "Englisch"
 
 #: i18n.py:104
 msgid "French"
-msgstr "Francuski"
+msgstr "Französisch"
 
 #: i18n.py:105
 msgid "Portuguese (Brazil)"
-msgstr "Portugalski (Brazil)"
+msgstr "Portugiesisch (Brasilien)"
 
 #: i18n.py:106
 msgid "Serbian"
-msgstr "Srpski"
+msgstr "Serbisch"
 
 #: i18n.py:107
 msgid "Swedish"
-msgstr "Švedski"
+msgstr "Schwedisch"
 
 #: i18n.py:108
 msgid "Save"
-msgstr "Sačuvati"
+msgstr "Speichern"
 
 #: i18n.py:109
 msgid "Cancel"
-msgstr "Odustati"
+msgstr "Abbrechen"
 
 #: i18n.py:110
-#, fuzzy
 msgid "A Japanese kana memorization tool."
-msgstr "Kana no quiz, alatka za učenje kana"
+msgstr "Ein Lernprogramm für japanische Kana."
 
 #: i18n.py:111
 msgid "Version %s."
-msgstr "Verzija %s."
+msgstr "Version %s."
 
 #: i18n.py:112
 msgid ""
-"Kana no quiz is free software with its source code released under the terms "
-"of the GNU General Public License (see `GPL.txt').\n"
-"The whole multimedia content is released under the terms of the Free Art "
-"license (see `FAL.txt') with the exception of the kana image theme that was "
-"adapted from \"Kana Test\", released under the GNU GPL as well."
-msgstr ""
+"Kana no quiz is free software with its source code released under the terms of the GNU General Public License (see `GPL.txt').\n"
+"The whole multimedia content is released under the terms of the Free Art license (see `FAL.txt') with the exception of the kana image theme that was adapted from \"Kana Test\", released under the GNU GPL as well."
+msgstr "Kana no quiz ist freie Software und unter der \"GNU GPL License\" veröffentlicht (siehe \"GPL.txt\"). Die gesamten Multimediainhalte sind unter der \"Free Art License\" (siehe \"FAL.txt\") publiziert, mit Ausnahme der Kana-Darstellungen, die von \"Kana Test\" adaptiert wurden und unter der GNU GPL veröffentlicht sind."
 
 #: i18n.py:118
 msgid "Credits"
-msgstr "Krediti"
+msgstr "Credits"
 
 #: i18n.py:119
 msgid ""
 "Main development: Choplair.\n"
 "Code contribution: Jeremy Bowers."
 msgstr ""
+"Hauptentwickler: Choplair.\n"
+"Mitentwickler: Jeremy Bowers."
 
 #: i18n.py:121
 msgid "Close"
-msgstr "Zatvori"
+msgstr "Schließen"
 
 #: i18n.py:122
 msgid "Warning"
-msgstr "Upozorenje"
+msgstr "Warnung"
 
 #: i18n.py:123
 msgid "Please select at least one kana portion to start the quiz."
-msgstr "Morate izabrati bar jedan skup pitanja!"
+msgstr "Sie müssen mindestens eine Kana-Gruppe auswählen um das Quiz zu starten."
 
 #: i18n.py:124
-#, fuzzy
 msgid "Transcription system:"
-msgstr "Romanizovan sistem:"
+msgstr "Romanisierungssystem:"
 
 #: i18n.py:125
 msgid "Hepburn (most used)"
-msgstr "Hepburn (savetuje se)"
+msgstr "Hepburn (empfohlen)"
 
 #: i18n.py:126
 msgid "Kunrei-shiki"
@@ -327,72 +286,71 @@ msgstr "Nihon-shiki"
 
 #: i18n.py:128
 msgid "Information"
-msgstr "Informacije"
+msgstr "Information"
 
 #: i18n.py:129
 msgid "Programming"
-msgstr ""
+msgstr "Programmierung"
 
 #: i18n.py:130
 msgid "Question %s of %s."
-msgstr "Pitanje %s od %s."
+msgstr "Frage %s von %s."
 
 #: i18n.py:131
 msgid "%s system."
-msgstr "%s sistem."
+msgstr "%s System."
 
 #: i18n.py:132
 msgid "Stop"
-msgstr "Stop"
+msgstr "Stopp"
 
 #: i18n.py:133
 msgid "German"
-msgstr "Nemački"
+msgstr "Deutsch"
 
 #: i18n.py:134
 msgid "Quit"
-msgstr "Izaći"
+msgstr "Beenden"
 
 #: i18n.py:135
 msgid "Unrecognized katakana: %s."
-msgstr "Neprepoznat katakana: %s."
+msgstr "Nicht erkannte Katakana: %s."
 
 #: i18n.py:136
 msgid "Unrecognized hiragana: %s."
-msgstr "Neprepoznat hiragana: %s."
+msgstr "Nicht erkannte Hiragana: %s."
 
 #: i18n.py:137
 msgid "Russian"
-msgstr "Ruski"
+msgstr "Russisch"
 
 #: i18n.py:138
 msgid "Random answer selection range:"
-msgstr "Veličina spiska nasumice odgovora:"
+msgstr "Art der Zufallsliste:"
 
 #: i18n.py:139
 msgid "Same kana portions"
-msgstr "Isti kana deo"
+msgstr "Gleiche Kana-Teilbereiche"
 
 #: i18n.py:140
 msgid "Same kana set"
-msgstr "Isti kana skup"
+msgstr "Gleiche Kana-Tafel"
 
 #: i18n.py:141
 msgid "Same kana kind"
-msgstr "Ista kana vrsta"
+msgstr "Gleichartige Kana"
 
 #: i18n.py:142
 msgid "Polivanov (cyrillic)"
-msgstr "Polivanov (ćirilica)"
+msgstr "Polivanov (kyrillisch)"
 
 #: i18n.py:143
 msgid " questions."
-msgstr "pitanja"
+msgstr " Fragen."
 
 #: i18n.py:144
-#, fuzzy
 msgid "Translations"
-msgstr "Delovi"
+msgstr "Übersetzungen"
 
 #: i18n.py:145
 msgid ""
@@ -403,103 +361,104 @@ msgid ""
 "Serbian: Dejan DaniloviÄ.\n"
 "Swedish: Markus Fellnert."
 msgstr ""
+"Brasilianisch: Matheus Villela.\n"
+"Französisch: Choplair.\n"
+"Deutsch: Florian Niemann.\n"
+"Russisch: Aleksej R. Serdyukov.\n"
+"Serbisch: Dejan DaniloviÄ.\n"
+"Schwedisch: Markus Fellnert."
 
 #: i18n.py:151
 msgid "Kana"
-msgstr ""
+msgstr "Kana"
 
 #: i18n.py:152
-#, fuzzy
 msgid "Answering"
-msgstr "Način odgovora:"
+msgstr "XXXXXXXX"
 
 #: i18n.py:153
 msgid "Sound"
-msgstr ""
+msgstr "*ÜWOQ*ÜW"
 
 #: i18n.py:154
 msgid "Misc."
-msgstr ""
+msgstr "Versch."
 
 #: i18n.py:155
 msgid "Kana tables"
-msgstr ""
+msgstr "Kana-Tafeln"
 
 #: i18n.py:156
 msgid "Welcome to Kana no quiz version %s."
-msgstr ""
+msgstr "Willkommen zu Kana no quiz Version %s."
 
 #: i18n.py:157
 msgid "Crappy!"
-msgstr ""
+msgstr "Lausig!"
 
 #: i18n.py:158
 msgid "Average"
-msgstr ""
+msgstr "Mittelmäßig"
 
 #: i18n.py:159
 msgid "Good"
-msgstr ""
+msgstr "Gut"
 
 #: i18n.py:160
 msgid "Excellent!"
-msgstr ""
+msgstr "Exzellent!"
 
 #: i18n.py:161
-msgid ""
-"Here comes the complete kana tables, sorted respecting the Japanese "
-"traditional order (except for additional katakana that haven't been "
-"standardized)."
-msgstr ""
+msgid "Here comes the complete kana tables, sorted respecting the Japanese traditional order (except for additional katakana that haven't been standardized)."
+msgstr "Dies sind die kompletten Kana-Tafeln, die nach japanischer Tradition geordnet sind. (Mit Ausnahme der zusätzlichen Katakana, die nicht standardisiert sind.)"
 
 #: i18n.py:164
-msgid ""
-"You may enjoy full kana list overview (with transcription), select the "
-"portions you want to be trained upon, and see larger image when clicking on "
-"a thumbnail."
-msgstr ""
+msgid "You may enjoy full kana list overview (with transcription), select the portions you want to be trained upon, and see larger image when clicking on a thumbnail."
+msgstr "Hier können Sie die kompletten Kana-Tafeln sehen (mit Romanisierung), und Teilbereiche, die Sie trainieren wollen, auswählen. Klicken Sie auf die Miniaturansicht, um ein Kana zu vergrößern. "
 
 #: i18n.py:167
 msgid "Kana image scale:"
-msgstr ""
+msgstr "Größe der Kana"
 
 #: i18n.py:168
 msgid "Small"
-msgstr ""
+msgstr "Klein"
 
 #: i18n.py:169
 msgid "Medium"
-msgstr ""
+msgstr "Mittel"
 
 #: i18n.py:170
 msgid "Large"
-msgstr ""
+msgstr "Groß"
 
 #: i18n.py:171
 msgid "Kana image theme:"
-msgstr ""
+msgstr "Kana-Darstellung:"
 
 #: i18n.py:172
-msgid "Morden colorful"
-msgstr ""
+msgid "Modern colorful"
+msgstr "Farbig modern"
 
 #: i18n.py:173
 msgid "Traditionnal black & white"
-msgstr ""
+msgstr "Tradionell schwarz/weiß"
 
 #: i18n.py:174
 msgid "Kana vocal pronouncing"
-msgstr ""
+msgstr "Kana-Aussprache"
 
 #: i18n.py:175
 msgid ""
 "Female: Myrtille Chouard.\n"
 "Male: Pachilor."
 msgstr ""
+"Weiblich: Myrtille Chouard.\n"
+"Männlich: Pachilor."
 
 #: i18n.py:177
 msgid "Kana image themes"
-msgstr ""
+msgstr "Kana-Darstellungen"
 
 #: i18n.py:178
 msgid ""
@@ -507,30 +466,33 @@ msgid ""
 "Traditional black & white:\n"
 "adapted from \"Kana Test\"."
 msgstr ""
+"Farbig modern: Frau Marie-Claire.\n"
+"Tradionell schwarz/weiß:\n"
+"adaptiert von \"Kana Test\"."
 
 #: i18n.py:181
 msgid "Artworks"
-msgstr ""
+msgstr "Illustrationen"
 
 #: i18n.py:182
 msgid "Fayanne & Choplair."
-msgstr ""
+msgstr "Fayanne & Choplair."
 
 #: i18n.py:183
 msgid "Kana vocal pronouncing:"
-msgstr ""
+msgstr "Kana-Aussprache:"
 
 #: i18n.py:184
 msgid "Female"
-msgstr ""
+msgstr "Weiblich"
 
 #: i18n.py:185
 msgid "Male"
-msgstr ""
+msgstr "Männlich"
 
 #: i18n.py:186
 msgid "Both alternately"
-msgstr ""
+msgstr "Beide abwechselnd"
 
 #, fuzzy
 #~ msgid "Modified hiragana"
@@ -547,7 +509,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Contracted katakana"
 #~ msgstr "Skupljeni katakana delovi"
-
 #~ msgid ""
 #~ "Kana no quiz is free software released under the GNU GPL license (see "
 #~ "`GPL.txt'). Kana images are released under the Free Art license (see "
@@ -555,10 +516,8 @@ msgstr ""
 #~ msgstr ""
 #~ "Kana no quiz je free softver izdan pod GNU GPL licencom (pročitaj "
 #~ "`GPL.txt'). Kana slike su izdate pod Free Art License (pročitaj `FAL.txt')."
-
 #~ msgid "No portion selected: that question set is disabled. :p"
 #~ msgstr "Nijedan deo nije izabran: to pitanje je onemogućeno. :p"
-
 #~ msgid ""
 #~ "Coding: Choplair & Pachilor.\n"
 #~ "Kana image: Ms. Marie-Claire.\n"
@@ -568,15 +527,12 @@ msgstr ""
 #~ "Kana slike: Gospođica Marie-Claire\n"
 #~ "Logo slika: Choplair\n"
 #~ "Prevod na srpski: Dejan Danilović"
-
 #~ msgid "Parts"
 #~ msgstr "Delovi"
-
 #~ msgid "All"
 #~ msgstr "Sve"
-
 #~ msgid "2 choices"
 #~ msgstr "2 izbora"
-
 #~ msgid "3 choices"
 #~ msgstr "3 izbora"
+
