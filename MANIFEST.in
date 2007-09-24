@@ -3,3 +3,5 @@ recursive-include data/img *.png
 recursive-include data/locale *.pot *.po *.mo
 recursive-include data/sound *.wav
 include data/script/kana-no-quiz_startup.pyw
+include data/misc/kana-no-quiz.desktop
+

@@ -26,11 +26,9 @@ from distutils.core import setup
 try: import py2exe
 except: pass
 
+scriptfiles = [os.path.join("data", "script", "kana-no-quiz")]
 if 'bdist_wininst' in sys.argv:
-   scriptfiles = glob.glob(os.path.join('data', 'script', '*.py*'))    
-elif "install" in sys.argv:
-   scriptfiles = [os.path.join("data", "script", "kana-no-quiz")]
-else: scriptfiles = []
+   scriptfiles.append(glob.glob(os.path.join('data', 'script', '*.py*')))
 
 # Common data files.
 datafiles = [
