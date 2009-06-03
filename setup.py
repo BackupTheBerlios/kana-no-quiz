@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Kana no quiz!
 
-   Copyleft 2003, 2004, 2005, 2006, 2007 Choplair-network.
+   Copyleft 2003, 2004, 2005, 2006, 2007, 2008, 2009 Choplair-network.
    $Id$
 
    This program is free software; you can redistribute it and/or
@@ -53,6 +53,9 @@ datafiles = [
       (os.path.join("share", "applications"),
          [os.path.join("data", "misc", "kana-no-quiz.desktop")]),
       # Localization.
+      (os.path.join('share', 'kana-no-quiz', 'locale', 'gl', 'LC_MESSAGES'),
+         [os.path.join("data", "locale", "gl", "LC_MESSAGES",
+         "kana-no-quiz.mo")]),  # Galician
       (os.path.join('share', 'kana-no-quiz', 'locale', 'de', 'LC_MESSAGES'),
          [os.path.join("data", "locale", "de", "LC_MESSAGES",
          "kana-no-quiz.mo")]),  # German
@@ -68,6 +71,9 @@ datafiles = [
       (os.path.join('share', 'kana-no-quiz','locale', 'sr', 'LC_MESSAGES'),
          [os.path.join("data", "locale", "sr", "LC_MESSAGES",
          "kana-no-quiz.mo")]),  # Serbian
+      (os.path.join('share', 'kana-no-quiz','locale', 'es', 'LC_MESSAGES'),
+         [os.path.join("data", "locale", "es", "LC_MESSAGES",
+         "kana-no-quiz.mo")]),  # Spanish
       (os.path.join('share', 'kana-no-quiz', 'locale', 'sv', 'LC_MESSAGES'),
          [os.path.join("data", "locale", "sv", "LC_MESSAGES",
          "kana-no-quiz.mo")])]  # Swedish
@@ -77,7 +83,7 @@ if 'bdist_wininst' in sys.argv or 'py2exe' in sys.argv:
    datafiles.append((os.path.join("share", "kana-no-quiz", "img"),
       [os.path.join("data", "img", "icon.ico")]))
 
-VERSION = '1.9'
+VERSION = '1.9.5'
 
 setup(
    name      =   'Kana no quiz',
@@ -99,7 +105,7 @@ setup(
             learning of the language.
 
             """,
-   author      =   'Choplair-network',
+   author      =   'Choplair Organization',
    author_email   =   'contact@choplair.org',
    url      =   'http://www.choplair.org/',
    download_url   =   'http://developer.berlios.de/project/filelist.php?group_id=1783',

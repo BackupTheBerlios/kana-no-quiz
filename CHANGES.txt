@@ -2,6 +2,12 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Version 1.9.5 (2009-06-03):
+
+- Added Spanish and Galician translations, contributed by
+Rafael Lopez Garcia.
+
+
 * Version 1.9 (2007-09-13):
 
 - Vocal pronouncing of all kana (w/ male & female voices).
@@ -30,7 +36,6 @@ interface for Kana no quiz.
 choplair arworks realised by Fayane).
 - Important code style cleanups plus programming design
 optimizations (thanks to Jeremy Bowers' patches in particular).
-
 
 
 * Version 1.5 (2006-05-12):
@@ -196,11 +201,4 @@ using different interfaces.
 * Version 0.1 (2003-09-27):
 
 - First release, with only 6 different kana!
-
-
-``Loneliness, your silent whisper
-Fills a rivers of tears through the night
-Memory, you never let me cry
-And you, you never said goodbye"
--- Tears, X Japan
 
