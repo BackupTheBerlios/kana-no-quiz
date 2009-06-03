@@ -1,6 +1,6 @@
 """Kana no quiz!
 
-   Copyleft 2003, 2004, 2005, 2006, 2007 Choplair-network.
+   Copyleft 2003, 2004, 2005, 2006, 2007, 2008, 2009, Choplair-network.
    $Id$
 
    This program is free software; you can redistribute it and/or
@@ -683,8 +683,8 @@ class Gui:
       opt_conv = {
          "boolean": {0: 'false', 1: 'true', 'false': 0, 'true': 1},
          "transcription_system":  {0: 'hepburn', 1: 'kunrei-shiki',
-            2: 'nihon-shiki', 3: 'polivanov', 'hepburn': 0, 'kunrei-shiki':
-            1, 'nihon-shiki': 2, 'polivanov': 3},
+            2: 'nihon-shiki', 3: 'polivanov', 'hepburn': 0,
+            'kunrei-shiki': 1, 'nihon-shiki': 2, 'polivanov': 3},
          "answering_mode": {0: 'list', 1: 'entry', 'list': 0, 'entry': 1},
          "rand_answer_sel_range": {0: 'portion', 1: 'set', 2: 'kind',
             'portion': 0, 'set': 1, 'kind': 2},
@@ -694,9 +694,10 @@ class Gui:
             'choplair': 0, 'kanatest': 1},
          "kana_pronouncing": {0: 'female', 1: 'male', 2: 'alternate',
             'female': 0, 'male': 1, 'alternate': 2},
-         "lang": {0: 'en', 1: 'fr', 2: 'de', 3: 'pt_BR', 4: 'ru', 5: 'sr',
-            6: 'sv', 'en': 0, 'fr': 1, 'de': 2, 'pt_BR': 3, 'ru': 4,
-            'sr': 5, 'sv': 6}
+         "lang": {0: 'en', 1: 'fr', 2: 'gl', 3: 'de', 4: 'pt_BR',
+            5: 'ru', 6: 'sr', 7: 'es', 8: 'sv', 'en': 0, 'fr': 1,
+            'gl': 2, 'de': 3, 'pt_BR': 4, 'ru': 5, 'sr': 6, 'es': 7,
+            'sv': 8}
          }
 
       def callback(widget, special=None):
@@ -864,7 +865,7 @@ class Gui:
       label = gtk.Label(msg(45))
       box4.pack_start(label)
       opt_widget['lang'] = gtk.combo_box_new_text()
-      for x in (46, 47, 70, 48, 74, 49, 50):
+      for x in (46, 47, 113, 70, 48, 74, 49, 112, 50):
          opt_widget['lang'].append_text(msg(x))
       opt_widget['lang'].set_active(opt_conv["lang"][self.param['lang']])
       box4.pack_start(opt_widget['lang'])
@@ -901,8 +902,8 @@ class Gui:
       label.set_justify(gtk.JUSTIFY_CENTER)
       label.set_use_markup(True)
       box2.pack_start(label)
-      label = gtk.Label("Copyleft 2003, 2004, 2005, 2006, 2007 "\
-         "Choplair-network.")
+      label = gtk.Label("Copyleft 2003, 2004, 2005, 2006, 2007, "\
+         "2008, 2009 Choplair Organization")
       box2.pack_start(label)
       box.pack_start(box2)
       da_box.pack_start(box)

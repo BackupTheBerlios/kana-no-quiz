@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Kana no quiz!
 
-   Copyleft 2003, 2004, 2005, 2006, 2007 Choplair-network.
+   Copyleft 2003, 2004, 2005, 2006, 2007, 2008, 2009 Choplair-network.
    $Id$
 
    This program is free software; you can redistribute it and/or
@@ -144,9 +144,11 @@ class I18n:
          _("Translations"),
          _("Brazilian: Matheus Villela.\n"
             "French: Choplair.\n"
+            "Galician: Rafael López García.\n"
             "German: Florian Niemann.\n"
             "Russian: Aleksej R. Serdyukov.\n"
             "Serbian: Dejan Danilovic.\n"
+            "Spanish: Rafael López García.\n"
             "Swedish: Markus Fellnert."),
          _("Kana"),
          _("Answering"),
@@ -183,7 +185,9 @@ class I18n:
          _("Kana vocal pronouncing:"),
          _("Female"),
          _("Male"),  # 110
-         _("Both alternately")
+         _("Both alternately"),
+         _("Spanish"),
+         _("Galician")
          )
 
       return strings[num]

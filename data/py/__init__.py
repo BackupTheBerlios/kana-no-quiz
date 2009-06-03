@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Kana no quiz!
 
-	Copyleft 2003, 2004, 2005, 2006 Choplair-network.
+	Copyleft 2003, 2004, 2005, 2006, 2007, 2008, 2009 Choplair-network.
 	$Id$
 
 	This program is free software; you can redistribute it and/or
@@ -36,7 +36,7 @@ import options
 import gtk_gui as gui
 
 # Global variables.
-VERSION = "1.9"
+VERSION = "1.9.5"
 
 # Setting Kana no quiz's data root directory's path.
 datarootpath = path.join(sys.prefix, 'share', 'kana-no-quiz')

@@ -46,7 +46,8 @@ class Options:
       'list_size': range(2, 6),
       'rand_answer_sel_range': ('portion','set','kind'),
       'kana_no_repeat': ('true','false'),
-      'lang': ('de', 'en', 'fr', 'pt_BR', 'ru', 'sr', 'sv'),
+      'lang': ('de', 'en', 'es', 'fr', 'gl', 'pt_BR', 'ru', 'sr',
+        'sv'),
       'kana_image_theme': ('choplair', 'kanatest'),
       'kana_image_scale': ('small', 'medium', 'large'),
       'answer_display_timeout': range(4),
@@ -84,7 +85,8 @@ class Options:
       'answer_display_timeout': 0,
       'kana_pronouncing': 'alternate'
       }
-      if locale.getlocale() in ("de", "fr", "pt_BR", "ru", "sr", "sv"):
+      if locale.getlocale() in ("de", "es", "fr", "gl", "pt_BR",
+        "ru", "sr", "sv"):
          self.params['lang'] = locale.getlocale()
       else: self.params['lang'] = "en"
 
