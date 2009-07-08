@@ -20,7 +20,6 @@
 
 """
 import random
-from sets import Set
 
 transcriptions = ('hepburn', 'kunrei-shiki', 'nihon-shiki', 'polivanov')
 
@@ -346,7 +345,7 @@ class KanaSet(object):
    """
    def __init__(self, setName, kind):
       self.setName = setName
-      self.kana = Set()
+      self.kana = set()
       self.portions = []
       self.active = 0
       self.kind = kind

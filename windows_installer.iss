@@ -12,13 +12,13 @@
 
 AppName=Kana no quiz
 
-AppVerName=Kana no quiz v1.9
+AppVerName=Kana no quiz v1.9.5
 
-AppPublisher=Choplair-network
+AppPublisher=Choplair-Network
 
 AppPublisherURL=http://www.choplair.org/
 
-DefaultDirName={pf}\Choplair-network\Kana-no-quiz
+DefaultDirName={pf}\Choplair-Network\Kana-no-quiz
 
 DefaultGroupName=Kana no quiz
 
@@ -32,9 +32,9 @@ SolidCompression=true
 
 AllowUNCPath=false
 
-VersionInfoVersion=1.9
+VersionInfoVersion=1.9.5
 
-VersionInfoCompany=Choplair-network
+VersionInfoCompany=Choplair-Network
 
 VersionInfoDescription=Kana no quiz
 
@@ -47,6 +47,8 @@ ShowLanguageDialog=yes
 [Languages]
 
 Name: "en"; MessagesFile: "compiler:Default.isl"
+
+Name: "es"; MessagesFile: "compiler:Languages\Spanish.isl"
 
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 
@@ -72,9 +74,9 @@ Source: dist\*; DestDir: {app}; Flags: ignoreversion recursesubdirs createallsub
 
 [Icons]
 
-Name: {group}\Kana no quiz v1.9; Filename: {app}\kana-no-quiz.exe; WorkingDir: {app}; IconFilename: "{app}\share\kana-no-quiz\img\icon.ico"
+Name: {group}\Kana no quiz v1.9.5; Filename: {app}\kana-no-quiz.exe; WorkingDir: {app}; IconFilename: "{app}\share\kana-no-quiz\img\icon.ico"
 
-Name: "{group}\Uninstall Kana no quiz v1.9"; Filename: "{uninstallexe}"
+Name: "{group}\Uninstall Kana no quiz v1.9.5"; Filename: "{uninstallexe}"
 
 
 
