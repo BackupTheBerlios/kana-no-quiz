@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Kana-no-quiz 2.0N\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-12-11 17:23+0100\n"
-"PO-Revision-Date: 2008-01-29 17:36+0100\n"
+"PO-Revision-Date: 2009-07-09 15:50+0100\n"
 "Last-Translator: Phyambre <phyambre@gmail.com>\n"
 "Language-Team: ESPAÑOL <phyambre@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr "Que katakana é este?"
 
 #: ../py/i18n.py:68
 msgid "What is this hiragana?"
-msgstr "Que hiragana es este?"
+msgstr "Que hiragana é este?"
 
 #: ../py/i18n.py:69
 msgid "Right! ^^"
@@ -187,7 +187,7 @@ msgstr "Introdución de texto"
 
 #: ../py/i18n.py:98
 msgid "Random answer list size:"
-msgstr "Tamaño daa lista aleatoria de respostas:"
+msgstr "Tamaño da lista aleatoria de respostas:"
 
 #: ../py/i18n.py:99
 #, python-format
