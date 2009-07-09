@@ -187,7 +187,8 @@ class I18n:
          _("Male"),  # 110
          _("Both alternately"),
          _("Spanish"),
-         _("Galician")
+         _("Galician"),
+         _("Please restart Kana no quiz for the language change to take effect."),
          )
 
       return strings[num]

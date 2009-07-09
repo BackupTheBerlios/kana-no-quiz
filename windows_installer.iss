@@ -84,3 +84,8 @@ Name: "{group}\Uninstall Kana no quiz v1.9.5"; Filename: "{uninstallexe}"
 
 Filename: {app}\kana-no-quiz.exe; Description: {cm:LaunchProgram,Kana no quiz}; Flags: nowait postinstall skipifsilent
 
+
+; Remove any previous Kanan no quiz configuration file to prevent crash
+; because of modified parameter name / value between versions.
+[InstallDelete]
+Type: files; Name: "{userappdata}\..\.kana-no-quiz\option.conf"

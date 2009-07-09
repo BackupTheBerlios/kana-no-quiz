@@ -721,6 +721,19 @@ class Gui:
                [opt_widget["kana_image_theme"].get_active()]
             self.param['kana_pronouncing'] = opt_conv["kana_pronouncing"]\
                [opt_widget["kana_pronouncing"].get_active()]
+            
+            # Language has been changed: tell that restart needed for this
+            # change to take effect.
+            if self.param['lang'] != opt_conv["lang"][opt_widget['lang']\
+              .get_active()]:
+              dialog = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL,
+              gtk.MESSAGE_WARNING, gtk.BUTTONS_OK, msg(114))
+              dialog.connect('response', lambda dialog, response:
+               dialog.destroy())
+              dialog.show()
+
+                
+              
             self.param['lang'] = opt_conv["lang"][opt_widget['lang']\
                .get_active()]
             
