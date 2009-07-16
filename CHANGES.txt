@@ -2,10 +2,11 @@
  Kana no quiz - Changelog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Version 1.9.5 (2009-06-03):
+* Version 1.9.5 (2009-07-18):
 
 - Added Spanish and Galician translations, contributed by
 Rafael Lopez Garcia.
+- Some little bug fixes.
 
 
 * Version 1.9 (2007-09-13):

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kana-no-quiz 1.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-13 15:57+0200\n"
+"POT-Creation-Date: 2009-07-17 00:11+0200\n"
 "PO-Revision-Date: 2007-09-13 16:09+0100\n"
 "Last-Translator: Choplair <chopinou-NOSP@M-choplair.org>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -17,192 +17,220 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: i18n.py:45
+#: py/i18n.py:45
 msgid "Kana no quiz!"
 msgstr ""
 
-#: i18n.py:46
+#: py/i18n.py:46
 msgid "Introduction"
 msgstr "Введение"
 
-#: i18n.py:47
+#: py/i18n.py:47
 msgid "Options"
 msgstr "Настройки"
 
-#: i18n.py:48
+#: py/i18n.py:48
 msgid "Start the quiz"
 msgstr "Начать тест"
 
-#: i18n.py:49
+#: py/i18n.py:49
 msgid "About"
 msgstr "О программе"
 
-#: i18n.py:50
-msgid "Two different writing systems are commonly used by the Japanese: kanji & kana."
+#: py/i18n.py:50
+msgid ""
+"Two different writing systems are commonly used by the Japanese: kanji & "
+"kana."
 msgstr "Японцы в основном используют две системы письменности - кандзи и кану."
 
-#: i18n.py:52
-msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
-msgstr "Кандзи - сложные иероглифы, которыми записываются слова, тогда как кана - простые символы, обозначающие слоги, которые нужно комбинировать, чтобы получить слова. Любое слово в японском языке можно записать каной - это как алфавит."
+#: py/i18n.py:52
+msgid ""
+"Kanji are complex ideograms retranscribing words whereas kana are simple "
+"symbols used as syllables which have to be combined to make words. Any word "
+"in Japanese can be written using kana, it is like an alphabet."
+msgstr ""
+"Кандзи - сложные иероглифы, которыми записываются слова, тогда как кана - "
+"простые символы, обозначающие слоги, которые нужно комбинировать, чтобы "
+"получить слова. Любое слово в японском языке можно записать каной - это как "
+"алфавит."
 
-#: i18n.py:56
-msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
-msgstr "Есть два вида каны: хирагана и катакана. Хирагана - наиболее часто используемая традиционная слоговая азбука, используемая для записи японских слов. Катакана - более крупная азбука, с бо́льшим количеством звуков, в основном используемая для записи имён собственных и заимствованных слов."
+#: py/i18n.py:56
+msgid ""
+"There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
+"traditional syllabary used to write Japanese words. Katakana is a larger "
+"syllabary, with more sounds, mostly used to write proper nouns and loanwords "
+"of foreign origin."
+msgstr ""
+"Есть два вида каны: хирагана и катакана. Хирагана - наиболее часто "
+"используемая традиционная слоговая азбука, используемая для записи японских "
+"слов. Катакана - более крупная азбука, с бо́льшим количеством звуков, в "
+"основном используемая для записи имён собственных и заимствованных слов."
 
-#: i18n.py:61
-msgid "Kana no quiz helps you to memorize kana and their associated sound, using transcription systems. For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."
-msgstr "Kana no quiz поможет вам запомнить символы каны и соответствующие им звуки, используя системы транскрипции. Для удобства слоги разделены на группы, и вы можете отдельно изучать выбранную вами часть азбуки."
+#: py/i18n.py:61
+msgid ""
+"Kana no quiz helps you to memorize kana and their associated sound, using "
+"transcription systems. For more simplicity, syllables have been split in "
+"multiple sets, and you can even choose to learn only a portion of kana at a "
+"time."
+msgstr ""
+"Kana no quiz поможет вам запомнить символы каны и соответствующие им звуки, "
+"используя системы транскрипции. Для удобства слоги разделены на группы, и вы "
+"можете отдельно изучать выбранную вами часть азбуки."
 
-#: i18n.py:65
+#: py/i18n.py:65
 msgid "Have a good practice ! ^_^"
 msgstr "Приятного изучения! ^_^"
 
-#: i18n.py:66
+#: py/i18n.py:66
 msgid "OK"
 msgstr ""
 
-#: i18n.py:67
+#: py/i18n.py:67
 msgid "What is this katakana?"
 msgstr ""
 "Какой это\n"
 "символ катаканы?"
 
-#: i18n.py:68
+#: py/i18n.py:68
 msgid "What is this hiragana?"
 msgstr ""
 "Какой это\n"
 "символ хираганы?"
 
-#: i18n.py:69
+#: py/i18n.py:69
 msgid "Right! ^^"
 msgstr "Правильно! ^^"
 
-#: i18n.py:70
+#: py/i18n.py:70
 msgid "Wrong!"
 msgstr "Неправильно!"
 
-#: i18n.py:71
+#: py/i18n.py:71
 #, python-format
 msgid "The answer was %s."
 msgstr "Правильный ответ - %s"
 
-#: i18n.py:72
+#: py/i18n.py:72
 msgid "Quiz results"
 msgstr "Результаты теста"
 
-#: i18n.py:73
+#: py/i18n.py:73
 #, python-format
 msgid "Question total: %i."
 msgstr "Всего вопросов: %i"
 
-#: i18n.py:74
+#: py/i18n.py:74
 #, python-format
 msgid "Good answers: %i."
 msgstr "Правильных ответов: %i"
 
-#: i18n.py:75
+#: py/i18n.py:75
 #, python-format
 msgid "Success rate: %i%%."
 msgstr "Правильно: %i%%."
 
-#: i18n.py:76
+#: py/i18n.py:76
 msgid "Here you can modify some quiz options."
 msgstr "Здесь вы можете изменить некоторые настройки."
 
-#: i18n.py:77
+#: py/i18n.py:77
 msgid "Hiragana question sets"
 msgstr "Вопросы по хирагане"
 
-#: i18n.py:78
+#: py/i18n.py:78
 msgid "Katakana question sets"
 msgstr "Вопросы по катакане"
 
-#: i18n.py:79
+#: py/i18n.py:79
 msgid "Basic"
 msgstr "Основные"
 
-#: i18n.py:80
+#: py/i18n.py:80
 msgid "Modified"
 msgstr "Модифицированные"
 
-#: i18n.py:81
+#: py/i18n.py:81
 msgid "Contracted"
 msgstr "Сокращённые"
 
-#: i18n.py:82
+#: py/i18n.py:82
 msgid "Additional"
 msgstr "Дополнительные"
 
-#: i18n.py:83
+#: py/i18n.py:83
 msgid "Portions"
 msgstr "Настройки"
 
-#: i18n.py:84
+#: py/i18n.py:84
 msgid "Hiragana"
 msgstr "Хирагана"
 
-#: i18n.py:85
+#: py/i18n.py:85
 msgid "Katakana"
 msgstr "Катакана"
 
-#: i18n.py:86
+#: py/i18n.py:86
 msgid "Basic set"
 msgstr "Основные"
 
-#: i18n.py:87
+#: py/i18n.py:87
 msgid "Modified set"
 msgstr "Модифицированные"
 
-#: i18n.py:88
+#: py/i18n.py:88
 msgid "Contracted set"
 msgstr "Сокращённые"
 
-#: i18n.py:89
+#: py/i18n.py:89
 msgid "Additional set"
 msgstr "Дополнительные"
 
-#: i18n.py:90
+#: py/i18n.py:90
 msgid "Additional katakana"
 msgstr "Дополнительные слоги катаканы"
 
-#: i18n.py:91
-msgid "If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."
-msgstr "Если вы - новичок, вас заинтересует возможность сперва потренироваться с отдельными группами слогов вместо полного набора."
+#: py/i18n.py:91
+msgid ""
+"If you are novice, it may be interesting at the beginning to train yourself "
+"only on portions instead of the full kana set."
+msgstr ""
+"Если вы - новичок, вас заинтересует возможность сперва потренироваться с "
+"отдельными группами слогов вместо полного набора."
 
-#: i18n.py:93
+#: py/i18n.py:93
 msgid "Select the kana portions you want to train yourself upon:"
 msgstr "Выберите группы слогов, которые хотите изучать:"
 
-#: i18n.py:94
+#: py/i18n.py:94
 msgid "Select all"
 msgstr "Отметить все"
 
-#: i18n.py:95
+#: py/i18n.py:95
 msgid "Answering method:"
 msgstr "Режим ответа:"
 
-#: i18n.py:96
+#: py/i18n.py:96
 msgid "A random list"
 msgstr "Случайный список"
 
-#: i18n.py:97
+#: py/i18n.py:97
 msgid "A text entry"
 msgstr "Строка ввода"
 
-#: i18n.py:98
+#: py/i18n.py:98
 msgid "Random answer list size:"
 msgstr "Размер случайного списка вариантов ответа:"
 
-#: i18n.py:99
+#: py/i18n.py:99
 #, python-format
 msgid "%s choices"
 msgstr "%s варианта"
 
-#: i18n.py:100
+#: py/i18n.py:100
 msgid "Quiz length:"
 msgstr "Длина:"
 
-#: i18n.py:101
+#: py/i18n.py:101
 msgid ""
 "Don't repeat the same kana\n"
 "(as much as possible)."
@@ -210,60 +238,66 @@ msgstr ""
 "Не повторять одни и те же слоги\n"
 "(насколько возможно)."
 
-#: i18n.py:102
+#: py/i18n.py:102
 msgid "Language:"
 msgstr "Язык:"
 
-#: i18n.py:103
+#: py/i18n.py:103
 msgid "English"
 msgstr "Английский"
 
-#: i18n.py:104
+#: py/i18n.py:104
 msgid "French"
 msgstr "Французский"
 
-#: i18n.py:105
+#: py/i18n.py:105
 msgid "Portuguese (Brazil)"
 msgstr "Португальский (Бразилия)"
 
-#: i18n.py:106
+#: py/i18n.py:106
 msgid "Serbian"
 msgstr "Сербский"
 
-#: i18n.py:107
+#: py/i18n.py:107
 msgid "Swedish"
 msgstr "Шведский"
 
-#: i18n.py:108
+#: py/i18n.py:108
 msgid "Save"
 msgstr "Сохранить"
 
-#: i18n.py:109
+#: py/i18n.py:109
 msgid "Cancel"
 msgstr "Отмена"
 
-#: i18n.py:110
+#: py/i18n.py:110
 msgid "A Japanese kana memorization tool."
 msgstr "Инструмент для запоминания японской каны."
 
-#: i18n.py:111
+#: py/i18n.py:111
 #, python-format
 msgid "Version %s."
 msgstr "версия %s"
 
-#: i18n.py:112
+#: py/i18n.py:112
 msgid ""
-"Kana no quiz is free software with its source code released under the terms of the GNU General Public License (see `GPL.txt').\n"
-"The whole multimedia content is released under the terms of the Free Art license (see `FAL.txt') with the exception of the kana image theme that was adapted from \"Kana Test\", released under the GNU GPL as well."
+"Kana no quiz is free software with its source code released under the terms "
+"of the GNU General Public License (see `GPL.txt').\n"
+"The whole multimedia content is released under the terms of the Free Art "
+"license (see `FAL.txt') with the exception of the kana image theme that was "
+"adapted from \"Kana Test\", released under the GNU GPL as well."
 msgstr ""
-"Kana no quiz — свободное ПО с открытым кодом, распространяемым на условиях лицензии GNU General Public License (см. файл «GPL.txt»).\n"
-"Мультимедийные ресурсы распространяются под лицензией Free Art license (см. файл `FAL.txt'), за исключением набора символов каны, адаптированного из \"Kana Test\", который также распространяется под GNU GPL."
+"Kana no quiz — свободное ПО с открытым кодом, распространяемым на условиях "
+"лицензии GNU General Public License (см. файл «GPL.txt»).\n"
+"Мультимедийные ресурсы распространяются под лицензией Free Art license (см. "
+"файл `FAL.txt'), за исключением набора символов каны, адаптированного из "
+"\"Kana Test\", который также распространяется под GNU GPL."
 
-#: i18n.py:118
+#: py/i18n.py:118
 msgid "Credits"
 msgstr "Авторы"
 
-#: i18n.py:119
+#: py/i18n.py:119
 msgid ""
 "Main development: Choplair.\n"
 "Code contribution: Jeremy Bowers."
@@ -271,202 +305,211 @@ msgstr ""
 "Основной код: Choplair.\n"
 "Отдельные части: Jeremy Bowers."
 
-#: i18n.py:121
+#: py/i18n.py:121
 msgid "Close"
 msgstr "Закрыть"
 
-#: i18n.py:122
+#: py/i18n.py:122
 msgid "Warning"
 msgstr "Внимание"
 
-#: i18n.py:123
+#: py/i18n.py:123
 msgid "Please select at least one kana portion to start the quiz."
 msgstr "Необходимо выбрать хотя бы одну группу вопросов."
 
-#: i18n.py:124
+#: py/i18n.py:124
 msgid "Transcription system:"
 msgstr "Система транскрипции"
 
-#: i18n.py:125
+#: py/i18n.py:125
 msgid "Hepburn (most used)"
 msgstr "Hepburn"
 
-#: i18n.py:126
+#: py/i18n.py:126
 msgid "Kunrei-shiki"
 msgstr "Кунрэй-сики"
 
-#: i18n.py:127
+#: py/i18n.py:127
 msgid "Nihon-shiki"
 msgstr "Нихон-сики"
 
-#: i18n.py:128
+#: py/i18n.py:128
 msgid "Information"
 msgstr "Информация"
 
-#: i18n.py:129
+#: py/i18n.py:129
 msgid "Programming"
 msgstr "Программирование"
 
-#: i18n.py:130
-#, python-format
-msgid "Question %s of %s."
+#: py/i18n.py:130
+#, fuzzy
+msgid "Question {0} of {1}."
 msgstr "Вопрос %s из %s"
 
-#: i18n.py:131
+#: py/i18n.py:131
 #, python-format
 msgid "%s system."
 msgstr "Система %s."
 
-#: i18n.py:132
+#: py/i18n.py:132
 msgid "Stop"
 msgstr "Стоп"
 
-#: i18n.py:133
+#: py/i18n.py:133
 msgid "German"
 msgstr "Немецкий"
 
-#: i18n.py:134
+#: py/i18n.py:134
 msgid "Quit"
 msgstr "Выход"
 
-#: i18n.py:135
+#: py/i18n.py:135
 #, python-format
 msgid "Unrecognized katakana: %s."
 msgstr "Сокращённые слоги катаканы : %s."
 
-#: i18n.py:136
+#: py/i18n.py:136
 #, python-format
 msgid "Unrecognized hiragana: %s."
 msgstr "Сокращённые слоги хираганы: %s."
 
-#: i18n.py:137
+#: py/i18n.py:137
 msgid "Russian"
 msgstr "Русский"
 
-#: i18n.py:138
+#: py/i18n.py:138
 msgid "Random answer selection range:"
 msgstr "Размер случайного списка вариантов ответа:"
 
-#: i18n.py:139
+#: py/i18n.py:139
 msgid "Same kana portions"
 msgstr "С той же согласной (или без)"
 
-#: i18n.py:140
+#: py/i18n.py:140
 msgid "Same kana set"
 msgstr "Из той же группы"
 
-#: i18n.py:141
+#: py/i18n.py:141
 msgid "Same kana kind"
 msgstr "Из той же азбуки"
 
-#: i18n.py:142
+#: py/i18n.py:142
 msgid "Polivanov (cyrillic)"
 msgstr "Поливанов (Кириллица)"
 
-#: i18n.py:143
+#: py/i18n.py:143
 msgid " questions."
 msgstr " вопрос."
 
-#: i18n.py:144
+#: py/i18n.py:144
 msgid "Translations"
 msgstr "Переводы"
 
-#: i18n.py:145
+#: py/i18n.py:145
 msgid ""
 "Brazilian: Matheus Villela.\n"
 "French: Choplair.\n"
+"Galician: Rafael López García.\n"
 "German: Florian Niemann.\n"
 "Russian: Aleksej R. Serdyukov.\n"
 "Serbian: Dejan Danilovic.\n"
+"Spanish: Rafael López García.\n"
 "Swedish: Markus Fellnert."
 msgstr ""
 
-#: i18n.py:151
+#: py/i18n.py:153
 msgid "Kana"
 msgstr "Кана"
 
-#: i18n.py:152
+#: py/i18n.py:154
 msgid "Answering"
 msgstr "Способ ответа"
 
-#: i18n.py:153
+#: py/i18n.py:155
 msgid "Sound"
 msgstr "Звук"
 
-#: i18n.py:154
+#: py/i18n.py:156
 msgid "Misc."
 msgstr "Разное"
 
-#: i18n.py:155
+#: py/i18n.py:157
 msgid "Kana tables"
 msgstr "Таблицы каны"
 
-#: i18n.py:156
+#: py/i18n.py:158
 #, python-format
 msgid "Welcome to Kana no quiz version %s."
 msgstr "Добро пожаловать в Kana no quiz версии %s."
 
-#: i18n.py:157
+#: py/i18n.py:159
 msgid "Crappy!"
 msgstr "Фигово!"
 
-#: i18n.py:158
+#: py/i18n.py:160
 msgid "Average"
 msgstr "Средне"
 
-#: i18n.py:159
+#: py/i18n.py:161
 msgid "Good"
 msgstr "Хорошо"
 
-#: i18n.py:160
+#: py/i18n.py:162
 msgid "Excellent!"
 msgstr "Отлично!"
 
-#: i18n.py:161
-msgid "Here comes the complete kana tables, sorted respecting the Japanese traditional order (except for additional katakana that haven't been standardized)."
+#: py/i18n.py:163
+msgid ""
+"Here comes the complete kana tables, sorted respecting the Japanese "
+"traditional order (except for additional katakana that haven't been "
+"standardized)."
 msgstr ""
 "Вот полные таблицы каны в традиционном японском порядке (за исключением\n"
 "дополнительных слогов катаканы, которые не стандартизированы)."
 
-#: i18n.py:164
-msgid "You may enjoy full kana list overview (with transcription), select the portions you want to be trained upon, and see larger image when clicking on a thumbnail."
+#: py/i18n.py:166
+msgid ""
+"You may enjoy full kana list overview (with transcription), select the "
+"portions you want to be trained upon, and see larger image when clicking on "
+"a thumbnail."
 msgstr ""
-"Вы можете увидеть полный список слогов каны (с транскрипцией), выбрать группы\n"
+"Вы можете увидеть полный список слогов каны (с транскрипцией), выбрать "
+"группы\n"
 "слогов для изучения, и рассмотреть символ поближе, кликнув на него."
 
-#: i18n.py:167
+#: py/i18n.py:169
 msgid "Kana image scale:"
 msgstr "Размер изображения каны:"
 
-#: i18n.py:168
+#: py/i18n.py:170
 msgid "Small"
 msgstr "Мелкий"
 
-#: i18n.py:169
+#: py/i18n.py:171
 msgid "Medium"
 msgstr "Средний"
 
-#: i18n.py:170
+#: py/i18n.py:172
 msgid "Large"
 msgstr "Крупный"
 
-#: i18n.py:171
+#: py/i18n.py:173
 msgid "Kana image theme:"
 msgstr "Набор изображений символов каны:"
 
-#: i18n.py:172
+#: py/i18n.py:174
 msgid "Modern colorful"
 msgstr "Современная цветная"
 
-#: i18n.py:173
+#: py/i18n.py:175
 msgid "Traditionnal black & white"
 msgstr "Традиционная чёрно-белая"
 
-#: i18n.py:174
+#: py/i18n.py:176
 msgid "Kana vocal pronouncing"
 msgstr "Запись голосового произношения"
 
-#: i18n.py:175
+#: py/i18n.py:177
 msgid ""
 "Female: Myrtille Chouard.\n"
 "Male: Pachilor."
@@ -474,11 +517,11 @@ msgstr ""
 "Женский: Myrtille Chouard.\n"
 "Мужской: Pachilor."
 
-#: i18n.py:177
+#: py/i18n.py:179
 msgid "Kana image themes"
 msgstr "Наборы изображений символов каны:"
 
-#: i18n.py:178
+#: py/i18n.py:180
 msgid ""
 "Modern colorful: Ms. Marie-Claire.\n"
 "Traditional black & white:\n"
@@ -488,50 +531,69 @@ msgstr ""
 "Традиционная чёрно-белая:\n"
 "адаптирована из \"Kana Test\"."
 
-#: i18n.py:181
+#: py/i18n.py:183
 msgid "Artworks"
 msgstr "Графика"
 
-#: i18n.py:182
+#: py/i18n.py:184
 msgid "Fayanne & Choplair."
 msgstr ""
 
-#: i18n.py:183
+#: py/i18n.py:185
 msgid "Kana vocal pronouncing:"
 msgstr "Голос звукового воспроизведения слогов:"
 
-#: i18n.py:184
+#: py/i18n.py:186
 msgid "Female"
 msgstr "Женский"
 
-#: i18n.py:185
+#: py/i18n.py:187
 msgid "Male"
 msgstr "Мужской"
 
-#: i18n.py:186
+#: py/i18n.py:188
 msgid "Both alternately"
 msgstr "Оба по очереди"
 
+#: py/i18n.py:189
+msgid "Spanish"
+msgstr ""
+
+#: py/i18n.py:190
+msgid "Galician"
+msgstr ""
+
+#: py/i18n.py:191
+msgid "Please restart Kana no quiz for the language change to take effect."
+msgstr ""
+
 #~ msgid "Modified hiragana"
 #~ msgstr "Модифицированные слоги хираганы"
+
 #~ msgid "Contracted hiragana"
 #~ msgstr "Сокращённые слоги хираганы"
+
 #~ msgid "Basic katakana"
 #~ msgstr "Основные слоги катаканы"
+
 #~ msgid "Modified katakana"
 #~ msgstr "Модифицированные слоги катаканы"
+
 #~ msgid "Contracted katakana"
 #~ msgstr "Сокращённые слоги катаканы"
+
 #~ msgid ""
 #~ "Kana no quiz is free software released under the GNU GPL license (see "
 #~ "`GPL.txt'). Kana images are released under the Free Art license (see `FAL."
 #~ "txt')."
 #~ msgstr ""
 #~ "Kana no quiz - свободный программный продукт, выпущенный под лицензией "
-#~ "GNU GPL (см. «GPL.txt»). Изображения каны выпущены под Свободной "
-#~ "лицензией на произведения искусства (Free Art License) (см. «FAL.txt»)."
+#~ "GNU GPL (см. «GPL.txt»). Изображения каны выпущены под Свободной лицензией "
+#~ "на произведения искусства (Free Art License) (см. «FAL.txt»)."
+
 #~ msgid "No portion selected: that question set is disabled. :p"
 #~ msgstr "Не выбрано ни одной группы: набор вопросов отключён. :p"
+
 #~ msgid ""
 #~ "Coding: Choplair & Pachilor.\n"
 #~ "Kana image: Ms. Marie-Claire.\n"
@@ -540,6 +602,6 @@ msgstr "Оба по очереди"
 #~ "Код:·Choplair·&·Pachilor.\n"
 #~ "Изображения каны:·Ms.·Marie-Claire.\n"
 #~ "Логотип:·Choplair."
+
 #~ msgid "Parts"
 #~ msgstr "По отдельности"
-

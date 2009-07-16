@@ -127,7 +127,7 @@ class I18n:
          _("Nihon-shiki"),
          _("Information"),  # 65
          _("Programming"),
-         _("Question %s of %s."),
+         _("Question {0} of {1}."),
          _("%s system."),
          _("Stop"),
          _("German"),  # 70
@@ -188,7 +188,8 @@ class I18n:
          _("Both alternately"),
          _("Spanish"),
          _("Galician"),
-         _("Please restart Kana no quiz for the language change to take effect."),
+         _("Please restart Kana no quiz for the language change to take "
+            "effect."),
          )
 
       return strings[num]

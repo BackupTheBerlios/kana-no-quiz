@@ -72,13 +72,14 @@ class Gui:
          self.check_answer(self.wigets['random_ans_butt'][event.keyval - 49])
 
    def main(self, oldbox=None):
-      if self.currentlang != self.param['lang']:
-         # Changing localization...
-         self.currentlang = self.param['lang']
-         self.i18n.setlang(self.param['lang'])
-         global msg
-         del msg
-         msg = self.i18n.msg
+		# This was source of problem.
+      #~ if self.currentlang != self.param['lang']:
+         #~ # Changing localization...
+         #~ self.currentlang = self.param['lang']
+         #~ self.i18n.setlang(self.param['lang'])
+         #~ global msg
+         #~ del msg
+         #~ msg = self.i18n.msg
 
       self.window.set_title(msg(0))
       box = gtk.VBox()
