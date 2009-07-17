@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 """Kana no quiz!
 
    Copyleft 2003, 2004, 2005, 2006, 2007, 2008, 2009 Choplair-network.
@@ -26,9 +26,11 @@ from distutils.core import setup
 try: import py2exe
 except: pass
 
-scriptfiles = [os.path.join("data", "script", "kana-no-quiz")]
 if 'bdist_wininst' in sys.argv:
-   scriptfiles.append(glob.glob(os.path.join('data', 'script', '*.py*')))
+   scriptfiles = glob.glob(os.path.join('data', 'script', '*.py*'))    
+elif "install" in sys.argv:
+   scriptfiles = [os.path.join("data", "script", "kana-no-quiz")]
+else: scriptfiles = []
 
 # Common data files.
 datafiles = [
@@ -94,18 +96,18 @@ setup(
             efficient, to memorize the pronunciation of Japanese
             kana (hiragana & katakana) in an quick, easy, and
             flexible fashion.
-            
+
             This program features several ways and many options to
             either teach the complete beginner or test the wizard
             skill on kana recognition and pronouncing.
-            
+
             Progressively, a great part of the Japanese writing
             (excepted Kanji) becomes phoneticaly readable to the
             foreign student, representing a first step into the
             learning of the language.
 
             """,
-   author      =   'Choplair Organization',
+   author   =   'Choplair Organization',
    author_email   =   'contact@choplair.org',
    url      =   'http://www.choplair.org/',
    download_url   =   'http://developer.berlios.de/project/filelist.php?group_id=1783',
@@ -125,13 +127,13 @@ setup(
                'packages':'encodings',
                'includes': 'cairo, pango, pangocairo, atk, '\
                   'gobject, psyco, random, sets, gettext',
-               "compressed": 1, "optimize": 1
+               'compressed': 1, 'optimize': 1
             }}
    )
 
 if "install" in sys.argv:
    # Post-installing stuffs (Unix).
    if os.name == "posix":
-      print "Kana no quiz v%s has been successfully installed!\n"\
+      print ("Kana no quiz v%s has been successfully installed!\n"\
          "You may now use the 'kana-no-quiz' command to run the program." %\
-         VERSION
+         VERSION)
