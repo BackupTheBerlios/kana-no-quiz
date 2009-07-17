@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Kana-no-quiz 2.0N\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-17 00:11+0200\n"
-"PO-Revision-Date: 2009-07-09 15:50+0100\n"
-"Last-Translator: Phyambre <phyambre@gmail.com>\n"
+"PO-Revision-Date: 2009-07-17 16:59+0100\n"
+"Last-Translator: Choplair <chopinou-NOSP@M-choplair.org>\n"
 "Language-Team: ESPAÑOL <phyambre@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,54 +31,27 @@ msgstr "Opcións"
 
 #: py/i18n.py:48
 msgid "Start the quiz"
-msgstr "Comenzar o cuestionario"
+msgstr "Comezar o cuestionario"
 
 #: py/i18n.py:49
 msgid "About"
 msgstr "Acerca de"
 
 #: py/i18n.py:50
-msgid ""
-"Two different writing systems are commonly used by the Japanese: kanji & "
-"kana."
-msgstr ""
-"Os xaponeses normalmente utilizan dous sistemas de escritura diferentes: "
-"kanji e kana."
+msgid "Two different writing systems are commonly used by the Japanese: kanji & kana."
+msgstr "Os xaponeses normalmente utilizan dous sistemas de escritura diferentes: kanji e kana."
 
 #: py/i18n.py:52
-msgid ""
-"Kanji are complex ideograms retranscribing words whereas kana are simple "
-"symbols used as syllables which have to be combined to make words. Any word "
-"in Japanese can be written using kana, it is like an alphabet."
-msgstr ""
-"Kanji son ideogramas complexos que transcriben palabras mientres que kana "
-"son símbolos simples usados como sílabas que teñen que ser combinados para "
-"formar palabras. Toda palabra en xaponés pódese escribir usando kana, é como "
-"un alfabeto."
+msgid "Kanji are complex ideograms retranscribing words whereas kana are simple symbols used as syllables which have to be combined to make words. Any word in Japanese can be written using kana, it is like an alphabet."
+msgstr "Kanji son ideogramas complexos que transcriben palabras mientres que kana son símbolos simples usados como sílabas que teñen que ser combinados para formar palabras. Toda palabra en xaponés pódese escribir usando kana, é como un alfabeto."
 
 #: py/i18n.py:56
-msgid ""
-"There are two kinds of kana: hiragana & katakana. Hiragana is the most-used "
-"traditional syllabary used to write Japanese words. Katakana is a larger "
-"syllabary, with more sounds, mostly used to write proper nouns and loanwords "
-"of foreign origin."
-msgstr ""
-"Hai dous tipos de kana: hiragana e katakana. Hiragana é o silabario "
-"tradicional máis usado para escribir palabras xaponesas. Katakana é un "
-"silabario más amplo, con máis sonidos, maiormente usado para escribir nomes "
-"propios e palabras prestadas de orixe extranxeira."
+msgid "There are two kinds of kana: hiragana & katakana. Hiragana is the most-used traditional syllabary used to write Japanese words. Katakana is a larger syllabary, with more sounds, mostly used to write proper nouns and loanwords of foreign origin."
+msgstr "Hai dous tipos de kana: hiragana e katakana. Hiragana é o silabario tradicional máis usado para escribir palabras xaponesas. Katakana é un silabario máis amplo, con máis sons, maiormente usado para escribir nomes propios e palabras prestadas de orixe extranxeira."
 
 #: py/i18n.py:61
-msgid ""
-"Kana no quiz helps you to memorize kana and their associated sound, using "
-"transcription systems. For more simplicity, syllables have been split in "
-"multiple sets, and you can even choose to learn only a portion of kana at a "
-"time."
-msgstr ""
-"Kana no quiz axúdate a memorizar os kana e os seus sonidos asociados, usando "
-"sistemas de transcripción. Para maior simplicidade, as sílabas foron "
-"divididas en múltiples conxuntos, e incluso podes elixir aprender unicamente "
-"unha porción do kana en cada momento."
+msgid "Kana no quiz helps you to memorize kana and their associated sound, using transcription systems. For more simplicity, syllables have been split in multiple sets, and you can even choose to learn only a portion of kana at a time."
+msgstr "Kana no quiz axúdate a memorizar os kana e os seus sonidos asociados, usando sistemas de transcripción. Para maior simplicidade, as sílabas foron divididas en múltiples conxuntos, e incluso podes elixir aprender unicamente unha porción do kana en cada momento."
 
 #: py/i18n.py:65
 msgid "Have a good practice ! ^_^"
@@ -189,18 +162,12 @@ msgid "Additional katakana"
 msgstr "Katakana adicional"
 
 #: py/i18n.py:91
-msgid ""
-"If you are novice, it may be interesting at the beginning to train yourself "
-"only on portions instead of the full kana set."
-msgstr ""
-"Se eres novato, pode ser interesante ó principio entrenarse unicamente en "
-"porcións en lugar de no conxunto completo de kana."
+msgid "If you are novice, it may be interesting at the beginning to train yourself only on portions instead of the full kana set."
+msgstr "Se es novato, pode ser interesante ao principio entrenarse unicamente en porcións en lugar de no conxunto completo de kana."
 
 #: py/i18n.py:93
 msgid "Select the kana portions you want to train yourself upon:"
-msgstr ""
-"Selecciona as porcións de kana nas que desexas entrenarte de entre as "
-"seguintes:"
+msgstr "Selecciona as porcións de kana nas que desexas entrenarte de entre as seguintes:"
 
 #: py/i18n.py:94
 msgid "Select all"
@@ -282,17 +249,11 @@ msgstr "Versión %s."
 
 #: py/i18n.py:112
 msgid ""
-"Kana no quiz is free software with its source code released under the terms "
-"of the GNU General Public License (see `GPL.txt').\n"
-"The whole multimedia content is released under the terms of the Free Art "
-"license (see `FAL.txt') with the exception of the kana image theme that was "
-"adapted from \"Kana Test\", released under the GNU GPL as well."
+"Kana no quiz is free software with its source code released under the terms of the GNU General Public License (see `GPL.txt').\n"
+"The whole multimedia content is released under the terms of the Free Art license (see `FAL.txt') with the exception of the kana image theme that was adapted from \"Kana Test\", released under the GNU GPL as well."
 msgstr ""
-"Kana no quiz é software libre co seu código fonte liberado baixo os termos "
-"da GNU General Public License (ver 'GPL.txt').\n"
-"Todo o contido multimedia está liberado baixo os termos da licencia de Free "
-"Art (ver 'FAL.txt') coa excepción do tema das imaxes kana que foi adaptado "
-"de \"Kana Test\", liberado igualmente baixo o GNU GPL."
+"Kana no quiz é software libre co seu código fonte liberado baixo os termos da GNU General Public License (ver 'GPL.txt').\n"
+"Todo o contido multimedia está liberado baixo os termos da licencia de Free Art (ver 'FAL.txt') coa excepción do tema das imaxes kana que foi adaptado de \"Kana Test\", liberado igualmente baixo o GNU GPL."
 
 #: py/i18n.py:118
 msgid "Credits"
@@ -304,7 +265,7 @@ msgid ""
 "Code contribution: Jeremy Bowers."
 msgstr ""
 "Desenvolvemento principal: Choplair.\n"
-"Contribución ó código: Jeremy Bowers."
+"Contribución ao código: Jeremy Bowers."
 
 #: py/i18n.py:121
 msgid "Close"
@@ -316,13 +277,11 @@ msgstr "Advertencia"
 
 #: py/i18n.py:123
 msgid "Please select at least one kana portion to start the quiz."
-msgstr ""
-"Por favor, selecciona polo menos unha porción de kana para comezar o "
-"cuestionario."
+msgstr "Por favor, selecciona polo menos unha porción de kana para comezar o cuestionario."
 
 #: py/i18n.py:124
 msgid "Transcription system:"
-msgstr "Sistema de transcripción:"
+msgstr "Sistema de transcrición:"
 
 #: py/i18n.py:125
 msgid "Hepburn (most used)"
@@ -345,9 +304,8 @@ msgid "Programming"
 msgstr "Programación"
 
 #: py/i18n.py:130
-#, fuzzy
 msgid "Question {0} of {1}."
-msgstr "Pregunta %s de %s."
+msgstr "Pregunta {0} de {1}."
 
 #: py/i18n.py:131
 #, python-format
@@ -409,7 +367,6 @@ msgid "Translations"
 msgstr "Traducións"
 
 #: py/i18n.py:145
-#, fuzzy
 msgid ""
 "Brazilian: Matheus Villela.\n"
 "French: Choplair.\n"
@@ -471,24 +428,12 @@ msgid "Excellent!"
 msgstr "Excelente!"
 
 #: py/i18n.py:163
-msgid ""
-"Here comes the complete kana tables, sorted respecting the Japanese "
-"traditional order (except for additional katakana that haven't been "
-"standardized)."
-msgstr ""
-"Aquí están as táboas de kana completas, ordenadas respectando a orde "
-"tradicional xaponesa (excepto para o katakana adicional que aínda non foi "
-"estandarizado)."
+msgid "Here comes the complete kana tables, sorted respecting the Japanese traditional order (except for additional katakana that haven't been standardized)."
+msgstr "Aquí están as táboas de kana completas, ordeadas respectando a orde tradicional xaponesa (excepto para o katakana adicional que aínda non foi estandarizado)."
 
 #: py/i18n.py:166
-msgid ""
-"You may enjoy full kana list overview (with transcription), select the "
-"portions you want to be trained upon, and see larger image when clicking on "
-"a thumbnail."
-msgstr ""
-"Podes gozar da vista xeral da lista completa de kana (con transcripción), "
-"seleccionar as porcións nas que desexas entrenarte, e ver unha imaxe máis "
-"grande cando pinches nunha miniatura."
+msgid "You may enjoy full kana list overview (with transcription), select the portions you want to be trained upon, and see larger image when clicking on a thumbnail."
+msgstr "Podes gozar da vista xeral da lista completa de kana (con transcrición), seleccionar as porcións nas que desexas entrenarte, e ver unha imaxe máis grande cando pinches nunha miniatura."
 
 #: py/i18n.py:169
 msgid "Kana image scale:"
@@ -566,7 +511,7 @@ msgstr "Masculina"
 
 #: py/i18n.py:188
 msgid "Both alternately"
-msgstr "Alternar ámbalas duas"
+msgstr "Alternar ambas as duas"
 
 #: py/i18n.py:189
 msgid "Spanish"
@@ -574,8 +519,9 @@ msgstr "Castelán"
 
 #: py/i18n.py:190
 msgid "Galician"
-msgstr ""
+msgstr "Galego"
 
 #: py/i18n.py:191
 msgid "Please restart Kana no quiz for the language change to take effect."
-msgstr ""
+msgstr "Por favor, reinicie Kana no quiz para que o cambio de idioma faga efecto."
+
