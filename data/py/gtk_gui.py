@@ -16,7 +16,7 @@
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-   
+
 """
 # Imports.
 import sys
@@ -39,7 +39,7 @@ class Gui:
       self.datarootpath = args[2]
 
       self.kana_engine =  kanaengine.KanaEngine(self.param)
-      self.playsound = playsound.PlaySound(self.datarootpath) 
+      self.playsound = playsound.PlaySound(self.datarootpath)
       self.score = score.Score()
       self.handlerid = {}
       self.widgets = {}
@@ -89,7 +89,7 @@ class Gui:
       image.set_from_file(os.path.join(self.datarootpath, "img",
          "main_image.png"))
       box.pack_start(image,False)
-      
+
       box.pack_start(gtk.Label(msg(88) % self.version), False, padding=4)
 
       table = gtk.Table(2, 3, True)
@@ -152,14 +152,14 @@ class Gui:
       self.window.set_title(msg(83))  # Changing window title.
       da_box = gtk.VBox(spacing=4)
       da_box.set_border_width(5)
-      
+
       label = gtk.Label("%s\n%s" % (msg(93), msg(94)))
       label.set_justify(gtk.JUSTIFY_CENTER)
       da_box.pack_start(label)
 
       thumb_size = ((26, 23),(32, 20))[self.param['kana_image_theme'] ==
          "kanatest"]
-      
+
       def button_pressed(widget, event, kind, kana):
          """Update displayed high size kana image and information when a new
             one is pressed.
@@ -178,7 +178,7 @@ class Gui:
                ['transcription_system']] != "hepburn"]
             if transcription[-2:] == "-2": transcription = transcription[:-2]
             kana_transcription_label.set_text(transcription.upper())
-            
+
             # Playing kana proununciation.
             if kana[-2:] == "-2": kana = kana[:-2]
             gtk.gdk.threads_enter()
@@ -197,7 +197,7 @@ class Gui:
 
          """
          image = gtk.Image()
-         
+
          # Loading kana PNG image.
          image_path = os.path.join(self.datarootpath, "img", "kana",
             self.param['kana_image_theme'], "%s_%s.png" % (("k", "h")\
@@ -212,7 +212,7 @@ class Gui:
          image.set_from_pixbuf(scaled_buf)
          box = gtk.VBox()
          box.pack_start(image)
-         
+
          # Transcription label.
          transcription = (kana, kanaengine.hepburn_to_other_sys_convert(
             kana, self.param['transcription_system']))[[self.param\
@@ -220,7 +220,7 @@ class Gui:
          if transcription[-2:] == "-2": transcription = transcription[:-2]
          label = gtk.Label(transcription)
          box.pack_start(label)
-         
+
          container = gtk.EventBox()
          container.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("white"))
          container.modify_bg(gtk.STATE_PRELIGHT, gtk.gdk.color_parse("white"))
@@ -229,7 +229,7 @@ class Gui:
          container.add(box)
 
          return container
-      
+
       def portion_selection(widget, portion):
          """Update the portion selection temporary variable value."""
          portion.active = (0, 1)[widget.get_active()]
@@ -289,7 +289,7 @@ class Gui:
       def gen_kana_set_table(widget=None, set_num=0):
          if not set_num in (0,3) and not set_container[set_num]\
             .get_child() == None:
-            return True 
+            return True
 
          set = (kanaengine.hiragana.setsInOrder() +\
             kanaengine.katakana.setsInOrder())[set_num]
@@ -298,10 +298,10 @@ class Gui:
          table.set_col_spacings(2)
          table.set_row_spacings(1)
          if set_num == 6: table.set_row_spacing(4, 12)
-  
+
          i = 0
          for portion in set.portions:
-            # Portion selection checkbutton.   
+            # Portion selection checkbutton.
             frame = gtk.Frame()
             checkbutt = gtk.CheckButton()
             if portion.active:
@@ -398,17 +398,18 @@ class Gui:
          box.set_border_width(5)
 
          box2 = gtk.VBox()
-         
+
          # Kana image.
          self.widgets['kanaImage'] = gtk.Image()
          kanaKindIndex = self.kana.kind.kindIndex
          self.set_kana_image(self.kana)
          box2.pack_start(self.widgets['kanaImage'], False)
-         
+
          # Quiz informations.
          self.widgets['quiz_infos'] = {}
-         self.widgets['quiz_infos']['questionNumLabel'] = gtk.Label(msg(67)\
-            % (self.score.get_question_total() + 1, self.param['length']))
+         self.widgets['quiz_infos']['questionNumLabel'] = gtk.Label(
+            msg(67).format(self.score.get_question_total() + 1,
+               self.param['length']))
          self.widgets['quiz_infos']['systemLabel'] = gtk.Label(msg(68) %
             capwords(self.param['transcription_system']))
          box3 = gtk.VBox(spacing=2)
@@ -426,7 +427,7 @@ class Gui:
          elif self.param["kana_image_scale"] == "medium": width = 175
          else: width = 250
          self.widgets['quiz_right_box'].set_size_request(width, -1)
-         
+
          # Stop button.
          self.widgets['quiz_stop'] = gtk.Button(stock=gtk.STOCK_STOP)
          self.widgets['quiz_stop'].connect("clicked", self.results)
@@ -468,7 +469,7 @@ class Gui:
 
             self.handlerid['nextbutton_clicked'] = self.widgets['next_button']\
                .connect("clicked", self.new_question)
-         else: 
+         else:
             entry = gtk.Entry(3)
             entry.modify_font(FontDescription("sans 35"))
             entry.set_alignment(0.5)
@@ -518,7 +519,7 @@ class Gui:
    def check_answer(self, widget, num = None):
       """Compare user given answer to the correct one, update the score,
          then display that question result.
-         
+
       """
       if self.param['answering_mode'] == "list":
          user_answer = self.widgets['random_ans_kana_label'][num].get_text()\
@@ -541,7 +542,7 @@ class Gui:
          self.widgets['quiz_label'].set_text("<span color='red'><b>%s</b>"
             "</span>\n%s" % (msg(14), msg(15) % "<big><b>%s</b></big>"\
             % correct_answer.upper()))
-         self.score.update(0, correct_answer, self.kana.kind.kindIndex) 
+         self.score.update(0, correct_answer, self.kana.kind.kindIndex)
       self.widgets['quiz_label'].set_use_markup(True)
 
       if self.param['answering_mode'] == "list":
@@ -557,14 +558,14 @@ class Gui:
 
       # Bringing focus to the ``next" button.
       self.widgets['next_button'].grab_focus()
-    
+
       # Playing kana proununciation.
       kana = self.kana.kana
       if kana[-2:] == "-2": kana = kana[:-2]
       gtk.gdk.threads_enter()
       self.playsound.play_kana(kana, self.param['kana_pronouncing'])
       gtk.gdk.threads_leave()
-      
+
       if self.param['answer_display_timeout'] > 0:
          # Automatic Quiz Proceeding (AQP)feature.
          def countdown():
@@ -594,10 +595,11 @@ class Gui:
       self.kana = self.kana_engine.randomKana()
 
       # Updating kana's image.
-      self.set_kana_image(self.kana) 
+      self.set_kana_image(self.kana)
 
-      self.widgets['quiz_infos']['questionNumLabel'].set_text(msg(67) %
-         (self.score.get_question_total() + 1, self.param['length']))
+      self.widgets['quiz_infos']['questionNumLabel'].set_text(
+         msg(67).format(self.score.get_question_total() + 1,
+            self.param['length']))
       self.widgets['quiz_label'].set_text((msg(11), msg(12))\
          [self.kana.kind.kindIndex])
 
@@ -624,11 +626,11 @@ class Gui:
       def get_unrec_msg(kind):
          """Return a ready-to-display string which indicates the
             unrecognized kana (by kind) during the quiz.
-         
+
          """
          plop = ""
          for key, val in results[3][kind].items():
-            for x in val: 
+            for x in val:
                if key != 1: plop += "%s (%s), " % (x.upper(), key)
                else: plop += u"%s, " % x.upper()
          return "\n%s" % (msg(72 + kind) % plop[:-2])
@@ -653,7 +655,7 @@ class Gui:
       self.widgets['kanaImage'].set_from_file(os.path.join(self.datarootpath,
          "img", "results_%s.png" % ("crappy", "average", "good", "excelent")\
          [lvl]))
-         
+
       self.widgets['quiz_infos']['container'].modify_bg(gtk.STATE_NORMAL,
          gtk.gdk.color_parse("#f3eddd"))
       self.widgets['quiz_infos']['questionNumLabel'].set_text(msg(89 + lvl))
@@ -663,7 +665,7 @@ class Gui:
 
       self.score.reset()  # Reseting the score.
       self.kana_engine.reset()  # Reseting kana engine's variables.
-      
+
       if self.param['answer_display_timeout'] > 0:
          self.widgets['next_button'].remove(self.widgets['next_button']\
             .get_child())
@@ -722,7 +724,7 @@ class Gui:
                [opt_widget["kana_image_theme"].get_active()]
             self.param['kana_pronouncing'] = opt_conv["kana_pronouncing"]\
                [opt_widget["kana_pronouncing"].get_active()]
-            
+
             # Language has been changed: tell that restart needed for this
             # change to take effect.
             if self.param['lang'] != opt_conv["lang"][opt_widget['lang']\
@@ -733,11 +735,11 @@ class Gui:
                dialog.destroy())
               dialog.show()
 
-                
-              
+
+
             self.param['lang'] = opt_conv["lang"][opt_widget['lang']\
                .get_active()]
-            
+
             # Updating the whole configuration.
             self.param.write()
          self.main(da_box)  # Going back to the ``main".
@@ -814,7 +816,7 @@ class Gui:
       def bouyaka(widget,targets):
          """Set list size widgets sensitive state according
             to answer mode widget selected param.
-         
+
          """
          for x in targets: x.set_sensitive(not widget.get_active())
 
@@ -901,7 +903,7 @@ class Gui:
       self.win_container.show_all()
 
    def about(self, oldbox):
-      """Display the About dialog."""   
+      """Display the About dialog."""
       self.window.set_title(msg(4))  # Changing window title.
       da_box = gtk.VBox(spacing=4)
       da_box.set_border_width(5)
@@ -980,7 +982,7 @@ class Gui:
       """Updating kana image."""
       kind = kana.kind.kindIndex
       kana = kana.kana # the string
-      
+
       # Loading kana PNG image.
       pixbuf = gtk.gdk.pixbuf_new_from_file(os.path.join(self.datarootpath,
          "img", "kana", self.param['kana_image_theme'], "%s_%s.png" %
